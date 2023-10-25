@@ -8,7 +8,7 @@
 #include <string>
 using namespace std;
 
-class Slot {
+class Lesson {
     private:
         string weekday;
         double startHour;
@@ -16,7 +16,7 @@ class Slot {
         double duration;
         string type;
     public:
-        Slot(string weekday, double startHour, double endHour, double duration, string type);
+        Lesson(string weekday, double startHour, double endHour, double duration, string type);
         string getWeekday() const;
         double getStartHour() const;
         double getEndHour() const;

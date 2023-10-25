@@ -5,16 +5,16 @@
 
 namespace using std;
 
-class Class {
+class UC {
     private:
         string UcCode;
         string ClassCode;
     public:
-        Class(string UcCode, string ClassCode);
+        UC(string UcCode, string ClassCode);
         string getUcCode() const;
         string getClassCode() const;
         void setUcCode(string code);
         void setClassCode(string code);
 };
 
-#endif
+#endif //AED2324_PRJ1_G1207_CLASS_H

@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace using std;
+using namespace std;
 
 class UC {
     private:

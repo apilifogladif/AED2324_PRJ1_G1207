@@ -4,8 +4,9 @@
 #include <string>
 #include <vector>
 #include "UC.h"
+#include "UC"
 
-namespace using std;
+using namespace std;
 
 // this class represents a student
 class Student {
@@ -14,13 +15,30 @@ class Student {
         string studentName;
         vector<UC> ucs;
     public:
-        Student(int studentCode, string studentName);
+    // constructor for the Student class
+        Student(int studentCode, string studentName, vector<UC> ucs);
+
+    // returns the studentCode
         int getStudentCode() const;
+
+    // return the studentName
         string getStudentName() const;
+
+    // return the UCs of the student lessons
         vector<UC> getUCs() const;
+
+    // adds an UC to the student lessons
         void addUC(const UC &uc);
+
+    // adds an UC to the student lessons
         void removeUC(const UC &uc);
+
+    // changes the UC of the student
         void changeUC(const UC &uc);
+
+
+        bool findUc(const string UcCode);
+        bool isEnrolled(string UcCode);
 
 };
 

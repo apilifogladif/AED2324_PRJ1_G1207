@@ -1,28 +1,23 @@
 #include "Request.h"
 
-// constructor of the Request class
 Request::Request(Student &student, UC &uc, string type) {
     this->student = student;
     this->uc = uc;
     this->type = type;
 }
 
-// returns the student that made the request
 Student Request::getStudent() {
     return this->student;
 }
 
-// return the UC class that the student wants to be in
 UC Request::getUC(){
     return this->uc;
 }
 
-// return the type of the request
 string Request::getType() {
     return this->type;
 }
 
-// allocate to each type which function it must use (Enrollment - add method, Removal - remove method, Swap - swap method)
 void Request::typeAllocation(string type_) {
     if (this->type == "Enrollment") {
         this->add(type_);

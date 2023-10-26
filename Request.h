@@ -16,14 +16,45 @@ class Request {
         string UCf;
         UC* UCi_ptr;
         UC* UCf_ptr;
-    public:
+    public
+        /*
+         * Class constructor
+         *
+         * Sets student, uc, and type
+         *
+         * @paramt student : private , Class code;
+         * @paramt uc : private , Curricular unit code;
+         * @paramt type : private , Lesson type;
+         */
         Request(Student *student, UC &uc, string type);
+
+        /*
+         * Returns the student that made the request
+         */
         Student getStudent();
+
+        /*
+         * Returnx the uc of the request
+         */
         UC getUC();
+
+        /*
+         * Returns the type of the request
+         */
         string getType();
+        /*
+         * Allocate to each type which function it must use
+         *
+         * Enrollment - add method
+         * Removal - remove method
+         * Swap - swap method
+         */
+        void typeAllocation(string type_);
+
+
+
         UC* getUCi();
         UC* getUCf();
-        void typeAllocation(string type_);
         bool add(string type_);
         bool remove(string type_);
         bool swap(string type_);

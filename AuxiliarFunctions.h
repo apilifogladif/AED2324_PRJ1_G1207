@@ -25,9 +25,15 @@ class AuxiliarFunctions {
         queue<Request> enrollmentRequests;
         queue<Request> removalRequests;
         queue<Request> switchRequests;
-    public:
+        struct rejectedRequests_ {
+            Request request;
+            string reason;
+        }
+        vector<rejectedRequests_> rejectedRequests;
+
+public:
         // returns the student with the studentCode passed
-        Student* findStudent(string studentCode);
+        Student* retStudent(string studentCode);
         // returns the schedule with the UcClass passed
         Schedule* UCSchedule(UC UcClass); // falta complexidade
         // returns the index of the schedule with the UcClass passed
@@ -55,5 +61,16 @@ class AuxiliarFunctions {
         // There is no conflict between the student’s schedule and the new class’s schedule
         // a student’s schedule may overlap classes if they are neither TP nor PL, that is, there may be overlapping classes between T and TP, between T and T, and between T and P
         bool lessonOverlap(UC uc1, UC uc2);
+
+        // get the number of students in a class in an UC
+        int totalNumberOfStudentsUcClass(UC UcClass);
+        // get request current UC Class
+        UC getCurrentClass(Request request);
+        // see if request has any problem (unbalanced, conflit, extends the max)
+        void verifySwapRequest(Request request);
+
+        // a implementar
+        void verifyEnrollmentRequest(Request request);
+        void verifyRemovalRequest(Request request);
 };
 #endif //AED2324_PRJ1_G1207_AUXILIARFUNCTIONS_H

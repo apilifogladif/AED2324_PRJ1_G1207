@@ -12,6 +12,8 @@ using namespace std;
 class Schedule {
     private:
         set<Lesson> lessons;
+        set<Student> students;
+        UC UcClass;
     public:
     /*
      * Class constructor
@@ -46,7 +48,10 @@ class Schedule {
         bool hasSameUcCode(Schedule UcCode);
         // return the UC class
         UC getUcClass();
-
+        // get students of a class
+        set<Student> getStudents();
+        void addStudent(Student student);
+        void removeStudent(Student student);
 };
 
 #endif //AED2324_PRJ1_G1207_SCHEDULE_H

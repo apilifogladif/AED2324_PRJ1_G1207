@@ -27,7 +27,7 @@ void Student::removeUC(const UC &uc) {
     remove(this->ucs.begin(),this->ucs.end(),uc);
 }
 
-void Student::changeUC(const UC &uc) {
+UC Student::changeUC(const UC &uc) {
     for (int i = 0; i < this->ucs.size(); i++) {
         if (uc.getUcCode() == this->ucs[i].getUcCode()) {
             this->ucs[i].setClassCode(uc.getClassCode());

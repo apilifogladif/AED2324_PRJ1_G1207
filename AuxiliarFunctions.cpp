@@ -1,6 +1,6 @@
 #include "AuxiliarFunctions.h"
 
-Student* AuxiliarFunctions::findStudent(string studentCode) {
+Student* AuxiliarFunctions::retStudent(string studentCode) {
     auto student = students.find(Student(studentCode, ""));
     if (student != student.end()) {
         return &(*student);
@@ -66,4 +66,73 @@ bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
             }
         }
     }
+}
+
+int AuxiliarFunctions::totalNumberOfStudentsUcClass(UC UcClass) {
+    int numberStudents = UCSchedule(UcClass)->getStudents().size();
+    return numberStudents;
+}
+UC AuxiliarFunctions::getCurrentClass(Request request) {
+    UC currentClass = request.getStudent().findUc(request.getUC().getUcCode());
+    return currentClass;
+}
+bool AuxiliarFunctions::requestBalance(Request request) {
+    int currentClass = totalNumberOfStudentsUcClass(getCurrentClass(request));
+    int newClass = totalNumberOfStudentsUcClass(request.getUC());
+    if ((newClass - currentClass) <= 4) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool AuxiliarFunctions::requestConflict(Request request) {
+    UC uc = request.getUC();
+    Student student = request.getStudent();
+    vector<UC> studentUCs = student.getUCs();
+    for (UC uc_ : studentUCs) {
+        if (lessonOverlap(uc_, uc)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+bool AuxiliarFunctions::requestMax(Request request) {
+    vector<Schedule> totalUcsClasses = totalUcsClasses(request.getUC().getUcCode());
+    sort(totalUcsClasses.begin(), totalUcsClasses.end(), [](const Schedule &class1, const Schedule &class2) {
+        if (class1.getStudents().size() >= class2.getStudents().size()) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+    int max = totalUcsClasses.back().getStudents().size();
+    if (totalUcsClasses[0].getStudents().size() == max) {
+       max++;
+    }
+    if (max < totalNumberOfStudentsUcClass(request.getUC())) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// completar descrições
+void AuxiliarFunctions::verifySwapRequest(Request request){
+    if (!(requestBalance(request))) {
+        rejectRequests.push_back(request, "Unbalaced");
+    } else if (requestConflict(request)) {
+        rejectRequests.push_back(request, "Conflict");
+    } else if (requestMax(request)) {
+        rejectRequests.push_back(request, "Max");
+    } else {
+        Student* student = retStudent(request.getStudent().getStudentCode());
+        UC uc = UCSchedule(request.getUC())->getUcClass();
+        UC uc_old = student->changeUC(UcClass);
+        UCSchedule(request.getUC())->addStudent(*student);
+        UCSchedule(uc_old)->removeStudent(*student);
+    }
+    cout << endl;
 }

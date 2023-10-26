@@ -33,7 +33,7 @@ class Student {
         void removeUC(const UC &uc);
 
     // changes the UC of the student
-        void changeUC(const UC &uc);
+        UC changeUC(const UC &uc);
 
 
         bool findUc(const string UcCode);

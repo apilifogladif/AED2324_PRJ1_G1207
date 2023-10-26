@@ -30,7 +30,7 @@ public:
         Student getStudent();
 
         /*
-         * Returnx the uc of the request
+         * Return the uc of the request
          */
         UC getUC();
 

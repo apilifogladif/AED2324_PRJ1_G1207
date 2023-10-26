@@ -29,5 +29,24 @@ void Schedule::drawSchedule() const {
 }
 
 bool Schedule::hasSameUcCode(Schedule UcCode) {
-    if (UcClass.hasSameUcCode(UcCode.getUC()));
+    if (UcClass.hasSameUcCode(UcCode.getUcClass())) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+UC Schedule::getUcClass() {
+    return this->UcClass;
+}
+
+set<Student> Schedule::getStudents() {
+    return this->students;
+}
+
+void Schedule::addStudent(Student student) {
+    students.insert(student);
+}
+void Schedule::removeStudent(Student student) {
+    students.erase(student);
 }

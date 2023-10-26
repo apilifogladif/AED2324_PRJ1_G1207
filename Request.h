@@ -12,10 +12,6 @@ class Request {
         Student* student;
         UC uc;
         string type;
-        string UCi;
-        string UCf;
-        UC* UCi_ptr;
-        UC* UCf_ptr;
     public
         /*
          * Class constructor
@@ -42,22 +38,6 @@ class Request {
          * Returns the type of the request
          */
         string getType();
-        /*
-         * Allocate to each type which function it must use
-         *
-         * Enrollment - add method
-         * Removal - remove method
-         * Swap - swap method
-         */
-        void typeAllocation(string type_);
-
-
-
-        UC* getUCi();
-        UC* getUCf();
-        bool add(string type_);
-        bool remove(string type_);
-        bool swap(string type_);
 };
 
 #endif // AED2324_PRJ1_G1207_REQUEST_H

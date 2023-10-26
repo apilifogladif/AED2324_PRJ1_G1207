@@ -60,6 +60,7 @@ class Lesson {
          * Prints the startHour, the endHour and the type of the lesson (T, P, PL)
          */
         void drawLesson() const;
+        bool lessonOverlap(Lesson lesson);
 };
 
 #endif //AED2324_PRJ1_G1207_LESSON_H

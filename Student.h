@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include "UC.h"
-#include "UC"
 
 using namespace std;
 
@@ -38,7 +37,8 @@ class Student {
 
 
         bool findUc(const string UcCode);
-        bool isEnrolled(string UcCode);
+        // checks if student is enrolled in a UC with UcCode
+        bool Enrolled(string UcCode);
 
 };
 

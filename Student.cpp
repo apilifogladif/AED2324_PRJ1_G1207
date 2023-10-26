@@ -44,6 +44,11 @@ bool Student::findUc(const string UcCode) {
     return false;
 }
 
-bool Student::isEnrolled(int UcCode) {
-    for (UC uc: ucs) {}
+bool Student::Enrolled(string UcCode) {
+    for (UC uc: ucs) {
+        if (uc.getUcCode() == UcCode) {
+            return true;
+        }
+    }
+    return false;
 }

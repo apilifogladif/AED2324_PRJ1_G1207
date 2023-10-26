@@ -272,15 +272,56 @@ void enrollRequest(Student *student) {
     cout << "Insert UC code: ";
     cin >> UcCode;
     cout << endl;
-    if (student->isEnrolled()) {
-
+    if (student->Enrolled(UcCode)) {
+        cout << "The student is already enrolled in this UC." << endl;
     }
+    cout << "Insert class code: ";
+    cin >> classCode;
+    cout << endl;
+    AuxiliarFunctions func2;
+    Schedule *schedule = func2.UCSchedule(UC(UcCode, classCode));
+    if (schedule == nullptr) {
+        cout << "Class not found." << endl;
+    }
+    func2.concludeEnrollment(*student, UC(UcCode, classCode));
+    cout << "Enrollment request submitted." << endl;
 }
 
 void leaveRequest(Student *student) {
-
+    string UcCode;
+    string classCode;
+    cout << "Insert UC code: ";
+    cin >> UcCode;
+    cout << endl;
+    if (!(student->Enrolled(UcCode))) {
+        cout << "The student is not enrolled in this UC." << endl;
+    }
+    AuxiliarFunctions func3;
+    for (UC uc: student->getUCs()) {
+        if (uc.getUcCode() == UcCode) {
+            func3.concludeRemoval(*student, uc);
+            cout << "Enrollment request submitted." << endl;
+        }
+    }
 }
 
 void switchRequest(Student *student) {
-
+    string UcCode;
+    string classCode;
+    cout << "Insert UC code: ";
+    cin >> UcCode;
+    cout << endl;
+    if (!(student->Enrolled(UcCode))) {
+        cout << "The student is not enrolled in this UC." << endl;
+    }
+    cout << "Insert class code: ";
+    cin >> classCode;
+    cout << endl;
+    AuxiliarFunctions func4;
+    Schedule *schedule = func4.UCSchedule(UC(UcCode, classCode));
+    if (schedule == nullptr) {
+        cout << "Class not found." << endl;
+    }
+    func4.concludeSwitch(*student, UC(UcCode, classCode));
+    cout << "Switch request submitted." << endl;
 }

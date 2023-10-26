@@ -2,9 +2,9 @@
 #define AED2324_PRJ1_G1207_SCHEDULE_H
 
 #include "Lesson.h"
+#include "UC.h"
 #include <iostream>
 #include <vector>
-#include <set>
 #include <set>
 using namespace std;
 
@@ -41,6 +41,11 @@ class Schedule {
          * Prints the schedule
          */
         void drawSchedule() const;
+
+        // verifies if it has the same UcCode
+        bool hasSameUcCode(Schedule UcCode);
+        // return the UC class
+        UC getUcClass();
 
 };
 

@@ -32,3 +32,21 @@ string Lesson::getType() const {
 void Lesson::drawLesson() const {
     cout << lesson.getstartHour() << " - " << lesson.getendHour() << "  " << uc.getUcCode << "(" << lesson.getType << ");\n";
 }
+
+bool Lesson::lessonOverlap(Lesson lesson) {
+    if (this->weekday != lesson.getWeekday()) {
+        return false;
+    }
+    if ((this->startHour >= lesson.getEndHour()) || (this->endHour <= lesson.getStartHour())) {
+        return false;
+    }
+    if (((this->type == 'T') and (lesson.getType() == "TP")) ||
+        ((this->type == "TP") and (lesson.getType() == 'T')) ||
+        ((this->type == 'T') and (lesson.getType() == 'T')) ||
+        ((this->type == 'T') and (lesson.getType() == 'P')) ||
+        ((this->type == 'P') and (lesson.getType() == 'T'))) {
+        return false;
+    }
+    return true;
+
+}

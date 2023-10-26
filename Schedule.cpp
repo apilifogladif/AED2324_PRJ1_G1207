@@ -27,3 +27,7 @@ void Schedule::drawSchedule() const {
         }
     }
 }
+
+bool Schedule::hasSameUcCode(Schedule UcCode) {
+    if (UcClass.hasSameUcCode(UcCode.getUC()));
+}

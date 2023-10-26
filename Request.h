@@ -12,7 +12,7 @@ class Request {
         Student* student;
         UC uc;
         string type;
-    public
+public:
         /*
          * Class constructor
          *

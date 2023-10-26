@@ -24,7 +24,7 @@ class AuxiliarFunctions {
         vector<Schedule> schedules;
         queue<Request> enrollmentRequests;
         queue<Request> removalRequests;
-        queue<Request> switchRequests
+        queue<Request> switchRequests;
     public:
         // returns the student with the studentCode passed
         Student* findStudent(string studentCode);

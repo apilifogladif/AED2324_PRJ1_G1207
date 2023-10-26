@@ -10,6 +10,24 @@
 
 using namespace std;
 
+// Menu for the user choose which type of request he wants (enroll in an UC, leave an UC, change an UC
+int RequestMenu() {
+    int op = 0;
+    cout << endl << "There are three types of request" << endl;
+    cout << endl << "----------------------------" << endl;
+    cout << "1 - Enroll in an UC." << endl;
+    cout << "2 - Leave an UC." << endl;
+    cout << "3 - Switch an UC." << endl;
+    cout << "Write the number of what you want to do: ";
+    cin >> op;
+    while (cin.fail() || op < 1 || op > 3) {
+        cout << "Invalid number! Write the number of what you want to do: " << endl;
+        cin >> op;
+    }
+    cout << endl;
+    return op;
+}
+
 void searchClass() {
     string classCode;
     cout << "Write the code of the class: ";
@@ -25,11 +43,12 @@ void searchClass() {
     cout << "Write the number of what you want to do: ";
     cin >> op;
     cout << endl;
-    if (cin.fail() || op < 1 || op > 2) {
+    while (cin.fail() || op < 1 || op > 2) {
         cout << "Invalid number! Write the number of what you want to do: " << endl;
         cin >> op;
         cout << endl;
     }
+    // clrscr();  ->  clear screen
 }
 void searchLesson() {
     string classCode;
@@ -50,7 +69,7 @@ void searchLesson() {
     cout << "Write the number of what you want to do: ";
     cin >> op;
     cout << endl;
-    if (cin.fail() || op < 1 || op > 3) {
+    while (cin.fail() || op < 1 || op > 3) {
         cout << "Invalid number! Write the number of what you want to do: " << endl;
         cin >> op;
         cout << endl;
@@ -66,15 +85,23 @@ void searchStudent() {
     cout << endl << "      StudentMenu   " << endl;
     cout << endl << "----------------------------" << endl;
     cout << "1 - Show schedule of this student." << endl;
-    cout << "2 - Change a class in an uc." << endl;
+    cout << "2 - Make a request." << endl;
     cout << "3 - Return to MainMenu." << endl;
     cout << "Write the number of what you want to do: ";
     cin >> op;
     cout << endl;
-    if (cin.fail() || op < 1 || op > 3) {
+    while (cin.fail() || op < 1 || op > 3) {
         cout << "Invalid number! Write the number of what you want to do: " << endl;
         cin >> op;
         cout << endl;
+    }
+    switch (op) {
+        case 1:
+            //draw schedule
+        case 2:
+            RequestMenu();
+        case 3:
+            main();
     }
 }
 void searchUC() {
@@ -92,7 +119,7 @@ void searchUC() {
     cout << "Write the number of what you want to do: ";
     cin >> op;
     cout << endl;
-    if (cin.fail() || op < 1 || op > 3) {
+    while (cin.fail() || op < 1 || op > 3) {
         cout << "Invalid number! Write the number of what you want to do: " << endl;
         cin >> op;
         cout << endl;
@@ -111,7 +138,7 @@ int main() {
     cout << "Write the number of what you want to do: ";
     cin >> op;
     cout << endl;
-    if (cin.fail() || op < 1 || op > 4) {
+    while (cin.fail() || op < 1 || op > 4) {
         cout << "Invalid number! Write the number of what you want to do: " << endl;
         cin >> op;
         cout << endl;
@@ -157,7 +184,6 @@ vector<Lesson> createLessonsVector() {
         s >> type;
     }
     v.push_back(Lesson(classCode, UcCode, weekDay, startHour, duration, type));
-    }
     return v;
 }
 
@@ -178,11 +204,10 @@ vector<pair<string, set<string>>> createClassesPerUcVector() {
         s >> ClassCode;
         if (UcCode == lastUcCode) {
             classes.insert(ClassCode);
-        }
-        else {
+        } else {
             v.push_back(pair(lastUcCode, classes));
             classes.clear();
-            classes.
+            classes.insert(ClassCode);
         }
         lastUcCode = UcCode;
     }
@@ -210,7 +235,7 @@ vector<Student> createStudentsVector() {
         s >> StudentName;
         s >> UcCode;
         s >> ClassCode;
-        if (StudentCode = lastStudentCode) {
+        if (StudentCode == lastStudentCode) {
             ucs.push_back(UC(UcCode, ClassCode));
         } else {
             v.push_back(Student(lastStudentCode, lastStudentName, ucs));
@@ -221,49 +246,6 @@ vector<Student> createStudentsVector() {
         lastStudentName = StudentName;
     }
     return v;
-}
-
-// Menu for the user choose which type of request he wants (enroll in an UC, leave an UC, change an U
-int RequestMenu() {
-    int op = 0;
-    cout << endl << "There are three types of request" << endl;
-    cout << endl << "----------------------------" << endl;
-    cout << "1 - Enroll in an UC." << endl;
-    cout << "2 - Leave an UC." << endl;
-    cout << "3 - Switch an UC." << endl:
-    cout << "Write the number of what you want to do: ";
-    cin >> op;
-    if (cin.fail() || op < 1 || op > 3) {
-        cout << "Invalid number! Write the number of what you want to do: " << endl;
-        cin >> op;
-    }
-    cout << endl;
-    return op;
-}
-
-int submitRequest(int op) {
-    string studentCode;
-    cout << "Insert your student code (eg.: up20xxxxxxx): ";
-    cin >> studentCode;
-    cout << endl;
-    AuxiliarFunctions func;
-    Student *student = func.findStudent(studentCode);
-    if (student == nullptr) {
-        cout << "Invalid student code" << endl;
-        cout << "Insert your student code (eg.: up20xxxxxxx): ";
-        cin >> studentCode;
-    }
-    switch(op) {
-        case 1:
-            enrollRequest(student);
-            break;
-        case 2:
-            leaveRequest(student);
-            break;
-        case 3:
-            switchRequest(student);
-            break;
-    }
 }
 
 void enrollRequest(Student *student) {
@@ -324,4 +306,28 @@ void switchRequest(Student *student) {
     }
     func4.concludeSwitch(*student, UC(UcCode, classCode));
     cout << "Switch request submitted." << endl;
+}
+void submitRequest(int op) {
+    string studentCode;
+    cout << "Insert your student code (eg.: up20xxxxxxx): ";
+    cin >> studentCode;
+    cout << endl;
+    AuxiliarFunctions func;
+    Student *student = func.findStudent(studentCode);
+    if (student == nullptr) {
+        cout << "Invalid student code" << endl;
+        cout << "Insert your student code (eg.: up20xxxxxxx): ";
+        cin >> studentCode;
+    }
+    switch(op) {
+        case 1:
+            enrollRequest(student);
+            break;
+        case 2:
+            leaveRequest(student);
+            break;
+        case 3:
+            switchRequest(student);
+            break;
+    }
 }

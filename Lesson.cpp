@@ -1,12 +1,15 @@
 #include "Lesson.h"
 
-Lesson::Lesson(string ClassCode, int UcCode, string weekday, double startHour, double duration, string type) {
-    this->uc = UC(ClassCode, UcCode);
+Lesson::Lesson(string UcCode, string ClassCode, string weekday, double startHour, double duration, string type) :  uc(UcCode, ClassCode) {
     this->weekday = weekday;
     this->startHour = startHour;
     this->endHour = startHour + duration;
     this->duration = duration;
     this->type = type;
+}
+
+UC Lesson::getUc() const {
+    return uc;
 }
 
 string Lesson::getWeekday() const {
@@ -30,7 +33,7 @@ string Lesson::getType() const {
 }
 
 void Lesson::drawLesson() const {
-    cout << lesson.getstartHour() << " - " << lesson.getendHour() << "  " << uc.getUcCode << "(" << lesson.getType << ");\n";
+    cout << this->getStartHour() << " - " << this->getEndHour() << "  " << this->getUc().getUcCode() << "(" << this->getType() << ");\n";
 }
 
 bool Lesson::lessonOverlap(Lesson lesson) {
@@ -40,13 +43,17 @@ bool Lesson::lessonOverlap(Lesson lesson) {
     if ((this->startHour >= lesson.getEndHour()) || (this->endHour <= lesson.getStartHour())) {
         return false;
     }
-    if (((this->type == 'T') and (lesson.getType() == "TP")) ||
-        ((this->type == "TP") and (lesson.getType() == 'T')) ||
-        ((this->type == 'T') and (lesson.getType() == 'T')) ||
-        ((this->type == 'T') and (lesson.getType() == 'P')) ||
-        ((this->type == 'P') and (lesson.getType() == 'T'))) {
+    if (((this->type == "T") and (lesson.getType() == "TP")) ||
+        ((this->type == "TP") and (lesson.getType() == "T")) ||
+        ((this->type == "T") and (lesson.getType() == "T")) ||
+        ((this->type == "T") and (lesson.getType() == "PL")) ||
+        ((this->type == "PL") and (lesson.getType() == "T"))) {
         return false;
     }
     return true;
 
+}
+
+bool Lesson::operator<(const Lesson &l) const {
+    return this->startHour < l.getStartHour();
 }

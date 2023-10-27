@@ -1,13 +1,19 @@
 #include "Student.h"
+#include <algorithm>
 
-Student::Student(int studentCode, string studentName, vector<UC> ucs) {
+Student::Student(string studentCode, string studentName, vector<UC> ucs) {
     this->studentCode = studentCode;
     this->studentName = studentName;
     this->ucs = ucs;
-
 }
 
-int Student::getStudentCode() const {
+Student::Student(string studentCode, string studentName) {
+    this->studentCode = studentCode;
+    this->studentName = studentName;
+    this->ucs = vector<UC>();
+}
+
+string Student::getStudentCode() const {
     return this->studentCode;
 }
 
@@ -24,7 +30,8 @@ void Student::addUC(const UC &uc) {
 }
 
 void Student::removeUC(const UC &uc) {
-    remove(this->ucs.begin(),this->ucs.end(),uc);
+    auto it = find(this->ucs.begin(),this->ucs.end(),uc);
+    this->ucs.erase(it);
 }
 
 UC Student::changeUC(const UC &uc) {
@@ -35,7 +42,15 @@ UC Student::changeUC(const UC &uc) {
     }
 }
 
-bool Student::findUc(const string UcCode) {
+UC Student::findUc(string UcCode) const{
+    for (UC uc: this->ucs) {
+        if (uc.getUcCode() == UcCode) {
+            return uc;
+        }
+    }
+}
+
+bool Student::Enrolled(string UcCode) {
     for (UC uc: this->ucs) {
         if (uc.getUcCode() == UcCode) {
             return true;
@@ -44,11 +59,11 @@ bool Student::findUc(const string UcCode) {
     return false;
 }
 
-bool Student::Enrolled(string UcCode) {
-    for (UC uc: ucs) {
-        if (uc.getUcCode() == UcCode) {
-            return true;
-        }
-    }
-    return false;
+
+bool Student::operator<(const Student &s) const {
+    return this->studentName < s.getStudentName();
+}
+
+bool Student::operator==(const Student &s) const {
+    return this->studentCode == s.getStudentCode();
 }

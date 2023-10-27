@@ -1,9 +1,12 @@
 #include "AuxiliarFunctions.h"
+#include <algorithm>
+#include <map>
 
-Student* AuxiliarFunctions::retStudent(string studentCode) {
+// erro por resolver
+Student* AuxiliarFunctions::retStudent(const string &studentCode) const{
     auto student = students.find(Student(studentCode, ""));
-    if (student != student.end()) {
-        return &(*student);
+    if (student != students.end()) {
+        return const_cast<Student*>(&(*student));
     } else {
         return nullptr;
     }
@@ -13,9 +16,9 @@ Schedule* AuxiliarFunctions::UCSchedule(UC UcClass) {
     unsigned long ucIdx = binarySearch(UcClass);
     if (ucIdx == -1) {
         return nullptr;
-    } else {
-        return &(*schedules[ucIdx]);
     }
+    return &(schedules[ucIdx]);
+    // const_cast<Schedule*>(&schedules[ucIdx]) se não der bem
 }
 
 unsigned long AuxiliarFunctions::binarySearch(UC UcClass) {
@@ -36,22 +39,25 @@ unsigned long AuxiliarFunctions::binarySearchAux(UC UcClass, unsigned long left,
 }
 
 void AuxiliarFunctions::concludeEnrollment(Student student, UC UcClass) {
-    enrollmentRequests.push(Request(student, UcClass, "Enrollment"));
+    enrollmentRequests.push(Request(&student, &UcClass, "Enrollment"));
 }
 
 void AuxiliarFunctions::concludeRemoval(Student student, UC UcClass) {
-    removalRequests.push(Request(student, UcClass, "Removal"));
+    removalRequests.push(Request(&student, &UcClass, "Removal"));
 }
 
 void AuxiliarFunctions::concludeSwitch(Student student, UC UcClass) {
-    switchRequests.push(Request(student, UcClass, "Switch"));
+    switchRequests.push(Request(&student, &UcClass, "Switch"));
 }
 
-bool AuxiliarFunctions::requestMax(Request request);
-
-bool AuxiliarFunctions::requestConflict(Request request);
-
-bool AuxiliarFunctions::requestBalance(Request request);
+vector<Schedule> AuxiliarFunctions::UcClasses(string UcCode) {
+    vector<Schedule> classes;
+    for (Schedule class_ : schedules) {
+        if (class_.getUcClass().getUcCode() == UcCode) {
+            classes.push_back(class_);
+        }
+    }
+}
 
 bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
     if (uc1.hasSameUcCode(uc2)) {
@@ -72,11 +78,11 @@ int AuxiliarFunctions::totalNumberOfStudentsUcClass(UC UcClass) {
     int numberStudents = UCSchedule(UcClass)->getStudents().size();
     return numberStudents;
 }
-UC AuxiliarFunctions::getCurrentClass(Request request) {
-    UC currentClass = request.getStudent().findUc(request.getUC().getUcCode());
-    return currentClass;
+
+UC AuxiliarFunctions::getCurrentClass(Request &request) {
+    return request.getStudent().findUc(request.getUC().getUcCode());
 }
-bool AuxiliarFunctions::requestBalance(Request request) {
+bool AuxiliarFunctions::requestBalance(Request &request) {
     int currentClass = totalNumberOfStudentsUcClass(getCurrentClass(request));
     int newClass = totalNumberOfStudentsUcClass(request.getUC());
     if ((newClass - currentClass) <= 4) {
@@ -86,7 +92,7 @@ bool AuxiliarFunctions::requestBalance(Request request) {
     }
 }
 
-bool AuxiliarFunctions::requestConflict(Request request) {
+bool AuxiliarFunctions::requestConflict(Request &request) {
     UC uc = request.getUC();
     Student student = request.getStudent();
     vector<UC> studentUCs = student.getUCs();
@@ -99,17 +105,13 @@ bool AuxiliarFunctions::requestConflict(Request request) {
     }
 }
 
-bool AuxiliarFunctions::requestMax(Request request) {
-    vector<Schedule> totalUcsClasses = totalUcsClasses(request.getUC().getUcCode());
-    sort(totalUcsClasses.begin(), totalUcsClasses.end(), [](const Schedule &class1, const Schedule &class2) {
-        if (class1.getStudents().size() >= class2.getStudents().size()) {
-            return false;
-        } else {
-            return true;
-        }
+bool AuxiliarFunctions::requestMax(Request &request) {
+    vector<Schedule> UcClasses_ = UcClasses(request.getUC().getUcCode());
+    sort(UcClasses_.begin(), UcClasses_.end(), [](Schedule &class1, Schedule &class2) {
+        return class1.getStudents().size() < class2.getStudents().size();
     });
-    int max = totalUcsClasses.back().getStudents().size();
-    if (totalUcsClasses[0].getStudents().size() == max) {
+    int max = UcClasses_.back().getStudents().size();
+    if (UcClasses_[0].getStudents().size() == max) {
        max++;
     }
     if (max < totalNumberOfStudentsUcClass(request.getUC())) {
@@ -120,19 +122,40 @@ bool AuxiliarFunctions::requestMax(Request request) {
 }
 
 // completar descrições
-void AuxiliarFunctions::verifySwapRequest(Request request){
+void AuxiliarFunctions::verifySwapRequest(Request &request){
     if (!(requestBalance(request))) {
-        rejectRequests.push_back(request, "Unbalaced");
+        rejectedRequests.emplace_back(request, "Unbalaced");
     } else if (requestConflict(request)) {
-        rejectRequests.push_back(request, "Conflict");
+        rejectedRequests.emplace_back(request, "Conflict");
     } else if (requestMax(request)) {
-        rejectRequests.push_back(request, "Max");
+        rejectedRequests.emplace_back(request, "Max");
     } else {
         Student* student = retStudent(request.getStudent().getStudentCode());
         UC uc = UCSchedule(request.getUC())->getUcClass();
-        UC uc_old = student->changeUC(UcClass);
+        UC uc_old = student->changeUC(uc);
         UCSchedule(request.getUC())->addStudent(*student);
         UCSchedule(uc_old)->removeStudent(*student);
     }
     cout << endl;
+}
+
+void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
+    if (requestConflict(request)) {
+        rejectedRequests.emplace_back(request, "Conflict");
+    } else if (requestMax(request)) {
+        rejectedRequests.emplace_back(request, "Max");
+    } else {
+        Student* student = retStudent(request.getStudent().getStudentCode());
+        UC uc = UCSchedule(request.getUC())->getUcClass();
+        student->addUC(uc);
+        UCSchedule(uc)->addStudent(*student);
+    }
+    cout << endl;
+}
+
+void AuxiliarFunctions::verifyRemovalRequest(Request &request) {
+    Student* student = retStudent(request.getStudent().getStudentCode());
+    UC uc = UCSchedule(request.getUC())->getUcClass();
+    student->removeUC(uc);
+    UCSchedule(uc)->removeStudent(*student);
 }

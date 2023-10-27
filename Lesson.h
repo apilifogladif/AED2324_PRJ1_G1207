@@ -29,7 +29,11 @@ class Lesson {
          * @paramt duration : private , Lesson duration;
          * @paramt type : private , Lesson type;
          */
-        Lesson(string ClassCode, int UcCode, string weekday, double startHour, double duration, string type);
+        Lesson(string UcCode, string ClassCode, string weekday, double startHour, double duration, string type);
+        /*
+         * Returns the uc
+         */
+        UC getUc() const;
 
         /*
          * Returns the weekday of the lesson
@@ -57,10 +61,19 @@ class Lesson {
         string getType() const;
 
         /*
-         * Prints the startHour, the endHour and the type of the lesson (T, P, PL)
+         * Prints the startHour, the endHour and the type of the lesson (T, TP, PL)
          */
         void drawLesson() const;
+
+        /*
+         * Checks if two classes are compatible
+         */
         bool lessonOverlap(Lesson lesson);
+
+        /*
+         * Operator to compare the times of two Lessons
+         */
+        bool operator<(const Lesson& l) const;
 };
 
 #endif //AED2324_PRJ1_G1207_LESSON_H

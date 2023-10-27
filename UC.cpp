@@ -21,3 +21,18 @@ void UC::setUcCode(string code){
 void UC::setClassCode(string code){
     this->ClassCode = code;
 }
+
+bool UC::hasSameUcCode(UC &uc_) {
+    return this->UcCode == uc_.UcCode;
+}
+
+bool UC::operator==(const UC &uc_) {
+    return this->UcCode == uc_.UcCode && this->ClassCode == uc_.ClassCode;
+}
+
+bool UC::operator<(const UC &uc_) {
+    if (this->UcCode == uc_.UcCode) {
+        return this->ClassCode < uc_.ClassCode;
+    }
+    return this->UcCode < uc_.UcCode;
+}

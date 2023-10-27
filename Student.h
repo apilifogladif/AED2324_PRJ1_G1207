@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <set>
 #include "UC.h"
 
 using namespace std;
@@ -10,36 +11,70 @@ using namespace std;
 // this class represents a student
 class Student {
     private:
-        int studentCode;
+        string studentCode;
         string studentName;
         vector<UC> ucs;
     public:
-    // constructor for the Student class
-        Student(int studentCode, string studentName, vector<UC> ucs);
+        /*
+        * Class constructor
+        *
+        * Sets studentCode and studentName
+        *
+        * @paramt studentCode : private , Student code;
+        * @paramt studentName : private , Student name;
+        */
+        Student(string studentCode, string studentName, vector<UC> ucs);
+        Student(string studentCode, string studentName);
 
-    // returns the studentCode
-        int getStudentCode() const;
+        /*
+         * Returns the studentCode
+         */
+        string getStudentCode() const;
 
-    // return the studentName
+        /*
+         * Returns the student name
+         */
         string getStudentName() const;
 
-    // return the UCs of the student lessons
+        /*
+         * Returns the UCs of the student lessons
+         */
         vector<UC> getUCs() const;
 
-    // adds an UC to the student lessons
+        /*
+         * Adds a UC to the student lessons
+         */
         void addUC(const UC &uc);
 
-    // adds an UC to the student lessons
+        /*
+         * Adds an UC to the student lessons
+         */
         void removeUC(const UC &uc);
 
-    // changes the UC of the student
+        /*
+         * Changes the UC of the student
+         */
         UC changeUC(const UC &uc);
 
+        /*
+         *
+         */
+        UC findUc(string UcCode) const;
 
-        bool findUc(const string UcCode);
-        // checks if student is enrolled in a UC with UcCode
+        /*
+         * Checks if a student is enrolled in a UC with UcCode
+         */
         bool Enrolled(string UcCode);
 
+        /*
+         * Operator to compare two students
+         */
+        bool operator<(const Student& s) const;
+
+        /*
+         * Operator to compare the similarity between two students
+         */
+        bool operator==(const Student &s) const;
 };
 
 #endif // AED2324_PRJ1_G1207_STUDENT_H

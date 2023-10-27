@@ -28,12 +28,8 @@ void Schedule::drawSchedule() const {
     }
 }
 
-bool Schedule::hasSameUcCode(Schedule UcCode) {
-    if (UcClass.hasSameUcCode(UcCode.getUcClass())) {
-        return true;
-    } else {
-        return false;
-    }
+bool Schedule::hasSameUcCode(Schedule &UcCode) {
+   return UcClass.getUcCode() == UcCode.getUcClass().getUcCode();
 }
 
 UC Schedule::getUcClass() {
@@ -49,4 +45,8 @@ void Schedule::addStudent(Student student) {
 }
 void Schedule::removeStudent(Student student) {
     students.erase(student);
+}
+
+bool Schedule::operator<(Schedule schedule) {
+    return this->UcClass < schedule.getUcClass();
 }

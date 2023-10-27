@@ -3,6 +3,7 @@
 
 #include "Student.h"
 #include "UC.h"
+#include <string>
 
 using namespace std;
 
@@ -10,9 +11,9 @@ using namespace std;
 class Request {
     private:
         Student* student;
-        UC uc;
+        UC* uc;
         string type;
-public:
+    public:
         /*
          * Class constructor
          *
@@ -22,7 +23,7 @@ public:
          * @paramt uc : private , Curricular unit code;
          * @paramt type : private , Lesson type;
          */
-        Request(Student *student, UC &uc, string type);
+        Request(Student* student, UC* uc, string type);
 
         /*
          * Returns the student that made the request

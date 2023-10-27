@@ -1,17 +1,18 @@
 #include "Request.h"
 
-Request::Request(Student &student, UC &uc, string type) {
+Request::Request(Student* student, UC* uc, string type) {
     this->student = student;
     this->uc = uc;
     this->type = type;
+
 }
 
 Student Request::getStudent() {
-    return this->student;
+    return *this->student;
 }
 
 UC Request::getUC(){
-    return this->uc;
+    return *this->uc;
 }
 
 string Request::getType() {

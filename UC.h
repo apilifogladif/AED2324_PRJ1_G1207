@@ -11,20 +11,47 @@ class UC {
         string UcCode;
         string ClassCode;
     public:
-    // constructor of the UC class
+        /*
+         * Class constructor
+         *
+         * Sets UcCode and ClassCode
+         *
+         * @paramt UcCode : private , Uc code;
+         * @paramt ClassCode : private , Class code;
+         */
         UC(string UcCode, string ClassCode);
 
-    // return the UcCode of the UC
+        /*
+         * Returns code of the Uc
+         */
         string getUcCode() const;
 
-    // return the UcClassCode of the UC Class
+        /*
+         * Returns the code of the Uc
+         */
         string getClassCode() const;
 
-    // sets the UcCode of the Class
+        /*
+         * Sets a value to the Uc code
+         */
         void setUcCode(string code);
 
-    // sets the UcClassCode of the Class
+        /*
+         * Sets a value to the Class code
+         */
         void setClassCode(string code);
+
+        /*
+         * Operator to compare the similarity between two Uc's
+         */
+        bool operator==(const UC& uc_);
+        /*
+         * Operator to compare two Uc's
+         */
+        bool operator<(const UC &uc_);
+
+        bool hasSameUcCode(UC &uc_);
 };
 
 #endif //AED2324_PRJ1_G1207_UC_H
+

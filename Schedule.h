@@ -3,6 +3,7 @@
 
 #include "Lesson.h"
 #include "UC.h"
+#include "Student.h"
 #include <iostream>
 #include <vector>
 #include <set>
@@ -15,13 +16,13 @@ class Schedule {
         set<Student> students;
         UC UcClass;
     public:
-    /*
-     * Class constructor
-     *
-     * Sets lessons
-     *
-     * @paramt lessons : private , Lessons to allocate to the students;
-     */
+        /*
+         * Class constructor
+         *
+         * Sets lessons
+         *
+         * @paramt lessons : private , Lessons to allocate to the students;
+         */
         Schedule(set<Lesson> lessons);
 
         /*
@@ -44,14 +45,35 @@ class Schedule {
          */
         void drawSchedule() const;
 
-        // verifies if it has the same UcCode
-        bool hasSameUcCode(Schedule UcCode);
-        // return the UC class
+        /*
+         * Verifies if it has the same UcCode
+         */
+        bool hasSameUcCode(Schedule &UcCode);
+
+        /*
+         * Returns the Uc class
+         */
         UC getUcClass();
-        // get students of a class
+
+        /*
+         * Get students of a class
+         */
         set<Student> getStudents();
+
+        /*
+         * Adds student to a class
+         */
         void addStudent(Student student);
+
+        /*
+         * Removes student from a class
+         */
         void removeStudent(Student student);
+
+        /*
+         * Operator to compare two schedules
+         */
+        bool operator<(Schedule schedule);
 };
 
 #endif //AED2324_PRJ1_G1207_SCHEDULE_H

@@ -4,14 +4,14 @@
 #include <utility>
 #include <iostream>
 
-// erro por resolver
+// erro por resolver(g3raldes) -> acho que resolvi(filipa)
 Student* AuxiliarFunctions::retStudent(const string &studentCode) const{
-    auto student = students.find(Student(studentCode, "", UC(__cxx11::basic_string(), __cxx11::basic_string())));
-    if (student != students.end()) {
-        return const_cast<Student*>(&(*student));
-    } else {
-        return nullptr;
+    for (auto student = students.begin(); student != students.end(); student++) {
+        if (student->getStudentCode() == studentCode) {
+            return const_cast<Student*>(&(*student));
+        }
     }
+    return nullptr;
 }
 
 Schedule* AuxiliarFunctions::UCSchedule(const UC& UcClass) {
@@ -54,11 +54,12 @@ void AuxiliarFunctions::concludeSwitch(Student student, UC UcClass) {
 
 vector<Schedule> AuxiliarFunctions::UcClasses(const string& UcCode) {
     vector<Schedule> classes;
-    for (Schedule class_(set<Lesson>(), UC(__cxx11::basic_string(), __cxx11::basic_string())): schedules) {
+    for (Schedule class_: schedules) {
         if (class_.getUcClass().getUcCode() == UcCode) {
             classes.push_back(class_);
         }
     }
+    return classes;
 }
 
 bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
@@ -74,6 +75,7 @@ bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
             }
         }
     }
+    return false;
 }
 
 int AuxiliarFunctions::totalNumberOfStudentsUcClass(const UC& UcClass) {
@@ -83,11 +85,12 @@ int AuxiliarFunctions::totalNumberOfStudentsUcClass(const UC& UcClass) {
 vector<Student> AuxiliarFunctions::UcStudents(const string& UcCode) {
     vector<Student> UcStudents_;
     vector<Schedule> UcClasses_ = UcClasses(UcCode);
-    for (Schedule schedule(set<Lesson>(), UC(__cxx11::basic_string(), __cxx11::basic_string())): UcClasses_) {
+    for (Schedule schedule: UcClasses_) {
         for (const Student& student : schedule.getStudents()) {
             UcStudents_.push_back(student);
         }
     }
+    return UcStudents_;
 }
 
 int AuxiliarFunctions::totalNumberOfStudentsUc(const string& UcCode) {
@@ -220,7 +223,8 @@ void AuxiliarFunctions::seePendingRequests() {
 // help me pls
 void AuxiliarFunctions::seeRejectedRequests() {
     for (auto i: rejectedRequests) {
-        cout << i.request.printRequest() << " , reason:" << i.reason;
+        i.request.printRequest();
+        cout << " , reason:" << i.reason;
     }
 }
 

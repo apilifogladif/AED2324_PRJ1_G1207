@@ -19,6 +19,7 @@ class UC {
          * @paramt UcCode : private , Uc code;
          * @paramt ClassCode : private , Class code;
          */
+        UC();
         UC(string UcCode, string ClassCode);
 
         /*

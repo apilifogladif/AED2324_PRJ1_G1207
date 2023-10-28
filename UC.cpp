@@ -2,6 +2,11 @@
 
 #include <utility>
 
+UC::UC() {
+    this->UcCode = "";
+    this->ClassCode = "";
+}
+
 UC::UC(string UcCode, string ClassCode) {
     this->UcCode = std::move(UcCode);
     this->ClassCode = std::move(ClassCode);

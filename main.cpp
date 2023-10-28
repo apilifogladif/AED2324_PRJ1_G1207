@@ -1,6 +1,6 @@
 #include <iostream>
 
-//#include "terminal.cpp"
+#include "terminal.cpp"
 #include "CsvAndVectors.cpp"
 
 using namespace std;

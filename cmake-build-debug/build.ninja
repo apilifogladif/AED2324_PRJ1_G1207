@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/filipag/Documents/AED2324_PRJ1_G1207/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/Filipa/code/AED2324_PRJ1_G1207/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target AED2324_PRJ1_G1207
 
@@ -49,86 +49,68 @@ cmake_ninja_workdir = /home/filipag/Documents/AED2324_PRJ1_G1207/cmake-build-deb
 
 build cmake_object_order_depends_target_AED2324_PRJ1_G1207: phony || CMakeFiles/AED2324_PRJ1_G1207.dir
 
-build CMakeFiles/AED2324_PRJ1_G1207.dir/AuxiliarFunctions.cpp.o: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug /home/filipag/Documents/AED2324_PRJ1_G1207/AuxiliarFunctions.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G1207.dir/AuxiliarFunctions.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G1207.dir/main.cpp.obj: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug C$:/Users/Filipa/code/AED2324_PRJ1_G1207/main.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
+  DEP_FILE = CMakeFiles\AED2324_PRJ1_G1207.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/filipag/Documents/AED2324_PRJ1_G1207/.
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  INCLUDES = -IC:/Users/Filipa/code/AED2324_PRJ1_G1207/.
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  OBJECT_FILE_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
 
-build CMakeFiles/AED2324_PRJ1_G1207.dir/CsvAndVectors.cpp.o: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug /home/filipag/Documents/AED2324_PRJ1_G1207/CsvAndVectors.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G1207.dir/CsvAndVectors.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G1207.dir/terminal.cpp.obj: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug C$:/Users/Filipa/code/AED2324_PRJ1_G1207/terminal.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
+  DEP_FILE = CMakeFiles\AED2324_PRJ1_G1207.dir\terminal.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/filipag/Documents/AED2324_PRJ1_G1207/.
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  INCLUDES = -IC:/Users/Filipa/code/AED2324_PRJ1_G1207/.
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  OBJECT_FILE_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
 
-build CMakeFiles/AED2324_PRJ1_G1207.dir/Lesson.cpp.o: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug /home/filipag/Documents/AED2324_PRJ1_G1207/Lesson.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G1207.dir/Lesson.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G1207.dir/AuxiliarFunctions.cpp.obj: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug C$:/Users/Filipa/code/AED2324_PRJ1_G1207/AuxiliarFunctions.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
+  DEP_FILE = CMakeFiles\AED2324_PRJ1_G1207.dir\AuxiliarFunctions.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/filipag/Documents/AED2324_PRJ1_G1207/.
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  INCLUDES = -IC:/Users/Filipa/code/AED2324_PRJ1_G1207/.
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  OBJECT_FILE_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
 
-build CMakeFiles/AED2324_PRJ1_G1207.dir/main.cpp.o: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug /home/filipag/Documents/AED2324_PRJ1_G1207/main.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G1207.dir/main.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G1207.dir/CsvAndVectors.cpp.obj: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug C$:/Users/Filipa/code/AED2324_PRJ1_G1207/CsvAndVectors.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
+  DEP_FILE = CMakeFiles\AED2324_PRJ1_G1207.dir\CsvAndVectors.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/filipag/Documents/AED2324_PRJ1_G1207/.
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  INCLUDES = -IC:/Users/Filipa/code/AED2324_PRJ1_G1207/.
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  OBJECT_FILE_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
 
-build CMakeFiles/AED2324_PRJ1_G1207.dir/Request.cpp.o: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug /home/filipag/Documents/AED2324_PRJ1_G1207/Request.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G1207.dir/Request.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G1207.dir/Lesson.cpp.obj: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug C$:/Users/Filipa/code/AED2324_PRJ1_G1207/Lesson.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
+  DEP_FILE = CMakeFiles\AED2324_PRJ1_G1207.dir\Lesson.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/filipag/Documents/AED2324_PRJ1_G1207/.
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  INCLUDES = -IC:/Users/Filipa/code/AED2324_PRJ1_G1207/.
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  OBJECT_FILE_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
 
-build CMakeFiles/AED2324_PRJ1_G1207.dir/Schedule.cpp.o: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug /home/filipag/Documents/AED2324_PRJ1_G1207/Schedule.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G1207.dir/Schedule.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G1207.dir/Request.cpp.obj: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug C$:/Users/Filipa/code/AED2324_PRJ1_G1207/Request.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
+  DEP_FILE = CMakeFiles\AED2324_PRJ1_G1207.dir\Request.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/filipag/Documents/AED2324_PRJ1_G1207/.
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  INCLUDES = -IC:/Users/Filipa/code/AED2324_PRJ1_G1207/.
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  OBJECT_FILE_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
 
-build CMakeFiles/AED2324_PRJ1_G1207.dir/Student.cpp.o: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug /home/filipag/Documents/AED2324_PRJ1_G1207/Student.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G1207.dir/Student.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G1207.dir/Schedule.cpp.obj: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug C$:/Users/Filipa/code/AED2324_PRJ1_G1207/Schedule.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
+  DEP_FILE = CMakeFiles\AED2324_PRJ1_G1207.dir\Schedule.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/filipag/Documents/AED2324_PRJ1_G1207/.
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  INCLUDES = -IC:/Users/Filipa/code/AED2324_PRJ1_G1207/.
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  OBJECT_FILE_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
 
-build CMakeFiles/AED2324_PRJ1_G1207.dir/terminal.cpp.o: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug /home/filipag/Documents/AED2324_PRJ1_G1207/terminal.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G1207.dir/terminal.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G1207.dir/Student.cpp.obj: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug C$:/Users/Filipa/code/AED2324_PRJ1_G1207/Student.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
+  DEP_FILE = CMakeFiles\AED2324_PRJ1_G1207.dir\Student.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/filipag/Documents/AED2324_PRJ1_G1207/.
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  INCLUDES = -IC:/Users/Filipa/code/AED2324_PRJ1_G1207/.
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  OBJECT_FILE_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
 
-build CMakeFiles/AED2324_PRJ1_G1207.dir/UC.cpp.o: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug /home/filipag/Documents/AED2324_PRJ1_G1207/UC.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G1207.dir/UC.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G1207.dir/UC.cpp.obj: CXX_COMPILER__AED2324_PRJ1_G1207_unscanned_Debug C$:/Users/Filipa/code/AED2324_PRJ1_G1207/UC.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G1207
+  DEP_FILE = CMakeFiles\AED2324_PRJ1_G1207.dir\UC.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/filipag/Documents/AED2324_PRJ1_G1207/.
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  INCLUDES = -IC:/Users/Filipa/code/AED2324_PRJ1_G1207/.
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  OBJECT_FILE_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
 
 
 # =============================================================================
@@ -136,23 +118,24 @@ build CMakeFiles/AED2324_PRJ1_G1207.dir/UC.cpp.o: CXX_COMPILER__AED2324_PRJ1_G12
 
 
 #############################################
-# Link the executable AED2324_PRJ1_G1207
+# Link the executable AED2324_PRJ1_G1207.exe
 
-build AED2324_PRJ1_G1207: CXX_EXECUTABLE_LINKER__AED2324_PRJ1_G1207_Debug CMakeFiles/AED2324_PRJ1_G1207.dir/AuxiliarFunctions.cpp.o CMakeFiles/AED2324_PRJ1_G1207.dir/CsvAndVectors.cpp.o CMakeFiles/AED2324_PRJ1_G1207.dir/Lesson.cpp.o CMakeFiles/AED2324_PRJ1_G1207.dir/main.cpp.o CMakeFiles/AED2324_PRJ1_G1207.dir/Request.cpp.o CMakeFiles/AED2324_PRJ1_G1207.dir/Schedule.cpp.o CMakeFiles/AED2324_PRJ1_G1207.dir/Student.cpp.o CMakeFiles/AED2324_PRJ1_G1207.dir/terminal.cpp.o CMakeFiles/AED2324_PRJ1_G1207.dir/UC.cpp.o
+build AED2324_PRJ1_G1207.exe: CXX_EXECUTABLE_LINKER__AED2324_PRJ1_G1207_Debug CMakeFiles/AED2324_PRJ1_G1207.dir/main.cpp.obj CMakeFiles/AED2324_PRJ1_G1207.dir/terminal.cpp.obj CMakeFiles/AED2324_PRJ1_G1207.dir/AuxiliarFunctions.cpp.obj CMakeFiles/AED2324_PRJ1_G1207.dir/CsvAndVectors.cpp.obj CMakeFiles/AED2324_PRJ1_G1207.dir/Lesson.cpp.obj CMakeFiles/AED2324_PRJ1_G1207.dir/Request.cpp.obj CMakeFiles/AED2324_PRJ1_G1207.dir/Schedule.cpp.obj CMakeFiles/AED2324_PRJ1_G1207.dir/Student.cpp.obj CMakeFiles/AED2324_PRJ1_G1207.dir/UC.cpp.obj
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G1207.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/AED2324_PRJ1_G1207.dir/
-  TARGET_FILE = AED2324_PRJ1_G1207
-  TARGET_PDB = AED2324_PRJ1_G1207.pdb
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\AED2324_PRJ1_G1207.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = AED2324_PRJ1_G1207.exe
+  TARGET_IMPLIB = libAED2324_PRJ1_G1207.dll.a
+  TARGET_PDB = AED2324_PRJ1_G1207.exe.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/filipag/Documents/AED2324_PRJ1_G1207/cmake-build-debug && /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cmd.exe /C "cd /D C:\Users\Filipa\code\AED2324_PRJ1_G1207\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -163,7 +146,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/filipag/Documents/AED2324_PRJ1_G1207/cmake-build-debug && /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/filipag/Documents/AED2324_PRJ1_G1207 -B/home/filipag/Documents/AED2324_PRJ1_G1207/cmake-build-debug
+  COMMAND = cmd.exe /C "cd /D C:\Users\Filipa\code\AED2324_PRJ1_G1207\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\Filipa\code\AED2324_PRJ1_G1207 -BC:\Users\Filipa\code\AED2324_PRJ1_G1207\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -173,15 +156,17 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build AED2324_PRJ1_G1207: phony AED2324_PRJ1_G1207.exe
+
 # =============================================================================
 # Folder targets.
 
 # =============================================================================
 
 #############################################
-# Folder: /home/filipag/Documents/AED2324_PRJ1_G1207/cmake-build-debug
+# Folder: C:/Users/Filipa/code/AED2324_PRJ1_G1207/cmake-build-debug
 
-build all: phony AED2324_PRJ1_G1207
+build all: phony AED2324_PRJ1_G1207.exe
 
 # =============================================================================
 # Built-in targets
@@ -190,14 +175,14 @@ build all: phony AED2324_PRJ1_G1207
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/filipag/Documents/AED2324_PRJ1_G1207/CMakeLists.txt /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCCompiler.cmake.in /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCCompilerABI.c /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXCompiler.cmake.in /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCompilerIdDetection.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCXXCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCompileFeatures.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineSystem.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeFindBinUtils.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeParseImplicitIncludeInfo.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeParseImplicitLinkInfo.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeParseLibraryArchitecture.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystem.cmake.in /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeTestCCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeTestCompilerCommon.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/ADSP-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/ARMCC-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/ARMClang-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/AppleClang-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Borland-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Clang-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Cray-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GHS-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-FindBinUtils.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/HP-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IAR-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Intel-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/LCC-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/MSVC-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/NVHPC-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/PGI-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/PathScale-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/SCO-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/TI-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Tasking-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Watcom-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/XL-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/zOS-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Internal/FeatureTesting.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-Determine-CXX.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-C.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-CXX.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/Filipa/code/AED2324_PRJ1_G1207/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/filipag/Documents/AED2324_PRJ1_G1207/CMakeLists.txt /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCCompiler.cmake.in /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCCompilerABI.c /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXCompiler.cmake.in /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCompilerIdDetection.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCXXCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCompileFeatures.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeDetermineSystem.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeFindBinUtils.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeParseImplicitIncludeInfo.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeParseImplicitLinkInfo.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeParseLibraryArchitecture.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystem.cmake.in /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeTestCCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeTestCompilerCommon.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/ADSP-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/ARMCC-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/ARMClang-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/AppleClang-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Borland-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Clang-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Cray-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GHS-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-FindBinUtils.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/HP-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IAR-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Intel-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/LCC-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/MSVC-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/NVHPC-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/PGI-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/PathScale-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/SCO-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/TI-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Tasking-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/Watcom-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/XL-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/zOS-C-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Internal/FeatureTesting.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-Determine-CXX.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-C.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-CXX.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux.cmake /home/filipag/Documents/clion-2023.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/Filipa/code/AED2324_PRJ1_G1207/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
 
 
 #############################################

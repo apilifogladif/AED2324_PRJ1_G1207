@@ -1,18 +1,20 @@
 #include "Student.h"
 #include <algorithm>
 #include <iostream>
-#include <utility>
 
-Student::Student(string studentCode, string studentName, vector<UC> ucs, UC ucClass) : UcClass(std::move(ucClass)) {
-    this->studentCode = std::move(studentCode);
-    this->studentName = std::move(studentName);
-    this->ucs = std::move(ucs);
+Student::Student() {
+    this->studentCode = "";
+    this->studentName = "";
 }
 
-Student::Student(string studentCode, string studentName, UC ucClass) : UcClass(std::move(ucClass)) {
+Student::Student(string studentCode, string studentName) {
     this->studentCode = std::move(studentCode);
     this->studentName = std::move(studentName);
-    this->ucs = vector<UC>();
+}
+
+Student::Student(string studentCode, string studentName, vector<UC> ucs) : ucs(std::move(ucs)) {
+    this->studentCode = std::move(studentCode);
+    this->studentName = std::move(studentName);
 }
 
 string Student::getStudentCode() const {

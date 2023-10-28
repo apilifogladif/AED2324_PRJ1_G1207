@@ -24,8 +24,9 @@ class Student {
         * @paramt studentCode : private , Student code;
         * @paramt studentName : private , Student name;
         */
-        Student(string studentCode, string studentName, vector<UC> ucs, UC ucClass);
-        Student(string studentCode, string studentName, UC ucClass);
+        Student();
+        Student(string studentCode, string studentName);
+        Student(string studentCode, string studentName, vector<UC> ucs);
 
         /*
          * Returns the studentCode

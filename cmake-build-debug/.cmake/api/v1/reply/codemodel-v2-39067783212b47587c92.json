@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.26"
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "AED2324_PRJ1_G1207::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-AED2324_PRJ1_G1207-Debug-476bd99a5d0beaefccbd.json",
+					"jsonFile" : "target-AED2324_PRJ1_G1207-Debug-60c31468199078994a71.json",
 					"name" : "AED2324_PRJ1_G1207",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/filipag/Documents/AED2324_PRJ1_G1207/cmake-build-debug",
-		"source" : "/home/filipag/Documents/AED2324_PRJ1_G1207"
+		"build" : "C:/Users/Filipa/code/AED2324_PRJ1_G1207/cmake-build-debug",
+		"source" : "C:/Users/Filipa/code/AED2324_PRJ1_G1207"
 	},
 	"version" : 
 	{

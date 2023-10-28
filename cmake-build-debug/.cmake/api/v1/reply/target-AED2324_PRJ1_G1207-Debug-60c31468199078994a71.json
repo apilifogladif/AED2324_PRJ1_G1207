@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "AED2324_PRJ1_G1207"
+			"path" : "AED2324_PRJ1_G1207.exe"
+		},
+		{
+			"path" : "AED2324_PRJ1_G1207.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -49,7 +52,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/filipag/Documents/AED2324_PRJ1_G1207/."
+					"path" : "C:/Users/Filipa/code/AED2324_PRJ1_G1207/."
 				}
 			],
 			"language" : "CXX",
@@ -64,14 +67,14 @@
 			"sourceIndexes" : 
 			[
 				0,
+				1,
 				2,
 				3,
+				4,
 				5,
 				6,
-				8,
-				10,
-				12,
-				13
+				7,
+				8
 			]
 		}
 	],
@@ -87,12 +90,16 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "AED2324_PRJ1_G1207",
-	"nameOnDisk" : "AED2324_PRJ1_G1207",
+	"nameOnDisk" : "AED2324_PRJ1_G1207.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -105,26 +112,14 @@
 			"sourceIndexes" : 
 			[
 				0,
+				1,
 				2,
 				3,
+				4,
 				5,
 				6,
-				8,
-				10,
-				12,
-				13
-			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
-				1,
-				4,
 				7,
-				9,
-				11,
-				14
+				8
 			]
 		}
 	],
@@ -133,13 +128,20 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "AuxiliarFunctions.cpp",
+			"path" : "main.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "AuxiliarFunctions.h",
-			"sourceGroupIndex" : 1
+			"compileGroupIndex" : 0,
+			"path" : "terminal.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "AuxiliarFunctions.cpp",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
@@ -155,25 +157,9 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Lesson.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "main.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "Request.cpp",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Request.h",
-			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
@@ -183,24 +169,8 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Schedule.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "Student.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Student.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "terminal.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -208,11 +178,6 @@
 			"compileGroupIndex" : 0,
 			"path" : "UC.cpp",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "UC.h",
-			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

@@ -1,11 +1,13 @@
 #include "Lesson.h"
 
-Lesson::Lesson(string UcCode, string ClassCode, string weekday, double startHour, double duration, string type) :  uc(UcCode, ClassCode) {
-    this->weekday = weekday;
+#include <utility>
+
+Lesson::Lesson(string UcCode, string ClassCode, string weekday, double startHour, double duration, string type) :  uc(std::move(UcCode), std::move(ClassCode)) {
+    this->weekday = std::move(weekday);
     this->startHour = startHour;
     this->endHour = startHour + duration;
     this->duration = duration;
-    this->type = type;
+    this->type = std::move(type);
 }
 
 UC Lesson::getUc() const {
@@ -36,7 +38,7 @@ void Lesson::drawLesson() const {
     cout << this->getStartHour() << " - " << this->getEndHour() << "  " << this->getUc().getUcCode() << "(" << this->getType() << ");\n";
 }
 
-bool Lesson::lessonOverlap(Lesson lesson) {
+bool Lesson::lessonOverlap(const Lesson& lesson) {
     if (this->weekday != lesson.getWeekday()) {
         return false;
     }

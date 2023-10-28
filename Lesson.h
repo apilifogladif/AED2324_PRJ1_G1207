@@ -68,7 +68,7 @@ class Lesson {
         /*
          * Checks if two classes are compatible
          */
-        bool lessonOverlap(Lesson lesson);
+        bool lessonOverlap(const Lesson& lesson);
 
         /*
          * Operator to compare the times of two Lessons

@@ -1,8 +1,10 @@
 #include "UC.h"
 
+#include <utility>
+
 UC::UC(string UcCode, string ClassCode) {
-    this->UcCode = UcCode;
-    this->ClassCode = ClassCode;
+    this->UcCode = std::move(UcCode);
+    this->ClassCode = std::move(ClassCode);
 }
 
 string UC::getUcCode() const{
@@ -14,12 +16,12 @@ string UC::getClassCode() const{
 }
 
 void UC::setUcCode(string code){
-    this->UcCode = code;
+    this->UcCode = std::move(code);
 }
 
 
 void UC::setClassCode(string code){
-    this->ClassCode = code;
+    this->ClassCode = std::move(code);
 }
 
 bool UC::hasSameUcCode(UC &uc_) {

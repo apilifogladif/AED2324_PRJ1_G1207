@@ -39,6 +39,8 @@ class Request {
          * Returns the type of the request
          */
         string getType();
+        // prints request
+        void printRequest();
 };
 
 #endif // AED2324_PRJ1_G1207_REQUEST_H

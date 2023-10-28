@@ -1,15 +1,17 @@
 #include "Student.h"
 #include <algorithm>
+#include <iostream>
+#include <utility>
 
-Student::Student(string studentCode, string studentName, vector<UC> ucs) {
-    this->studentCode = studentCode;
-    this->studentName = studentName;
-    this->ucs = ucs;
+Student::Student(string studentCode, string studentName, vector<UC> ucs, UC ucClass) : UcClass(std::move(ucClass)) {
+    this->studentCode = std::move(studentCode);
+    this->studentName = std::move(studentName);
+    this->ucs = std::move(ucs);
 }
 
-Student::Student(string studentCode, string studentName) {
-    this->studentCode = studentCode;
-    this->studentName = studentName;
+Student::Student(string studentCode, string studentName, UC ucClass) : UcClass(std::move(ucClass)) {
+    this->studentCode = std::move(studentCode);
+    this->studentName = std::move(studentName);
     this->ucs = vector<UC>();
 }
 
@@ -35,14 +37,14 @@ void Student::removeUC(const UC &uc) {
 }
 
 UC Student::changeUC(const UC &uc) {
-    for (int i = 0; i < this->ucs.size(); i++) {
-        if (uc.getUcCode() == this->ucs[i].getUcCode()) {
-            this->ucs[i].setClassCode(uc.getClassCode());
+    for (auto & i : this->ucs) {
+        if (uc.getUcCode() == i.getUcCode()) {
+            i.setClassCode(uc.getClassCode());
         }
     }
 }
 
-UC Student::findUc(string UcCode) const{
+UC Student::findUc(const string& UcCode) const{
     for (UC uc: this->ucs) {
         if (uc.getUcCode() == UcCode) {
             return uc;
@@ -50,7 +52,7 @@ UC Student::findUc(string UcCode) const{
     }
 }
 
-bool Student::Enrolled(string UcCode) {
+bool Student::Enrolled(const string& UcCode) {
     for (UC uc: this->ucs) {
         if (uc.getUcCode() == UcCode) {
             return true;
@@ -66,4 +68,8 @@ bool Student::operator<(const Student &s) const {
 
 bool Student::operator==(const Student &s) const {
     return this->studentCode == s.getStudentCode();
+}
+
+void Student::printUcAndClass() const {
+    cout << UcClass.getUcCode() << " " << UcClass.getClassCode() << endl;
 }

@@ -1,10 +1,12 @@
 #include "AuxiliarFunctions.h"
 #include <algorithm>
 #include <map>
+#include <utility>
+#include <iostream>
 
 // erro por resolver
 Student* AuxiliarFunctions::retStudent(const string &studentCode) const{
-    auto student = students.find(Student(studentCode, ""));
+    auto student = students.find(Student(studentCode, "", UC(__cxx11::basic_string(), __cxx11::basic_string())));
     if (student != students.end()) {
         return const_cast<Student*>(&(*student));
     } else {
@@ -12,7 +14,7 @@ Student* AuxiliarFunctions::retStudent(const string &studentCode) const{
     }
 }
 
-Schedule* AuxiliarFunctions::UCSchedule(UC UcClass) {
+Schedule* AuxiliarFunctions::UCSchedule(const UC& UcClass) {
     unsigned long ucIdx = binarySearch(UcClass);
     if (ucIdx == -1) {
         return nullptr;
@@ -21,10 +23,10 @@ Schedule* AuxiliarFunctions::UCSchedule(UC UcClass) {
     // const_cast<Schedule*>(&schedules[ucIdx]) se não der bem
 }
 
-unsigned long AuxiliarFunctions::binarySearch(UC UcClass) {
+unsigned long AuxiliarFunctions::binarySearch(const UC& UcClass) {
     return binarySearchAux(UcClass, 0, schedules.size());
 }
-unsigned long AuxiliarFunctions::binarySearchAux(UC UcClass, unsigned long left, unsigned long right) {
+unsigned long AuxiliarFunctions::binarySearchAux(const UC& UcClass, unsigned long left, unsigned long right) {
     if (left > right) {
         return -1; // not found
     }
@@ -39,20 +41,20 @@ unsigned long AuxiliarFunctions::binarySearchAux(UC UcClass, unsigned long left,
 }
 
 void AuxiliarFunctions::concludeEnrollment(Student student, UC UcClass) {
-    enrollmentRequests.push(Request(&student, &UcClass, "Enrollment"));
+    enrollmentRequests.emplace(&student, &UcClass, "Enrollment");
 }
 
 void AuxiliarFunctions::concludeRemoval(Student student, UC UcClass) {
-    removalRequests.push(Request(&student, &UcClass, "Removal"));
+    removalRequests.emplace(&student, &UcClass, "Removal");
 }
 
 void AuxiliarFunctions::concludeSwitch(Student student, UC UcClass) {
-    switchRequests.push(Request(&student, &UcClass, "Switch"));
+    switchRequests.emplace(&student, &UcClass, "Switch");
 }
 
-vector<Schedule> AuxiliarFunctions::UcClasses(string UcCode) {
+vector<Schedule> AuxiliarFunctions::UcClasses(const string& UcCode) {
     vector<Schedule> classes;
-    for (Schedule class_ : schedules) {
+    for (Schedule class_(set<Lesson>(), UC(__cxx11::basic_string(), __cxx11::basic_string())): schedules) {
         if (class_.getUcClass().getUcCode() == UcCode) {
             classes.push_back(class_);
         }
@@ -66,7 +68,7 @@ bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
     Schedule* class1 = UCSchedule(uc1);
     Schedule* class2 = UCSchedule(uc2);
     for (Lesson l1 : class1->getLesson()) {
-        for (Lesson l2 : class2->getLesson()) {
+        for (const Lesson& l2 : class2->getLesson()) {
             if (l1.lessonOverlap(l2)) {
                 return true;
             }
@@ -74,10 +76,28 @@ bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
     }
 }
 
-int AuxiliarFunctions::totalNumberOfStudentsUcClass(UC UcClass) {
-    int numberStudents = UCSchedule(UcClass)->getStudents().size();
-    return numberStudents;
+int AuxiliarFunctions::totalNumberOfStudentsUcClass(const UC& UcClass) {
+    return UCSchedule(UcClass)->getStudents().size();
 }
+
+vector<Student> AuxiliarFunctions::UcStudents(const string& UcCode) {
+    vector<Student> UcStudents_;
+    vector<Schedule> UcClasses_ = UcClasses(UcCode);
+    for (Schedule schedule(set<Lesson>(), UC(__cxx11::basic_string(), __cxx11::basic_string())): UcClasses_) {
+        for (const Student& student : schedule.getStudents()) {
+            UcStudents_.push_back(student);
+        }
+    }
+}
+
+int AuxiliarFunctions::totalNumberOfStudentsUc(const string& UcCode) {
+    return UcStudents(UcCode).size();
+}
+
+int AuxiliarFunctions::totalNumberOfPendingRequests() {
+    return switchRequests.size() + enrollmentRequests.size() + removalRequests.size();
+}
+
 
 UC AuxiliarFunctions::getCurrentClass(Request &request) {
     return request.getStudent().findUc(request.getUC().getUcCode());
@@ -96,7 +116,7 @@ bool AuxiliarFunctions::requestConflict(Request &request) {
     UC uc = request.getUC();
     Student student = request.getStudent();
     vector<UC> studentUCs = student.getUCs();
-    for (UC uc_ : studentUCs) {
+    for (const UC& uc_ : studentUCs) {
         if (lessonOverlap(uc_, uc)) {
             return true;
         } else {
@@ -159,3 +179,91 @@ void AuxiliarFunctions::verifyRemovalRequest(Request &request) {
     student->removeUC(uc);
     UCSchedule(uc)->removeStudent(*student);
 }
+
+void AuxiliarFunctions::RequestsManager() {
+
+    while (!(removalRequests.empty())) { // it has to be first
+        Request request = removalRequests.front();
+        removalRequests.pop();
+        verifyRemovalRequest(request);
+    }
+
+    while (!(enrollmentRequests.empty())) {
+        Request request = enrollmentRequests.front();
+        enrollmentRequests.pop();
+        verifyEnrollmentRequest(request);
+    }
+
+    while (!(switchRequests.empty())) {
+        Request request = switchRequests.front();
+        switchRequests.pop();
+        verifySwapRequest(request);
+    }
+
+}
+
+void AuxiliarFunctions::seePendingRequests() {
+    while (!(removalRequests.empty())) {
+        removalRequests.front().printRequest();
+        removalRequests.pop();
+    }
+    while (!(switchRequests.empty())) {
+        switchRequests.front().printRequest();
+        switchRequests.pop();
+    }
+    while (!(enrollmentRequests.empty())) {
+        enrollmentRequests.front().printRequest();
+        enrollmentRequests.pop();
+    }
+}
+
+// help me pls
+void AuxiliarFunctions::seeRejectedRequests() {
+    for (auto i: rejectedRequests) {
+        cout << i.request.printRequest() << " , reason:" << i.reason;
+    }
+}
+
+// por completar
+void AuxiliarFunctions::seeStudentSchedule(const string& StudentCode) const {
+    Student* student = retStudent(StudentCode);
+
+}
+
+// por completar
+void AuxiliarFunctions::seeClassSchedule(const string& ClassCode) {
+
+}
+
+// por completar
+void AuxiliarFunctions::seeUcSchedule(const string& UcCode) {
+
+}
+
+void AuxiliarFunctions::seeClassStudents(const UC& UcClass, const string& order_) {
+    Schedule* schedule = UCSchedule(UcClass);
+    cout << "Class " << UcClass.getClassCode() << ", UC " << UcClass.getUcCode() << endl;
+    cout << "Students enrolled: \n";
+    schedule->sortStudents(order_);
+}
+
+void AuxiliarFunctions::seeUcStudents(const string& UcCode, const string& sort_) {
+    vector<Student> sorted = UcStudents(UcCode);
+    if (sort_ == "A-Z order") {
+        sort(sorted.begin(), sorted.end(), [](Student &A, Student &B) {
+            return A.getStudentName() < B.getStudentName();
+        });
+    } else if (sort_ == "Z-A order") {
+        sort(sorted.rbegin(), sorted.rend(), [](Student &A, Student &B) {
+            return A.getStudentName() < B.getStudentName();
+        });
+    } else if (sort_ == "numerical") {
+        sort(sorted.begin(), sorted.end());
+    } else if (sort_ == "reverse numerical") {
+        sort(sorted.rbegin(), sorted.rend());
+    }
+    for (const Student& student: sorted) {
+        student.printUcAndClass();
+    }
+}
+

@@ -14,6 +14,7 @@ class Student {
         string studentCode;
         string studentName;
         vector<UC> ucs;
+        UC UcClass;
     public:
         /*
         * Class constructor
@@ -23,8 +24,8 @@ class Student {
         * @paramt studentCode : private , Student code;
         * @paramt studentName : private , Student name;
         */
-        Student(string studentCode, string studentName, vector<UC> ucs);
-        Student(string studentCode, string studentName);
+        Student(string studentCode, string studentName, vector<UC> ucs, UC ucClass);
+        Student(string studentCode, string studentName, UC ucClass);
 
         /*
          * Returns the studentCode
@@ -59,12 +60,12 @@ class Student {
         /*
          *
          */
-        UC findUc(string UcCode) const;
+        UC findUc(const string& UcCode) const;
 
         /*
          * Checks if a student is enrolled in a UC with UcCode
          */
-        bool Enrolled(string UcCode);
+        bool Enrolled(const string& UcCode);
 
         /*
          * Operator to compare two students
@@ -75,6 +76,7 @@ class Student {
          * Operator to compare the similarity between two students
          */
         bool operator==(const Student &s) const;
+        void printUcAndClass() const;
 };
 
 #endif // AED2324_PRJ1_G1207_STUDENT_H

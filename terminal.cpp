@@ -41,7 +41,7 @@ void leaveRequest(Student *student) {
         cout << "The student is not enrolled in this UC." << endl;
     }
     AuxiliarFunctions func3;
-    for (UC uc: student->getUCs()) {
+    for (const UC& uc: student->getUCs()) {
         if (uc.getUcCode() == UcCode) {
             func3.concludeRemoval(*student, uc);
             cout << "Enrollment request submitted." << endl;

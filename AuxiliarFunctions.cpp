@@ -122,10 +122,9 @@ bool AuxiliarFunctions::requestConflict(Request &request) {
     for (const UC& uc_ : studentUCs) {
         if (lessonOverlap(uc_, uc)) {
             return true;
-        } else {
-            return false;
         }
     }
+    return false;
 }
 
 bool AuxiliarFunctions::requestMax(Request &request) {

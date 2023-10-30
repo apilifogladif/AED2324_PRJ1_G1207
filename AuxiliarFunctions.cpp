@@ -3,8 +3,9 @@
 #include <map>
 #include <utility>
 #include <iostream>
+#include "CsvAndVectors.h"
 
-// erro por resolver(g3raldes) -> acho que resolvi(filipa)
+
 Student* AuxiliarFunctions::retStudent(const string &studentCode) const{
     for (auto student = students.begin(); student != students.end(); student++) {
         if (student->getStudentCode() == studentCode) {
@@ -108,11 +109,8 @@ UC AuxiliarFunctions::getCurrentClass(Request &request) {
 bool AuxiliarFunctions::requestBalance(Request &request) {
     int currentClass = totalNumberOfStudentsUcClass(getCurrentClass(request));
     int newClass = totalNumberOfStudentsUcClass(request.getUC());
-    if ((newClass - currentClass) <= 4) {
-        return true;
-    } else {
-        return false;
-    }
+    if ((newClass - currentClass) <= 4) return true;
+    return false;
 }
 
 bool AuxiliarFunctions::requestConflict(Request &request) {
@@ -146,7 +144,7 @@ bool AuxiliarFunctions::requestMax(Request &request) {
 // completar descrições
 void AuxiliarFunctions::verifySwapRequest(Request &request){
     if (!(requestBalance(request))) {
-        rejectedRequests.emplace_back(request, "Unbalaced");
+        rejectedRequests.emplace_back(request, "Unbalanced");
     } else if (requestConflict(request)) {
         rejectedRequests.emplace_back(request, "Conflict");
     } else if (requestMax(request)) {
@@ -230,7 +228,17 @@ void AuxiliarFunctions::seeRejectedRequests() {
 // por completar
 void AuxiliarFunctions::seeStudentSchedule(const string& StudentCode) const {
     Student* student = retStudent(StudentCode);
-
+    vector<UC> studentsClasses = student->getUCs();
+    for (UC uc: studentsClasses) {
+        Schedule sched = Schedule(uc);
+        CsvAndVectors getInfo;
+        for (Lesson lesson: getInfo.LessonsVector) {
+            if (lesson.getUc() == uc) {
+                sched.addLesson(lesson);
+            }
+        }
+        sched.drawSchedule();
+    }
 }
 
 // por completar

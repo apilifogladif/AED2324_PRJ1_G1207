@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "terminal.cpp"
-#include "CsvAndVectors.cpp"
+#include "CsvAndVectors.h"
 
 using namespace std;
 
@@ -27,10 +27,9 @@ int main() {
     string classCode;
     string UcCode;
 
-    vector<Lesson> LessonsVector = createLessonsVector();
-    vector<pair<string, set<string>>> ClassesPerUcVector = createClassesPerUcVector();
-    vector<Student> StudentsVector = createStudentsVector();
-
+    vector<Lesson> LessonsVector = getLessonsVector();
+    vector<pair<string, set<string>>> ClassesPerUcVector = getClassesPerUcVector();
+    vector<Student> StudentsVector = getStudentsVector();
     switch (op) {
         case 1:
             cout << "Write the code of the class: ";
@@ -42,7 +41,8 @@ int main() {
             cout << endl << "----------------------------" << endl;
             cout << "1 - Show the schedule of this class." << endl;
             cout << "2 - Number os students in this class." << endl;
-            cout << "3 - Return to Main Menu." << endl;
+            cout << "3 - Show sorted students." << endl;
+            cout << "4 - Return to Main Menu." << endl;
             cout << "Write the number of what you want to do: ";
             cin >> op;
             cout << endl;
@@ -57,6 +57,8 @@ int main() {
                 case 2:
 
                 case 3:
+
+                case 4:
                     main();
             }
             break;
@@ -73,7 +75,8 @@ int main() {
             cout << endl << "----------------------------" << endl;
             cout << "1 - Show the schedule of this lesson." << endl;
             cout << "2 - Number of students in this lesson." << endl;
-            cout << "3 - Return to Main Menu." << endl;
+            cout << "3 - Show sorted students." << endl;
+            cout << "4 - Return to Main Menu." << endl;
             cout << "Write the number of what you want to do: ";
             cin >> op;
             cout << endl;
@@ -88,6 +91,8 @@ int main() {
                 case 2:
 
                 case 3:
+
+                case 4:
                     main();
             }
             break;
@@ -129,7 +134,8 @@ int main() {
             cout << endl << "----------------------------" << endl;
             cout << "1 - Show the schedule of this uc." << endl;
             cout << "2 - Number of students in this uc." << endl;
-            cout << "3 - Return to Main Menu." << endl;
+            cout << "3 - Show sorted students." << endl;
+            cout << "4 - Return to Main Menu." << endl;
             cout << "Write the number of what you want to do: ";
             cin >> op;
             cout << endl;
@@ -144,6 +150,8 @@ int main() {
                 case 2:
 
                 case 3:
+
+                case 4:
                     main();
             }
             break;

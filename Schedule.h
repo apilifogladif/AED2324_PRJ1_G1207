@@ -23,6 +23,7 @@ class Schedule {
          *
          * @paramt lessons : private , Lessons to allocate to the students;
          */
+        Schedule(UC ucClass);
         Schedule(set<Lesson> lessons, UC ucClass);
 
         /*

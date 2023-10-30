@@ -14,7 +14,6 @@ class Student {
         string studentCode;
         string studentName;
         vector<UC> ucs;
-        UC UcClass;
     public:
         /*
         * Class constructor

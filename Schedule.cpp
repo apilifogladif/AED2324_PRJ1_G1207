@@ -2,6 +2,10 @@
 #include <algorithm>
 #include <utility>
 
+Schedule::Schedule(UC ucClass) {
+    this->UcClass = std::move(ucClass);
+}
+
 Schedule::Schedule(set<Lesson> lessons, UC ucClass) : UcClass(std::move(ucClass)) {
     this->lessons = std::move(lessons);
 }

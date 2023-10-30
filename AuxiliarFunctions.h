@@ -29,52 +29,163 @@ class AuxiliarFunctions {
         vector<rejectedRequests_> rejectedRequests;
 
 public:
-        // returns the student with the studentCode passed
+        /*
+         * Returns the student with the studentCode given
+         *
+         * @paramt studentCode : Student code;
+         */
         Student* retStudent(const string &studentCode) const;
-        // returns the schedule with the UcClass passed
+
+        /*
+         * Returns the schedule with the UcClass given
+         *
+         * @paramt UcClass : Uc class;
+         */
         Schedule* UCSchedule(const UC& UcClass); // falta complexidade
-        // returns the index of the schedule with the UcClass passed
+
+        /*
+         * Returns the index of the schedule with the UcClass passed
+         *
+         * @paramt UcClass : Uc class;
+         */
         unsigned long binarySearch(const UC& UcClass);
-        // auxiliary function to help with the recursion of the binary search
+        //
+        /*
+         * Auxiliary function to help with the recursion of the binary search
+         *
+         * @paramt UcClass : Uc class;
+         * @paramt left : left parameter;
+         * @paramt right : right parameter;
+         */
         unsigned long binarySearchAux(const UC& UcCLass, unsigned long left, unsigned long right);
-        // concludes the enrollment request by adding that request (with the student and UcClass he wants to enroll in) to the queue of enrollmentRequests
+
+        /*
+         * Concludes the enrollment request by adding that request to the queue of enrollmentRequests
+         *
+         * @paramt student : info of the student who wants to enroll;
+         * @paramt UcClass : Uc class that the student given wants to enroll;
+         */
         void concludeEnrollment(Student student, UC UcClass);
-        // concludes the removal request by adding that request (with the student and UcClass he wants to leave) to the queue of removalRequests
+
+        /*
+         * Concludes the removal request by adding that request to the queue of removalRequests
+         *
+         * @paramt student : info of the student who wants to leave;
+         * @paramt UcClass : Uc class that the student given wants to leave;
+         */
         void concludeRemoval(Student student, UC UcClass);
-        // concludes the switch request by adding that request (with the student and UcClass he wants to switch) to the queue of switchRequests
+
+        /*
+         * Concludes the switch request by adding that request to the queue of switchRequests
+         *
+         * @paramt student : info of the student who wants to switch;
+         * @paramt UcClass : Uc class that the student given wants to switch;
+         */
         void concludeSwitch(Student student, UC UcClass);
-        // exceptions
-        // UC changes
-        // a student cannot be registered in more than 7 UCs at any given type
+
+        // exceptions /////////////////////////////////////////////////////////////////////////////////
+        // UC changes /////////////////////////////////////////////////////////////////////////////////
+
+        /*
+         * A student cannot be registered in more than 7 UCs at any given type
+         *
+         * @paramt request : request;
+         */
         bool requestMax(Request &request);
-        // there mut be at leas one class with a vacancy in the new UC
-        // the resulting schedule will not conflict with the student's original schedule
+
+        // there mut be at leas one class with a vacancy in the new UC/////////////////////////////////
+
+        /*
+         * Checks if the resulting schedule will not conflict with the student's original schedule
+         *
+         * @paramt request : request;
+         */
         bool requestConflict(Request &request);
-        // Class changes
-        // a student cannot be in more than one class at once for a given UC
-        // a class can only accept a new student if its capacity has not been exceeded (consider that there is a maximum capacity Cap for classes)
-        // a class can only accept a new student if the balance between class occupation is not disturbed; the balance of class occupation is maintained when the difference between the number of students in any class is less than or equal to 4
+        // Class changes///////////////////////////////////////////////////////////////////////////////
+
+        /*
+         * Checks some conditions to secure the balance of the size os each class
+         *
+         * Requests:
+         * A student cannot be in more than one class at once for a given UC;
+         * A class can only accept a new student if its capacity has not been exceeded (consider that there is a maximum capacity Cap for classes);
+         * A class can only accept a new student if the balance between class occupation is not disturbed (the balance of class occupation is maintained when the difference between the number of students in any class is less than or equal to 4).
+         *
+         * @paramt request : request;
+         */
         bool requestBalance(Request &request);
-        // There is no conflict between the student’s schedule and the new class’s schedule
-        // a student’s schedule may overlap classes if they are neither TP nor PL, that is, there may be overlapping classes between T and TP, between T and T, and between T and P
+
+        /*
+         * Checks if there is no conflict between the student’s schedule and the new class’s schedule
+         *
+         * @paramt uc1 : one Uc;
+         * @paramt uc2 : another Uc;
+         */
         bool lessonOverlap(UC uc1, UC uc2);
-        // get the total number of students in a class in an UC
+
+        /*
+         * Get the total number of students in a class in a UC
+         *
+         * @paramt UcClass : Uc class;
+         */
         int totalNumberOfStudentsUcClass(const UC& UcClass);
-        // returns a vector with the students of an Uc
+
+        /*
+         * Returns a vector with the students of an Uc
+         *
+         * @paramt UcCode : Uc code;
+         */
         vector<Student> UcStudents(const string& UcCode);
-        // get the total numbers of students in an UC
+
+        /*
+         * Get the total numbers of students in a UC
+         *
+         * @paramt UcCode : Uc code;
+         */
         int totalNumberOfStudentsUc(const string& UcCode);
-        // get the total number of pending requests
+
+        /*
+         * Get the total number of pending requests
+         */
         int totalNumberOfPendingRequests();
-        // get request current UC Class
+
+        /*
+         * Get request current UC Class
+         *
+         * @paramt request : request;
+         */
         static UC getCurrentClass(Request &request);
-        // see if request has any problem (unbalanced, conflict, extends the max)
+
+        /*
+         * See if request has any problem (unbalanced, conflict, extends the max)
+         *
+         * @paramt request : request;
+         */
         void verifySwapRequest(Request &request);
-        // see if request has any problem (conflict, extends the max)
+
+        /*
+         * See if request has any problem (conflict, extends the max)
+         *
+         * @paramt request : request;
+         */
         void verifyEnrollmentRequest(Request &request);
-        // does the removal requests as it does not need any problem verification
+
+        /*
+         * Does the removal requests as it does not need any problem verification
+         *
+         * @paramt request : request;
+         */
         void verifyRemovalRequest(Request &request);
+        // confirmar /////////////////////////////////////////////////////////////////////////////////
+        /*
+         * Returns a vector of the schedual of the classes of given Uc
+         *
+         * @paramt UcCode : Uc code;
+         */
         vector<Schedule> UcClasses(const string& UcCode);
+
+
+        
         // finalizes the requests
         void RequestsManager();
         // prints the requests that are pending

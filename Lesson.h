@@ -67,11 +67,15 @@ class Lesson {
 
         /*
          * Checks if two classes are compatible
+         *
+         * @paramt lesson : lesson;
          */
         bool lessonOverlap(const Lesson& lesson);
 
         /*
          * Operator to compare the times of two Lessons
+         *
+         * @paramt l : lesson;
          */
         bool operator<(const Lesson& l) const;
 };

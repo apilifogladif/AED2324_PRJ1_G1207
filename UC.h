@@ -44,13 +44,22 @@ class UC {
 
         /*
          * Operator to compare the similarity between two Uc's
+         *
+         * @paramt uc_ : Uc;
          */
         bool operator==(const UC& uc_);
         /*
          * Operator to compare two Uc's
+         *
+         * @paramt uc_ : Uc;
          */
         bool operator<(const UC &uc_);
 
+        /*
+         * Operator to compare if two Uc's have the same Uc code
+         *
+         * @paramt uc_ : Uc;
+         */
         bool hasSameUcCode(UC &uc_);
 };
 

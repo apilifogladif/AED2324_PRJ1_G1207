@@ -39,7 +39,10 @@ class Request {
          * Returns the type of the request
          */
         string getType();
-        // prints request
+
+        /*
+         * Prints request
+         */
         void printRequest();
 };
 

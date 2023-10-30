@@ -28,11 +28,15 @@ class Schedule {
 
         /*
          * Adds a lesson to the schedule
+         *
+         * @paramt lesson : Lesson;
          */
         void addLesson(const Lesson& lesson);
 
         /*
          * Removes a lesson from the schedule
+         *
+         * @paramt lesson : Lesson;
          */
         void removeLesson(const Lesson& lesson);
 
@@ -48,6 +52,8 @@ class Schedule {
 
         /*
          * Verifies if it has the same UcCode
+         *
+         * @paramt UcCode : Uc code;
          */
         bool hasSameUcCode(Schedule &UcCode);
 
@@ -63,21 +69,35 @@ class Schedule {
 
         /*
          * Adds student to a class
+         *
+         * @paramt student : student;
          */
         void addStudent(const Student& student);
 
         /*
          * Removes student from a class
+         *
+         * @paramt student : student;
          */
         void removeStudent(const Student& student);
 
         /*
          * Operator to compare two schedules
+         *
+         * @paramt schedule : shedule;
          */
         bool operator<(Schedule schedule);
-        // prints UcCode and ClassCode
+
+        /*
+         * Prints UcCode and ClassCode
+         */
         void printUcAndClass();
-        // sorts students and prints them in the order that we asked for
+
+        /*
+         * Sorts the students and prints them in the order that we asked for
+         *
+         * @paramt sort_ : Way to sort the students of the Uc;
+         */
         void sortStudents(const string& sort_);
 };
 

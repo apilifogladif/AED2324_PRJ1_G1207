@@ -184,23 +184,56 @@ public:
          */
         vector<Schedule> UcClasses(const string& UcCode);
 
-
-        
-        // finalizes the requests
+        /*
+         * Finalizes the requests
+         */
         void RequestsManager();
-        // prints the requests that are pending
+
+        /*
+         * Prints the requests that are pending
+         */
         void seePendingRequests();
-        // prints the requests that were rejected
+
+        /*
+         * Prints the requests that were rejected
+         */
         void seeRejectedRequests();
-        // prints the schedule of a given student
+
+        /*
+         * Prints the schedule of a given student
+         *
+         * @paramt StudentCode : Student code;
+         */
         void seeStudentSchedule(const string& StudentCode) const;
-        // prints the schedule of a given class
+
+        /*
+         * Prints the schedule of a given class
+         *
+         * @paramt ClassCode : Class code;
+         */
         void seeClassSchedule(const string& ClassCode);
-        // prints the schedule of a given UC
+
+        /*
+         * Prints the schedule of a given Uc
+         *
+         * @paramt UcCode : Uc code;
+         */
         void seeUcSchedule(const string& UcCode);
-        // prints the students of a given class
+
+        /*
+         * Prints the students of a given class
+         *
+         * @paramt UcClass : Uc class;
+         * @paramt order_ : Way to sort the students of the class;
+         */
         void seeClassStudents(const UC& UcClass, const string& order_);
-        // prints the students of a given UC
+
+        /*
+         * Prints the students of a given Uc
+         *
+         * @paramt UcCode : Uc code;
+         * @paramt order_ : Way to sort the students of the Uc;
+         */
         void seeUcStudents(const string &UcCode, const string &sort_);
 };
 #endif //AED2324_PRJ1_G1207_AUXILIARFUNCTIONS_H

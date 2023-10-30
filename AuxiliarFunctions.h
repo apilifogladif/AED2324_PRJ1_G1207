@@ -29,28 +29,28 @@ class AuxiliarFunctions {
         vector<rejectedRequests_> rejectedRequests;
 
 public:
-        /*
+        /**
          * Returns the student with the studentCode given
          *
          * @paramt studentCode : Student code;
          */
         Student* retStudent(const string &studentCode) const;
 
-        /*
+        /**
          * Returns the schedule with the UcClass given
          *
          * @paramt UcClass : Uc class;
          */
         Schedule* UCSchedule(const UC& UcClass); // falta complexidade
 
-        /*
+        /**
          * Returns the index of the schedule with the UcClass passed
          *
          * @paramt UcClass : Uc class;
          */
         unsigned long binarySearch(const UC& UcClass);
-        //
-        /*
+
+        /**
          * Auxiliary function to help with the recursion of the binary search
          *
          * @paramt UcClass : Uc class;
@@ -59,7 +59,7 @@ public:
          */
         unsigned long binarySearchAux(const UC& UcCLass, unsigned long left, unsigned long right);
 
-        /*
+        /**
          * Concludes the enrollment request by adding that request to the queue of enrollmentRequests
          *
          * @paramt student : info of the student who wants to enroll;
@@ -67,7 +67,7 @@ public:
          */
         void concludeEnrollment(Student student, UC UcClass);
 
-        /*
+        /**
          * Concludes the removal request by adding that request to the queue of removalRequests
          *
          * @paramt student : info of the student who wants to leave;
@@ -75,7 +75,7 @@ public:
          */
         void concludeRemoval(Student student, UC UcClass);
 
-        /*
+        /**
          * Concludes the switch request by adding that request to the queue of switchRequests
          *
          * @paramt student : info of the student who wants to switch;
@@ -86,7 +86,7 @@ public:
         // exceptions /////////////////////////////////////////////////////////////////////////////////
         // UC changes /////////////////////////////////////////////////////////////////////////////////
 
-        /*
+        /**
          * A student cannot be registered in more than 7 UCs at any given type
          *
          * @paramt request : request;
@@ -95,7 +95,7 @@ public:
 
         // there mut be at leas one class with a vacancy in the new UC/////////////////////////////////
 
-        /*
+        /**
          * Checks if the resulting schedule will not conflict with the student's original schedule
          *
          * @paramt request : request;
@@ -103,7 +103,7 @@ public:
         bool requestConflict(Request &request);
         // Class changes///////////////////////////////////////////////////////////////////////////////
 
-        /*
+        /**
          * Checks some conditions to secure the balance of the size os each class
          *
          * Requests:
@@ -115,7 +115,7 @@ public:
          */
         bool requestBalance(Request &request);
 
-        /*
+        /**
          * Checks if there is no conflict between the student’s schedule and the new class’s schedule
          *
          * @paramt uc1 : one Uc;
@@ -123,104 +123,104 @@ public:
          */
         bool lessonOverlap(UC uc1, UC uc2);
 
-        /*
+        /**
          * Get the total number of students in a class in a UC
          *
          * @paramt UcClass : Uc class;
          */
         int totalNumberOfStudentsUcClass(const UC& UcClass);
 
-        /*
+        /**
          * Returns a vector with the students of an Uc
          *
          * @paramt UcCode : Uc code;
          */
         vector<Student> UcStudents(const string& UcCode);
 
-        /*
+        /**
          * Get the total numbers of students in a UC
          *
          * @paramt UcCode : Uc code;
          */
         int totalNumberOfStudentsUc(const string& UcCode);
 
-        /*
+        /**
          * Get the total number of pending requests
          */
         int totalNumberOfPendingRequests();
 
-        /*
+        /**
          * Get request current UC Class
          *
          * @paramt request : request;
          */
         static UC getCurrentClass(Request &request);
 
-        /*
+        /**
          * See if request has any problem (unbalanced, conflict, extends the max)
          *
          * @paramt request : request;
          */
         void verifySwapRequest(Request &request);
 
-        /*
+        /**
          * See if request has any problem (conflict, extends the max)
          *
          * @paramt request : request;
          */
         void verifyEnrollmentRequest(Request &request);
 
-        /*
+        /**
          * Does the removal requests as it does not need any problem verification
          *
          * @paramt request : request;
          */
         void verifyRemovalRequest(Request &request);
         // confirmar /////////////////////////////////////////////////////////////////////////////////
-        /*
+        /**
          * Returns a vector of the schedual of the classes of given Uc
          *
          * @paramt UcCode : Uc code;
          */
         vector<Schedule> UcClasses(const string& UcCode);
 
-        /*
+        /**
          * Finalizes the requests
          */
         void RequestsManager();
 
-        /*
+        /**
          * Prints the requests that are pending
          */
         void seePendingRequests();
 
-        /*
+        /**
          * Prints the requests that were rejected
          */
         void seeRejectedRequests();
 
-        /*
+        /**
          * Prints the schedule of a given student
          *
          * @paramt StudentCode : Student code;
          */
         void seeStudentSchedule(const string& StudentCode) const;
 
-        /*
+        /**
          * Prints the schedule of a given class
          *
          * @paramt ClassCode : Class code;
          */
         void seeClassSchedule(const string& ClassCode);
 
-        /*
+        /**
          * Prints the schedule of a given Uc
          *
          * @paramt UcCode : Uc code;
          */
         void seeUcSchedule(const string& UcCode);
 
-        /*
+        /**
          * Prints the students of a given class
          *
          * @paramt UcClass : Uc class;
@@ -228,7 +228,7 @@ public:
          */
         void seeClassStudents(const UC& UcClass, const string& order_);
 
-        /*
+        /**
          * Prints the students of a given Uc
          *
          * @paramt UcCode : Uc code;

@@ -11,7 +11,9 @@ class UC {
         string UcCode;
         string ClassCode;
     public:
-        /*
+        // ////////////////////////////////////////////////////////////////////////
+        UC();
+        /**
          * Class constructor
          *
          * Sets UcCode and ClassCode
@@ -19,43 +21,43 @@ class UC {
          * @paramt UcCode : private , Uc code;
          * @paramt ClassCode : private , Class code;
          */
-        UC();
         UC(string UcCode, string ClassCode);
 
-        /*
+        /**
          * Returns code of the Uc
          */
         string getUcCode() const;
 
-        /*
+        /**
          * Returns the code of the Uc
          */
         string getClassCode() const;
 
-        /*
+        /**
          * Sets a value to the Uc code
          */
         void setUcCode(string code);
 
-        /*
+        /**
          * Sets a value to the Class code
          */
         void setClassCode(string code);
 
-        /*
+        /**
          * Operator to compare the similarity between two Uc's
          *
          * @paramt uc_ : Uc;
          */
         bool operator==(const UC& uc_);
-        /*
+
+        /**
          * Operator to compare two Uc's
          *
          * @paramt uc_ : Uc;
          */
         bool operator<(const UC &uc_);
 
-        /*
+        /**
          * Operator to compare if two Uc's have the same Uc code
          *
          * @paramt uc_ : Uc;

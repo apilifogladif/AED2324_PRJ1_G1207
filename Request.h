@@ -14,7 +14,7 @@ class Request {
         UC* uc;
         string type;
     public:
-        /*
+        /**
          * Class constructor
          *
          * Sets student, uc, and type
@@ -25,22 +25,22 @@ class Request {
          */
         Request(Student* student, UC* uc, string type);
 
-        /*
+        /**
          * Returns the student that made the request
          */
         Student getStudent();
 
-        /*
+        /**
          * Return the uc of the request
          */
         UC getUC();
 
-        /*
+        /**
          * Returns the type of the request
          */
         string getType();
 
-        /*
+        /**
          * Prints request
          */
         void printRequest();

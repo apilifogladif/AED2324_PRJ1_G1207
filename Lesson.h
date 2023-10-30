@@ -17,7 +17,7 @@ class Lesson {
         double duration;
         string type;
     public:
-        /*
+        /**
          * Class constructor
          *
          * Sets ClassCode, UcCode, weekday, startHour, endHour (startHour + duration) and type
@@ -30,49 +30,49 @@ class Lesson {
          * @paramt type : private , Lesson type;
          */
         Lesson(string UcCode, string ClassCode, string weekday, double startHour, double duration, string type);
-        /*
+        /**
          * Returns the uc
          */
         UC getUc() const;
 
-        /*
+        /**
          * Returns the weekday of the lesson
          */
         string getWeekday() const;
 
-        /*
+        /**
          * Returns the startHour of the lesson
          */
         double getStartHour() const;
 
-        /*
+        /**
          * Returns the endHour of the lesson
          */
         double getEndHour() const;
 
-        /*
+        /**
          * Return the duration of the lesson
          */
         double getDuration() const;
 
-        /*
+        /**
          * Returns the type of the lesson (T, P, PL)
          */
         string getType() const;
 
-        /*
+        /**
          * Prints the startHour, the endHour and the type of the lesson (T, TP, PL)
          */
         void drawLesson() const;
 
-        /*
+        /**
          * Checks if two classes are compatible
          *
          * @paramt lesson : lesson;
          */
         bool lessonOverlap(const Lesson& lesson);
 
-        /*
+        /**
          * Operator to compare the times of two Lessons
          *
          * @paramt l : lesson;

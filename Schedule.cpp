@@ -123,22 +123,22 @@ bool Schedule::operator<(Schedule schedule) {
 }
 
 void Schedule::printUcAndClass() {
-    cout << UcClass.getUcCode() << " " << UcClass.getClassCode() << endl;
+    cout << "UC: " << UcClass.getUcCode() << " " << UcClass.getClassCode() << endl;
 }
 
-void Schedule::sortStudents(const string& sort_) {
+void Schedule::sortStudents(const int &sort_) {
     vector<Student> sorted = vector<Student>(students.begin(), students.end());
-    if (sort_ == "A-Z order") {
+    if (sort_ == 1) {
         sort(sorted.begin(), sorted.end(), [](Student &A, Student &B) {
             return A.getStudentName() < B.getStudentName();
         });
-    } else if (sort_ == "Z-A order") {
+    } else if (sort_ == 2) {
         sort(sorted.rbegin(), sorted.rend(), [](Student &A, Student &B) {
             return A.getStudentName() < B.getStudentName();
         });
-    } else if (sort_ == "numerical") {
+    } else if (sort_ == 3) {
         sort(sorted.begin(), sorted.end());
-    } else if (sort_ == "reverse numerical") {
+    } else if (sort_ == 4) {
         sort(sorted.rbegin(), sorted.rend());
     }
     for (const Student& student: sorted) {

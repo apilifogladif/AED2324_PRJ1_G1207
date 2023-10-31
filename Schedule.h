@@ -109,7 +109,7 @@ class Schedule {
          *
          * @paramt sort_ : Way to sort the students of the Uc;
          */
-        void sortStudents(const string& sort_);
+        void sortStudents(const int &sort_);
 };
 
 #endif //AED2324_PRJ1_G1207_SCHEDULE_H

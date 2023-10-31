@@ -88,7 +88,12 @@ public:
 
         // exceptions /////////////////////////////////////////////////////////////////////////////////
         // UC changes /////////////////////////////////////////////////////////////////////////////////
-
+        /**
+         * Returns a vector with the students of an Uc
+         *
+         * @paramt UcCode : Uc code;
+         */
+        vector<Schedule> UcClasses(const string& UcCode);
         /**
          * A student cannot be registered in more than 7 UCs at any given type
          *
@@ -165,13 +170,6 @@ public:
          * @paramt request : request;
          */
         void verifyRemovalRequest(Request &request);
-        // confirmar /////////////////////////////////////////////////////////////////////////////////
-        /**
-         * Returns a vector of the schedual of the classes of given Uc
-         *
-         * @paramt UcCode : Uc code;
-         */
-        vector<Schedule> UcClasses(const string& UcCode);
 
         /**
          * Finalizes the requests
@@ -217,7 +215,7 @@ public:
          * @paramt UcClass : Uc class;
          * @paramt order_ : Way to sort the students of the class;
          */
-        void seeClassStudents(const UC& UcClass, const string& order_);
+        void seeClassStudents(const UC& UcClass, const int &order_);
 
         /**
          * Prints the students of a given Uc
@@ -225,7 +223,15 @@ public:
          * @paramt UcCode : Uc code;
          * @paramt order_ : Way to sort the students of the Uc;
          */
-        void seeUcStudents(const string &UcCode, const string &sort_);
+        void seeUcStudents(const string &UcCode, const int &sort_);
+
+        /**
+         * Prints the students of a given year
+         *
+         * @paramt year: Year;
+         * @paramt sort : Way to sort the students of the Uc;
+         */
+        void seeYearStudents(int year, int sort);
 
         /**
          * Returns the number of students of a given Class and Uc

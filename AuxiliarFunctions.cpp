@@ -1,7 +1,6 @@
 #include "AuxiliarFunctions.h"
 #include <algorithm>
 #include <map>
-#include <utility>
 #include <iostream>
 #include "CsvAndVectors.h"
 
@@ -56,16 +55,6 @@ void AuxiliarFunctions::concludeSwitch(Student student, UC UcClass) {
     switchRequests.emplace(&student, &UcClass, "Switch");
 }
 
-vector<Schedule> AuxiliarFunctions::UcClasses(const string& UcCode) {
-    vector<Schedule> classes;
-    for (Schedule class_: schedules) {
-        if (class_.getUcClass().getUcCode() == UcCode) {
-            classes.push_back(class_);
-        }
-    }
-    return classes;
-}
-
 bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
     if (uc1.hasSameUcCode(uc2)) {
         return false;
@@ -83,14 +72,10 @@ bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
 }
 
 vector<Student> AuxiliarFunctions::UcStudents(const string& UcCode) {
-    vector<Student> UcStudents_;
-    vector<Schedule> UcClasses_ = UcClasses(UcCode);
-    for (Schedule schedule: UcClasses_) {
-        for (const Student& student : schedule.getStudents()) {
-            UcStudents_.push_back(student);
-        }
-    }
-    return UcStudents_;
+    Schedule schedule = Schedule(UC(UcCode, ""));
+    vector<Student> students;
+    for (Student s : schedule.getStudents()) students.push_back(s);
+    return students;
 }
 
 int AuxiliarFunctions::totalNumberOfPendingRequests() {
@@ -120,6 +105,16 @@ bool AuxiliarFunctions::requestConflict(Request &request) {
     return false;
 }
 
+vector<Schedule> AuxiliarFunctions::UcClasses(const string& UcCode) {
+    vector<Schedule> classes;
+    for (Schedule class_: schedules) {
+        if (class_.getUcClass().getUcCode() == UcCode) {
+            classes.push_back(class_);
+        }
+    }
+    return classes;
+}
+
 bool AuxiliarFunctions::requestMax(Request &request) {
     vector<Schedule> UcClasses_ = UcClasses(request.getUC().getUcCode());
     sort(UcClasses_.begin(), UcClasses_.end(), [](Schedule &class1, Schedule &class2) {
@@ -139,11 +134,11 @@ bool AuxiliarFunctions::requestMax(Request &request) {
 // completar descrições
 void AuxiliarFunctions::verifySwapRequest(Request &request){
     if (!(requestBalance(request))) {
-        rejectedRequests.emplace_back(request, "Unbalanced");
+        rejectedRequests.emplace_back(request, "The balance of class occupation is not maintained./n The difference between the number of students in the class can't be less than or equal to 4.");
     } else if (requestConflict(request)) {
-        rejectedRequests.emplace_back(request, "Conflict");
+        rejectedRequests.emplace_back(request, "There is conflict between the student’s schedule and the new class’s schedule.");
     } else if (requestMax(request)) {
-        rejectedRequests.emplace_back(request, "Max");
+        rejectedRequests.emplace_back(request, "The capacity of the class has been exceeded.");
     } else {
         Student* student = retStudent(request.getStudent().getStudentCode());
         UC uc = UCSchedule(request.getUC())->getUcClass();
@@ -156,9 +151,9 @@ void AuxiliarFunctions::verifySwapRequest(Request &request){
 
 void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
     if (requestConflict(request)) {
-        rejectedRequests.emplace_back(request, "Conflict");
+        rejectedRequests.emplace_back(request, "There is conflict between the student’s schedule and the new class’s schedule.");
     } else if (requestMax(request)) {
-        rejectedRequests.emplace_back(request, "Max");
+        rejectedRequests.emplace_back(request, "The capacity of the class has been exceeded.");
     } else {
         Student* student = retStudent(request.getStudent().getStudentCode());
         UC uc = UCSchedule(request.getUC())->getUcClass();
@@ -249,9 +244,8 @@ void AuxiliarFunctions::seeLessonSchedule(UC uc) {
 
 }
 
-void AuxiliarFunctions::seeClassStudents(const UC& UcClass, const string& order_) {
+void AuxiliarFunctions::seeClassStudents(const UC& UcClass, const int& order_) {
     Schedule* schedule = UCSchedule(UcClass);
-    cout << "Class " << UcClass.getClassCode() << ", UC " << UcClass.getUcCode() << endl;
     cout << "Students enrolled: \n";
 
     CsvAndVectors CSVInfo = CsvAndVectors();
@@ -267,22 +261,52 @@ void AuxiliarFunctions::seeClassStudents(const UC& UcClass, const string& order_
     schedule->sortStudents(order_);
 }
 
-void AuxiliarFunctions::seeUcStudents(const string& UcCode, const string& sort_) {
+void AuxiliarFunctions::seeUcStudents(const string& UcCode, const int& sort_) {
     vector<Student> sorted = UcStudents(UcCode);
-    if (sort_ == "A-Z order") {
+    if (sort_ == 1) {
         sort(sorted.begin(), sorted.end(), [](Student &A, Student &B) {
             return A.getStudentName() < B.getStudentName();
         });
-    } else if (sort_ == "Z-A order") {
+    } else if (sort_ == 2) {
         sort(sorted.rbegin(), sorted.rend(), [](Student &A, Student &B) {
             return A.getStudentName() < B.getStudentName();
         });
-    } else if (sort_ == "numerical") {
+    } else if (sort_ == 3) {
         sort(sorted.begin(), sorted.end());
-    } else if (sort_ == "reverse numerical") {
+    } else if (sort_ == 4) {
         sort(sorted.rbegin(), sorted.rend());
     }
     for (const Student& student: sorted) {
+        student.printUcAndClass();
+    }
+}
+
+void AuxiliarFunctions::seeYearStudents(int year, int sort_) {
+    CsvAndVectors CSVInfo;
+    vector<Student> StudentsVector = CSVInfo.getStudentsVector();
+    vector<Student> students;
+    for (auto &student : StudentsVector) {
+        int y = 0;
+        for (auto &uc : student.getUCs()) {
+            char firstChar = uc.getClassCode()[0];
+            if (firstChar > y) y = static_cast<int>(firstChar) - 48;    //ASCII
+        }
+        if (y == year) students.push_back(student);
+    }
+    if (sort_ == 1) {
+        sort(students.begin(), students.end(), [](Student &A, Student &B) {
+            return A.getStudentName() < B.getStudentName();
+        });
+    } else if (sort_ == 2) {
+        sort(students.rbegin(), students.rend(), [](Student &A, Student &B) {
+            return A.getStudentName() < B.getStudentName();
+        });
+    } else if (sort_ == 3) {
+        sort(students.begin(), students.end());
+    } else if (sort_ == 4) {
+        sort(students.rbegin(), students.rend());
+    }
+    for (const Student& student: students) {
         student.printUcAndClass();
     }
 }
@@ -312,4 +336,6 @@ int AuxiliarFunctions::numberUcStudents(const string &UcCode) {
     }
     return count;
 }
+
+
 

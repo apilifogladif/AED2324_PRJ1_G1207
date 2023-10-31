@@ -91,7 +91,7 @@ void submitRequest(int op) {
 }
 
 // Menu for the user choose which type of request he wants (enroll in an UC, leave an UC, change an UC
-void RequestMenu() {
+int RequestMenu() {
     int op = 0;
     cout << endl << "----------------------------" << endl;
     cout << endl << "      Request Menu   " << endl;
@@ -175,16 +175,17 @@ int whichUc(int op1, const string& classCode) {
     return 2;
 }
 
-int studentMenu(const string& StudentCode) {
+int listingMenu() {
     AuxiliarFunctions func = AuxiliarFunctions();
     int op = 0;
-    cout << endl << "----------------------------" << endl;
-    cout << endl << "      Student Menu   " << endl;
-    cout << endl << "----------------------------" << endl;
-    cout << "1 - Show the schedule of this student." << endl;
-    cout << "2 - Make a request." << endl;
-    cout << "3 - Return to Main Menu." << endl;
-    cout << "4 - Quit." << endl;
+    cout << endl << "----------------------------------" << endl;
+    cout << endl << "     Search for listings of...    " << endl;
+    cout << endl << "----------------------------------" << endl;
+    cout << "1 - Students of an Uc and a class." << endl;
+    cout << "2 - Students of a year." << endl;
+    cout << "3 - Students of a Uc." << endl;
+    cout << "4 - Return to Main Menu." << endl;
+    cout << "5 - Quit." << endl;
     cout << "Write the number of what you want to do: ";
     cin >> op;
     cout << endl;
@@ -193,16 +194,71 @@ int studentMenu(const string& StudentCode) {
         cin >> op;
         cout << endl;
     }
+    string UcCode;
+    string sort_;
+    string ClassCode;
+    CsvAndVectors CSVInfo;
+    int year = 0;
     switch (op) {
         case 1:
-            func.seeStudentSchedule(StudentCode);
+            cout << "Write the Uc Code (L.EICxxx or UPxxx): " << endl;
+            cin >> UcCode;
+            cout << "Write the Class Code (yLEICxx; y->year, xx->class): " << endl;
+            cin >> ClassCode;
+            cout << "How do you want the list to be sorted?" << endl;
+            cout << "1 - A-Z order" << endl;
+            cout << "2 - Z-A order" << endl;
+            cout << "3 - numerical" << endl;
+            cout << "4 - reverse numerical" << endl;
+            cout << "Write the number of what you want to do: ";
+            cin >> op;
+            cout << endl;
+            while (cin.fail() || op < 1 || op > 4) {
+                cout << "Invalid number! Write the number of what you want to do: " << endl;
+                cin >> op;
+                cout << endl;
+            }
+            func.seeClassStudents(UC(UcCode, ClassCode), op);
             break;
         case 2:
-            RequestMenu();
+            cout << "Write the year (1, 2 or 3): " << endl;
+            cin >> year;
+            cout << "How do you want the list to be sorted?" << endl;
+            cout << "1 - A-Z order" << endl;
+            cout << "2 - Z-A order" << endl;
+            cout << "3 - numerical" << endl;
+            cout << "4 - reverse numerical" << endl;
+            cout << "Write the number of what you want to do: ";
+            cin >> op;
+            cout << endl;
+            while (cin.fail() || op < 1 || op > 4) {
+                cout << "Invalid number! Write the number of what you want to do: " << endl;
+                cin >> op;
+                cout << endl;
+            }
+            func.seeYearStudents(year, op);
             break;
         case 3:
-            return 0;
+            cout << "Write the Uc Code (L.EICxxx or UPxxx): " << endl;
+            cin >> UcCode;
+            cout << "How do you want the list to be sorted?" << endl;
+            cout << "1 - A-Z order" << endl;
+            cout << "2 - Z-A order" << endl;
+            cout << "3 - numerical" << endl;
+            cout << "4 - reverse numerical" << endl;
+            cout << "Write the number of what you want to do: ";
+            cin >> op;
+            cout << endl;
+            while (cin.fail() || op < 1 || op > 4) {
+                cout << "Invalid number! Write the number of what you want to do: " << endl;
+                cin >> op;
+                cout << endl;
+            }
+            func.seeUcStudents(UcCode, op);
+            break;
         case 4:
+            return 0;
+        case 5:
             system("exit");
     }
 
@@ -218,11 +274,11 @@ int studentMenu(const string& StudentCode) {
         cout << endl;
     }
     if (op == 3) system("exit");
-    else if (op == 1) studentMenu(StudentCode);
+    else if (op == 1) listingMenu();
     return 0;
 }
 
-int lessonMenu(const string& classCode, const string& UcCode) {
+int scheduleMenu() {
     AuxiliarFunctions func = AuxiliarFunctions();
     int op = 0;
     cout << endl << "----------------------------" << endl;
@@ -266,7 +322,7 @@ int lessonMenu(const string& classCode, const string& UcCode) {
     return 0;
 }
 
-int ucMenu(const string& UcCode) {
+int requestMenu() {
     AuxiliarFunctions func = AuxiliarFunctions();
     int op = 0;
     cout << endl << "----------------------------" << endl;
@@ -332,111 +388,64 @@ int ucMenu(const string& UcCode) {
     return 0;
 }
 
-int classMenu(const string& classCode) {
-    AuxiliarFunctions func = AuxiliarFunctions();
-    int op = 0;
-    cout << endl << "----------------------------" << endl;
-    cout << endl << "      Class Menu   " << endl;
-    cout << endl << "----------------------------" << endl;
-    cout << "1 - Show the schedule of this class." << endl;
-    cout << "2 - Number os students in this class." << endl;
-    cout << "3 - Show sorted students." << endl;
-    cout << "4 - Return to Main Menu." << endl;
-    cout << "5 - Quit." << endl;
-    cout << "Write the number of what you want to do: ";
-    cin >> op;
-    cout << endl;
-    while (cin.fail() || op < 1 || op > 5) {
-        cout << "Invalid number! Write the number of what you want to do: " << endl;
-        cin >> op;
-        cout << endl;
-    }
-    switch (op) {
-        case 1:
-            func.seeClassSchedule(classCode);
-            cout << "1 - Return to Class Menu" << endl;
-            cout << "2 - Return to Main Menu" << endl;
-            cout << "3 - Quit." << endl;
-            cout << "Write the number of what you want to do: ";
-            cin >> op;
-            cout << endl;
-            while (cin.fail() || op < 1 || op > 3) {
-                cout << "Invalid number! Write the number of what you want to do: " << endl;
-                cin >> op;
-                cout << endl;
-            }
-            if (op == 3) system("exit");
-            else if (op == 1) classMenu(classCode);
-            break;
-        case 2:
-        case 3:
-            op = whichUc(op - 2, classCode);
-            if (op == 1) classMenu(classCode);
-            break;
-        case 4:
-            return 0;
-        case 5:
-            system("exit");
-    }
-    return 0;
-}
+int pendingRequests() {}
+int processedRequest() {}
 
 int main() {
     int op = 0;
     cout << endl << "----------------------------" << endl;
     cout << endl << "      Main Menu   " << endl;
     cout << endl << "----------------------------" << endl;
-    cout << "1 - Search for a class." << endl;
-    cout << "2 - Search for a lesson." << endl;
-    cout << "3 - Search for a student." << endl;
-    cout << "4 - Search for a UC." << endl;
-    cout << "5 - Quit." << endl;
+    cout << "1 - Search for listings of..." << endl;
+    cout << "2 - Search for schedules of..." << endl;
+    cout << "3 - Submit a request for..." << endl;
+    cout << "4 - See requests that are pending." << endl;
+    cout << "5 - See requests that have already been processed." << endl;
+    cout << "6 - Quit." << endl;
     cout << "Write the number of what you want to do: ";
     cin >> op;
     cout << endl;
-    while (cin.fail() || op < 1 || op > 5) {
+    while (cin.fail() || op < 1 || op > 6) {
         cout << "Invalid number! Write the number of what you want to do: " << endl;
         cin >> op;
         cout << endl;
     }
     //clrscr();  ->  clear screen
-    string StudentCode;
-    string classCode;
-    string UcCode;
+
+    int aux = 0;
 
     switch (op) {
         case 1:
-            cout << "Write the code of the class (yLEICxx; y->year, xx->class): ";
-            cin >> classCode;
-            cout << endl;
-            classMenu(classCode);
-            main();
+            aux = listingMenu();
+            if (aux == 1) main();
+            else system("exit");
+            break;
 
         case 2:
-            cout << "Write the code of the class (yLEICxx; y->year, xx->class): ";
-            cin >> classCode;
-            cout << endl;
-            cout << "Write the code of the uc (L.EICxxx or UPxxx): ";
-            cin >> UcCode;
-            cout << endl;
-            lessonMenu(classCode, UcCode);
-            main();
+            aux = scheduleMenu();
+            if (aux == 1) main();
+            else system("exit");
+            break;
 
         case 3:
-            cout << "Write the code of the student (only numbers): ";
-            cin >> StudentCode;
-            cout << endl;
-            studentMenu(StudentCode);
-            main();
+            aux = requestMenu();
+            if (aux == 1) main();
+            else system("exit");
+            break;
 
         case 4:
-            cout << "Write the code of the uc (L.EICxxx or UPxxx): ";
-            cin >> UcCode;
-            cout << endl;
-            ucMenu(UcCode);
-            main();
+            aux = pendingRequests();
+            if (aux == 1) main();
+            else system("exit");
+            break;
 
         case 5:
+            aux = processedRequest();
+            if (aux == 1) main();
+            else system("exit");
+            break;
+
+        case 6:
             system("exit");
     }
     return 0;

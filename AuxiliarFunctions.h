@@ -37,7 +37,7 @@ public:
          *
          * @paramt studentCode : Student code;
          */
-        Student* retStudent(const string &studentCode) const;
+        static Student* retStudent(const string &studentCode) ;
 
         /**
          * Returns the schedule with the UcClass given
@@ -116,7 +116,7 @@ public:
          *
          * @paramt request : request;
          */
-        bool requestBalance(Request &request);
+        static bool requestBalance(Request &request);
 
         /**
          * Checks if there is no conflict between the student’s schedule and the new class’s schedule
@@ -127,25 +127,11 @@ public:
         bool lessonOverlap(UC uc1, UC uc2);
 
         /**
-         * Get the total number of students in a class in a UC
-         *
-         * @paramt UcClass : Uc class;
-         */
-        int totalNumberOfStudentsUcClass(const UC& UcClass);
-
-        /**
          * Returns a vector with the students of an Uc
          *
          * @paramt UcCode : Uc code;
          */
         vector<Student> UcStudents(const string& UcCode);
-
-        /**
-         * Get the total numbers of students in a UC
-         *
-         * @paramt UcCode : Uc code;
-         */
-        int totalNumberOfStudentsUc(const string& UcCode);
 
         /**
          * Get the total number of pending requests
@@ -242,9 +228,9 @@ public:
         void seeUcStudents(const string &UcCode, const string &sort_);
 
         /**
-         * Returns the number of students of a given Class
+         * Returns the number of students of a given Class and Uc
          *
-         * @paramt UcClass : Uc class;
+         * @paramt UcClass : Uc code, Class code;
          */
         static int numberClassStudents(const UC& UcClass);
 
@@ -253,13 +239,6 @@ public:
          *
          * @paramt UcCode : Uc code;
          */
-        int numberUcStudents(const string &UcCode);
-
-        /**
-         * Returns the number of students of a given Lesson
-         *
-         * @paramt uc : Uc code and Class code;
-         */
-        int numberLessonsStudents(const UC uc);
+        static int numberUcStudents(const string &UcCode);
 };
 #endif //AED2324_PRJ1_G1207_AUXILIARFUNCTIONS_H

@@ -2,6 +2,10 @@
 
 using namespace std;
 
+vector<Lesson> CsvAndVectors::LessonsVector;
+vector<Student> CsvAndVectors::StudentsVector;
+vector<pair<string, set<string>>> CsvAndVectors::ClassesPerUcVector;
+
 CsvAndVectors::CsvAndVectors() {}
 
 // this function stores information of 'classes.csv' file in a vector of objects of the class 'Lesson'

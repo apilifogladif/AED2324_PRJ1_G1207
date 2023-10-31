@@ -1,0 +1,13 @@
+int studentMenu()
+int lessonMenu()
+int ucMenu()
+int classMenu()
+int whichUc(int op1, string classCode)
+int main()
+
+CsvAndVectors CSVInfo;
+vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
+vector<pair<string, set<string>>> ClassesPerUcVector = CSVInfo.getClassesPerUcVector();
+vector<Student> StudentsVector = CSVInfo.getStudentsVector();
+
+AuxiliarFunctions func = AuxiliarFunctions();

@@ -59,3 +59,10 @@ bool Lesson::lessonOverlap(const Lesson& lesson) {
 bool Lesson::operator<(const Lesson &l) const {
     return this->startHour < l.getStartHour();
 }
+
+bool Lesson::operator==(const Lesson &l) const {
+    return this->uc.getClassCode() == l.getUc().getClassCode() && this->uc.getUcCode() == l.getUc().getUcCode() &&
+            this->weekday == l.getWeekday() && this->startHour == l.getStartHour() &&
+            this->duration == l.getDuration() && this->type == l.getType();
+}
+

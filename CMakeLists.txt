@@ -7,7 +7,6 @@ include_directories(.)
 
 add_executable(AED2324_PRJ1_G1207
         main.cpp
-        terminal.cpp
         AuxiliarFunctions.cpp
         CsvAndVectors.cpp
         Lesson.cpp

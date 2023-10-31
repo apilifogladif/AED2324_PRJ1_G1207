@@ -30,6 +30,7 @@ class Lesson {
          * @paramt type : private , Lesson type;
          */
         Lesson(string UcCode, string ClassCode, string weekday, double startHour, double duration, string type);
+
         /**
          * Returns the uc
          */
@@ -78,6 +79,13 @@ class Lesson {
          * @paramt l : lesson;
          */
         bool operator<(const Lesson& l) const;
+
+        /**
+         * Operator to compare equality between two lessons
+         *
+         * @paramt l : lesson;
+         */
+        bool operator==(const Lesson& l) const;
 };
 
 #endif //AED2324_PRJ1_G1207_LESSON_H

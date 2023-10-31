@@ -7,12 +7,12 @@
 
 AuxiliarFunctions::AuxiliarFunctions() {}
 
-Student* AuxiliarFunctions::retStudent(const string &studentCode) const{
+Student* AuxiliarFunctions::retStudent(const string &studentCode) {
     CsvAndVectors CSVInfo;
     vector<Student> students = CSVInfo.getStudentsVector();
-    for (auto student = students.begin(); student != students.end(); student++) {
-        if (student->getStudentCode() == studentCode) {
-            return const_cast<Student*>(&(*student));
+    for (auto &student : students) {
+        if (student.getStudentCode() == studentCode) {
+            return const_cast<Student*>(&student);
         }
     }
     return nullptr;
@@ -82,10 +82,6 @@ bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
     return false;
 }
 
-int AuxiliarFunctions::totalNumberOfStudentsUcClass(const UC& UcClass) {
-    return UCSchedule(UcClass)->getStudents().size();
-}
-
 vector<Student> AuxiliarFunctions::UcStudents(const string& UcCode) {
     vector<Student> UcStudents_;
     vector<Schedule> UcClasses_ = UcClasses(UcCode);
@@ -97,10 +93,6 @@ vector<Student> AuxiliarFunctions::UcStudents(const string& UcCode) {
     return UcStudents_;
 }
 
-int AuxiliarFunctions::totalNumberOfStudentsUc(const string& UcCode) {
-    return UcStudents(UcCode).size();
-}
-
 int AuxiliarFunctions::totalNumberOfPendingRequests() {
     return switchRequests.size() + enrollmentRequests.size() + removalRequests.size();
 }
@@ -110,8 +102,8 @@ UC AuxiliarFunctions::getCurrentClass(Request &request) {
     return request.getStudent().findUc(request.getUC().getUcCode());
 }
 bool AuxiliarFunctions::requestBalance(Request &request) {
-    int currentClass = totalNumberOfStudentsUcClass(getCurrentClass(request));
-    int newClass = totalNumberOfStudentsUcClass(request.getUC());
+    int currentClass = numberClassStudents(getCurrentClass(request));
+    int newClass = numberClassStudents(request.getUC());
     if ((newClass - currentClass) <= 4) return true;
     return false;
 }
@@ -137,7 +129,7 @@ bool AuxiliarFunctions::requestMax(Request &request) {
     if (UcClasses_[0].getStudents().size() == max) {
        max++;
     }
-    if (max < totalNumberOfStudentsUcClass(request.getUC())) {
+    if (max < numberClassStudents(request.getUC())) {
         return true;
     } else {
         return false;
@@ -298,9 +290,22 @@ void AuxiliarFunctions::seeUcStudents(const string& UcCode, const string& sort_)
 int AuxiliarFunctions::numberClassStudents(const UC &UcClass) {
     CsvAndVectors CSVInfo = CsvAndVectors();
     int count = 0;
-    for (auto student: CSVInfo.getStudentsVector()) {
+    for (auto &student: CSVInfo.getStudentsVector()) {
         for (UC uc: student.getUCs()) {
             if (uc == UcClass) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+int AuxiliarFunctions::numberUcStudents(const string &UcCode) {
+    CsvAndVectors CSVInfo = CsvAndVectors();
+    int count = 0;
+    for (auto &student: CSVInfo.getStudentsVector()) {
+        for (UC uc: student.getUCs()) {
+            if (uc.getUcCode() == UcCode) {
                 count++;
             }
         }

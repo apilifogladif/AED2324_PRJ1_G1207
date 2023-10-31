@@ -7,6 +7,8 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include "CsvAndVectors.h"
+
 using namespace std;
 
 // this class represents a schedule
@@ -15,16 +17,25 @@ class Schedule {
         set<Lesson> lessons;
         set<Student> students;
         UC UcClass;
+        Student student;
     public:
         /**
          * Class constructor
          *
-         * Sets lessons
+         * Sets lessons and students from a specific Class, Uc or Class and Uc
          *
-         * @paramt lessons : private , Lessons to allocate to the students;
+         * @paramt ucCLass: Class and Uc of the schedule;
          */
         Schedule(UC ucClass);
-        Schedule(set<Lesson> lessons, UC ucClass);
+
+        /**
+         * Class constructor
+         *
+         * Sets lessons from a specific student
+         *
+         * @paramt StudentCode: Student Code;
+         */
+        Schedule(const string& StudentCode);
 
         /**
          * Adds a lesson to the schedule
@@ -38,7 +49,7 @@ class Schedule {
          *
          * @paramt lesson : Lesson;
          */
-        void removeLesson(const Lesson& lesson);
+        void removeLesson(Lesson& lesson);
 
         /**
          * Returns a lesson from the schedule

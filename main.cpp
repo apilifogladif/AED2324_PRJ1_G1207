@@ -406,31 +406,31 @@ int main() {
 
     switch (op) {
         case 1:
-            cout << "Write the code of the class: ";
+            cout << "Write the code of the class (yLEICxx; y->year, xx->class): ";
             cin >> classCode;
             cout << endl;
             classMenu(classCode);
             main();
 
         case 2:
-            cout << "Write the code of the class: ";
+            cout << "Write the code of the class (yLEICxx; y->year, xx->class): ";
             cin >> classCode;
             cout << endl;
-            cout << "Write the code of the uc: ";
+            cout << "Write the code of the uc (L.EICxxx or UPxxx): ";
             cin >> UcCode;
             cout << endl;
             lessonMenu(classCode, UcCode);
             main();
 
         case 3:
-            cout << "Write the code of the student: ";
+            cout << "Write the code of the student (only numbers): ";
             cin >> StudentCode;
             cout << endl;
             studentMenu(StudentCode);
             main();
 
         case 4:
-            cout << "Write the code of the uc: ";
+            cout << "Write the code of the uc (L.EICxxx or UPxxx): ";
             cin >> UcCode;
             cout << endl;
             ucMenu(UcCode);

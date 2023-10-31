@@ -16,7 +16,6 @@ using namespace std;
 
 class AuxiliarFunctions {
     private:
-        set<Student> students;
         vector<Schedule> schedules;
         queue<Request> enrollmentRequests;
         queue<Request> removalRequests;
@@ -29,6 +28,10 @@ class AuxiliarFunctions {
         vector<rejectedRequests_> rejectedRequests;
 
 public:
+        /**
+        * Class constructor
+        */
+        AuxiliarFunctions();
         /**
          * Returns the student with the studentCode given
          *
@@ -220,6 +223,8 @@ public:
          */
         void seeUcSchedule(const string& UcCode);
 
+        void seeLessonSchedule(UC uc);
+
         /**
          * Prints the students of a given class
          *
@@ -235,5 +240,26 @@ public:
          * @paramt order_ : Way to sort the students of the Uc;
          */
         void seeUcStudents(const string &UcCode, const string &sort_);
+
+        /**
+         * Returns the number of students of a given Class
+         *
+         * @paramt UcClass : Uc class;
+         */
+        static int numberClassStudents(const UC& UcClass);
+
+        /**
+         * Returns the number of students of a given Class
+         *
+         * @paramt UcCode : Uc code;
+         */
+        int numberUcStudents(const string &UcCode);
+
+        /**
+         * Returns the number of students of a given Lesson
+         *
+         * @paramt uc : Uc code and Class code;
+         */
+        int numberLessonsStudents(const UC uc);
 };
 #endif //AED2324_PRJ1_G1207_AUXILIARFUNCTIONS_H

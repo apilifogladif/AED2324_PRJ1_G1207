@@ -41,9 +41,12 @@ void Student::removeUC(const UC &uc) {
 UC Student::changeUC(const UC &uc) {
     for (auto & i : this->ucs) {
         if (uc.getUcCode() == i.getUcCode()) {
+            UC old_uc = i;
             i.setClassCode(uc.getClassCode());
+            return old_uc;
         }
     }
+    return UC();
 }
 
 UC Student::findUc(const string& UcCode) const{
@@ -52,6 +55,7 @@ UC Student::findUc(const string& UcCode) const{
             return uc;
         }
     }
+    return UC();
 }
 
 bool Student::Enrolled(const string& UcCode) {
@@ -73,5 +77,7 @@ bool Student::operator==(const Student &s) const {
 }
 
 void Student::printUcAndClass() const {
-    cout << UcClass.getUcCode() << " " << UcClass.getClassCode() << endl;
+    for (auto uc: ucs) {
+        cout << uc.getUcCode() << " " << uc.getClassCode() << endl;
+    }
 }

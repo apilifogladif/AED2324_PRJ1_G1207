@@ -71,15 +71,16 @@ void switchRequest(Student *student) {
 }
 void submitRequest(int op) {
     string studentCode;
-    cout << "Insert your student code (eg.: up20xxxxxxx): ";
+    cout << "Insert your student code (eg.: 20xxxxxxx): ";
     cin >> studentCode;
     cout << endl;
     AuxiliarFunctions func;
     Student *student = func.retStudent(studentCode);
-    if (student == nullptr) {
+    while (student == nullptr) {
         cout << "Invalid student code" << endl;
-        cout << "Insert your student code (eg.: up20xxxxxxx): ";
+        cout << "Insert your student code (eg.: 20xxxxxxx): ";
         cin >> studentCode;
+        student = func.retStudent(studentCode);
     }
     switch(op) {
         case 1:

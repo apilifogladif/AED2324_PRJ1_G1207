@@ -5,8 +5,11 @@
 #include <iostream>
 #include "CsvAndVectors.h"
 
+AuxiliarFunctions::AuxiliarFunctions() {}
 
 Student* AuxiliarFunctions::retStudent(const string &studentCode) const{
+    CsvAndVectors CSVInfo;
+    vector<Student> students = CSVInfo.getStudentsVector();
     for (auto student = students.begin(); student != students.end(); student++) {
         if (student->getStudentCode() == studentCode) {
             return const_cast<Student*>(&(*student));
@@ -217,7 +220,6 @@ void AuxiliarFunctions::seePendingRequests() {
     }
 }
 
-// help me pls
 void AuxiliarFunctions::seeRejectedRequests() {
     for (auto i: rejectedRequests) {
         i.request.printRequest();
@@ -225,7 +227,6 @@ void AuxiliarFunctions::seeRejectedRequests() {
     }
 }
 
-// por completar
 void AuxiliarFunctions::seeStudentSchedule(const string& StudentCode) const {
     Student* student = retStudent(StudentCode);
     vector<UC> studentsClasses = student->getUCs();
@@ -241,13 +242,18 @@ void AuxiliarFunctions::seeStudentSchedule(const string& StudentCode) const {
     }
 }
 
-// por completar
+// TODO
 void AuxiliarFunctions::seeClassSchedule(const string& ClassCode) {
 
 }
 
-// por completar
+// TODO
 void AuxiliarFunctions::seeUcSchedule(const string& UcCode) {
+
+}
+
+// TODO
+void AuxiliarFunctions::seeLessonSchedule(UC uc) {
 
 }
 
@@ -255,6 +261,17 @@ void AuxiliarFunctions::seeClassStudents(const UC& UcClass, const string& order_
     Schedule* schedule = UCSchedule(UcClass);
     cout << "Class " << UcClass.getClassCode() << ", UC " << UcClass.getUcCode() << endl;
     cout << "Students enrolled: \n";
+
+    CsvAndVectors CSVInfo = CsvAndVectors();
+    for (auto student: CSVInfo.getStudentsVector()) {
+        for (UC uc: student.getUCs()) {
+            if (uc == UcClass) {
+                schedule->addStudent(student);
+                break;
+            }
+        }
+    }
+
     schedule->sortStudents(order_);
 }
 
@@ -276,5 +293,18 @@ void AuxiliarFunctions::seeUcStudents(const string& UcCode, const string& sort_)
     for (const Student& student: sorted) {
         student.printUcAndClass();
     }
+}
+
+int AuxiliarFunctions::numberClassStudents(const UC &UcClass) {
+    CsvAndVectors CSVInfo = CsvAndVectors();
+    int count = 0;
+    for (auto student: CSVInfo.getStudentsVector()) {
+        for (UC uc: student.getUCs()) {
+            if (uc == UcClass) {
+                count++;
+            }
+        }
+    }
+    return count;
 }
 

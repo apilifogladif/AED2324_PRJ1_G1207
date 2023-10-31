@@ -29,8 +29,8 @@ class CsvAndVectors {
         vector<Student> getStudentsVector();
 
         //TODO: funções opostas, ou seja, passar as alterações do vetor para os ficheiros csv
-        void setFromLessonsVector();
-        void setFromClassesPerUcVector();
+        static void setFromLessonsVector();
+        static void setFromClassesPerUcVector();
         void setFromStudentsVector();
 };
 

@@ -98,11 +98,51 @@ vector<Student> CsvAndVectors::getStudentsVector() {
     return StudentsVector;
 }
 
-//TODO: eu trato disto hoje à noite (filipafidalgo - 30/10)
-//void CsvAndVectors::setFromLessonsVector() {
-//    std::string fileName = "classes.csv";
-//
-//
-//}
-//void CsvAndVectors::setFromClassesPerUcVector() {}
-//void CsvAndVectors::setFromStudentsVector() {}
+void CsvAndVectors::setFromLessonsVector() {
+    std::string fileName = "data/classes.csv";
+    std::ofstream out(fileName);
+
+    //clear content from csv file
+    out.open("data/classes.csv", std::ofstream::out | std::ofstream::trunc);
+    out.close();
+
+    out << "ClassCode,UcCode,Weekday,StartHour,Duration,Type" << "\n";
+    for (const auto & lesson : LessonsVector) {
+        out << lesson.getUc().getClassCode() << "," << lesson.getUc().getUcCode() << "," <<
+               lesson.getWeekday() << "," << lesson.getStartHour() << "," <<
+               lesson.getDuration() << "," << lesson.getType() << "\n";
+    }
+}
+
+void CsvAndVectors::setFromClassesPerUcVector() {
+    std::string fileName = "data/classes_per_uc.csv";
+    std::ofstream out(fileName);
+
+    //clear content from csv file
+    out.open("data/classes_per_uc.csv", std::ofstream::out | std::ofstream::trunc);
+    out.close();
+
+    out << "UcCode,ClassCode" << "\n";
+    for (auto &Uc : ClassesPerUcVector) {
+        for (string Class: Uc.second) {
+            out << Uc.first << "," << Class << "\n";
+        }
+    }
+}
+
+void CsvAndVectors::setFromStudentsVector() {
+    std::string fileName = "data/students_classes.csv";
+    std::ofstream out(fileName);
+
+    //clear content from csv file
+    out.open("data/students_classes.csv", std::ofstream::out | std::ofstream::trunc);
+    out.close();
+
+    out << "StudentCode,StudentName,UcCode,ClassCode" << "\n";
+    for (auto &student : StudentsVector) {
+        for(auto &ucClass: student.getUCs()) {
+            out << student.getStudentCode() << "," << student.getStudentName() << "," << ucClass.getUcCode() <<
+                "," << ucClass.getClassCode() << "\n";
+        }
+    }
+}

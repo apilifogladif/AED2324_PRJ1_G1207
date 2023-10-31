@@ -27,9 +27,13 @@ int main() {
     string classCode;
     string UcCode;
 
-    vector<Lesson> LessonsVector = getLessonsVector();
-    vector<pair<string, set<string>>> ClassesPerUcVector = getClassesPerUcVector();
-    vector<Student> StudentsVector = getStudentsVector();
+    CsvAndVectors getInfo;
+    vector<Lesson> LessonsVector = getInfo.getLessonsVector();
+    vector<pair<string, set<string>>> ClassesPerUcVector = getInfo.getClassesPerUcVector();
+    vector<Student> StudentsVector = getInfo.getStudentsVector();
+
+    AuxiliarFunctions func = AuxiliarFunctions();
+
     switch (op) {
         case 1:
             cout << "Write the code of the class: ";
@@ -53,7 +57,7 @@ int main() {
             }
             switch (op) {
                 case 1:
-                    //draw schedule
+                    func.seeClassSchedule(classCode);
                 case 2:
 
                 case 3:
@@ -87,7 +91,7 @@ int main() {
             }
             switch (op) {
                 case 1:
-                    //draw schedule
+                    func.seeLessonSchedule(UC(classCode, UcCode));
                 case 2:
 
                 case 3:
@@ -117,7 +121,7 @@ int main() {
             }
             switch (op) {
                 case 1:
-                    //draw schedule
+                    func.seeStudentSchedule(StudentCode);
                 case 2:
                     RequestMenu();
                 case 3:
@@ -146,7 +150,7 @@ int main() {
             }
             switch (op) {
                 case 1:
-                    //draw schedule
+                    func.seeUcSchedule(UcCode);
                 case 2:
 
                 case 3:

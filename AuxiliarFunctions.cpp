@@ -277,7 +277,7 @@ void AuxiliarFunctions::seeUcStudents(const string& UcCode, const int& sort_) {
         sort(sorted.rbegin(), sorted.rend());
     }
     for (const Student& student: sorted) {
-        student.printUcAndClass();
+        cout << student.getStudentCode() << " " << student.getStudentName() << endl;
     }
 }
 
@@ -307,7 +307,7 @@ void AuxiliarFunctions::seeYearStudents(int year, int sort_) {
         sort(students.rbegin(), students.rend());
     }
     for (const Student& student: students) {
-        student.printUcAndClass();
+        cout << student.getStudentCode() << " " << student.getStudentName() << endl;
     }
 }
 

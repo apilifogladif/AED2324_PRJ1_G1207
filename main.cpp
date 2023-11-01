@@ -38,7 +38,7 @@ void leaveRequest(Student *student) {
     for (const UC& uc: student->getUCs()) {
         if (uc.getUcCode() == UcCode) {
             func3.concludeRemoval(*student, uc);
-            cout << "Enrollment request submitted." << endl;
+            cout << "Removal request submitted." << endl;
         }
     }
 }
@@ -88,24 +88,6 @@ void submitRequest(int op) {
             switchRequest(student);
             break;
     }
-}
-
-// Menu for the user choose which type of request he wants (enroll in an UC, leave an UC, change an UC
-int RequestMenu() {
-    int op = 0;
-    cout << endl << "----------------------------" << endl;
-    cout << endl << "      Request Menu   " << endl;
-    cout << endl << "----------------------------" << endl;
-    cout << "1 - Enroll in an UC." << endl;
-    cout << "2 - Leave an UC." << endl;
-    cout << "3 - Switch an UC." << endl;
-    cout << "Write the number of what you want to do: ";
-    cin >> op;
-    while (cin.fail() || op < 1 || op > 3) {
-        cout << "Invalid number! Write the number of what you want to do: " << endl;
-        cin >> op;
-    }
-    submitRequest(op);
 }
 
 int whichUc(int op1, const string& classCode) {
@@ -257,9 +239,9 @@ int listingMenu() {
             func.seeUcStudents(UcCode, op);
             break;
         case 4:
-            return 0;
+            return 1;
         case 5:
-            system("exit");
+            return 0;
     }
 
     cout << "1 - Return to Uc Menu" << endl;
@@ -281,12 +263,14 @@ int listingMenu() {
 int scheduleMenu() {
     AuxiliarFunctions func = AuxiliarFunctions();
     int op = 0;
-    cout << endl << "----------------------------" << endl;
-    cout << endl << "      Lesson Menu   " << endl;
-    cout << endl << "----------------------------" << endl;
-    cout << "1 - Show the schedule of this lesson." << endl;
-    cout << "2 - Return to Main Menu." << endl;
-    cout << "3 - Quit." << endl;
+    cout << endl << "-----------------------------------" << endl;
+    cout << endl << "     Search for schedules of...    " << endl;
+    cout << endl << "-----------------------------------" << endl;
+    cout << "1 - an Uc." << endl;
+    cout << "2 - a Class." << endl;
+    cout << "3 - a Student." << endl;
+    cout << "4 - Return to main menu." << endl;
+    cout << "5 - Quit." << endl;
     cout << "Write the number of what you want to do: ";
     cin >> op;
     cout << endl;
@@ -295,14 +279,51 @@ int scheduleMenu() {
         cin >> op;
         cout << endl;
     }
+    string UcCode;
+    string ClassCode;
+    string StudentCode;
+    CsvAndVectors CSVInfo;
+    CSVInfo.createClassesAndUcSet();
+    set<string> ClassesSet;
+    set<string> UcSet;
+    set<string> StudentsSet;
+
     switch (op) {
         case 1:
-            func.seeLessonSchedule(UC(UcCode, classCode));
+            cout << "Write the code of the Uc (L.EICxxx or UPxxx): ";
+            cin >> UcCode;
+            UcSet = CSVInfo.getUcSet();
+            while (cin.fail() || UcSet.find(UcCode) == UcSet.end()) {
+                cout << "Invalid number! Write the code of the Uc (L.EICxxx or UPxxx): " << endl;
+                cin >> op;
+                cout << endl;
+            }
+            func.seeUcSchedule(UcCode);
             break;
         case 2:
-            return 0;
+            cout << "Write the code of the Class (yLEICxx; y->year, xx->class): ";
+            cin >> ClassCode;
+            ClassesSet = CSVInfo.getClassesSet();
+            while (cin.fail() || ClassesSet.find(ClassCode) == ClassesSet.end()) {
+                cout << "Invalid number! Write the code of the Class (yLEICxx; y->year, xx->class): " << endl;
+                cin >> op;
+                cout << endl;
+            }
+            func.seeClassSchedule(ClassCode);
         case 3:
-            system("exit");
+            cout << "Write the code of the Student (eg.: 20xxxxxxx): ";
+            cin >> StudentCode;
+            StudentsSet = CSVInfo.getStudentsSet();
+            while (cin.fail() || StudentsSet.find(StudentCode) == StudentsSet.end()) {
+                cout << "Invalid number! Write the code of the Student (eg.: 20xxxxxxx): " << endl;
+                cin >> op;
+                cout << endl;
+            }
+            func.seeStudentSchedule(StudentCode);
+        case 4:
+            return 1;
+        case 5:
+            return 0;
     }
 
     cout << "1 - Return to Lesson Menu" << endl;
@@ -318,76 +339,33 @@ int scheduleMenu() {
     }
 
     if (op == 3) system("exit");
-    else if (op == 1) lessonMenu(classCode, UcCode);
+    else if (op == 1) scheduleMenu();
     return 0;
 }
 
+// Menu for the user choose which type of request he wants (enroll in an UC, leave an UC, change an UC
 int requestMenu() {
-    AuxiliarFunctions func = AuxiliarFunctions();
     int op = 0;
     cout << endl << "----------------------------" << endl;
-    cout << endl << "      Uc Menu   " << endl;
+    cout << endl << "      Request Menu   " << endl;
     cout << endl << "----------------------------" << endl;
-    cout << "1 - Show the schedule of this uc." << endl;
-    cout << "2 - Number of students in this uc." << endl;
-    cout << "3 - Show sorted students." << endl;
-    cout << "4 - Return to Main Menu." << endl;
+    cout << "1 - Enroll in an UC." << endl;
+    cout << "2 - Leave an UC." << endl;
+    cout << "3 - Switch an UC." << endl;
+    cout << "4 - Return to main menu." << endl;
     cout << "5 - Quit." << endl;
     cout << "Write the number of what you want to do: ";
     cin >> op;
-    cout << endl;
-    while (cin.fail() || op < 1 || op > 5) {
-        cout << "Invalid number! Write the number of what you want to do: " << endl;
-        cin >> op;
-        cout << endl;
-    }
-
-    CsvAndVectors CSVInfo;
-    vector<Student> StudentsVector = CSVInfo.getStudentsVector();
-    int count = 0;
-
-    switch (op) {
-        case 1:
-            func.seeUcSchedule(UcCode);
-            break;
-
-        case 2:
-            for (auto &student : StudentsVector) {
-                if (student.findUc(UcCode).getClassCode() != "") {
-                    count++;
-                }
-            }
-            cout << "Number of students: " << count << endl;
-
-        case 3:
-            for (auto &student : StudentsVector) {
-                if (student.findUc(UcCode).getClassCode() != "") {
-                    cout << student.getStudentCode() << "," << student.getStudentName() << endl;
-                }
-            }
-
-        case 4:
-            return 0;
-        case 5:
-            system("exit");
-    }
-
-    cout << "1 - Return to Uc Menu" << endl;
-    cout << "2 - Return to Main Menu" << endl;
-    cout << "3 - Quit." << endl;
-    cout << "Write the number of what you want to do: ";
-    cin >> op;
-    cout << endl;
+    if (op == 4) return 1;
+    if (op == 5) return 0;
     while (cin.fail() || op < 1 || op > 3) {
         cout << "Invalid number! Write the number of what you want to do: " << endl;
         cin >> op;
-        cout << endl;
     }
-    if (op == 3) system("exit");
-    else if (op == 1) ucMenu(UcCode);
-    return 0;
+    submitRequest(op);
 }
 
+//TODO
 int pendingRequests() {}
 int processedRequest() {}
 

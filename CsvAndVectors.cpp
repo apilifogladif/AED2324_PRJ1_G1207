@@ -86,7 +86,7 @@ void CsvAndVectors::createLessonsVector() {
         getline(s, startHour, ',');
         getline(s, duration, ',');
         getline(s, type);
-        LessonsVector.emplace_back(UcCode, classCode, weekDay, stod(startHour), stod(duration), type);
+        LessonsVector.emplace_back(UcCode, classCode, weekDay, stof(startHour), stof(duration), type);
     }
 }
 

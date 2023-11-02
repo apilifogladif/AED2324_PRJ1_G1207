@@ -40,6 +40,7 @@ Schedule::Schedule(UC ucClass) {
         }
     }
 }
+
 // schedule of a student
 Schedule::Schedule(const string& StudentCode) {
     CsvAndVectors CSVInfo;
@@ -89,13 +90,18 @@ set<Lesson> Schedule::getLesson() const {
 
 void Schedule::drawSchedule() const {
     vector<string> v = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+    bool exists = false;
     for (const string& day : v) {
+        exists = false;
         cout << day << "\n";
         for (const Lesson& l: this->lessons) {
             if (l.getWeekday() == day) {
                 l.drawLesson();
+                exists = true;
             }
         }
+        if (!exists) cout << ">> There is no lessons in this day." << endl;
+        cout << endl;
     }
 }
 
@@ -114,6 +120,7 @@ set<Student> Schedule::getStudents() {
 void Schedule::addStudent(const Student& student) {
     students.insert(student);
 }
+
 void Schedule::removeStudent(const Student& student) {
     students.erase(student);
 }
@@ -133,8 +140,8 @@ void Schedule::sortStudents(const int &sort_) {
             return A.getStudentName() < B.getStudentName();
         });
     } else if (sort_ == 2) {
-        sort(sorted.rbegin(), sorted.rend(), [](Student &A, Student &B) {
-            return A.getStudentName() < B.getStudentName();
+        sort(sorted.begin(), sorted.end(), [](Student &A, Student &B) {
+            return A.getStudentName() > B.getStudentName();
         });
     } else if (sort_ == 3) {
         sort(sorted.begin(), sorted.end());

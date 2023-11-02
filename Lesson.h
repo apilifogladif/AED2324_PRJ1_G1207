@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include "UC.h"
+#include <cmath>
+#include <iomanip>
 
 using namespace std;
 
@@ -12,9 +14,9 @@ class Lesson {
     private:
         UC uc;
         string weekday;
-        double startHour;
-        double endHour;
-        double duration;
+        float startHour;
+        float endHour;
+        float duration;
         string type;
     public:
         /**
@@ -29,7 +31,7 @@ class Lesson {
          * @paramt duration : private , Lesson duration;
          * @paramt type : private , Lesson type;
          */
-        Lesson(string UcCode, string ClassCode, string weekday, double startHour, double duration, string type);
+        Lesson(string UcCode, string ClassCode, string weekday, float startHour, float duration, string type);
 
         /**
          * Returns the uc
@@ -44,22 +46,25 @@ class Lesson {
         /**
          * Returns the startHour of the lesson
          */
-        double getStartHour() const;
+        float getStartHour() const;
 
         /**
          * Returns the endHour of the lesson
          */
-        double getEndHour() const;
+        float getEndHour() const;
 
         /**
          * Return the duration of the lesson
          */
-        double getDuration() const;
+        float getDuration() const;
 
         /**
          * Returns the type of the lesson (T, P, PL)
          */
         string getType() const;
+
+        // convert the decimal time to a string
+        void timeInHoursAndMinutes() const;
 
         /**
          * Prints the startHour, the endHour and the type of the lesson (T, TP, PL)

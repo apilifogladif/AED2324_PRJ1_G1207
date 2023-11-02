@@ -12,22 +12,24 @@
 #include <vector>
 #include <queue>
 
+
 using namespace std;
 
 class AuxiliarFunctions {
     private:
         vector<Schedule> schedules;
-        queue<Request> enrollmentRequests;
-        queue<Request> removalRequests;
-        queue<Request> switchRequests;
         struct rejectedRequests_ {
             Request request;
             string reason;
             rejectedRequests_(Request request_, string reason_) : request(std::move(request_)), reason(std::move(reason_)) {};
         };
-        vector<rejectedRequests_> rejectedRequests;
 
     public:
+
+        static queue<Request> enrollmentRequests;
+        static queue<Request> removalRequests;
+        static queue<Request> switchRequests;
+        static vector<rejectedRequests_> rejectedRequests;
         /**
         * Class constructor
         */
@@ -38,13 +40,6 @@ class AuxiliarFunctions {
          * @paramt studentCode : Student code;
          */
         static Student retStudent(const string &studentCode) ;
-
-//        /**
-//         * Returns the schedule with the UcClass given
-//         *
-//         * @paramt UcClass : Uc class;
-//         */
-//        Schedule* UCSchedule(const UC& UcClass); // falta complexidade
 
         /**
          * Concludes the enrollment request by adding that request to the queue of enrollmentRequests
@@ -126,6 +121,8 @@ class AuxiliarFunctions {
          * Get the total number of pending requests
          */
         int totalNumberOfPendingRequests();
+
+        int totalNumberOfRejectedRequests();
 
         /**
          * Get request current UC Class

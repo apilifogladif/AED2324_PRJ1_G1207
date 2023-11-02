@@ -24,46 +24,60 @@ class Lesson {
          *
          * Sets ClassCode, UcCode, weekday, startHour, endHour (startHour + duration) and type
          *
-         * @paramt ClassCode : private , Class code;
-         * @paramt UcCode : private , Curricular unit code;
-         * @paramt weekday : private , Day of the week when the lesson happens;
-         * @paramt startHour : private , Lesson start time;
-         * @paramt duration : private , Lesson duration;
-         * @paramt type : private , Lesson type;
+         * @param ClassCode : private , Class code;
+         * @param UcCode : private , Curricular unit code;
+         * @param weekday : private , Day of the week when the lesson happens;
+         * @param startHour : private , Lesson start time;
+         * @param duration : private , Lesson duration;
+         * @param type : private , Lesson type;
          */
         Lesson(string UcCode, string ClassCode, string weekday, float startHour, float duration, string type);
 
         /**
          * Returns the uc
+         *
+         * @return uc
          */
         UC getUc() const;
 
         /**
          * Returns the weekday of the lesson
+         *
+         * @return weekday
          */
         string getWeekday() const;
 
         /**
          * Returns the startHour of the lesson
+         *
+         * @return startHour
          */
         float getStartHour() const;
 
         /**
          * Returns the endHour of the lesson
+         *
+         * @return endHour
          */
         float getEndHour() const;
 
         /**
          * Return the duration of the lesson
+         *
+         * @return duration
          */
         float getDuration() const;
 
         /**
-         * Returns the type of the lesson (T, P, PL)
+         * Returns the type of the lesson
+         *
+         * @return string with type : T,P,PL or TP
          */
         string getType() const;
 
-        // convert the decimal time to a string
+        /**
+         * Convert the decimal time to a string
+         */
         void timeInHoursAndMinutes() const;
 
         /**
@@ -74,21 +88,24 @@ class Lesson {
         /**
          * Checks if two classes are compatible
          *
-         * @paramt lesson : lesson;
+         * @param lesson : lesson;
+         * @return bool : true or false
          */
         bool lessonOverlap(const Lesson& lesson);
 
         /**
          * Operator to compare the times of two Lessons
          *
-         * @paramt l : lesson;
+         * @param l : lesson;
+         * @return bool : true or false
          */
         bool operator<(const Lesson& l) const;
 
         /**
          * Operator to compare equality between two lessons
          *
-         * @paramt l : lesson;
+         * @param l : lesson;
+         * @return bool : true or false
          */
         bool operator==(const Lesson& l) const;
 };

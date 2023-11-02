@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <utility>
 
+Schedule::Schedule() {}
+
 Schedule::Schedule(UC ucClass) {
     this->UcClass = std::move(ucClass);
     CsvAndVectors CSVInfo;

@@ -2,14 +2,16 @@
 
 using namespace std;
 
+CsvAndVectors::CsvAndVectors() {}
+
 vector<Lesson> CsvAndVectors::LessonsVector;
-vector<Student> CsvAndVectors::StudentsVector;
 vector<pair<string, set<string>>> CsvAndVectors::ClassesPerUcVector;
+vector<Student> CsvAndVectors::StudentsVector;
+vector<Request> CsvAndVectors::RequestsVector;
+set<string> CsvAndVectors::StudentsSet;
 set<string> CsvAndVectors::ClassesSet;
 set<string> CsvAndVectors::UcSet;
-set<string> CsvAndVectors::StudentsSet;
 
-CsvAndVectors::CsvAndVectors() {}
 
 
 void CsvAndVectors::createClassesAndUcSet() {
@@ -87,6 +89,37 @@ void CsvAndVectors::createLessonsVector() {
         getline(s, duration, ',');
         getline(s, type);
         LessonsVector.emplace_back(UcCode, classCode, weekDay, stof(startHour), stof(duration), type);
+    }
+}
+
+void CsvAndVectors::createRequestsVector() {
+    fstream file;
+    file.open("../data/requests.csv");
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open the file." << endl;
+        return;
+    }
+    string line;
+    getline(file, line);
+    string studentCode;
+    string studentName;
+    string description;
+    string type;
+    string status;
+    string reason;
+    while(getline(file, line)) {
+        stringstream s(line);
+        getline(s, studentCode, ',');
+        getline(s, studentName, ',');
+        getline(s, type, ',');
+        getline(s, description, ',');
+        getline(s, status, ',');
+        getline(s, reason);
+        Request request(Student(studentCode, studentName), UC(), type);
+        request.setStatus(status);
+        request.setReason(reason);
+        request.setDescription(description);
+        RequestsVector.push_back(request);
     }
 }
 
@@ -175,6 +208,11 @@ vector<Lesson> CsvAndVectors::getLessonsVector() {
     return LessonsVector;
 }
 
+vector<Request> CsvAndVectors::getRequestVector() {
+    createRequestsVector();
+    return RequestsVector;
+}
+
 vector<pair<string, set<string>>> CsvAndVectors::getClassesPerUcVector() {
     createClassesPerUcVector();
     return ClassesPerUcVector;
@@ -233,3 +271,23 @@ void CsvAndVectors::setFromStudentsVector() {
         }
     }
 }
+
+void CsvAndVectors::setRequestVector() {
+    std::string fileName = "../data/requests.csv";
+    std::ofstream out(fileName);
+
+    //clear content from csv file
+    out.open("../data/requests.csv", std::ofstream::out | std::ofstream::trunc);
+    out.close();
+
+    out << "StudentCode, StudentName, Type, Description -> Status, Reason (if rejected)" << "\n";
+    for (auto &request : RequestsVector) {
+        out << request.getStudent().getStudentCode() << ", " << request.getStudent().getStudentName() << ", " <<
+            request.getType() << ", " << request.getDescription() << " -> " << request.getStatus();
+        if (request.getStatus() == "Rejected") {
+            out << ", " << request.getReason();
+        }
+        out << endl;
+    }
+}
+

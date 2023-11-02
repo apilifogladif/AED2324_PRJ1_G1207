@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <string>
 #include "CsvAndVectors.h"
 
 using namespace std;
@@ -19,40 +20,43 @@ class Schedule {
         UC UcClass;
         Student student;
     public:
+        Schedule();
         /**
          * Class constructor
          *
-         * Sets lessons and students from a specific Class, Uc or Class and Uc
+         * Sets ucClass
          *
-         * @paramt ucCLass: Class and Uc of the schedule;
+         * @param ucCLass: Class and Uc of the schedule;
          */
         Schedule(UC ucClass);
 
         /**
          * Class constructor
          *
-         * Sets lessons from a specific student
+         * Sets StudentCode
          *
-         * @paramt StudentCode: Student Code;
+         * @param StudentCode: Student Code;
          */
         Schedule(const string& StudentCode);
 
         /**
          * Adds a lesson to the schedule
          *
-         * @paramt lesson : Lesson;
+         * @param lesson : Lesson;
          */
         void addLesson(const Lesson& lesson);
 
         /**
          * Removes a lesson from the schedule
          *
-         * @paramt lesson : Lesson;
+         * @param lesson : Lesson;
          */
         void removeLesson(Lesson& lesson);
 
         /**
          * Returns a lesson from the schedule
+         *
+         * @return
          */
         set<Lesson> getLesson() const;
 
@@ -64,38 +68,44 @@ class Schedule {
         /**
          * Verifies if it has the same UcCode
          *
-         * @paramt UcCode : Uc code;
+         * @param UcCode : Uc code;
+         * @return
          */
         bool hasSameUcCode(Schedule &UcCode);
 
         /**
          * Returns the Uc class
+         *
+         * @return
          */
         UC getUcClass();
 
         /**
          * Get students of a class
+         *
+         * @return
          */
         set<Student> getStudents();
 
         /**
          * Adds student to a class
          *
-         * @paramt student : student;
+         * @param student : student;
          */
         void addStudent(const Student& student);
 
         /**
          * Removes student from a class
          *
-         * @paramt student : student;
+         * @param student : student;
          */
         void removeStudent(const Student& student);
 
         /**
          * Operator to compare two schedules
          *
-         * @paramt schedule : shedule;
+         * @param schedule : shedule;
+         * @return
          */
         bool operator<(Schedule schedule);
 
@@ -107,7 +117,7 @@ class Schedule {
         /**
          * Sorts the students and prints them in the order that we asked for
          *
-         * @paramt sort_ : Way to sort the students of the Uc;
+         * @param sort_ : Way to sort the students of the Uc;
          */
         void sortStudents(const int &sort_);
 };

@@ -1,6 +1,7 @@
 #include "Student.h"
 #include <algorithm>
 #include <iostream>
+#include "CsvAndVectors.h"
 
 Student::Student() {
     this->studentCode = "";
@@ -31,11 +32,41 @@ vector<UC> Student::getUCs() const {
 
 void Student::addUC(const UC &uc) {
     this->ucs.push_back(uc);
+    CsvAndVectors CSVInfo;
+    CSVInfo.createStudentsVector();
+
+    int idx = this->binarySearchCsvStudentVector(0, CSVInfo.StudentsVector.size());
+    CSVInfo.StudentsVector[idx].getUCs().push_back(uc);
+    CSVInfo.setFromStudentsVector();
 }
 
 void Student::removeUC(const UC &uc) {
-    auto it = find(this->ucs.begin(),this->ucs.end(),uc);
+    CsvAndVectors CSVInfo;
+    CSVInfo.createStudentsVector();
+
+    auto it = find(this->ucs.begin(), this->ucs.end(), uc);
     this->ucs.erase(it);
+    int idx = this->binarySearchCsvStudentVector(0, CSVInfo.StudentsVector.size());
+    std::remove(CSVInfo.StudentsVector[idx].getUCs().begin(), CSVInfo.StudentsVector[idx].getUCs().end(), uc);
+    CSVInfo.setFromStudentsVector();
+}
+
+int Student::binarySearchCsvStudentVector(unsigned long left, unsigned long right) {
+    if (left > right) return -1; //not found
+
+    CsvAndVectors CSVInfo;
+
+    sort(CSVInfo.StudentsVector.begin(), CSVInfo.StudentsVector.end(), [](Student &A, Student &B) {
+        return A.getStudentCode() < B.getStudentCode();
+    });
+    unsigned long mid = left + (right - left) / 2;
+    if (CSVInfo.StudentsVector[mid].getStudentCode() == this->studentCode) {
+        return mid; // Found the UC object at index mid
+    }
+    else if (CSVInfo.StudentsVector[mid].getStudentCode() > this->studentCode) {
+        return binarySearchCsvStudentVector(left, mid - 1);
+    }
+    return binarySearchCsvStudentVector(mid + 1, right);
 }
 
 UC Student::changeUC(const UC &uc) {

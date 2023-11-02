@@ -7,7 +7,9 @@
 queue<Request> AuxiliarFunctions::enrollmentRequests;
 queue<Request> AuxiliarFunctions::removalRequests;
 queue<Request> AuxiliarFunctions::switchRequests;
-vector<AuxiliarFunctions::rejectedRequests_> AuxiliarFunctions::rejectedRequests;
+vector<Request> AuxiliarFunctions::rejectedRequests;
+vector<Request> AuxiliarFunctions::acceptedRequests;
+vector<Request> AuxiliarFunctions::allRequests;
 
 // O(1)
 AuxiliarFunctions::AuxiliarFunctions() {}
@@ -26,17 +28,17 @@ Student AuxiliarFunctions::retStudent(const string &studentCode) {
 
 // O(1)
 void AuxiliarFunctions::concludeEnrollment(Student student, UC UcClass) {
-    enrollmentRequests.emplace(&student, &UcClass, "Enrollment");
+    enrollmentRequests.emplace(student, UcClass, "Enrollment");
 }
 
 // O(1)
 void AuxiliarFunctions::concludeRemoval(Student student, UC UcClass) {
-    removalRequests.emplace(&student, &UcClass, "Removal");
+    removalRequests.emplace(student, UcClass, "Removal");
 }
 
 // O(1)
 void AuxiliarFunctions::concludeSwitch(Student student, UC UcClass) {
-    switchRequests.emplace(&student, &UcClass, "Switch");
+    switchRequests.emplace(student, UcClass, "Switch");
 }
 
 // O(log n) + O(mk) where n is the number of lines in classes_per_uc.csv, m is the number of lessons of the first class and k is the number of lessons of the second class
@@ -62,16 +64,15 @@ int AuxiliarFunctions::totalNumberOfRejectedRequests() {
 }
 
 // O(1)
-int AuxiliarFunctions::totalNumberOfPendingRequests() {
-    return switchRequests.size() + enrollmentRequests.size() + removalRequests.size();
+int AuxiliarFunctions::totalNumberOfAcceptedRequests() {
+    return acceptedRequests.size();
 }
-
 // O(m), where m is the number of classes associated in
 UC AuxiliarFunctions::getCurrentClass(Request &request) {
     return request.getStudent().findUc(request.getUC().getUcCode());
 }
 
-// O(log n), where n is the number of schedules 
+// O(log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
 bool AuxiliarFunctions::requestBalance(Request &request) {
     int currentClass = numberClassStudents(getCurrentClass(request));
     int newClass = numberClassStudents(request.getUC());
@@ -79,6 +80,7 @@ bool AuxiliarFunctions::requestBalance(Request &request) {
     return false;
 }
 
+// O(m log n + m*kl) : where m is the number of classes the student is in, n is the number of lines in classes_per_uc.csv, k is the number of lessons of the first class and l is the number of lessons of the second class
 bool AuxiliarFunctions::requestConflict(Request &request) {
     UC uc = request.getUC();
     Student student = request.getStudent();
@@ -91,9 +93,10 @@ bool AuxiliarFunctions::requestConflict(Request &request) {
     return false;
 }
 
-vector<Schedule> AuxiliarFunctions::UcClasses(const string& UcCode) {
+// O(n), where n is the number of schedules / lines in 'classes_per_uc.csv'
+vector<Schedule> AuxiliarFunctions::UcClasses(const string &UcCode) {
     vector<Schedule> classes;
-    for (Schedule class_: schedules) {
+    for (Schedule &class_: schedules) {
         if (class_.getUcClass().getUcCode() == UcCode) {
             classes.push_back(class_);
         }
@@ -101,6 +104,7 @@ vector<Schedule> AuxiliarFunctions::UcClasses(const string& UcCode) {
     return classes;
 }
 
+// O(n log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
 bool AuxiliarFunctions::requestMax(Request &request) {
     vector<Schedule> UcClasses_ = UcClasses(request.getUC().getUcCode());
     sort(UcClasses_.begin(), UcClasses_.end(), [](Schedule &class1, Schedule &class2) {
@@ -117,13 +121,20 @@ bool AuxiliarFunctions::requestMax(Request &request) {
     }
 }
 
+// O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
 void AuxiliarFunctions::verifySwapRequest(Request &request){
     if (!(requestBalance(request))) {
-        rejectedRequests.emplace_back(request, "The balance of class occupation is not maintained./n The difference between the number of students in the class can't be less than or equal to 4.");
+        request.setReason("The balance of class occupation is not maintained./n The difference between the number of students in the class can't be less than or equal to 4.");
+        request.setStatus("rejected");
+        rejectedRequests.push_back(request);
     } else if (requestConflict(request)) {
-        rejectedRequests.emplace_back(request, "There is conflict between the student’s schedule and the new class’s schedule.");
+        request.setReason("There is conflict between the student’s schedule and the new class’s schedule.");
+        request.setStatus("rejected");
+        rejectedRequests.push_back(request);
     } else if (requestMax(request)) {
-        rejectedRequests.emplace_back(request, "The capacity of the class has been exceeded.");
+        request.setReason("The capacity of the class has been exceeded.");
+        request.setStatus("rejected");
+        rejectedRequests.push_back(request);
     } else {
         Student student = retStudent(request.getStudent().getStudentCode());
         UC uc = Schedule(request.getUC()).getUcClass();
@@ -134,11 +145,16 @@ void AuxiliarFunctions::verifySwapRequest(Request &request){
     cout << endl;
 }
 
+// O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
 void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
     if (requestConflict(request)) {
-        rejectedRequests.emplace_back(request, "There is conflict between the student’s schedule and the new class’s schedule.");
+        request.setReason("There is conflict between the student’s schedule and the new class’s schedule.");
+        request.setStatus("rejected");
+        rejectedRequests.push_back(request);
     } else if (requestMax(request)) {
-        rejectedRequests.emplace_back(request, "The capacity of the class has been exceeded.");
+        request.setReason("The capacity of the class has been exceeded.");
+        request.setStatus("rejected");
+        rejectedRequests.push_back(request);
     } else {
         Student student = retStudent(request.getStudent().getStudentCode());
         UC uc = Schedule(request.getUC()).getUcClass();
@@ -148,13 +164,25 @@ void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
     cout << endl;
 }
 
+// O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
 void AuxiliarFunctions::verifyRemovalRequest(Request &request) {
-    Student student = retStudent(request.getStudent().getStudentCode());
-    UC uc = Schedule(request.getUC()).getUcClass();
-    student.removeUC(uc);
-    Schedule(uc).removeStudent(student);
+    if (!(requestBalance(request))) {
+        request.setReason("The balance of class occupation is not maintained./n The difference between the number of students in the class can't be less than or equal to 4.");
+        request.setStatus("rejected");
+        rejectedRequests.push_back(request);
+    } else {
+        Student student = retStudent(request.getStudent().getStudentCode());
+        UC uc = Schedule(request.getUC()).getUcClass();
+        student.removeUC(uc);
+        Schedule(uc).removeStudent(student);
+    }
 }
 
+// O(m) + O(log n * log n) + O(log k) + O(t log n + t*pl) + O(nlog n) where m is the number of classes of the student who is submitting the request,
+// n is the number of schedules / lines in 'classes_per_uc.csv',
+// k is the number of lines in 'students.csv'
+// t is the number of classes the student is in
+// p is the number of lessons of the first class and l is the number of lessons in the second class
 void AuxiliarFunctions::RequestsManager() {
 
     while (!(removalRequests.empty())) { // it has to be first
@@ -184,28 +212,22 @@ void AuxiliarFunctions::RequestsManager() {
 
 }
 
-void AuxiliarFunctions::seePendingRequests() {
-    queue<Request> pendingRemoval = removalRequests;
-    while (!(pendingRemoval.empty())) {
-        pendingRemoval.front().printRequest();
-        pendingRemoval.pop();
-    }
-    queue<Request> pendingSwitch = switchRequests;
-    while (!(pendingSwitch.empty())) {
-        pendingSwitch.front().printRequest();
-        pendingSwitch.pop();
-    }
-    queue<Request> pendingEnrollment = enrollmentRequests;
-    while (!(pendingEnrollment.empty())) {
-        pendingEnrollment.front().printRequest();
-        pendingEnrollment.pop();
+void AuxiliarFunctions::seeRejectedRequests() {
+    for (auto i: rejectedRequests) {
+        i.printRequest();
+        cout << " , reason:" << i.getReason();
     }
 }
 
-void AuxiliarFunctions::seeRejectedRequests() {
-    for (auto i: rejectedRequests) {
-        i.request.printRequest();
-        cout << " , reason:" << i.reason;
+void AuxiliarFunctions::seeAcceptedRequests() {
+    for (auto i: acceptedRequests) i.printRequest();
+}
+
+void AuxiliarFunctions::seeAllRequests() {
+    for (auto i: allRequests) {
+        i.printRequest();
+        cout << i.getStatus();
+        if (i.getStatus() == "Rejected") cout << " - " << i.getReason();
     }
 }
 
@@ -300,6 +322,15 @@ int AuxiliarFunctions::numberYearStudents(const int &Year) {
         if (y == Year) students.push_back(student);
     }
     return students.size();
+}
+
+void AuxiliarFunctions::getRequests() {
+    CsvAndVectors CSVInfo;
+    allRequests = CSVInfo.getRequestVector();
+    for (Request r : allRequests) {
+        if (r.getStatus() == "Accepted") acceptedRequests.push_back(r);
+        else rejectedRequests.push_back(r);
+    }
 }
 
 

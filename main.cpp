@@ -7,7 +7,12 @@
 using namespace std;
 
 // 0->quit; 1->main menu
-
+/**
+ * occupationSortMenu_case1 ????????????????????????????????????????????
+ *
+ * @param UcCode
+ * @param auxVector
+ */
 void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
@@ -57,6 +62,11 @@ void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector
     }
 }
 
+/**
+ * occupationSortMenu_case2 ???????????????????
+ * @param classCode
+ * @param auxVector
+ */
 void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVector) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
@@ -106,6 +116,11 @@ void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVec
     }
 }
 
+/**
+ * occupationSortMenu_case3 ?????????????????????????????????????
+ * @param year
+ * @param ClassesPerUcVectorOfYear
+ */
 void occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVectorOfYear) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
@@ -169,6 +184,14 @@ void occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVector
     }
 }
 
+/**
+ * sortMenu ???????????????????????????????????
+ *
+ * @param UcCode
+ * @param classCode
+ * @param year
+ * @return
+ */
 int sortMenu(const string& UcCode, const string& classCode, int year) {
     AuxiliarFunctions func;
     int op = 0;
@@ -225,6 +248,11 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
     return op;
 }
 
+/**
+ * verifyClass ?????????????????????????????
+ * @param ClassCode
+ * @return
+ */
 bool verifyClass(const string& ClassCode) {
     CsvAndVectors CSVInfo;
     set<string> ClassesSet = CSVInfo.getClassesSet();
@@ -232,6 +260,12 @@ bool verifyClass(const string& ClassCode) {
     return true;
 }
 
+/**
+ * verifyUc ?????????????????????????
+ *
+ * @param UcCode
+ * @return
+ */
 bool verifyUc(const string& UcCode) {
     CsvAndVectors CSVInfo;
     set<string> UcSet = CSVInfo.getUcSet();
@@ -239,6 +273,12 @@ bool verifyUc(const string& UcCode) {
     return true;
 }
 
+/**
+ * verifyStudent?????????????????????????
+ *
+ * @param StudentCode
+ * @return
+ */
 bool verifyStudent(const string& StudentCode) {
     CsvAndVectors CSVInfo;
     set<string> StudentsSet = CSVInfo.getStudentsSet();
@@ -246,6 +286,11 @@ bool verifyStudent(const string& StudentCode) {
     return true;
 }
 
+/**
+ * enrollRequest??????????????????????????
+ * @param student
+ * @return
+ */
 int enrollRequest(Student student) {
     string UcCode;
     string classCode;
@@ -265,9 +310,14 @@ int enrollRequest(Student student) {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
-    if (student.Enrolled(UcCode)) {
-        cout << "The student is already enrolled in this UC." << endl;
+
+    UC uc;
+    uc = student.findUc(UcCode);
+    if (uc.getUcCode() == "") {
+        cout << "The student is already enrolled in this UC.";
+        return 1;  //Main Menu
     }
+
     while (true) {
         cout << "Write the Class Code (yLEICxx; y->year, xx->class): ";
         if (cin >> classCode) {
@@ -284,8 +334,10 @@ int enrollRequest(Student student) {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
-    AuxiliarFunctions func2;
-    func2.concludeEnrollment(student, UC(UcCode, classCode));
+
+    AuxiliarFunctions func;
+    func.concludeEnrollment(student, UC(UcCode, classCode));
+    student.addUC(UC(UcCode, classCode));
     cout << "Enrollment request submitted." << endl;
 
     int op = 0;
@@ -308,9 +360,40 @@ int enrollRequest(Student student) {
         }
     }
     if (op == 1) return 1;
+    if (op == 2) {
+        cout << endl;
+        cout << "NOTE: if you quit now the requests you have made will be canceled. You must" << endl;
+        cout << "You must return to the main menu so that the requests can have effect." << endl;
+        cout << "If you want to see which requests were accepted and which were rejected, you must" << endl;
+        cout << "consult that in the designated options in the main menu." << endl;
+        cout << endl;
+        string option;
+        while (true) {
+            cout << "Are you sure you want to quit? Y/N  ";
+            if (cin >> option) {
+                if (option == "Y") return 0;
+                else if (option == "N") {
+                    func.RequestsManager();
+                    return 1;
+                }
+                else {
+                    cout << "Invalid answer! The answer should be Y (for Yes) or N (for No)." << endl;
+                }
+            } else {
+                cout << "Invalid input! Please enter a valid answer." << endl;
+                cin.clear();          // Clear the error state
+                cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+            }
+        }
+    }
     return 0;
 }
 
+/**
+ * leaveRequest ?????????????????????????????????
+ * @param student
+ * @return
+ */
 int leaveRequest(Student student) {
     string UcCode;
     string classCode;
@@ -330,16 +413,18 @@ int leaveRequest(Student student) {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
-    if (!(student.Enrolled(UcCode))) {
-        cout << "The student is not enrolled in this UC." << endl;
+
+    UC uc;
+    uc = student.findUc(UcCode);
+    if (uc.getUcCode() == "") {
+        cout << "This student is not enrolled in this Uc.";
+        return 1;  //Main Menu
     }
-    AuxiliarFunctions func3;
-    for (const UC& uc: student.getUCs()) {
-        if (uc.getUcCode() == UcCode) {
-            func3.concludeRemoval(student, uc);
-            cout << "Removal request submitted." << endl;
-        }
-    }
+
+    AuxiliarFunctions func;
+    func.concludeRemoval(student, uc);
+    student.removeUC(uc);
+    cout << "Removal request submitted." << endl;
 
     int op = 0;
     cout << "1 - Return to Main Menu." << endl;
@@ -361,53 +446,187 @@ int leaveRequest(Student student) {
         }
     }
     if (op == 1) return 1;
+    if (op == 2) {
+        cout << endl;
+        cout << "NOTE: if you quit now the requests you have made will be canceled. You must" << endl;
+        cout << "You must return to the main menu so that the requests can have effect." << endl;
+        cout << "If you want to see which requests were accepted and which were rejected, you must" << endl;
+        cout << "consult that in the designated options in the main menu." << endl;
+        cout << endl;
+        string option;
+        while (true) {
+            cout << "Are you sure you want to quit? Y/N  ";
+            if (cin >> option) {
+                if (option == "Y") return 0;
+                else if (option == "N") {
+                    func.RequestsManager();
+                    return 1;
+                }
+                else {
+                    cout << "Invalid answer! The answer should be Y (for Yes) or N (for No)." << endl;
+                }
+            } else {
+                cout << "Invalid input! Please enter a valid answer." << endl;
+                cin.clear();          // Clear the error state
+                cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+            }
+        }
+    }
     return 0;
 }
 
+/**
+ * switchRequest ???????????????????????
+ *
+ * @param student
+ * @return
+ */
 int switchRequest(Student student) {
     string UcCode;
+    string newUcCode;
     string classCode;
+    int op = 0;
+
+    cout << "-----------------------------" << endl;
+    cout << "         Switch Menu         " << endl;
+    cout << "-----------------------------" << endl;
+    cout << "1 - Switch an Uc." << endl;
+    cout << "2 - Switch a class from a Uc." << endl;
+    cout << endl;
     while (true) {
-        cout << "Write the Uc Code (L.EICxxx or UPxxx): ";
-        if (cin >> UcCode) {
-            if (verifyUc(UcCode)) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            if (op >= 1 && op <= 2) {
                 break;  // Input is valid, exit the loop
+            } else {
+                cout << "Invalid number! The number should be between 1 or 2." << endl;
             }
-            else {
-                cout << "Invalid Uc Code!" << endl;
-            }
-        }
-        else {
-            cout << "Invalid input! Please enter a valid Uc Code." << endl;
+        } else {
+            cout << "Invalid input! Please enter a valid number." << endl;
             cin.clear();          // Clear the error state
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
-    if (!(student.Enrolled(UcCode))) {
-        cout << "The student is not enrolled in this UC." << endl;
-    }
-    while (true) {
-        cout << "Write the Class Code (yLEICxx; y->year, xx->class): ";
-        if (cin >> classCode) {
-            if (verifyClass(classCode)) {
-                break;  // Input is valid, exit the loop
+
+    AuxiliarFunctions func;
+    CsvAndVectors CSVInfo;
+    vector<pair<string, set<string>>> ClassesPerUcVector;
+    vector<pair<string, int>> auxVector;
+    pair<string, int> auxPair;
+    string newClass;
+    int occup = 0;
+    int newClass_occup = INT_MAX;
+    UC newuc;
+    UC uc;
+
+    switch(op) {
+        case 1:
+            while (true) {
+               cout << "Write the Uc Code of the Uc you want to remove (L.EICxxx or UPxxx): ";
+                if (cin >> UcCode) {
+                    if (verifyUc(UcCode)) {
+                        break;  // Input is valid, exit the loop
+                    }
+                    else {
+                        cout << "Invalid Uc Code!" << endl;
+                    }
+                }
+                else {
+                   cout << "Invalid input! Please enter a valid Uc Code." << endl;
+                   cin.clear();          // Clear the error state
+                   cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+                }
             }
-            else {
-                cout << "Invalid Class Code!" << endl;
+
+            uc = student.findUc(UcCode);
+
+            if (uc.getUcCode() == "") {
+                cout << "This student is not enrolled in this Uc.";
+                return 1;  //Main Menu
             }
-        }
-        else {
-            cout << "Invalid input! Please enter a valid Class Code." << endl;
-            cin.clear();          // Clear the error state
-            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-        }
+
+            while (true) {
+                cout << "Write the Uc Code you want to add(L.EICxxx or UPxxx): ";
+                if (cin >> newUcCode) {
+                    if (verifyUc(newUcCode)) {
+                        break;  // Input is valid, exit the loop
+                    }
+                    else {
+                        cout << "Invalid Uc Code!" << endl;
+                    }
+                }
+                else {
+                    cout << "Invalid input! Please enter a valid Uc Code." << endl;
+                    cin.clear();          // Clear the error state
+                    cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+                }
+            }
+
+            ClassesPerUcVector = CSVInfo.getClassesPerUcVector();
+            for (pair<string, set<string>> p : ClassesPerUcVector) {
+                if (p.first == UcCode) {
+                    for (string Class : p.second) {
+                        occup = func.numberClassStudents(UC(UcCode, Class));
+                        if (occup < newClass_occup) {
+                            newClass_occup = occup;
+                            newClass = Class;
+                        }
+                    }
+                }
+            }
+            newuc = UC(newUcCode, newClass);
+
+            student.removeUC(uc);
+            student.addUC(newuc);
+
+        case 2:
+            while (true) {
+                cout << "Write the Uc Code (L.EICxxx or UPxxx): ";
+                if (cin >> UcCode) {
+                    if (verifyUc(UcCode)) {
+                        break;  // Input is valid, exit the loop
+                    }
+                    else {
+                        cout << "Invalid Uc Code!" << endl;
+                    }
+                }
+                else {
+                    cout << "Invalid input! Please enter a valid Uc Code." << endl;
+                    cin.clear();          // Clear the error state
+                    cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+                }
+            }
+            uc = student.findUc(UcCode);
+            if (uc.getUcCode() == "") {
+                cout << "This student is not enrolled in this Uc.";
+                return 1;  //Main Menu
+            }
+
+            while (true) {
+                cout << "Write the Class Code you want to switch to(yLEICxx; y->year, xx->class): ";
+                if (cin >> classCode) {
+                    if (verifyClass(classCode)) {
+                        break;  // Input is valid, exit the loop
+                    }
+                    else {
+                        cout << "Invalid Class Code!" << endl;
+                    }
+                }
+                else {
+                    cout << "Invalid input! Please enter a valid Class Code." << endl;
+                    cin.clear();          // Clear the error state
+                    cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+                }
+            }
+
+            newuc = UC(UcCode, newClass);
+            student.removeUC(uc);
+            student.addUC(newuc);
     }
-    AuxiliarFunctions func4;
-    Schedule schedule = Schedule(UC(UcCode, classCode));
-    func4.concludeSwitch(student, UC(UcCode, classCode));
+    func.concludeSwitch(student, newuc);
     cout << "Switch request submitted." << endl;
 
-    int op = 0;
+    op = 0;
     cout << "1 - Return to Main Menu." << endl;
     cout << "2 - Quit" << endl;
     while (true) {
@@ -416,7 +635,7 @@ int switchRequest(Student student) {
             if (op >= 1 && op <= 2) {
                 break;  // Input is valid, exit the loop
             } else {
-                cout << "Invalid number! The number should be between 1 and 2." << endl;
+                cout << "Invalid number! The number should be 1 or 2." << endl;
             }
         } else {
             cout << "Invalid input! Please enter a valid number." << endl;
@@ -425,9 +644,41 @@ int switchRequest(Student student) {
         }
     }
     if (op == 1) return 1;
+    if (op == 2) {
+        cout << endl;
+        cout << "NOTE: if you quit now the requests you have made will be canceled. You must" << endl;
+        cout << "You must return to the main menu so that the requests can have effect." << endl;
+        cout << "If you want to see which requests were accepted and which were rejected, you must" << endl;
+        cout << "consult that in the designated options in the main menu." << endl;
+        cout << endl;
+        string option;
+        while (true) {
+            cout << "Are you sure you want to quit? Y/N  ";
+            if (cin >> option) {
+                if (option == "Y") return 0;
+                else if (option == "N") {
+                    func.RequestsManager();
+                    return 1;
+                }
+                else {
+                    cout << "Invalid answer! The answer should be Y (for Yes) or N (for No)." << endl;
+                }
+            } else {
+                cout << "Invalid input! Please enter a valid answer." << endl;
+                cin.clear();          // Clear the error state
+                cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+            }
+        }
+    }
     return 0;
 }
 
+/**
+ * submitRequest ?????????????????????????
+ *
+ * @param op
+ * @return
+ */
 int submitRequest(int op) {
     string studentCode;
     while (true) {
@@ -469,6 +720,11 @@ int submitRequest(int op) {
     return 0;
 }
 
+/**
+ * listingMenu ??????????
+ *
+ * @return
+ */
 int listingMenu() {
     AuxiliarFunctions func;
     int op = 0;
@@ -586,6 +842,11 @@ int listingMenu() {
     return 1;
 }
 
+/**
+ * numbersMenu ????????????????????????????????
+ *
+ * @return
+ */
 int numbersMenu() {
     AuxiliarFunctions func;
     CsvAndVectors CSVInfo;
@@ -758,6 +1019,11 @@ int numbersMenu() {
     return 1;
 }
 
+ /**
+  * scheduleMenu ???????????????????????????????????????
+  *
+  * @return
+  */
 int scheduleMenu() {
     AuxiliarFunctions func = AuxiliarFunctions();
     int op = 0;
@@ -889,6 +1155,11 @@ int scheduleMenu() {
     return 1;
 }
 
+/**
+ * occupationMenu ?????????????????????????
+ *
+ * @return
+ */
 int occupationMenu() {
     AuxiliarFunctions func;
     CsvAndVectors CSVInfo;
@@ -1051,9 +1322,12 @@ int occupationMenu() {
     if (op2 == 3) return 0;
     return 1;
 }
-/*
- * 
- */
+
+ /**
+  * greatestMenu ????????????????????
+  *
+  * @return
+  */
 int greatestMenu() {
     AuxiliarFunctions func;
     CsvAndVectors CSVInfo;
@@ -1186,12 +1460,17 @@ int greatestMenu() {
     else if (op == 1) greatestMenu();
     return 1;
 }
-/**
- * Menu for the user choose which type of request he wants
- *
- * Options : enroll in an UC, leave an UC or change an UC;
- */
+
+ /**
+  * Menu for the user choose which type of request he wants
+  *
+  * Options : enroll in an UC, leave an UC or change an UC;
+  *
+  * @return
+  */
 int requestMenu() {
+    AuxiliarFunctions func;
+    func.getRequests();
     int op = 0;
     cout << endl << "--------------------------------" << endl;
     cout << endl << "     Submit a request for...    " << endl;
@@ -1228,68 +1507,16 @@ int requestMenu() {
 
 /**
  * Prints the pending requests
+ *
+ * @return
  */
-int pendingRequests() {
+int acceptedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
-    if (func.totalNumberOfPendingRequests() == 0) {
-        cout << "There are no pending requests." << endl;
+    if (func.totalNumberOfAcceptedRequests() == 0) {
+        cout << "There are no accepted requests." << endl;
     }
-    func.seePendingRequests();
-    cout << "1 - Return to Main Menu" << endl;
-    cout << "2 - Quit." << endl;
-    while (true) {
-        cout << "Write the number of what you want to do: ";
-        if (cin >> op) {
-            if (op >= 1 && op <= 2) {
-                break;  // Input is valid, exit the loop
-            }
-            else {
-                cout << "Invalid number! The number should be 1 or 2." << endl;
-            }
-        }
-        else {
-            cout << "Invalid input! Please enter a valid number." << endl;
-            cin.clear();          // Clear the error state
-            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-        }
-    }
-    if (op == 1) return 1;
-    return 0;
-}
-
-/**
- * Prints the processed requests
- */
-int processRequest() {
-    int op;
-    AuxiliarFunctions func = AuxiliarFunctions();
-    if (func.totalNumberOfPendingRequests() == 0) {
-        cout << "There are no processed requests." << endl;
-        cout << endl;
-        cout << "1 - Return to Main Menu" << endl;
-        cout << "2 - Quit." << endl;
-        while (true) {
-            cout << "Write the number of what you want to do: ";
-            if (cin >> op) {
-                if (op >= 1 && op <= 2) {
-                    break;  // Input is valid, exit the loop
-                }
-                else {
-                    cout << "Invalid number! The number should be 1 or 2." << endl;
-                }
-            }
-            else {
-                cout << "Invalid input! Please enter a valid number." << endl;
-                cin.clear();          // Clear the error state
-                cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-            }
-        }
-        if (op == 1) return 1;
-        return 0;
-    }
-    func.RequestsManager();
-    cout << endl;
+    func.seeAcceptedRequests();
     cout << "1 - Return to Main Menu" << endl;
     cout << "2 - Quit." << endl;
     while (true) {
@@ -1314,6 +1541,8 @@ int processRequest() {
 
 /**
  * Prints the rejected requests
+ *
+ * @return
  */
 int rejectedRequest() {
     int op;
@@ -1345,7 +1574,42 @@ int rejectedRequest() {
 }
 
 /**
+ * Prints all requests
+ *
+ * @return
+ */
+int allRequest() {
+    int op;
+    AuxiliarFunctions func = AuxiliarFunctions();
+    if (func.totalNumberOfRejectedRequests() == 0) {
+        cout << "There are no requests." << endl;
+    }
+    func.seeAllRequests();
+    cout << "1 - Return to Main Menu" << endl;
+    cout << "2 - Quit." << endl;
+    while (true) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            if (op >= 1 && op <= 2) {
+                break;  // Input is valid, exit the loop
+            }
+            else {
+                cout << "Invalid number! The number should be 1 or 2." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+    if (op == 1) return 1;
+    return 0;
+}
+
+/**
  * Main menu
+ * @return
  */
 int main() {
     int op = 0;
@@ -1358,9 +1622,9 @@ int main() {
     cout << "4 - Search for occupation of..." << endl;
     cout << "5 - Search for the Ucs/Classes/Years with the greatest number of students." << endl;
     cout << "6 - Submit a request for..." << endl;
-    cout << "7 - See requests that are pending." << endl;
-    cout << "8 - Process requests that are pending." << endl;
-    cout << "9 - See requests that have already been processed." << endl;
+    cout << "7 - See rejected requests." << endl;
+    cout << "8 - See accepted requests." << endl;
+    cout << "9 - See all requests made." << endl;
     cout << "10 - Quit." << endl;
     cout << endl;
     cout << "Note: If you enter a 'q' when asked for a classCode, UcCode studentCode" << endl;
@@ -1369,10 +1633,10 @@ int main() {
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
-            if (op >= 1 && op <= 10) {
+            if (op >= 1 && op <= 9) {
                 break;  // Input is valid, exit the loop
             } else {
-                cout << "Invalid number! The number should be between 1 and 10." << endl;
+                cout << "Invalid number! The number should be between 1 and 9." << endl;
             }
         } else {
             cout << "Invalid input! Please enter a valid number." << endl;
@@ -1420,19 +1684,19 @@ int main() {
             break;
 
         case 7:
-            aux = pendingRequests();
+            aux = acceptedRequest();
             if (aux == 1) main();
             else system("exit");
             break;
 
         case 8:
-            aux = processRequest();
+            aux = rejectedRequest();
             if (aux == 1) main();
             else system("exit");
             break;
 
         case 9:
-            aux = rejectedRequest();
+            aux = allRequest();
             if (aux == 1) main();
             else system("exit");
             break;

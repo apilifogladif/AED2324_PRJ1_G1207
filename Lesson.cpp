@@ -35,7 +35,7 @@ string Lesson::getType() const {
 }
 
 void Lesson::drawLesson() const {
-    cout << this->getStartHour() << " - " << this->getEndHour() << "  " << this->getUc().getUcCode() << "(" << this->getType() << ");\n";
+    cout << this->startHour << " - " << this->endHour << "  " << this->uc.getUcCode() << " | " << this->uc.getClassCode() << "(" << this->type << ");\n";
 }
 
 bool Lesson::lessonOverlap(const Lesson& lesson) {

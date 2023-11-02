@@ -15,26 +15,35 @@ CsvAndVectors::CsvAndVectors() {}
 void CsvAndVectors::createClassesAndUcSet() {
     fstream file;
     set<string> classes;
-    file.open("data/classes_per_uc.csv");
+    file.open("../data/classes_per_uc.csv");
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open the file." << endl;
+        return;
+    }
     string line;
     string lastUcCode;
     string UcCode;
     string ClassCode;
-    getline(file, line);
+    getline(file, line);    // discard header line
     while(getline(file, line)) {
         stringstream s(line);
         getline(s, UcCode, ',');
-        getline(s, ClassCode, '\0');
+        getline(s, ClassCode);
         ClassesSet.insert(ClassCode);
         UcSet.insert(UcCode);
     }
+    file.close();
 }
 
 void CsvAndVectors::createStudentsSet() {
     fstream file;
     set<string> classes;
     vector<UC> ucs;
-    file.open("data/students_classes.csv");
+    file.open("../data/students_classes.csv");
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open the file." << endl;
+        return;
+    }
     string line;
     string StudentCode;
     string StudentName;
@@ -48,7 +57,7 @@ void CsvAndVectors::createStudentsSet() {
         getline(s, StudentCode, ',');
         getline(s, StudentName, ',');
         getline(s, UcCode, ',');
-        getline(s, ClassCode, '\0');
+        getline(s, ClassCode);
         StudentsSet.insert(StudentCode);
     }
 }
@@ -56,7 +65,11 @@ void CsvAndVectors::createStudentsSet() {
 // this function stores information of 'classes.csv' file in a vector of objects of the class 'Lesson'
 void CsvAndVectors::createLessonsVector() {
     fstream file;
-    file.open("data/classes.csv");
+    file.open("../data/classes.csv");
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open the file." << endl;
+        return;
+    }
     string line;
     getline(file, line);
     string classCode;
@@ -72,16 +85,20 @@ void CsvAndVectors::createLessonsVector() {
         getline(s, weekDay, ',');
         getline(s, startHour, ',');
         getline(s, duration, ',');
-        getline(s, type, '\0');
+        getline(s, type);
+        LessonsVector.emplace_back(UcCode, classCode, weekDay, stod(startHour), stod(duration), type);
     }
-    LessonsVector.emplace_back(UcCode, classCode, weekDay, stod(startHour), stod(duration), type);
 }
 
 // this function stores information of 'classes_per_uc.csv' file in a vector of pairs that associates an uc to a set of the classes that have that uc
 void CsvAndVectors::createClassesPerUcVector() {
     fstream file;
     set<string> classes;
-    file.open("data/classes_per_uc.csv");
+    file.open("../data/classes_per_uc.csv");
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open the file." << endl;
+        return;
+    }
     string line;
     string lastUcCode;
     string UcCode;
@@ -90,7 +107,7 @@ void CsvAndVectors::createClassesPerUcVector() {
     while(getline(file, line)) {
         stringstream s(line);
         getline(s, UcCode, ',');
-        getline(s, ClassCode, '\0');
+        getline(s, ClassCode);
         if (UcCode == lastUcCode) {
             classes.insert(ClassCode);
         } else {
@@ -107,7 +124,11 @@ void CsvAndVectors::createStudentsVector() {
     fstream file;
     set<string> classes;
     vector<UC> ucs;
-    file.open("data/students_classes.csv");
+    file.open("../data/students_classes.csv");
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open the file." << endl;
+        return;
+    }
     string line;
     string StudentCode;
     string StudentName;
@@ -121,7 +142,7 @@ void CsvAndVectors::createStudentsVector() {
         getline(s, StudentCode, ',');
         getline(s, StudentName, ',');
         getline(s, UcCode, ',');
-        getline(s, ClassCode, '\0');
+        getline(s, ClassCode);
         if (StudentCode == lastStudentCode) {
             ucs.emplace_back(UcCode, ClassCode);
         } else {
@@ -165,11 +186,11 @@ vector<Student> CsvAndVectors::getStudentsVector() {
 }
 
 void CsvAndVectors::setFromLessonsVector() {
-    std::string fileName = "data/classes.csv";
+    std::string fileName = "../data/classes.csv";
     std::ofstream out(fileName);
 
     //clear content from csv file
-    out.open("data/classes.csv", std::ofstream::out | std::ofstream::trunc);
+    out.open("../data/classes.csv", std::ofstream::out | std::ofstream::trunc);
     out.close();
 
     out << "ClassCode,UcCode,Weekday,StartHour,Duration,Type" << "\n";
@@ -181,11 +202,11 @@ void CsvAndVectors::setFromLessonsVector() {
 }
 
 void CsvAndVectors::setFromClassesPerUcVector() {
-    std::string fileName = "data/classes_per_uc.csv";
+    std::string fileName = "../data/classes_per_uc.csv";
     std::ofstream out(fileName);
 
     //clear content from csv file
-    out.open("data/classes_per_uc.csv", std::ofstream::out | std::ofstream::trunc);
+    out.open("../data/classes_per_uc.csv", std::ofstream::out | std::ofstream::trunc);
     out.close();
 
     out << "UcCode,ClassCode" << "\n";
@@ -197,11 +218,11 @@ void CsvAndVectors::setFromClassesPerUcVector() {
 }
 
 void CsvAndVectors::setFromStudentsVector() {
-    std::string fileName = "data/students_classes.csv";
+    std::string fileName = "../data/students_classes.csv";
     std::ofstream out(fileName);
 
     //clear content from csv file
-    out.open("data/students_classes.csv", std::ofstream::out | std::ofstream::trunc);
+    out.open("../data/students_classes.csv", std::ofstream::out | std::ofstream::trunc);
     out.close();
 
     out << "StudentCode,StudentName,UcCode,ClassCode" << "\n";

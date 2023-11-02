@@ -27,7 +27,7 @@ class AuxiliarFunctions {
         };
         vector<rejectedRequests_> rejectedRequests;
 
-public:
+    public:
         /**
         * Class constructor
         */
@@ -37,30 +37,14 @@ public:
          *
          * @paramt studentCode : Student code;
          */
-        static Student* retStudent(const string &studentCode) ;
+        static Student retStudent(const string &studentCode) ;
 
-        /**
-         * Returns the schedule with the UcClass given
-         *
-         * @paramt UcClass : Uc class;
-         */
-        Schedule* UCSchedule(const UC& UcClass); // falta complexidade
-
-        /**
-         * Returns the index of the schedule with the UcClass passed
-         *
-         * @paramt UcClass : Uc class;
-         */
-        unsigned long binarySearch(const UC& UcClass);
-
-        /**
-         * Auxiliary function to help with the recursion of the binary search
-         *
-         * @paramt UcClass : Uc class;
-         * @paramt left : left parameter;
-         * @paramt right : right parameter;
-         */
-        unsigned long binarySearchAux(const UC& UcCLass, unsigned long left, unsigned long right);
+//        /**
+//         * Returns the schedule with the UcClass given
+//         *
+//         * @paramt UcClass : Uc class;
+//         */
+//        Schedule* UCSchedule(const UC& UcClass); // falta complexidade
 
         /**
          * Concludes the enrollment request by adding that request to the queue of enrollmentRequests
@@ -207,8 +191,6 @@ public:
          */
         void seeUcSchedule(const string& UcCode);
 
-        void seeLessonSchedule(UC uc);
-
         /**
          * Prints the students of a given class
          *
@@ -245,6 +227,13 @@ public:
          *
          * @paramt UcCode : Uc code;
          */
-        static int numberUcStudents(const string &UcCode);
+        int numberUcStudents(const string &UcCode);
+
+        /**
+         * Returns the number of students of a given Year
+         *
+         * @paramt Year : year;
+         */
+        int numberYearStudents(const int &Year);
 };
 #endif //AED2324_PRJ1_G1207_AUXILIARFUNCTIONS_H

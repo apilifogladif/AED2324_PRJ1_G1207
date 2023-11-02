@@ -11,3 +11,21 @@ vector<pair<string, set<string>>> ClassesPerUcVector = CSVInfo.getClassesPerUcVe
 vector<Student> StudentsVector = CSVInfo.getStudentsVector();
 
 AuxiliarFunctions func = AuxiliarFunctions();
+
+cout << "Write the Class Code (yLEICxx; y->year, xx->class): ";
+    cin >> classCode;
+    cout << endl;
+    while (cin.fail() || verifyClass(classCode)) {
+        cout << "Invalid Class Code! Write the Class Code (yLEICxx; y->year, xx->class): " << endl;
+        cin >> classCode;
+        cout << endl;
+    }
+
+cout << "Write the Uc Code (L.EICxxx or UPxxx): ";
+    cin >> UcCode;
+    cout << endl;
+    while (cin.fail() || verifyUc(UcCode)) {
+        cout << "Invalid Uc Code! Write the Uc Code (L.EICxxx or UPxxx): " << endl;
+        cin >> UcCode;
+        cout << endl;
+    }

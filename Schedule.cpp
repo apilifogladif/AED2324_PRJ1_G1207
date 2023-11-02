@@ -141,7 +141,8 @@ void Schedule::sortStudents(const int &sort_) {
     } else if (sort_ == 4) {
         sort(sorted.rbegin(), sorted.rend());
     }
+
     for (const Student& student: sorted) {
-        student.printUcAndClass();
+        cout << student.getStudentCode() << "; " << student.getStudentName() << endl;
     }
 }

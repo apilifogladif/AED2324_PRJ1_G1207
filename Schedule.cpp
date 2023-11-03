@@ -1,8 +1,10 @@
 #include "Schedule.h"
+#include "AuxiliarFunctions.h"
+#include "CsvAndVectors.h"
 #include <algorithm>
 #include <utility>
 
-Schedule::Schedule() {}
+Schedule::Schedule() = default;
 
 Schedule::Schedule(UC ucClass) {
     this->UcClass = std::move(ucClass);

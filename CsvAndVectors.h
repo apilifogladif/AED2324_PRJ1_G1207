@@ -2,7 +2,6 @@
 #define AED2324_PRJ1_G1207_CSVANDVECTORS_H
 
 #include "Lesson.h"
-#include "AuxiliarFunctions.h"
 #include <fstream>
 #include <sstream>
 #include "Student.h"
@@ -10,6 +9,8 @@
 #include <vector>
 #include <set>
 #include <string>
+#include "Request.h"
+#include "Schedule.h"
 
 
 using namespace std;
@@ -61,12 +62,12 @@ class CsvAndVectors {
         /**
          * Creates a set with the classes and uc's codes
          */
-        void createClassesAndUcSet();
+        static void createClassesAndUcSet();
 
         /**
          * Creates a set with the students codes
          */
-        void createStudentsSet();
+        static void createStudentsSet();
         /**
          * Creates a vector with the lessons
          */

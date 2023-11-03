@@ -37,7 +37,7 @@ void Student::addUC(const UC &uc) {
 
     int idx = this->binarySearchCsvStudentVector(0, CSVInfo.StudentsVector.size());
     CSVInfo.StudentsVector[idx].getUCs().push_back(uc);
-    CSVInfo.setFromStudentsVector();
+    //CSVInfo.setFromStudentsVector();
 }
 
 void Student::removeUC(const UC &uc) {
@@ -48,7 +48,7 @@ void Student::removeUC(const UC &uc) {
     this->ucs.erase(it);
     int idx = this->binarySearchCsvStudentVector(0, CSVInfo.StudentsVector.size());
     std::remove(CSVInfo.StudentsVector[idx].getUCs().begin(), CSVInfo.StudentsVector[idx].getUCs().end(), uc);
-    CSVInfo.setFromStudentsVector();
+    //CSVInfo.setFromStudentsVector();
 }
 
 int Student::binarySearchCsvStudentVector(unsigned long left, unsigned long right) {

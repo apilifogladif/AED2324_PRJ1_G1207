@@ -2,7 +2,7 @@
 
 using namespace std;
 
-CsvAndVectors::CsvAndVectors() {}
+CsvAndVectors::CsvAndVectors() = default;
 
 vector<Lesson> CsvAndVectors::LessonsVector;
 vector<pair<string, set<string>>> CsvAndVectors::ClassesPerUcVector;
@@ -223,71 +223,115 @@ vector<Student> CsvAndVectors::getStudentsVector() {
     return StudentsVector;
 }
 
+
 void CsvAndVectors::setFromLessonsVector() {
-    std::string fileName = "../data/classes.csv";
-    std::ofstream out(fileName);
-
-    //clear content from csv file
-    out.open("../data/classes.csv", std::ofstream::out | std::ofstream::trunc);
-    out.close();
-
-    out << "ClassCode,UcCode,Weekday,StartHour,Duration,Type" << "\n";
+    ofstream fileName;
+    fileName.open("../data/classes.csv");
+    fileName << "ClassCode,UcCode,Weekday,StartHour,Duration,Type" << endl;
     for (const auto & lesson : LessonsVector) {
-        out << lesson.getUc().getClassCode() << "," << lesson.getUc().getUcCode() << "," <<
+        fileName << lesson.getUc().getClassCode() << "," << lesson.getUc().getUcCode() << "," <<
                lesson.getWeekday() << "," << lesson.getStartHour() << "," <<
                lesson.getDuration() << "," << lesson.getType() << "\n";
     }
+    fileName.close();
 }
+//    std::string fileName = "../data/classes.csv";
+//    std::ofstream out(fileName);
+
+    //clear content from csv file
+//    out.open("../data/classes.csv", std::ofstream::out | std::ofstream::trunc);
+//    out.close();
+
+//    out << "ClassCode,UcCode,Weekday,StartHour,Duration,Type" << "\n";
+//    for (const auto & lesson : LessonsVector) {
+//        out << lesson.getUc().getClassCode() << "," << lesson.getUc().getUcCode() << "," <<
+//               lesson.getWeekday() << "," << lesson.getStartHour() << "," <<
+//               lesson.getDuration() << "," << lesson.getType() << "\n";
+//    }
+//}
 
 void CsvAndVectors::setFromClassesPerUcVector() {
-    std::string fileName = "../data/classes_per_uc.csv";
-    std::ofstream out(fileName);
-
-    //clear content from csv file
-    out.open("../data/classes_per_uc.csv", std::ofstream::out | std::ofstream::trunc);
-    out.close();
-
-    out << "UcCode,ClassCode" << "\n";
+    ofstream fileName;
+    fileName.open("../data/classes_per_uc.csv");
+    fileName << "UcCode,ClassCode" << endl;
     for (auto &Uc : ClassesPerUcVector) {
-        for (string Class: Uc.second) {
-            out << Uc.first << "," << Class << "\n";
+        for (const string& Class: Uc.second) {
+            fileName << Uc.first << "," << Class << "\n";
         }
     }
+    fileName.close();
 }
+//    std::string fileName = "../data/classes_per_uc.csv";
+//    std::ofstream out(fileName);
+
+    //clear content from csv file
+//    out.open("../data/classes_per_uc.csv", std::ofstream::out | std::ofstream::trunc);
+//    out.close();
+
+//    out << "UcCode,ClassCode" << "\n";
+//    for (auto &Uc : ClassesPerUcVector) {
+//        for (const string& Class: Uc.second) {
+//            out << Uc.first << "," << Class << "\n";
+//        }
+//    }
+//}
 
 void CsvAndVectors::setFromStudentsVector() {
-    std::string fileName = "../data/students_classes.csv";
-    std::ofstream out(fileName);
-
-    //clear content from csv file
-    out.open("../data/students_classes.csv", std::ofstream::out | std::ofstream::trunc);
-    out.close();
-
-    out << "StudentCode,StudentName,UcCode,ClassCode" << "\n";
-    for (auto &student : StudentsVector) {
-        for(auto &ucClass: student.getUCs()) {
-            out << student.getStudentCode() << "," << student.getStudentName() << "," << ucClass.getUcCode() <<
-                "," << ucClass.getClassCode() << "\n";
+    ofstream fileName;
+    fileName.open("../data/students_classes.csv");
+    fileName << "StudentCode,StudentName,UcCode,ClassCode" << endl;
+    for (const Student &s: StudentsVector) {
+        for (const UC &c: s.getUCs()) {
+            fileName << s.getStudentCode() << "," << s.getStudentName() << "," << c.getUcCode() << "," << c.getClassCode() << endl;
         }
     }
+    fileName.close();
 }
+//    std::string fileName = "../data/students_classes.csv";
+//    std::ofstream out(fileName);
+
+    //clear content from csv file
+//    out.open("../data/students_classes.csv", std::ofstream::out | std::ofstream::trunc);
+//    out.close();
+
+//    out << "StudentCode,StudentName,UcCode,ClassCode" << "\n";
+//    for (auto &student : StudentsVector) {
+//        for(auto &ucClass: student.getUCs()) {
+//            out << student.getStudentCode() << "," << student.getStudentName() << "," << ucClass.getUcCode() <<
+//                "," << ucClass.getClassCode() << "\n";
+//        }
+//    }
+//}
 
 void CsvAndVectors::setRequestVector() {
-    std::string fileName = "../data/requests.csv";
-    std::ofstream out(fileName);
-
-    //clear content from csv file
-    out.open("../data/requests.csv", std::ofstream::out | std::ofstream::trunc);
-    out.close();
-
-    out << "StudentCode, StudentName, Type, Description -> Status, Reason (if rejected)" << "\n";
+    ofstream fileName;
+    fileName.open("../data/requests.csv");
+    fileName << "StudentCode, StudentName, Type, Description -> Status, Reason (if rejected)" << endl;
     for (auto &request : RequestsVector) {
-        out << request.getStudent().getStudentCode() << ", " << request.getStudent().getStudentName() << ", " <<
+        fileName << request.getStudent().getStudentCode() << ", " << request.getStudent().getStudentName() << ", " <<
             request.getType() << ", " << request.getDescription() << " -> " << request.getStatus();
         if (request.getStatus() == "Rejected") {
-            out << ", " << request.getReason();
+            fileName << ", " << request.getReason();
         }
-        out << endl;
+        fileName << endl;
     }
+    fileName.close();
 }
+//    std::string fileName = "../data/requests.csv";
+//    std::ofstream out(fileName);
+
+    //clear content from csv file
+//    out.open("../data/requests.csv", std::ofstream::out | std::ofstream::trunc);
+//    out.close();
+
+//    out << "StudentCode, StudentName, Type, Description -> Status, Reason (if rejected)" << "\n";
+//    for (auto &request : RequestsVector) {
+//        out << request.getStudent().getStudentCode() << ", " << request.getStudent().getStudentName() << ", " <<
+//            request.getType() << ", " << request.getDescription() << " -> " << request.getStatus();
+//        if (request.getStatus() == "Rejected") {
+//            out << ", " << request.getReason();
+//        }
+//        out << endl;
+//    }
+//}
 

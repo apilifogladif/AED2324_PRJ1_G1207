@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "AED2324_PRJ1_G1207.exe"
-		},
-		{
-			"path" : "AED2324_PRJ1_G1207.pdb"
+			"path" : "AED2324_PRJ1_G1207"
 		}
 	],
 	"backtrace" : 1,
@@ -52,7 +49,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/Filipa/code/AED2324_PRJ1_G1207/."
+					"path" : "/home/filipag/Documents/AED2324_PRJ1_G1207/."
 				}
 			],
 			"language" : "CXX",
@@ -89,16 +86,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "AED2324_PRJ1_G1207",
-	"nameOnDisk" : "AED2324_PRJ1_G1207.exe",
+	"nameOnDisk" : "AED2324_PRJ1_G1207",
 	"paths" : 
 	{
 		"build" : ".",

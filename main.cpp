@@ -2,6 +2,7 @@
 #include "CsvAndVectors.h"
 #include "AuxiliarFunctions.h"
 #include <algorithm>
+#include <climits>
 
 
 using namespace std;

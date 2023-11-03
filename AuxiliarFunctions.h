@@ -14,12 +14,14 @@
 
 
 using namespace std;
-
+/**
+ * @file AuxiliarFunctions.h
+ * @brief Class that has some auxiliar functions
+ */
 class AuxiliarFunctions {
     private:
         vector<Schedule> schedules;
     public:
-        // nono ficou aqui e ainda não fez auxiliarFunctions and main: pf não apaguem o meu mega comentario :)
 
         /**
          * ????????????????????????????????????????
@@ -53,12 +55,14 @@ class AuxiliarFunctions {
 
         /**
         * Class constructor
+         *
         * O(1)
         */
         AuxiliarFunctions();
 
         /**
          * Returns the student with the studentCode given
+         *
          * O(n), where n is the number of students in the vector of students
          *
          * @param studentCode : Student code;
@@ -68,6 +72,7 @@ class AuxiliarFunctions {
 
         /**
          * Concludes the enrollment request by adding that request to the queue of enrollmentRequests
+         *
          * O(1)
          *
          * @param student : info of the student who wants to enroll;
@@ -77,6 +82,7 @@ class AuxiliarFunctions {
 
         /**
          * Concludes the removal request by adding that request to the queue of removalRequests
+         *
          * O(1)
          *
          * @param student : info of the student who wants to leave;
@@ -86,6 +92,7 @@ class AuxiliarFunctions {
 
         /**
          * Concludes the switch request by adding that request to the queue of switchRequests
+         *
          * O(1)
          *
          * @param student : info of the student who wants to switch;
@@ -95,6 +102,7 @@ class AuxiliarFunctions {
 
         /**
          * Checks if there is no conflict between the student’s schedule and the new class’s schedule
+         *
          * O(log n) + O(mk) where n is the number of lines in classes_per_uc.csv, m is the number of lessons of the first class and k is the number of lessons of the second class
          *
          * @param uc1 : one Uc;
@@ -105,6 +113,7 @@ class AuxiliarFunctions {
 
         /**
          * Get the total number of rejected requests
+         *
          * O(1)
          *
          * @return rejectedRequests.size
@@ -113,6 +122,7 @@ class AuxiliarFunctions {
 
         /**
          * Get the total number of accepted requests
+         *
          * O(1)
          *
          * @return acceptedRequests.size
@@ -122,6 +132,7 @@ class AuxiliarFunctions {
 
         /**
          * Get request current UC Class
+         *
          * O(m), where m is the number of classes associated in
          *
          * @param request : request;
@@ -131,6 +142,7 @@ class AuxiliarFunctions {
 
         /**
          * Checks some conditions to secure the balance of the size os each class
+         *
          * O(log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
          *
          * Requests:
@@ -145,6 +157,7 @@ class AuxiliarFunctions {
 
         /**
          * Checks if the resulting schedule will not conflict with the student's original schedule
+         *
          * O(m log n + m*kl) : where m is the number of classes the student is in, n is the number of lines in classes_per_uc.csv, k is the number of lessons of the first class and l is the number of lessons of the second class
          *
          * @param request : request;
@@ -154,6 +167,7 @@ class AuxiliarFunctions {
 
         /**
          * Returns a vector with the students of an Uc
+         *
          * O(n), where n is the number of schedules / lines in 'classes_per_uc.csv'
          *
          * @param UcCode : Uc code;
@@ -163,6 +177,7 @@ class AuxiliarFunctions {
 
         /**
          * A student cannot be registered in more than 7 UCs at any given type
+         *
          * O(n log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
          *
          * @param request : request;
@@ -180,6 +195,7 @@ class AuxiliarFunctions {
 
         /**
          * See if request has any problem (unbalanced, conflict, extends the max)
+         *
          * O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
          *
          * @param request : request;
@@ -188,6 +204,7 @@ class AuxiliarFunctions {
 
         /**
          * See if request has any problem (conflict, extends the max)
+         *
          * O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
          *
          * @param request : request;
@@ -196,6 +213,7 @@ class AuxiliarFunctions {
 
         /**
          * Does the removal requests as it does not need any problem verification
+         *
          * O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
          *
          * @param request : request;
@@ -204,6 +222,7 @@ class AuxiliarFunctions {
 
         /**
          * Finalizes the requests
+         *
          * O(m) + O(log n * log n) + O(log k) + O(t log n + t*pl) + O(nlog n) where m is the number of classes of the student who is submitting the request,
          * n is the number of schedules / lines in 'classes_per_uc.csv',
          * k is the number of lines in 'students.csv'
@@ -214,24 +233,28 @@ class AuxiliarFunctions {
 
         /**
          * Prints the requests that were rejected
+         *
          * O(m), where m is the number of rejected requests
          */
         void seeRejectedRequests();
 
         /**
          * Prints the requests that were accepted
+         *
          * O(m), where m is the number of accepted requests
          */
         void seeAcceptedRequests();
 
         /**
          * Prints all the requests and respective status
+         *
          * O(m), where m is the number of all requests done
          */
         void seeAllRequests();
 
         /**
          * Prints the schedule of a given student
+         *
          * O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
          *
          *
@@ -241,6 +264,7 @@ class AuxiliarFunctions {
 
         /**
          * Prints the schedule of a given class
+         *
          * O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
          *
          * @param ClassCode : Class code;
@@ -249,6 +273,7 @@ class AuxiliarFunctions {
 
         /**
          * Prints the schedule of a given Uc
+         *
          * O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
          *
          * @param UcCode : Uc code;
@@ -257,6 +282,7 @@ class AuxiliarFunctions {
 
         /**
          * Prints the students of a given class
+         *
          * O(n) + O(q log q) where n is the number of lessons and students associated with that Class of that UC, q is the number of students in that Class of that UC
          *
          * @param UcClass : Uc class;
@@ -266,6 +292,7 @@ class AuxiliarFunctions {
 
         /**
          * Prints the students of a given Uc
+         *
          * O(n) + O(q log q) where n is the number of lessons and students associated with that UC code, q is the number of students in that UC
          *
          * @param UcCode : Uc code;
@@ -275,6 +302,7 @@ class AuxiliarFunctions {
 
         /**
          * Prints the students of a given year
+         *
          * O(n) + O(mk) + O(m) + O(m log m) where n is the number of students in students_classes.csv, m is the students and k is the UCs of each student
          *
          * @param year: Year;
@@ -284,6 +312,7 @@ class AuxiliarFunctions {
 
         /**
          * Returns the number of students of a given Class and Uc
+         *
          * O(m + l) + O(1) where m is the number of lessons and l is the number of student in a Class of an UC
          *
          * @param UcClass : Uc code, Class code;
@@ -293,6 +322,7 @@ class AuxiliarFunctions {
 
         /**
          * Returns the number of students of a given Class
+         *
          * O(m + l) where m is the number of lessons and l is the number of student in an UC
          *
          * @param UcCode : Uc code;
@@ -302,6 +332,7 @@ class AuxiliarFunctions {
 
         /**
          * Returns the number of students of a given Year
+         *
          * O(n) where n is the total number of students
          *
          * @paramt Year : year;
@@ -311,6 +342,7 @@ class AuxiliarFunctions {
 
         /**
          * Get requests
+         *
          * O(n) is the number of requests
          */
         void getRequests();

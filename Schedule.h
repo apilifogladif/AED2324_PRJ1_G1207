@@ -13,6 +13,10 @@
 using namespace std;
 
 // this class represents a schedule
+/**
+ * @file Schedule.h
+ * @brief Class that represents a schedule
+ */
 class Schedule {
     private:
         set<Lesson> lessons;
@@ -23,11 +27,13 @@ class Schedule {
 
         /**
          * Class constructor
+         *
          * O(1)
          */
         Schedule();
         /**
          * Class constructor
+         *
          * O(1)
          *
          * Sets ucClass
@@ -38,6 +44,7 @@ class Schedule {
 
         /**
          * Class constructor
+         *
          * O(1)
          *
          * Sets StudentCode
@@ -64,38 +71,37 @@ class Schedule {
 
         /**
          * Set the private set lessons to the lessons of the UcClass, Uc or Class
-         * O(n)  where n is the number of lessons in LessonsVector
          *
-         * @return
+         * O(n)  where n is the number of lessons in LessonsVector
          */
         void loadLessonsUcClass();
 
         /**
         * Set the private set lessons to the lessons of the Student
-        * O(n*m)  where n is the number of Ucs of the Student and m is the number of lessons in LessonsVector
         *
-        * @return
+        * O(n*m)  where n is the number of Ucs of the Student and m is the number of lessons in LessonsVector
         */
         void loadLessonsStudent();
 
         /**
         * Set the private set students to the students of the UcClass, Uc or Class
+         *
         * O(n*m)  where n is the number of students in StudentsVector and m is the number of Ucs of each student
-        *
-        * @return
         */
         void loadStudents();
 
         /**
          * Returns a lesson from the schedule
+         *
          * O(1)
          *
-         * @return
+         * @return lessons
          */
         set<Lesson> getLesson() const;
 
         /**
          * Prints the schedule
+         *
          * O(n) where n is the number of lessons in the lessons set
          */
         void drawSchedule() const;
@@ -111,6 +117,7 @@ class Schedule {
 
         /**
          * Returns the Uc class
+         *
          * O(1)
          *
          * @return UcClass
@@ -119,6 +126,7 @@ class Schedule {
 
         /**
          * Get students of a class
+         *
          * O(n)
          *
          * @return students
@@ -126,7 +134,8 @@ class Schedule {
         set<Student> getStudents();
 
         /**
-         * Adds student to a class
+         * Adds student to a Schedule (UC UcClass)
+         *
          * O(log n) where n is the number of students already in the set
          *
          * @param student : student;
@@ -134,7 +143,8 @@ class Schedule {
         void addStudent(Student student);
 
         /**
-         * Removes student from a class
+         * Removes student from a Schedule (UC UcClass)
+         *
          * O(log n) where n is the number of students already in the set
          *
          * @param student : student;
@@ -143,6 +153,7 @@ class Schedule {
 
         /**
          * Operator to compare two schedules
+         *
          * O(1)
          *
          * @param schedule : schedule;
@@ -158,6 +169,7 @@ class Schedule {
 
         /**
          * Sorts the students and prints them in the order that we asked for
+         *
          * O(n log n) where n is the number of students in the vector
          *
          * @param sort_ : Way to sort the students of the Uc;

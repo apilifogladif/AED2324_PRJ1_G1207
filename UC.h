@@ -5,7 +5,11 @@
 
 using namespace std;
 
-// this class represents a UC
+// this class represents a UC7
+/**
+ * @file  UC.h
+ * @brief Class that represents a uc
+ */
 class UC {
     private:
         string UcCode;

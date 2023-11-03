@@ -12,7 +12,6 @@ set<string> CsvAndVectors::StudentsSet;
 set<string> CsvAndVectors::ClassesSet;
 set<string> CsvAndVectors::UcSet;
 
-// O(n) where n is the number of lines in the 'classes_per_uc.csv'
 void CsvAndVectors::createClassesAndUcSet() {
     fstream file;
     set<string> classes;
@@ -36,7 +35,6 @@ void CsvAndVectors::createClassesAndUcSet() {
     file.close();
 }
 
-// O(n) where n is the number of lines in the 'students_classes.csv'
 void CsvAndVectors::createStudentsSet() {
     fstream file;
     set<string> classes;
@@ -64,7 +62,6 @@ void CsvAndVectors::createStudentsSet() {
     }
 }
 
-// O(n) where n is the number of lines in the 'classes.csv'
 // this function stores information of 'classes.csv' file in a vector of objects of the class 'Lesson'
 void CsvAndVectors::createLessonsVector() {
     fstream file;
@@ -93,7 +90,6 @@ void CsvAndVectors::createLessonsVector() {
     }
 }
 
-// O(n) where n is the number of lines in the 'requests.csv'
 void CsvAndVectors::createRequestsVector() {
     fstream file;
     file.open("../data/requests.csv");
@@ -125,7 +121,6 @@ void CsvAndVectors::createRequestsVector() {
     }
 }
 
-// O(n) where n is the number of lines in the 'classes_per_uc.csv'
 // this function stores information of 'classes_per_uc.csv' file in a vector of pairs that associates an uc to a set of the classes that have that uc
 void CsvAndVectors::createClassesPerUcVector() {
     fstream file;
@@ -155,7 +150,6 @@ void CsvAndVectors::createClassesPerUcVector() {
     }
 }
 
-// O(n) where n is the number of lines in the 'students_classes.csv'
 // this function stores information of 'students_classes.csv' file in a vector of objects of the class 'Student'
 void CsvAndVectors::createStudentsVector() {
     fstream file;
@@ -192,49 +186,41 @@ void CsvAndVectors::createStudentsVector() {
     }
 }
 
-// O(n) where n is the number of lines in the 'students_classes.csv'
 set<string> CsvAndVectors::getStudentsSet() {
     createStudentsSet();
     return StudentsSet;
 }
 
-// O(n) where n is the number of lines in the 'classes_per_uc.csv'
 set<string> CsvAndVectors::getClassesSet() {
     createClassesAndUcSet();
     return ClassesSet;
 }
 
-// O(n) where n is the number of lines in the 'classes_per_uc.csv'
 set<string> CsvAndVectors::getUcSet() {
     createClassesAndUcSet();
     return UcSet;
 }
 
-// O(n) where n is the number of lines in the 'classes.csv'
 vector<Lesson> CsvAndVectors::getLessonsVector() {
     createLessonsVector();
     return LessonsVector;
 }
 
-// O(n) where n is the number of lines in the 'requests.csv'
 vector<Request> CsvAndVectors::getRequestVector() {
     createRequestsVector();
     return RequestsVector;
 }
 
-// O(n) where n is the number of lines in the 'classes_per_uc.csv'
 vector<pair<string, set<string>>> CsvAndVectors::getClassesPerUcVector() {
     createClassesPerUcVector();
     return ClassesPerUcVector;
 }
 
-// O(n) where n is the number of lines in the 'students_classes.csv'
 vector<Student> CsvAndVectors::getStudentsVector() {
     createStudentsVector();
     return StudentsVector;
 }
 
-// O(n) where n is the number of lessons in the 'LessonsVector'
 void CsvAndVectors::setFromLessonsVector() {
     ofstream fileName;
     fileName.open("../data/classes.csv");
@@ -247,7 +233,6 @@ void CsvAndVectors::setFromLessonsVector() {
     fileName.close();
 }
 
-// O(m*k) where m is the number of unique UcCode entries and k is the average number of ClassCode entries for each UcCode
 void CsvAndVectors::setFromClassesPerUcVector() {
     ofstream fileName;
     fileName.open("../data/classes_per_uc.csv");
@@ -260,7 +245,6 @@ void CsvAndVectors::setFromClassesPerUcVector() {
     fileName.close();
 }
 
-// O(n*k) where n is the number of Student objects in StudentsVector and k is the average number of UC objects associated with each Student
 void CsvAndVectors::setFromStudentsVector() {
     ofstream fileName;
     fileName.open("../data/students_classes.csv");
@@ -273,7 +257,6 @@ void CsvAndVectors::setFromStudentsVector() {
     fileName.close();
 }
 
-// O(n) where n is the number of Request objects in RequestVectors
 void CsvAndVectors::setFromRequestVector() {
     ofstream fileName;
     fileName.open("../data/requests.csv");

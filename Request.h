@@ -8,6 +8,10 @@
 using namespace std;
 
 // this class represents a request
+/**
+ * @file Request.h
+ * @brief Class that represents a request
+ */
 class Request {
     private:
         Student student;
@@ -21,6 +25,7 @@ class Request {
 
         /**
          * Class constructor
+         *
          * O(1)
          *
          * Sets student, uc, and type
@@ -33,6 +38,7 @@ class Request {
 
         /**
          * Returns the student that made the request
+         *
          * O(1)
          *
          * @return student
@@ -41,6 +47,7 @@ class Request {
 
         /**
          * Return the uc of the request
+         *
          * O(1)
          *
          * @return uc
@@ -49,6 +56,7 @@ class Request {
 
         /**
          * Returns the type of the request
+         *
          * O(1)
          *
          * @return type
@@ -57,6 +65,7 @@ class Request {
 
         /**
         * Return the status of the request
+         *
          * O(1)
         *
         * @return status
@@ -65,6 +74,7 @@ class Request {
 
         /**
          * Return the reason of the request if it was rejected
+         *
          * O(1)
          *
          * @return reason
@@ -73,6 +83,7 @@ class Request {
 
         /**
          * Return the description of the request
+         *
          * O(1)
          *
          * @return description
@@ -81,26 +92,33 @@ class Request {
 
         /**
          * Sets status to new value
+         *
          * O(1)
+         *
          * @param status : new value for status
          */
         void setStatus(string status);
         /**
          * Sets reason to new value
+         *
          * O(1)
+         *
          * @param reason : new value for reason
          */
         void setReason(string reason);
 
         /**
          * Sets description to new value
+         *
          * O(1)
+         *
          * @param description : new value for description
          */
         void setDescription(string description);
 
         /**
          * Prints request
+         *
          * O(1)
          */
         void printRequest();

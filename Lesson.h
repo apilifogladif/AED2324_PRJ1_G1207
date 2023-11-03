@@ -10,6 +10,10 @@
 using namespace std;
 
 // this class represents a lesson in the schedule
+/**
+ * @file Lesson.h
+ * @brief Class that represents a lesson
+ */
 class Lesson {
     private:
         UC uc;
@@ -21,6 +25,8 @@ class Lesson {
     public:
         /**
          * Class constructor
+         *
+         * O(1)
          *
          * Sets ClassCode, UcCode, weekday, startHour, endHour (startHour + duration) and type
          *
@@ -36,12 +42,16 @@ class Lesson {
         /**
          * Returns the uc
          *
+         * O(1)
+         *
          * @return uc
          */
         UC getUc() const;
 
         /**
          * Returns the weekday of the lesson
+         *
+         * O(1)
          *
          * @return weekday
          */
@@ -50,12 +60,16 @@ class Lesson {
         /**
          * Returns the startHour of the lesson
          *
+         * O(1)
+         *
          * @return startHour
          */
         float getStartHour() const;
 
         /**
          * Returns the endHour of the lesson
+         *
+         * O(1)
          *
          * @return endHour
          */
@@ -64,6 +78,8 @@ class Lesson {
         /**
          * Return the duration of the lesson
          *
+         * O(1)
+         *
          * @return duration
          */
         float getDuration() const;
@@ -71,22 +87,30 @@ class Lesson {
         /**
          * Returns the type of the lesson
          *
+         * O(1)
+         *
          * @return string with type : T,P,PL or TP
          */
         string getType() const;
 
         /**
          * Convert the decimal time to a string
+         *
+         * O(1)
          */
         void timeInHoursAndMinutes() const;
 
         /**
-         * Prints the startHour, the endHour and the type of the lesson (T, TP, PL)
+         * Prints the startHour, the endHour and the type of the lesson
+         *
+         * O(1)
          */
         void drawLesson() const;
 
         /**
          * Checks if two classes are compatible
+         *
+         * O(1)
          *
          * @param lesson : lesson;
          * @return bool : true or false
@@ -96,6 +120,8 @@ class Lesson {
         /**
          * Operator to compare the times of two Lessons
          *
+         * O(1)
+         *
          * @param l : lesson;
          * @return bool : true or false
          */
@@ -103,6 +129,8 @@ class Lesson {
 
         /**
          * Operator to compare equality between two lessons
+         *
+         * O(1)
          *
          * @param l : lesson;
          * @return bool : true or false

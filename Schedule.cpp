@@ -129,7 +129,6 @@ set<Student> Schedule::getStudents() {
     return this->students;
 }
 
-// add a student to a Schedule(UC UcClass)
 void Schedule::addStudent(Student student_) {
     CsvAndVectors CSVInfo;
     student_.addUC(this->UcClass);
@@ -138,7 +137,6 @@ void Schedule::addStudent(Student student_) {
     this->loadLessonsUcClass();
 }
 
-// remove a student from a Schedule(UC UcClass)
 void Schedule::removeStudent(Student student_) {
     CsvAndVectors CSVInfo;
     student_.removeUC(this->UcClass);

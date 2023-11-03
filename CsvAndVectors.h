@@ -142,22 +142,22 @@ class CsvAndVectors {
         /**
          * Updates classes.csv with the new information
          */
-        static void setFromLessonsVector();
+        void setFromLessonsVector();
 
         /**
          * Updates classes_per_uc.csv with the new information
          */
-        static void setFromClassesPerUcVector();
+        void setFromClassesPerUcVector();
 
         /**
          * Updates students_classes.csv with the new information
          */
-        static void setFromStudentsVector();
+        void setFromStudentsVector();
 
         /**
          * Updates requests.csv with the new information
          */
-        static void setRequestVector();
+        void setFromRequestVector();
 };
 
 #endif //AED2324_PRJ1_G1207_CSVANDVECTORS_H

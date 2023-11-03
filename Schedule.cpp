@@ -1,4 +1,5 @@
 #include "Schedule.h"
+#include "Student.h"
 #include "AuxiliarFunctions.h"
 #include "CsvAndVectors.h"
 #include <algorithm>
@@ -8,54 +9,60 @@ Schedule::Schedule() = default;
 
 Schedule::Schedule(UC ucClass) {
     this->UcClass = std::move(ucClass);
+    this->loadLessonsUcClass();
+    this->loadStudents();
+}
+
+Schedule::Schedule(const string& StudentCode) {
+    AuxiliarFunctions func;
+    this->student = func.retStudent(StudentCode);
+    this->loadLessonsStudent();
+}
+
+//void Schedule::addLesson(const Lesson& lesson) {
+//    this->lessons.insert(lesson);
+//    //change in CSV file
+//    CsvAndVectors CSVInfo;
+//    vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
+//    LessonsVector.push_back(lesson);
+//    CSVInfo.setFromLessonsVector();
+//}
+//
+//void Schedule::removeLesson(Lesson& lesson) {
+//    this->lessons.erase(lesson);
+//    CsvAndVectors CSVInfo;
+//    vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
+//    for (auto it = LessonsVector.begin(); it != LessonsVector.end(); it++) {
+//        if (*it == lesson) {
+//            LessonsVector.erase(it);
+//        }
+//    }
+//    CSVInfo.setFromLessonsVector();
+//}
+
+void Schedule::loadLessonsUcClass() {
     CsvAndVectors CSVInfo;
     vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
-    vector<Student> StudentsVector = CSVInfo.getStudentsVector();
 
     // get lessons from this ucClass(UcCode, ClassCode)
     for (auto &lesson: LessonsVector) {
         if (lesson.getUc() == this->UcClass) {
             this->lessons.insert(lesson);
         }
-        // if the user wants the schedule of an uc
+            // if the user wants the schedule of an uc
         else if (lesson.getUc().getUcCode() == this->UcClass.getUcCode() && this->UcClass.getClassCode().empty()) {
             this->lessons.insert(lesson);
         }
-        // if the user wants the schedule of a class
+            // if the user wants the schedule of a class
         else if (lesson.getUc().getClassCode() == this->UcClass.getClassCode() && this->UcClass.getUcCode().empty()) {
             this->lessons.insert(lesson);
         }
     }
-
-    // get students from this ucClass(UcCode, ClassCode)
-    for (auto &student_: StudentsVector) {
-        for (auto &uc : student_.getUCs()) {
-            if (uc == this->UcClass) {
-                this->students.insert(student_);
-            }
-            // if the user wants the schedule of an uc
-            else if (uc.getUcCode() == this->UcClass.getUcCode() && this->UcClass.getClassCode().empty()) {
-                this->students.insert(student_);
-            }
-            // if the user wants the schedule of a class
-            else if (uc.getClassCode() == this->UcClass.getClassCode() && this->UcClass.getUcCode().empty()) {
-                this->students.insert(student_);
-            }
-        }
-    }
 }
 
-// schedule of a student
-Schedule::Schedule(const string& StudentCode) {
+void Schedule::loadLessonsStudent() {
     CsvAndVectors CSVInfo;
-    vector<Student> StudentsVector = CSVInfo.getStudentsVector();
     vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
-
-    for (auto &student_ : StudentsVector) {
-        if (StudentCode == student_.getStudentCode()) {
-            this->student = student_;
-        }
-    }
 
     for (auto &uc: this->student.getUCs()) {
         for (auto &lesson : LessonsVector) {
@@ -66,25 +73,26 @@ Schedule::Schedule(const string& StudentCode) {
     }
 }
 
-void Schedule::addLesson(const Lesson& lesson) {
-    this->lessons.insert(lesson);
-    //change in CSV file
+void Schedule::loadStudents() {
     CsvAndVectors CSVInfo;
-    vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
-    LessonsVector.push_back(lesson);
-    CSVInfo.setFromLessonsVector();
-}
+    vector<Student> StudentsVector = CSVInfo.getStudentsVector();
 
-void Schedule::removeLesson(Lesson& lesson) {
-    this->lessons.erase(lesson);
-    CsvAndVectors CSVInfo;
-    vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
-    for (auto it = LessonsVector.begin(); it != LessonsVector.end(); it++) {
-        if (*it == lesson) {
-            LessonsVector.erase(it);
+    // get students from this ucClass(UcCode, ClassCode)
+    for (auto &student_: StudentsVector) {
+        for (auto &uc : student_.getUCs()) {
+            if (uc == this->UcClass) {
+                this->students.insert(student_);
+            }
+                // if the user wants the schedule of an uc
+            else if (uc.getUcCode() == this->UcClass.getUcCode() && this->UcClass.getClassCode().empty()) {
+                this->students.insert(student_);
+            }
+                // if the user wants the schedule of a class
+            else if (uc.getClassCode() == this->UcClass.getClassCode() && this->UcClass.getUcCode().empty()) {
+                this->students.insert(student_);
+            }
         }
     }
-    CSVInfo.setFromLessonsVector();
 }
 
 set<Lesson> Schedule::getLesson() const {
@@ -109,9 +117,9 @@ void Schedule::drawSchedule() const {
 }
 
 
-bool Schedule::hasSameUcCode(Schedule &UcCode) {
-   return UcClass.getUcCode() == UcCode.getUcClass().getUcCode();
-}
+//bool Schedule::hasSameUcCode(Schedule &UcCode) {
+//   return UcClass.getUcCode() == UcCode.getUcClass().getUcCode();
+//}
 
 UC Schedule::getUcClass() {
     return this->UcClass;
@@ -121,31 +129,31 @@ set<Student> Schedule::getStudents() {
     return this->students;
 }
 
-// TODO
-// acho que falta completar, mas n tenho a certeza
-void Schedule::addStudent(const Student& student) {
-    // CsvAndVectors CSVInfo;
-    // vector<Student> StudentsVector = CSVInfo.getStudentsVector();
-    students.insert(student);
-    // CSVInfo.setFromStudentsVector();
+// add a student to a Schedule(UC UcClass)
+void Schedule::addStudent(Student student_) {
+    CsvAndVectors CSVInfo;
+    student_.addUC(this->UcClass);
+    students.insert(student_);
+    CSVInfo.setFromStudentsVector();
+    this->loadLessonsUcClass();
 }
 
-// TODO
-// acho que falta completar, mas n tenho a certeza
-void Schedule::removeStudent(const Student& student) {
-    // CsvAndVectors CSVInfo;
-    // vector<Student> StudentsVector = CSVInfo.getStudentsVector();
-    students.erase(student);
-    // CSVInfo.setFromStudentsVector();
+// remove a student from a Schedule(UC UcClass)
+void Schedule::removeStudent(Student student_) {
+    CsvAndVectors CSVInfo;
+    student_.removeUC(this->UcClass);
+    students.erase(student_);
+    CSVInfo.setFromStudentsVector();
+    this->loadLessonsUcClass();
 }
 
 bool Schedule::operator<(Schedule schedule) {
     return this->UcClass < schedule.getUcClass();
 }
 
-void Schedule::printUcAndClass() {
-    cout << "UC: " << UcClass.getUcCode() << " " << UcClass.getClassCode() << endl;
-}
+//void Schedule::printUcAndClass() {
+//    cout << "UC: " << UcClass.getUcCode() << " " << UcClass.getClassCode() << endl;
+//}
 
 void Schedule::sortStudents(const int &sort_) {
     vector<Student> sorted = vector<Student>(students.begin(), students.end());

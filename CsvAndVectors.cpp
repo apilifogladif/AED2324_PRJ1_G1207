@@ -16,7 +16,7 @@ set<string> CsvAndVectors::UcSet;
 void CsvAndVectors::createClassesAndUcSet() {
     fstream file;
     set<string> classes;
-    file.open("../data/classes_per_uc.csv");
+    file.open("/data/classes_per_uc.csv");
     if (!file.is_open()) {
         cerr << "Error: Unable to open the file." << endl;
         return;
@@ -41,7 +41,7 @@ void CsvAndVectors::createStudentsSet() {
     fstream file;
     set<string> classes;
     vector<UC> ucs;
-    file.open("../data/students_classes.csv");
+    file.open("/data/students_classes.csv");
     if (!file.is_open()) {
         cerr << "Error: Unable to open the file." << endl;
         return;
@@ -68,7 +68,7 @@ void CsvAndVectors::createStudentsSet() {
 // this function stores information of 'classes.csv' file in a vector of objects of the class 'Lesson'
 void CsvAndVectors::createLessonsVector() {
     fstream file;
-    file.open("../data/classes.csv");
+    file.open("/data/classes.csv");
     if (!file.is_open()) {
         cerr << "Error: Unable to open the file." << endl;
         return;
@@ -96,7 +96,7 @@ void CsvAndVectors::createLessonsVector() {
 // O(n) where n is the number of lines in the 'requests.csv'
 void CsvAndVectors::createRequestsVector() {
     fstream file;
-    file.open("../data/requests.csv");
+    file.open("/data/requests.csv");
     if (!file.is_open()) {
         cerr << "Error: Unable to open the file." << endl;
         return;
@@ -130,7 +130,7 @@ void CsvAndVectors::createRequestsVector() {
 void CsvAndVectors::createClassesPerUcVector() {
     fstream file;
     set<string> classes;
-    file.open("../data/classes_per_uc.csv");
+    file.open("/data/classes_per_uc.csv");
     if (!file.is_open()) {
         cerr << "Error: Unable to open the file." << endl;
         return;
@@ -161,7 +161,7 @@ void CsvAndVectors::createStudentsVector() {
     fstream file;
     set<string> classes;
     vector<UC> ucs;
-    file.open("../data/students_classes.csv");
+    file.open("/data/students_classes.csv");
     if (!file.is_open()) {
         cerr << "Error: Unable to open the file." << endl;
         return;
@@ -237,7 +237,7 @@ vector<Student> CsvAndVectors::getStudentsVector() {
 // O(n) where n is the number of lessons in the 'LessonsVector'
 void CsvAndVectors::setFromLessonsVector() {
     ofstream fileName;
-    fileName.open("../data/classes.csv");
+    fileName.open("/data/classes.csv");
     fileName << "ClassCode,UcCode,Weekday,StartHour,Duration,Type" << endl;
     for (const auto & lesson : LessonsVector) {
         fileName << lesson.getUc().getClassCode() << "," << lesson.getUc().getUcCode() << "," <<
@@ -250,7 +250,7 @@ void CsvAndVectors::setFromLessonsVector() {
 // O(m*k) where m is the number of unique UcCode entries and k is the average number of ClassCode entries for each UcCode
 void CsvAndVectors::setFromClassesPerUcVector() {
     ofstream fileName;
-    fileName.open("../data/classes_per_uc.csv");
+    fileName.open("/data/classes_per_uc.csv");
     fileName << "UcCode,ClassCode" << endl;
     for (auto &Uc : ClassesPerUcVector) {
         for (const string& Class: Uc.second) {
@@ -263,7 +263,7 @@ void CsvAndVectors::setFromClassesPerUcVector() {
 // O(n*k) where n is the number of Student objects in StudentsVector and k is the average number of UC objects associated with each Student
 void CsvAndVectors::setFromStudentsVector() {
     ofstream fileName;
-    fileName.open("../data/students_classes.csv");
+    fileName.open("/data/students_classes.csv");
     fileName << "StudentCode,StudentName,UcCode,ClassCode" << endl;
     for (const Student &s: StudentsVector) {
         for (const UC &c: s.getUCs()) {
@@ -274,9 +274,9 @@ void CsvAndVectors::setFromStudentsVector() {
 }
 
 // O(n) where n is the number of Request objects in RequestVectors
-void CsvAndVectors::setRequestVector() {
+void CsvAndVectors::setFromRequestVector() {
     ofstream fileName;
-    fileName.open("../data/requests.csv");
+    fileName.open("/data/requests.csv");
     fileName << "StudentCode, StudentName, Type, Description -> Status, Reason (if rejected)" << endl;
     for (auto &request : RequestsVector) {
         fileName << request.getStudent().getStudentCode() << ", " << request.getStudent().getStudentName() << ", " <<

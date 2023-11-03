@@ -96,7 +96,7 @@ class Student {
 
         /**
          * Changes the UC of the student
-         * O(n) where n is the number of UC objects in the ucs vector
+         * O(1)
          *
          * @param uc : Uc
          * @return UC

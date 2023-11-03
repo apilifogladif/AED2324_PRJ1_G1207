@@ -71,15 +71,12 @@ int Student::binarySearchCsvStudentVector(unsigned long left, unsigned long righ
     return binarySearchCsvStudentVector(mid + 1, right);
 }
 
-// TODO
-// acho que falta completar com o CSVInfo e tal
 UC Student::changeUC(const UC &uc) {
-    for (auto & i : this->ucs) {
-        if (uc.getUcCode() == i.getUcCode()) {
-            UC old_uc = i;
-            i.setClassCode(uc.getClassCode());
-            return old_uc;
-        }
+    UC old_uc = this->findUc(uc.getUcCode());
+    if (!(old_uc == UC())) {
+        this->removeUC(old_uc);
+        this->addUC(uc);
+        return old_uc;
     }
     return UC();
 }

@@ -16,9 +16,9 @@ using namespace std;
 class Schedule {
     private:
         set<Lesson> lessons;
-        set<Student> students;
+        set<Student> students;  // when the schedule is the schedule of an UcClass, Uc or Class
         UC UcClass;
-        Student student;
+        Student student;        // when the schedule is the schedule of a student
     public:
 
         /**
@@ -28,8 +28,7 @@ class Schedule {
         Schedule();
         /**
          * Class constructor
-         * O(m) + O(n) + O(k) where m is the number of lessons and students in the vectors (LessonsVector and StudentVector),
-         * n is the number of lessons in the LessonsVector and k is the number of students in the StudentsVector
+         * O(1)
          *
          * Sets ucClass
          *
@@ -39,9 +38,7 @@ class Schedule {
 
         /**
          * Class constructor
-         * O(n) + O(m) + O(k) + O(k*l) where n is the number of students in StudentsVector, m is the number of lessons in the LessonsVector,
-         * k is the number of UCs and l is the lessons in the LessonsVector associated with the students
-
+         * O(1)
          *
          * Sets StudentCode
          *
@@ -49,21 +46,45 @@ class Schedule {
          */
         Schedule(const string& StudentCode);
 
-        /**
-         * Adds a lesson to the schedule
-         * O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
-         *
-         * @param lesson : Lesson;
-         */
-        void addLesson(const Lesson& lesson);
+//        /**
+//         * Adds a lesson to the schedule
+//         * O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
+//         *
+//         * @param lesson : Lesson;
+//         */
+//        void addLesson(const Lesson& lesson);
+//
+//        /**
+//         * Removes a lesson from the schedule
+//         * O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
+//         *
+//         * @param lesson : Lesson;
+//         */
+//        void removeLesson(Lesson& lesson);
 
         /**
-         * Removes a lesson from the schedule
-         * O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
+         * Set the private set lessons to the lessons of the UcClass, Uc or Class
+         * O(n)  where n is the number of lessons in LessonsVector
          *
-         * @param lesson : Lesson;
+         * @return
          */
-        void removeLesson(Lesson& lesson);
+        void loadLessonsUcClass();
+
+        /**
+        * Set the private set lessons to the lessons of the Student
+        * O(n*m)  where n is the number of Ucs of the Student and m is the number of lessons in LessonsVector
+        *
+        * @return
+        */
+        void loadLessonsStudent();
+
+        /**
+        * Set the private set students to the students of the UcClass, Uc or Class
+        * O(n*m)  where n is the number of students in StudentsVector and m is the number of Ucs of each student
+        *
+        * @return
+        */
+        void loadStudents();
 
         /**
          * Returns a lesson from the schedule
@@ -79,14 +100,14 @@ class Schedule {
          */
         void drawSchedule() const;
 
-        /**
-         * Verifies if it has the same UcCode
-         * O(1)
-         *
-         * @param UcCode : Uc code;
-         * @return bool : true or false
-         */
-        bool hasSameUcCode(Schedule &UcCode);
+//        /**
+//         * Verifies if it has the same UcCode
+//         * O(1)
+//         *
+//         * @param UcCode : Uc code;
+//         * @return bool : true or false
+//         */
+//        bool hasSameUcCode(Schedule &UcCode);
 
         /**
          * Returns the Uc class
@@ -110,7 +131,7 @@ class Schedule {
          *
          * @param student : student;
          */
-        void addStudent(const Student& student);
+        void addStudent(Student student);
 
         /**
          * Removes student from a class
@@ -118,7 +139,7 @@ class Schedule {
          *
          * @param student : student;
          */
-        void removeStudent(const Student& student);
+        void removeStudent(Student student);
 
         /**
          * Operator to compare two schedules
@@ -129,11 +150,11 @@ class Schedule {
          */
         bool operator<(Schedule schedule);
 
-        /**
-         * Prints UcCode and ClassCode
-         * O(1)
-         */
-        void printUcAndClass();
+//        /**
+//         * Prints UcCode and ClassCode
+//         * O(1)
+//         */
+//        void printUcAndClass();
 
         /**
          * Sorts the students and prints them in the order that we asked for

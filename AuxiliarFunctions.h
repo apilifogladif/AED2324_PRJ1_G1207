@@ -1,9 +1,9 @@
 #ifndef AED2324_PRJ1_G1207_AUXILIARFUNCTIONS_H
 #define AED2324_PRJ1_G1207_AUXILIARFUNCTIONS_H
 
+#include "Schedule.h"
 #include "Student.h"
 #include "Request.h"
-#include "Schedule.h"
 #include "Lesson.h"
 #include "UC.h"
 #include <string>

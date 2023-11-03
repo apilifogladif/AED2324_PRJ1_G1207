@@ -326,7 +326,7 @@ int enrollRequest(Student student) {
 
     UC uc;
     uc = student.findUc(UcCode);
-    if (uc.getUcCode() == "") {
+    if (uc.getUcCode() != "") {
         cout << "The student is already enrolled in this UC.";
         return 1;  //Main Menu
     }
@@ -541,7 +541,12 @@ int switchRequest(Student student) {
                cout << "Write the Uc Code of the Uc you want to remove (L.EICxxx or UPxxx): ";
                 if (cin >> UcCode) {
                     if (verifyUc(UcCode)) {
-                        break;  // Input is valid, exit the loop
+                        uc = student.findUc(UcCode);
+                        if (uc.getUcCode() == "") {
+                            cout << "This student is not enrolled in this Uc.";
+                            return 1;  //Main Menu
+                        }
+                        break;
                     }
                     else {
                         cout << "Invalid Uc Code!" << endl;
@@ -554,18 +559,18 @@ int switchRequest(Student student) {
                 }
             }
 
-            uc = student.findUc(UcCode);
 
-            if (uc.getUcCode() == "") {
-                cout << "This student is not enrolled in this Uc.";
-                return 1;  //Main Menu
-            }
 
             while (true) {
                 cout << "Write the Uc Code you want to add(L.EICxxx or UPxxx): ";
                 if (cin >> newUcCode) {
                     if (verifyUc(newUcCode)) {
-                        break;  // Input is valid, exit the loop
+                        uc = student.findUc(newUcCode);
+                        if (uc.getUcCode() != "") {
+                            cout << "This student is already enrolled in this Uc.";
+                            return 1;  //Main Menu
+                        }
+                        break;
                     }
                     else {
                         cout << "Invalid Uc Code!" << endl;
@@ -600,7 +605,12 @@ int switchRequest(Student student) {
                 cout << "Write the Uc Code (L.EICxxx or UPxxx): ";
                 if (cin >> UcCode) {
                     if (verifyUc(UcCode)) {
-                        break;  // Input is valid, exit the loop
+                        uc = student.findUc(UcCode);
+                        if (uc.getUcCode() == "") {
+                            cout << "This student is not enrolled in this Uc.";
+                            return 1;  //Main Menu
+                        }
+                        break;
                     }
                     else {
                         cout << "Invalid Uc Code!" << endl;
@@ -612,17 +622,16 @@ int switchRequest(Student student) {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            uc = student.findUc(UcCode);
-            if (uc.getUcCode() == "") {
-                cout << "This student is not enrolled in this Uc.";
-                return 1;  //Main Menu
-            }
 
             while (true) {
                 cout << "Write the Class Code you want to switch to(yLEICxx; y->year, xx->class): ";
                 if (cin >> classCode) {
                     if (verifyClass(classCode)) {
-                        break;  // Input is valid, exit the loop
+                        if (uc.getClassCode() == classCode) {
+                            cout << "This is already the class of this student in that Uc.";
+                            return 1;  //Main Menu
+                        }
+                        break;
                     }
                     else {
                         cout << "Invalid Class Code!" << endl;
@@ -693,7 +702,7 @@ int switchRequest(Student student) {
  * submitRequest ?????????????????????????
  * O(log n) where n is the size of the set
  *
- * @param op
+ * @param op : option chosen by the user
  * @return
  */
 int submitRequest(int op) {
@@ -1503,10 +1512,7 @@ int requestMenu() {
     cout << "3 - Switch an UC." << endl;
     cout << "4 - Return to main menu." << endl;
     cout << "5 - Quit." << endl;
-    cout << "Write the number of what you want to do: ";
-    cin >> op;
-    if (op == 4) return 1;
-    if (op == 5) return 0;
+
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -1523,6 +1529,8 @@ int requestMenu() {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
+    if (op == 4) return 1;
+    if (op == 5) return 0;
     int aux = submitRequest(op);
     if (aux == 0) return 0;
     return 1;

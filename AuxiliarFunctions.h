@@ -98,7 +98,7 @@ class AuxiliarFunctions {
          * @param student : info of the student who wants to switch;
          * @param UcClass : Uc class that the student given wants to switch;
          */
-        void concludeSwitch(const Student& student, const UC& UcClass);
+        void concludeSwitch(const Student& student, const UC& oldUc, const UC& newUc);
 
         /**
          * Checks if there is no conflict between the student’s schedule and the new class’s schedule
@@ -338,7 +338,7 @@ class AuxiliarFunctions {
          * @paramt Year : year;
          * @return students.size
          */
-        int numberYearStudents(const int &Year);
+        int numberYearStudents(char &Year);
 
         /**
          * Get requests

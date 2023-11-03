@@ -15,7 +15,7 @@ AuxiliarFunctions::AuxiliarFunctions() = default;
 
 Student AuxiliarFunctions::retStudent(const string &studentCode) {
     CsvAndVectors CSVInfo;
-    vector<Student> students = CSVInfo.getStudentsVector();
+    vector<Student> students = CSVInfo.StudentsVector;
     for (auto &student : students) {
         if (student.getStudentCode() == studentCode) {
             return student;
@@ -32,8 +32,10 @@ void AuxiliarFunctions::concludeRemoval(const Student& student, const UC& UcClas
     removalRequests.emplace(student, UcClass, "Removal");
 }
 
-void AuxiliarFunctions::concludeSwitch(const Student& student, const UC& UcClass) {
-    switchRequests.emplace(student, UcClass, "Switch");
+void AuxiliarFunctions::concludeSwitch(const Student& student, const UC& oldUc, const UC& newUc) {
+    Request request = Request(student, newUc, "Switch");
+    request.setoldUC(oldUc);
+    switchRequests.emplace(request);
 }
 
 bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
@@ -65,18 +67,30 @@ UC AuxiliarFunctions::getCurrentClass(Request &request) {
 }
 
 bool AuxiliarFunctions::requestBalance(Request &request) {
-    int currentClass = numberClassStudents(getCurrentClass(request));
-    int newClass = numberClassStudents(request.getUC());
-    if ((newClass - currentClass) <= 4) return true;
-    return false;
+    CsvAndVectors CSVInfo;
+    AuxiliarFunctions func;
+    vector<pair<string, set<string>>> ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
+    string UcCode = request.getUC().getUcCode();
+    int new_oc = func.numberClassStudents(request.getUC());
+    int aux;
+
+    for (pair<string, set<string>> p : ClassesPerUcVector) {
+        if (p.first == UcCode) {
+            for (string Class : p.second) {
+                aux = func.numberClassStudents(UC(UcCode, Class));
+                if (new_oc - aux > 4) return false;
+            }
+        }
+    }
+    return true;
 }
 
 bool AuxiliarFunctions::requestConflict(Request &request) {
     UC uc = request.getUC();
     Student student = request.getStudent();
     vector<UC> studentUCs = student.getUCs();
-    for (const UC& uc_ : studentUCs) {
-        if (lessonOverlap(uc_, uc)) {
+    for (UC& uc_ : studentUCs) {
+        if (!(uc_ == request.getoldUC()) && lessonOverlap(uc_, uc)) {
             return true;
         }
     }
@@ -112,59 +126,68 @@ bool AuxiliarFunctions::requestMax(Request &request) {
 void AuxiliarFunctions::verifySwapRequest(Request &request){
     if (!(requestBalance(request))) {
         request.setReason("The balance of class occupation is not maintained./n The difference between the number of students in the class can't be less than or equal to 4.");
-        request.setStatus("rejected");
+        request.setStatus("Rejected");
         rejectedRequests.push_back(request);
     } else if (requestConflict(request)) {
         request.setReason("There is conflict between the student’s schedule and the new class’s schedule.");
-        request.setStatus("rejected");
+        request.setStatus("Rejected");
         rejectedRequests.push_back(request);
     } else if (requestMax(request)) {
         request.setReason("The capacity of the class has been exceeded.");
-        request.setStatus("rejected");
+        request.setStatus("Rejected");
         rejectedRequests.push_back(request);
-    } else {
-        Student student = retStudent(request.getStudent().getStudentCode());
-        UC uc = Schedule(request.getUC()).getUcClass();
-        UC uc_old = student.changeUC(uc);
-        Schedule(request.getUC()).addStudent(student);
-        Schedule(uc_old).removeStudent(student);
     }
-    cout << endl;
+    else {
+        request.setStatus("Accepted");
+        Student student = request.getStudent();
+        UC uc = request.getUC();
+        UC uc_old = request.getoldUC();
+        student.removeUC(uc_old);
+        student.addUC(uc);
+        acceptedRequests.push_back(request);
+    }
+    allRequests.push_back(request);
 }
 
 void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
     if (requestConflict(request)) {
         request.setReason("There is conflict between the student’s schedule and the new class’s schedule.");
-        request.setStatus("rejected");
+        request.setStatus("Rejected");
         rejectedRequests.push_back(request);
-    } else if (requestMax(request)) {
+    }
+    else if (requestMax(request)) {
         request.setReason("The capacity of the class has been exceeded.");
-        request.setStatus("rejected");
+        request.setStatus("Rejected");
         rejectedRequests.push_back(request);
-    } else {
+    }
+    else {
+        request.setStatus("Accepted");
         Student student = retStudent(request.getStudent().getStudentCode());
         UC uc = Schedule(request.getUC()).getUcClass();
         student.addUC(uc);
         Schedule(uc).addStudent(student);
+        acceptedRequests.push_back(request);
     }
-    cout << endl;
+    allRequests.push_back(request);
 }
 
 void AuxiliarFunctions::verifyRemovalRequest(Request &request) {
     if (!(requestBalance(request))) {
         request.setReason("The balance of class occupation is not maintained./n The difference between the number of students in the class can't be less than or equal to 4.");
-        request.setStatus("rejected");
+        request.setStatus("Rejected");
         rejectedRequests.push_back(request);
     } else {
+        request.setStatus("Accepted");
         Student student = retStudent(request.getStudent().getStudentCode());
         UC uc = Schedule(request.getUC()).getUcClass();
         student.removeUC(uc);
         Schedule(uc).removeStudent(student);
+        acceptedRequests.push_back(request);
     }
+    allRequests.push_back(request);
 }
 
 void AuxiliarFunctions::RequestsManager() {
-
     while (!(removalRequests.empty())) { // it has to be first
         Request request = removalRequests.front();
         removalRequests.pop();
@@ -183,31 +206,34 @@ void AuxiliarFunctions::RequestsManager() {
         verifySwapRequest(request);
     }
 
-    if (!rejectedRequests.empty()) {
-        seeRejectedRequests();
-    } else {
-        cout << endl;
-        cout << "All pending requests were accepted." << endl;
-    }
-
+    CsvAndVectors CSVInfo;
+    CSVInfo.setFromRequestVector();
 }
 
 void AuxiliarFunctions::seeRejectedRequests() {
+    if (rejectedRequests.size() == 0) cout << "There are no rejected requests." << endl;
     for (auto i: rejectedRequests) {
         i.printRequest();
-        cout << " , reason:" << i.getReason();
+        cout << " , reason:" << i.getReason() << endl;
     }
 }
 
 void AuxiliarFunctions::seeAcceptedRequests() {
-    for (auto i: acceptedRequests) i.printRequest();
+    if (acceptedRequests.size() == 0) cout << "There are no accepted requests." << endl;
+    for (auto i: acceptedRequests) {
+        i.printRequest();
+        cout << endl;
+    }
+
 }
 
 void AuxiliarFunctions::seeAllRequests() {
+    if (allRequests.size() == 0) cout << "There are no requests." << endl;
     for (auto i: allRequests) {
         i.printRequest();
-        cout << i.getStatus();
-        if (i.getStatus() == "Rejected") cout << " - " << i.getReason();
+        cout << " - " << i.getStatus();
+        if (i.getStatus() == "Rejected") cout << ", reason: " << i.getReason();
+        cout << endl;
     }
 }
 
@@ -245,18 +271,18 @@ void AuxiliarFunctions::seeUcStudents(const string& UcCode, const int& sort_) {
 
 void AuxiliarFunctions::seeYearStudents(int year, int sort_) {
     CsvAndVectors CSVInfo;
-    vector<Student> StudentsVector = CSVInfo.getStudentsVector();
+    vector<Student> StudentsVector = CSVInfo.StudentsVector;
     set<Student> students;
     for (auto &student : StudentsVector) {
-        int y = 0;
+        char y = '0';
+        char aux;
         for (auto &uc : student.getUCs()) {
-            char firstChar = uc.getClassCode()[0];
-            if (firstChar > y) y = static_cast<int>(firstChar) - 48;    //ASCII
+            aux = uc.getClassCode()[0];
+            if (aux > y) y = aux;
         }
         if (y == year) students.insert(student);
     }
     std::vector<Student> tempVector(students.begin(), students.end());
-
     if (sort_ == 1) {
         std::sort(tempVector.begin(), tempVector.end(), [](const Student &A, const Student &B) {
             return A.getStudentName() < B.getStudentName();
@@ -289,24 +315,24 @@ int AuxiliarFunctions::numberUcStudents(const string &UcCode) {
     return schedule.getStudents().size();
 }
 
-int AuxiliarFunctions::numberYearStudents(const int &Year) {
+int AuxiliarFunctions::numberYearStudents(char &Year) {
     CsvAndVectors CSVInfo;
-    vector<Student> StudentsVector = CSVInfo.getStudentsVector();
-    vector<Student> students;
+    vector<Student> StudentsVector = CSVInfo.StudentsVector;
+    int count = 0;
     for (auto &student : StudentsVector) {
-        int y = 0;
+        char y = 0;
         for (auto &uc : student.getUCs()) {
-            char firstChar = uc.getClassCode()[0];
-            if (firstChar > y) y = static_cast<int>(firstChar) - 48;    //ASCII
+            char aux = uc.getClassCode()[0];
+            if (aux > y) y = aux;
         }
-        if (y == Year) students.push_back(student);
+        if (y == Year) count++;
     }
-    return students.size();
+    return count;
 }
 
 void AuxiliarFunctions::getRequests() {
     CsvAndVectors CSVInfo;
-    allRequests = CSVInfo.getRequestVector();
+    allRequests = CSVInfo.RequestsVector;
     for (Request r : allRequests) {
         if (r.getStatus() == "Accepted") acceptedRequests.push_back(r);
         else rejectedRequests.push_back(r);

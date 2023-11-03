@@ -13,7 +13,7 @@ using namespace std;
  * @mainpage AED project main.cpp
  * @section intro_sec Introduction
  * This project has the intention of creating a functional schedules manager for a university.
- * This project was made by: Ana Filipa Geraldes, Filipa Fidalgo and Loenor Couto.
+ * This project was made by: Ana Filipa Geraldes, Filipa Fidalgo and Leonor Couto.
  */
 
 
@@ -26,13 +26,13 @@ using namespace std;
  * @param UcCode
  * @param auxVector
  */
-void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector) {
+int occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
-    cout << "1 - Numerical order" << endl;
-    cout << "2 - Reverse numerical" << endl;
-    cout << "3 - From the one with more students to the less students." << endl;
-    cout << "4 - From the one with less students to the more students." << endl;
+    cout << "1 - Ascending order" << endl;
+    cout << "2 - Descending order" << endl;
+    cout << "3 - From the one with less students to the more students." << endl;
+    cout << "4 - From the one with more students to the less students." << endl;
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -49,6 +49,7 @@ void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
+    cout << endl;
     if (op == 1) {
         sort(auxVector.begin(), auxVector.end(), [](pair<string, int> &A, pair<string, int> &B) {
             return A.first < B.first;
@@ -73,6 +74,30 @@ void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector
     for (pair<string, int> &aux: auxVector) {
         cout << aux.first << ": " << aux.second << endl;
     }
+
+
+    cout << "1 - Return to last Menu" << endl;
+    cout << "2 - Return to Main Menu" << endl;
+    cout << "3 - Quit." << endl;
+    while (true) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            if (op >= 1 && op <= 3) {
+                break;  // Input is valid, exit the loop
+            }
+            else {
+                cout << "Invalid number! The number should be between 1 and 3." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+    if (op == 1) occupationSortMenu_case1(UcCode, auxVector);
+    if (op == 3) return 0;
+    return 1;
 }
 
 /**
@@ -83,13 +108,13 @@ void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector
  * @param classCode
  * @param auxVector
  */
-void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVector) {
+int occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVector) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
-    cout << "1 - Numerical order" << endl;
-    cout << "2 - Reverse numerical" << endl;
-    cout << "3 - From the one with more students to the less students." << endl;
-    cout << "4 - From the one with less students to the more students." << endl;
+    cout << "1 - Ascending order" << endl;
+    cout << "2 - Descending order" << endl;
+    cout << "3 - From the one with less students to the more students." << endl;
+    cout << "4 - From the one with more students to the less students." << endl;
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -106,6 +131,7 @@ void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVec
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
+    cout << endl;
     if (op == 1) {
         sort(auxVector.begin(), auxVector.end(), [](pair<string, int> &A, pair<string, int> &B) {
             return A.first < B.first;
@@ -130,6 +156,29 @@ void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVec
     for (pair<string, int> &aux: auxVector) {
         cout << aux.first << ": " << aux.second << endl;
     }
+
+    cout << "1 - Return to last Menu" << endl;
+    cout << "2 - Return to Main Menu" << endl;
+    cout << "3 - Quit." << endl;
+    while (true) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            if (op >= 1 && op <= 3) {
+                break;  // Input is valid, exit the loop
+            }
+            else {
+                cout << "Invalid number! The number should be between 1 and 3." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+    if (op == 1) occupationSortMenu_case2(classCode, auxVector);
+    if (op == 3) return 0;
+    return 1;
 }
 
 /**
@@ -140,15 +189,15 @@ void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVec
  * @param year
  * @param ClassesPerUcVectorOfYear
  */
-void occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVectorOfYear) {
+int occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVectorOfYear) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
-    cout << "1 - Numerical order os UCs" << endl;
-    cout << "2 - Reverse numerical of UCs" << endl;
-    cout << "3 - Numerical order of Classes" << endl;
-    cout << "4 - Reverse numerical of Classes" << endl;
-    cout << "5 - From the one with more students to the less students." << endl;
-    cout << "6 - From the one with less students to the more students." << endl;
+    cout << "1 - Ascending order of UCs" << endl;
+    cout << "2 - Descending order of UCs" << endl;
+    cout << "3 - Ascending order of Classes" << endl;
+    cout << "4 - Descending order of Classes" << endl;
+    cout << "5 - From the one with less students to the one with more students." << endl;
+    cout << "6 - From the one with more students to the one with less students." << endl;
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -165,6 +214,7 @@ void occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVector
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
+    cout << endl;
     if (op == 1) {
         sort(ClassesPerUcVectorOfYear.begin(), ClassesPerUcVectorOfYear.end(), [](pair<UC, int> &A, pair<UC, int> &B) {
             return A.first.getUcCode() < B.first.getUcCode();
@@ -201,6 +251,29 @@ void occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVector
         if (op == 3 || op == 4) cout << aux.first.getClassCode() << "; " << aux.first.getUcCode() << ": " << aux.second << endl;
         else cout << aux.first.getUcCode() << "; " << aux.first.getClassCode() << ": " << aux.second << endl;
     }
+
+    cout << "1 - Return to last Menu" << endl;
+    cout << "2 - Return to Main Menu" << endl;
+    cout << "3 - Quit." << endl;
+    while (true) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            if (op >= 1 && op <= 3) {
+                break;  // Input is valid, exit the loop
+            }
+            else {
+                cout << "Invalid number! The number should be between 1 and 3." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+    if (op == 1) occupationSortMenu_case3(year, ClassesPerUcVectorOfYear);
+    if (op == 3) return 0;
+    return 1;
 }
 
 /**
@@ -219,8 +292,8 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
     cout << "How do you want the list to be sorted?" << endl;
     cout << "1 - A-Z order" << endl;
     cout << "2 - Z-A order" << endl;
-    cout << "3 - numerical" << endl;
-    cout << "4 - reverse numerical" << endl;
+    cout << "3 - Descending order" << endl;
+    cout << "4 - Ascending order" << endl;
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -237,19 +310,18 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
-    if (year == 0 && UcCode != "" && classCode != "")
+    if (year == '0' && !UcCode.empty() && !classCode.empty())
         func.seeClassStudents(UC(UcCode, classCode), op);
 
-    else if (year != 0 && UcCode == "" && classCode == "")
+    else if (year != '0' && UcCode.empty() && classCode.empty())
         func.seeYearStudents(year, op);
 
-    else if (year == 0 && UcCode != "" && classCode == "")
+    else if (year == '0' && !UcCode.empty() && classCode.empty())
         func.seeUcStudents(UcCode, op);
 
     cout << "1 - Return to last Menu" << endl;
     cout << "2 - Return to Main Menu" << endl;
     cout << "3 - Quit." << endl;
-    cout << "Write the number of what you want to do: ";
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -266,6 +338,7 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
+    cout << endl;
     return op;
 }
 
@@ -279,7 +352,7 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
  */
 bool verifyClass(const string& ClassCode) {
     CsvAndVectors CSVInfo;
-    set<string> ClassesSet = CSVInfo.getClassesSet();
+    set<string> ClassesSet = CSVInfo.ClassesSet;
     if (ClassesSet.find(ClassCode) == ClassesSet.end()) return false;
     return true;
 }
@@ -294,7 +367,7 @@ bool verifyClass(const string& ClassCode) {
  */
 bool verifyUc(const string& UcCode) {
     CsvAndVectors CSVInfo;
-    set<string> UcSet = CSVInfo.getUcSet();
+    set<string> UcSet = CSVInfo.UcSet;
     if (UcSet.find(UcCode) == UcSet.end()) return false;
     return true;
 }
@@ -309,7 +382,7 @@ bool verifyUc(const string& UcCode) {
  */
 bool verifyStudent(const string& StudentCode) {
     CsvAndVectors CSVInfo;
-    set<string> StudentsSet = CSVInfo.getStudentsSet();
+    set<string> StudentsSet = CSVInfo.StudentsSet;
     if (StudentsSet.find(StudentCode) == StudentsSet.end()) return false;
     return true;
 }
@@ -324,7 +397,6 @@ bool verifyStudent(const string& StudentCode) {
  */
 int enrollRequest(Student student) {
     string UcCode;
-    string classCode;
     while (true) {
         cout << "Write the Uc Code (L.EICxxx or UPxxx): ";
         if (cin >> UcCode) {
@@ -349,6 +421,7 @@ int enrollRequest(Student student) {
         return 1;  //Main Menu
     }
 
+    string classCode;
     while (true) {
         cout << "Write the Class Code (yLEICxx; y->year, xx->class): ";
         if (cin >> classCode) {
@@ -368,7 +441,6 @@ int enrollRequest(Student student) {
 
     AuxiliarFunctions func;
     func.concludeEnrollment(student, UC(UcCode, classCode));
-    student.addUC(UC(UcCode, classCode));
     cout << "Enrollment request submitted." << endl;
 
     int op = 0;
@@ -390,7 +462,10 @@ int enrollRequest(Student student) {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
-    if (op == 1) return 1;
+    if (op == 1) {
+        func.RequestsManager();
+        return 1;
+    }
     if (op == 2) {
         cout << endl;
         cout << "NOTE: if you quit now the requests you have made will be canceled. You must" << endl;
@@ -457,7 +532,6 @@ int leaveRequest(Student student) {
 
     AuxiliarFunctions func;
     func.concludeRemoval(student, uc);
-    student.removeUC(uc);
     cout << "Removal request submitted." << endl;
 
     int op = 0;
@@ -479,10 +553,13 @@ int leaveRequest(Student student) {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
-    if (op == 1) return 1;
+    if (op == 1) {
+        func.RequestsManager();
+        return 1;
+    }
     if (op == 2) {
         cout << endl;
-        cout << "NOTE: if you quit now the requests you have made will be canceled. You must" << endl;
+        cout << "NOTE: if you quit now the requests you have made will be canceled." << endl;
         cout << "You must return to the main menu so that the requests can have effect." << endl;
         cout << "If you want to see which requests were accepted and which were rejected, you must" << endl;
         cout << "consult that in the designated options in the main menu." << endl;
@@ -603,16 +680,20 @@ int switchRequest(Student student) {
                 }
             }
 
-            ClassesPerUcVector = CSVInfo.getClassesPerUcVector();
-            for (pair<string, set<string>> p : ClassesPerUcVector) {
-                if (p.first == UcCode) {
-                    for (string Class : p.second) {
-                        occup = func.numberClassStudents(UC(UcCode, Class));
-                        if (occup < newClass_occup) {
-                            newClass_occup = occup;
-                            newClass = Class;
-                        }
+            while (true) {
+                cout << "Write the Class Code you want to go to(yLEICxx; y->year, xx->class): ";
+                if (cin >> newClass) {
+                    if (verifyClass(newClass)) {
+                        break;
                     }
+                    else {
+                        cout << "Invalid Class Code!" << endl;
+                    }
+                }
+                else {
+                    cout << "Invalid input! Please enter a valid Class Code." << endl;
+                    cin.clear();          // Clear the error state
+                    cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
             newuc = UC(newUcCode, newClass);
@@ -645,9 +726,9 @@ int switchRequest(Student student) {
 
             while (true) {
                 cout << "Write the Class Code you want to switch to(yLEICxx; y->year, xx->class): ";
-                if (cin >> classCode) {
-                    if (verifyClass(classCode)) {
-                        if (uc.getClassCode() == classCode) {
+                if (cin >> newClass) {
+                    if (verifyClass(newClass)) {
+                        if (uc.getClassCode() == newClass) {
                             cout << "This is already the class of this student in that Uc.";
                             return 1;  //Main Menu
                         }
@@ -668,7 +749,7 @@ int switchRequest(Student student) {
             student.removeUC(uc);
             student.addUC(newuc);
     }
-    func.concludeSwitch(student, newuc);
+    func.concludeSwitch(student, uc, newuc);
     cout << "Switch request submitted." << endl;
 
     op = 0;
@@ -688,7 +769,10 @@ int switchRequest(Student student) {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
-    if (op == 1) return 1;
+    if (op == 1) {
+        func.RequestsManager();
+        return 1;
+    }
     if (op == 2) {
         cout << endl;
         cout << "NOTE: if you quit now the requests you have made will be canceled. You must" << endl;
@@ -844,7 +928,7 @@ int listingMenu() {
             while (true) {
                 cout << "Write the year (1, 2 or 3): ";
                 if (cin >> year) {
-                    if (year >= 0 && year <= 3) {
+                    if (year == '0' || year == '2' || year == '3') {
                         break;  // Input is valid, exit the loop
                     }
                     else if (year == 'q') return 1;
@@ -932,7 +1016,7 @@ int numbersMenu() {
     string classCode;
     char year = '0';
     int count = 0;
-    int num;
+    int num = 0;
     vector<Student> StudentsVector;
     switch(op) {
         case 1:
@@ -1000,7 +1084,7 @@ int numbersMenu() {
             while (true) {
                 cout << "Write the year (1, 2 or 3): ";
                 if (cin >> year) {
-                    if (year >= 0 && year <= 3) {
+                    if (year == '0' || year == '1' || year == '2') {
                         break;  // Input is valid, exit the loop
                     }
                     else if (year == 'q') return 1;
@@ -1017,11 +1101,11 @@ int numbersMenu() {
             break;
 
         case 4:
-            StudentsVector = CSVInfo.getStudentsVector();
+            StudentsVector = CSVInfo.StudentsVector;
             while (true) {
                 cout << "How many Ucs? (Write a number between 1 and 7) ";
-                if (cin >> op) {
-                    if (op >= 1 && op <= 7) {
+                if (cin >> num) {
+                    if (num >= 1 && num <= 7) {
                         break;  // Input is valid, exit the loop
                     }
                     else {
@@ -1043,9 +1127,10 @@ int numbersMenu() {
         case 5:
             return 1;
 
-        case 6:
+        default:
             return 0;
     }
+    cout << endl;
     cout << "1 - Return to last Menu" << endl;
     cout << "2 - Return to Main Menu" << endl;
     cout << "3 - Quit." << endl;
@@ -1252,6 +1337,7 @@ int occupationMenu() {
     pair<string, int> auxPair;
     pair<UC, int> auxPair2;
     int year;
+    int aux = 0;
     switch(op) {
         case 1:
             while (true) {
@@ -1271,7 +1357,7 @@ int occupationMenu() {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            ClassesPerUcVector = CSVInfo.getClassesPerUcVector();
+            ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
 
             for (pair<string, set<string>> p : ClassesPerUcVector) {
                 if (p.first == UcCode) {
@@ -1282,7 +1368,7 @@ int occupationMenu() {
                     }
                 }
             }
-            occupationSortMenu_case1(UcCode, auxVector);
+            aux = occupationSortMenu_case1(UcCode, auxVector);
             break;
 
         case 2:
@@ -1303,7 +1389,7 @@ int occupationMenu() {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            ClassesPerUcVector = CSVInfo.getClassesPerUcVector();
+            ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
 
             for (pair<string, set<string>> p : ClassesPerUcVector) {
                 if (p.second.find(classCode) != p.second.end()) {
@@ -1312,7 +1398,7 @@ int occupationMenu() {
                     auxVector.push_back(auxPair);
                 }
             }
-            occupationSortMenu_case2(classCode, auxVector);
+            aux = occupationSortMenu_case2(classCode, auxVector);
             break;
 
         case 3:
@@ -1332,7 +1418,7 @@ int occupationMenu() {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            ClassesPerUcVector = CSVInfo.getClassesPerUcVector();
+            ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
             for (pair<string, set<string>> &p : ClassesPerUcVector) {
                 for (auto Class : p.second) {
                     if(static_cast<int>(Class[0]) - 48 == year) {
@@ -1342,7 +1428,7 @@ int occupationMenu() {
                     }
                 }
             }
-            occupationSortMenu_case3(year, ClassesPerUcVectorOfYear);
+            aux = occupationSortMenu_case3(year, ClassesPerUcVectorOfYear);
             break;
 
         case 4:
@@ -1351,30 +1437,7 @@ int occupationMenu() {
         case 5:
             return 0;
     }
-    int op2 = 0;
-    cout << "1 - Return to last Menu" << endl;
-    cout << "2 - Return to Main Menu" << endl;
-    cout << "3 - Quit." << endl;
-    while (true) {
-        cout << "Write the number of what you want to do: ";
-        if (cin >> op2) {
-            if (op2 >= 1 && op2 <= 3) {
-                break;  // Input is valid, exit the loop
-            }
-            else {
-                cout << "Invalid number! The number should be between 1 and 3." << endl;
-            }
-        }
-        else {
-            cout << "Invalid input! Please enter a valid number." << endl;
-            cin.clear();          // Clear the error state
-            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-        }
-    }
-    while (op2 == 1 && op == 1) occupationSortMenu_case1(UcCode, auxVector);
-    while (op2 == 1 && op == 2) occupationSortMenu_case2(classCode, auxVector);
-    while (op2 == 1 && op == 3) occupationSortMenu_case3(year, ClassesPerUcVectorOfYear);
-    if (op2 == 3) return 0;
+    if (aux == 0) return 0;
     return 1;
 }
 
@@ -1400,11 +1463,11 @@ int greatestMenu() {
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
-            if (op >= 1 && op <= 3) {
+            if (op >= 1 && op <= 5) {
                 break;  // Input is valid, exit the loop
             }
             else {
-                cout << "Invalid number! The number should be between 1 and 3." << endl;
+                cout << "Invalid number! The number should be between 1 and 5." << endl;
             }
         }
         else {
@@ -1413,6 +1476,7 @@ int greatestMenu() {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
+    cout << endl;
 
     set<string> UcSet;
     vector<pair<string, set<string>>> ClassesPerUcVector;
@@ -1420,10 +1484,11 @@ int greatestMenu() {
     vector<string> MAX;
     vector<int> max;
     vector<UC> MAXUC;
-    vector<int> MAXYEARS;
+    vector<char> MAXYEARS;
+    max.push_back(0);
     switch(op) {
         case 1:
-            UcSet = CSVInfo.getUcSet();
+            UcSet = CSVInfo.UcSet;
             for (const string& UcCode : UcSet) {
                 num = func.numberUcStudents(UcCode);
                 if (num > max[0]) {
@@ -1444,7 +1509,7 @@ int greatestMenu() {
             break;
 
         case 2:
-            ClassesPerUcVector = CSVInfo.getClassesPerUcVector();
+            ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
             for (pair<string, set<string>> p : ClassesPerUcVector) {
                 for (string ClassCode : p.second) {
                     UC uc = UC(p.first, ClassCode);
@@ -1462,14 +1527,15 @@ int greatestMenu() {
                 }
             }
             cout << "The Classes with the greatest number of students: " << endl;
+            cout << "UcCode; ClassCode";
             for (int i = 0; i < max.size(); i++) {
-                cout << "UcCode: " << MAXUC[i].getClassCode() << "; ClassCode: " << MAXUC[i].getUcCode() <<
+                cout << MAXUC[i].getClassCode() << "; " << MAXUC[i].getUcCode() <<
                      " (" << max[i] << " students)" << endl;
             }
             break;
 
         case 3:
-            for (int year = 1; year < 4; year++) {
+            for (char year = '1'; year < '4'; year++) {
                 num = func.numberYearStudents(year);
                 if (num > max[0]) {
                     max.clear();
@@ -1484,7 +1550,7 @@ int greatestMenu() {
             }
             cout << "The Years with the greatest number of students: " << endl;
             for (int i = 0; i < max.size(); i++) {
-                cout << MAX[i] << " (" << max[i] << " students)" << endl;
+                cout << MAXYEARS[i] << " (" << max[i] << " students)" << endl;
             }
             break;
 
@@ -1494,6 +1560,7 @@ int greatestMenu() {
         case 5:
             return 0;
     }
+    cout << endl;
     cout << "1 - Return to last Menu" << endl;
     cout << "2 - Return to Main Menu" << endl;
     cout << "3 - Quit." << endl;
@@ -1573,10 +1640,9 @@ int requestMenu() {
 int acceptedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
-    if (func.totalNumberOfAcceptedRequests() == 0) {
-        cout << "There are no accepted requests." << endl;
-    }
     func.seeAcceptedRequests();
+    cout << endl;
+    cout << endl;
     cout << "1 - Return to Main Menu" << endl;
     cout << "2 - Quit." << endl;
     while (true) {
@@ -1609,10 +1675,9 @@ int acceptedRequest() {
 int rejectedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
-    if (func.totalNumberOfRejectedRequests() == 0) {
-        cout << "There are no rejected requests." << endl;
-    }
     func.seeRejectedRequests();
+    cout << endl;
+    cout << endl;
     cout << "1 - Return to Main Menu" << endl;
     cout << "2 - Quit." << endl;
     while (true) {
@@ -1645,10 +1710,9 @@ int rejectedRequest() {
 int allRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
-    if (func.totalNumberOfRejectedRequests() == 0) {
-        cout << "There are no requests." << endl;
-    }
     func.seeAllRequests();
+    cout << endl;
+    cout << endl;
     cout << "1 - Return to Main Menu" << endl;
     cout << "2 - Quit." << endl;
     while (true) {
@@ -1697,6 +1761,14 @@ int main() {
     cout << "Note: If you enter a 'q' when asked for a classCode, UcCode studentCode" << endl;
     cout << "or year, you will return to the main menu." << endl;
     cout << endl;
+
+    CsvAndVectors CSVInfo;
+    CSVInfo.createStudentsVector();
+    CSVInfo.createClassesPerUcVector();
+    CSVInfo.createLessonsVector();
+    CSVInfo.createStudentsSet();
+    CSVInfo.createClassesAndUcSet();
+
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -1768,7 +1840,7 @@ int main() {
             else system("exit");
             break;
 
-        case 10:
+        default:
             system("exit");
     }
     return 0;

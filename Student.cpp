@@ -35,7 +35,6 @@ vector<UC> Student::getUCs() const {
 void Student::addUC(const UC &uc) {
     this->ucs.push_back(uc);
     CsvAndVectors CSVInfo;
-    CSVInfo.createStudentsVector();
 
     int idx = this->binarySearchCsvStudentVector(0, CSVInfo.StudentsVector.size());
     CSVInfo.StudentsVector[idx].getUCs().push_back(uc);
@@ -44,13 +43,19 @@ void Student::addUC(const UC &uc) {
 
 void Student::removeUC(const UC &uc) {
     CsvAndVectors CSVInfo;
-    CSVInfo.createStudentsVector();
 
     auto it = find(this->ucs.begin(), this->ucs.end(), uc);
     this->ucs.erase(it);
     int idx = this->binarySearchCsvStudentVector(0, CSVInfo.StudentsVector.size());
-    std::remove(CSVInfo.StudentsVector[idx].getUCs().begin(), CSVInfo.StudentsVector[idx].getUCs().end(), uc);
-    CSVInfo.setFromStudentsVector();
+    cout << idx << CSVInfo.StudentsVector[idx].getStudentName() << endl;
+
+    for (int i = 0; i < CSVInfo.StudentsVector[idx].getUCs().size(); i++) {
+        if (CSVInfo.StudentsVector[idx].getUCs()[i] == uc) {
+            CSVInfo.StudentsVector[idx].getUCs().erase(CSVInfo.StudentsVector[idx].getUCs().begin() + i);
+            CSVInfo.setFromStudentsVector();
+            return;
+        }
+    }
 }
 
 int Student::binarySearchCsvStudentVector(unsigned long left, unsigned long right) {
@@ -83,6 +88,7 @@ UC Student::changeUC(const UC &uc) {
 
 UC Student::findUc(const string& UcCode) const{
     for (UC uc: this->ucs) {
+        cout << uc.getUcCode() << endl;
         if (uc.getUcCode() == UcCode) {
             return uc;
         }

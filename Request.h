@@ -16,10 +16,10 @@ class Request {
     private:
         Student student;
         UC uc;
+        UC oldUc; // if it's a switch request
         string type;    // Enrollment, Removal, Switch
         string status;  // Accepted or Rejected
         string reason;
-        string description; // description of the request
 
     public:
 
@@ -44,6 +44,15 @@ class Request {
          * @return student
          */
         Student getStudent();
+
+        /**
+         * Return the old uc of the switch request
+         *
+         * O(1)
+         *
+         * @return uc
+         */
+        UC getoldUC();
 
         /**
          * Return the uc of the request
@@ -82,22 +91,13 @@ class Request {
         string getReason();
 
         /**
-         * Return the description of the request
-         *
-         * O(1)
-         *
-         * @return description
-         */
-        string getDescription();
-
-        /**
          * Sets status to new value
          *
          * O(1)
          *
          * @param status : new value for status
          */
-        void setStatus(string status);
+        void setStatus(string status_);
         /**
          * Sets reason to new value
          *
@@ -105,16 +105,15 @@ class Request {
          *
          * @param reason : new value for reason
          */
-        void setReason(string reason);
+        void setReason(string reason_);
+
 
         /**
-         * Sets description to new value
+         * Sets old uc of the switch request
          *
          * O(1)
-         *
-         * @param description : new value for description
          */
-        void setDescription(string description);
+        void setoldUC(UC oldUc_);
 
         /**
          * Prints request

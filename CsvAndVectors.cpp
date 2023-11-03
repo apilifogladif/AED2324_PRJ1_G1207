@@ -13,6 +13,8 @@ set<string> CsvAndVectors::ClassesSet;
 set<string> CsvAndVectors::UcSet;
 
 void CsvAndVectors::createClassesAndUcSet() {
+    ClassesSet.clear();
+    UcSet.clear();
     fstream file;
     set<string> classes;
     file.open("../data/classes_per_uc.csv");
@@ -36,6 +38,7 @@ void CsvAndVectors::createClassesAndUcSet() {
 }
 
 void CsvAndVectors::createStudentsSet() {
+    StudentsSet.clear();
     fstream file;
     set<string> classes;
     vector<UC> ucs;
@@ -64,6 +67,7 @@ void CsvAndVectors::createStudentsSet() {
 
 // this function stores information of 'classes.csv' file in a vector of objects of the class 'Lesson'
 void CsvAndVectors::createLessonsVector() {
+    LessonsVector.clear();
     fstream file;
     file.open("../data/classes.csv");
     if (!file.is_open()) {
@@ -91,6 +95,7 @@ void CsvAndVectors::createLessonsVector() {
 }
 
 void CsvAndVectors::createRequestsVector() {
+    RequestsVector.clear();
     fstream file;
     file.open("../data/requests.csv");
     if (!file.is_open()) {
@@ -108,21 +113,20 @@ void CsvAndVectors::createRequestsVector() {
     while(getline(file, line)) {
         stringstream s(line);
         getline(s, studentCode, ',');
-        getline(s, studentName, ',');
+        getline(s, studentName, ':');
         getline(s, type, ',');
-        getline(s, description, ',');
         getline(s, status, ',');
         getline(s, reason);
         Request request(Student(studentCode, studentName), UC(), type);
         request.setStatus(status);
         request.setReason(reason);
-        request.setDescription(description);
         RequestsVector.push_back(request);
     }
 }
 
 // this function stores information of 'classes_per_uc.csv' file in a vector of pairs that associates an uc to a set of the classes that have that uc
 void CsvAndVectors::createClassesPerUcVector() {
+    ClassesPerUcVector.clear();
     fstream file;
     set<string> classes;
     file.open("../data/classes_per_uc.csv");
@@ -148,10 +152,14 @@ void CsvAndVectors::createClassesPerUcVector() {
         }
         lastUcCode = UcCode;
     }
+    ClassesPerUcVector.emplace_back(lastUcCode, classes);
+    classes.clear();
+    classes.insert(ClassCode);
 }
 
 // this function stores information of 'students_classes.csv' file in a vector of objects of the class 'Student'
 void CsvAndVectors::createStudentsVector() {
+    StudentsVector.clear();
     fstream file;
     set<string> classes;
     vector<UC> ucs;
@@ -174,6 +182,7 @@ void CsvAndVectors::createStudentsVector() {
         getline(s, StudentName, ',');
         getline(s, UcCode, ',');
         getline(s, ClassCode);
+        cout << StudentCode << " " << StudentName << " " << UcCode << endl;
         if (StudentCode == lastStudentCode) {
             ucs.emplace_back(UcCode, ClassCode);
         } else {
@@ -184,65 +193,6 @@ void CsvAndVectors::createStudentsVector() {
         lastStudentCode = StudentCode;
         lastStudentName = StudentName;
     }
-}
-
-set<string> CsvAndVectors::getStudentsSet() {
-    createStudentsSet();
-    return StudentsSet;
-}
-
-set<string> CsvAndVectors::getClassesSet() {
-    createClassesAndUcSet();
-    return ClassesSet;
-}
-
-set<string> CsvAndVectors::getUcSet() {
-    createClassesAndUcSet();
-    return UcSet;
-}
-
-vector<Lesson> CsvAndVectors::getLessonsVector() {
-    createLessonsVector();
-    return LessonsVector;
-}
-
-vector<Request> CsvAndVectors::getRequestVector() {
-    createRequestsVector();
-    return RequestsVector;
-}
-
-vector<pair<string, set<string>>> CsvAndVectors::getClassesPerUcVector() {
-    createClassesPerUcVector();
-    return ClassesPerUcVector;
-}
-
-vector<Student> CsvAndVectors::getStudentsVector() {
-    createStudentsVector();
-    return StudentsVector;
-}
-
-void CsvAndVectors::setFromLessonsVector() {
-    ofstream fileName;
-    fileName.open("../data/classes.csv");
-    fileName << "ClassCode,UcCode,Weekday,StartHour,Duration,Type" << endl;
-    for (const auto & lesson : LessonsVector) {
-        fileName << lesson.getUc().getClassCode() << "," << lesson.getUc().getUcCode() << "," <<
-               lesson.getWeekday() << "," << lesson.getStartHour() << "," <<
-               lesson.getDuration() << "," << lesson.getType() << "\n";
-    }
-    fileName.close();
-}
-
-void CsvAndVectors::setFromClassesPerUcVector() {
-    ofstream fileName;
-    fileName.open("../data/classes_per_uc.csv");
-    fileName << "UcCode,ClassCode" << endl;
-    for (auto &Uc : ClassesPerUcVector) {
-        for (const string& Class: Uc.second) {
-            fileName << Uc.first << "," << Class << "\n";
-        }
-    }
-    fileName.close();
 }
 
 void CsvAndVectors::setFromStudentsVector() {
@@ -260,12 +210,12 @@ void CsvAndVectors::setFromStudentsVector() {
 void CsvAndVectors::setFromRequestVector() {
     ofstream fileName;
     fileName.open("../data/requests.csv");
-    fileName << "StudentCode, StudentName, Type, Description -> Status, Reason (if rejected)" << endl;
+    fileName << "StudentCode, StudentName: RequestType -> Status, Reason (if rejected)" << endl;
     for (auto &request : RequestsVector) {
-        fileName << request.getStudent().getStudentCode() << ", " << request.getStudent().getStudentName() << ", " <<
-            request.getType() << ", " << request.getDescription() << " -> " << request.getStatus();
+        fileName << request.getStudent().getStudentCode() << "," << request.getStudent().getStudentName() << ":" <<
+            request.getType() << "," << request.getStatus();
         if (request.getStatus() == "Rejected") {
-            fileName << ", " << request.getReason();
+            fileName << "," << request.getReason();
         }
         fileName << endl;
     }

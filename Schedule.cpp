@@ -42,7 +42,7 @@ Schedule::Schedule(const string& StudentCode) {
 
 void Schedule::loadLessonsUcClass() {
     CsvAndVectors CSVInfo;
-    vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
+    vector<Lesson> LessonsVector = CSVInfo.LessonsVector;
 
     // get lessons from this ucClass(UcCode, ClassCode)
     for (auto &lesson: LessonsVector) {
@@ -62,7 +62,7 @@ void Schedule::loadLessonsUcClass() {
 
 void Schedule::loadLessonsStudent() {
     CsvAndVectors CSVInfo;
-    vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
+    vector<Lesson> LessonsVector = CSVInfo.LessonsVector;
 
     for (auto &uc: this->student.getUCs()) {
         for (auto &lesson : LessonsVector) {
@@ -75,7 +75,7 @@ void Schedule::loadLessonsStudent() {
 
 void Schedule::loadStudents() {
     CsvAndVectors CSVInfo;
-    vector<Student> StudentsVector = CSVInfo.getStudentsVector();
+    vector<Student> StudentsVector = CSVInfo.StudentsVector;
 
     // get students from this ucClass(UcCode, ClassCode)
     for (auto &student_: StudentsVector) {

@@ -11,6 +11,8 @@ Request::Request(Student student, UC uc, string type) {
 
 Student Request::getStudent() {return this->student; }
 
+UC Request::getoldUC() {return this->oldUc; }
+
 UC Request::getUC(){return this->uc; }
 
 string Request::getType() {return this->type; }
@@ -19,16 +21,14 @@ string Request::getStatus() {return this->status; }
 
 string Request::getReason() {return this->reason; }
 
-string Request::getDescription() {return this->description; }
+void Request::setStatus(string status_) {this->status = std::move(status_); }
 
-void Request::setStatus(string status) {this->status = std::move(status); }
+void Request::setReason(string reason_) {this->reason = std::move(reason_); }
 
-void Request::setReason(string reason) {this->reason = std::move(reason); }
-
-void Request::setDescription(string description) {this->description = std::move(description); }
+void Request::setoldUC(UC oldUc_) {this->oldUc = std::move(oldUc_); }
 
 void Request::printRequest() {
-    cout << student.getStudentCode() << " " << student.getStudentName();
+    cout << student.getStudentCode() << " " << student.getStudentName() << " ";
     if (type == "Switch") {
         cout << "Switch to class " << uc.getUcCode() << " " << uc.getClassCode();
     } else if (type == "Enrollment") {

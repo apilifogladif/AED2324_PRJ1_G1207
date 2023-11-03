@@ -14,6 +14,7 @@ using namespace std;
  * @param UcCode
  * @param auxVector
  */
+// O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
 void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
@@ -68,6 +69,7 @@ void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector
  * @param classCode
  * @param auxVector
  */
+// O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
 void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVector) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
@@ -122,6 +124,7 @@ void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVec
  * @param year
  * @param ClassesPerUcVectorOfYear
  */
+// O(n log n) where n is the number of elements in ClassesPerVectorOfYear vector
 void occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVectorOfYear) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
@@ -193,6 +196,7 @@ void occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVector
  * @param year
  * @return
  */
+// O(n log n) where n is the number of elements to be sorted
 int sortMenu(const string& UcCode, const string& classCode, int year) {
     AuxiliarFunctions func;
     int op = 0;
@@ -254,6 +258,7 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
  * @param ClassCode
  * @return
  */
+// O(1)
 bool verifyClass(const string& ClassCode) {
     CsvAndVectors CSVInfo;
     set<string> ClassesSet = CSVInfo.getClassesSet();
@@ -267,6 +272,7 @@ bool verifyClass(const string& ClassCode) {
  * @param UcCode
  * @return
  */
+// O(1)
 bool verifyUc(const string& UcCode) {
     CsvAndVectors CSVInfo;
     set<string> UcSet = CSVInfo.getUcSet();
@@ -280,6 +286,7 @@ bool verifyUc(const string& UcCode) {
  * @param StudentCode
  * @return
  */
+// O(1)
 bool verifyStudent(const string& StudentCode) {
     CsvAndVectors CSVInfo;
     set<string> StudentsSet = CSVInfo.getStudentsSet();
@@ -292,6 +299,7 @@ bool verifyStudent(const string& StudentCode) {
  * @param student
  * @return
  */
+// O(log n) where n is the size of the set
 int enrollRequest(Student student) {
     string UcCode;
     string classCode;
@@ -395,6 +403,7 @@ int enrollRequest(Student student) {
  * @param student
  * @return
  */
+// O(log n) where n is the size of the set
 int leaveRequest(Student student) {
     string UcCode;
     string classCode;
@@ -482,6 +491,7 @@ int leaveRequest(Student student) {
  * @param student
  * @return
  */
+// O(log n) where n is the size of the set
 int switchRequest(Student student) {
     string UcCode;
     string newUcCode;
@@ -680,6 +690,7 @@ int switchRequest(Student student) {
  * @param op
  * @return
  */
+// O(log n) where n is the size of the set
 int submitRequest(int op) {
     string studentCode;
     while (true) {
@@ -726,6 +737,7 @@ int submitRequest(int op) {
  *
  * @return
  */
+// O(log n) where n is the size of the set
 int listingMenu() {
     AuxiliarFunctions func;
     int op = 0;
@@ -848,6 +860,7 @@ int listingMenu() {
  *
  * @return
  */
+ // O(n) where n is the number of students
 int numbersMenu() {
     AuxiliarFunctions func;
     CsvAndVectors CSVInfo;
@@ -1025,6 +1038,7 @@ int numbersMenu() {
   *
   * @return
   */
+ // O(1)
 int scheduleMenu() {
     AuxiliarFunctions func = AuxiliarFunctions();
     int op = 0;
@@ -1161,6 +1175,7 @@ int scheduleMenu() {
  *
  * @return
  */
+// O(n log n) where n is the number of elements to be sorted
 int occupationMenu() {
     AuxiliarFunctions func;
     CsvAndVectors CSVInfo;
@@ -1329,6 +1344,7 @@ int occupationMenu() {
   *
   * @return
   */
+// O(m) + O(n log n) where m is the total number of UCs or Classes and n is the number of elements to be sorted
 int greatestMenu() {
     AuxiliarFunctions func;
     CsvAndVectors CSVInfo;
@@ -1469,6 +1485,7 @@ int greatestMenu() {
   *
   * @return
   */
+  // O(1)
 int requestMenu() {
     AuxiliarFunctions func;
     func.getRequests();
@@ -1511,6 +1528,7 @@ int requestMenu() {
  *
  * @return
  */
+ // O(n) where n is the number of accepted requests
 int acceptedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
@@ -1545,6 +1563,7 @@ int acceptedRequest() {
  *
  * @return
  */
+// O(n) where n is the number of rejected requests
 int rejectedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
@@ -1579,6 +1598,7 @@ int rejectedRequest() {
  *
  * @return
  */
+// O(n) where n is the number of all requests made
 int allRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
@@ -1612,6 +1632,7 @@ int allRequest() {
  * Main menu
  * @return
  */
+ // O(1)
 int main() {
     int op = 0;
     cout << endl << "----------------------------" << endl;
@@ -1634,10 +1655,10 @@ int main() {
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
-            if (op >= 1 && op <= 9) {
+            if (op >= 1 && op <= 10) {
                 break;  // Input is valid, exit the loop
             } else {
-                cout << "Invalid number! The number should be between 1 and 9." << endl;
+                cout << "Invalid number! The number should be between 1 and 10." << endl;
             }
         } else {
             cout << "Invalid input! Please enter a valid number." << endl;
@@ -1685,13 +1706,13 @@ int main() {
             break;
 
         case 7:
-            aux = acceptedRequest();
+            aux = rejectedRequest();
             if (aux == 1) main();
             else system("exit");
             break;
 
         case 8:
-            aux = rejectedRequest();
+            aux = acceptedRequest();
             if (aux == 1) main();
             else system("exit");
             break;
@@ -1707,4 +1728,3 @@ int main() {
     }
     return 0;
 }
-

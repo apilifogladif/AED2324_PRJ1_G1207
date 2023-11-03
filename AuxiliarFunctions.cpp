@@ -1,6 +1,5 @@
 #include "AuxiliarFunctions.h"
 #include <algorithm>
-#include <map>
 #include <iostream>
 #include "CsvAndVectors.h"
 
@@ -12,7 +11,7 @@ vector<Request> AuxiliarFunctions::acceptedRequests;
 vector<Request> AuxiliarFunctions::allRequests;
 
 // O(1)
-AuxiliarFunctions::AuxiliarFunctions() {}
+AuxiliarFunctions::AuxiliarFunctions() = default;
 
 // O(n), where n is the number of students in the vector of students
 Student AuxiliarFunctions::retStudent(const string &studentCode) {
@@ -23,21 +22,21 @@ Student AuxiliarFunctions::retStudent(const string &studentCode) {
             return student;
         }
     }
-    return Student();
+    return {};
 }
 
 // O(1)
-void AuxiliarFunctions::concludeEnrollment(Student student, UC UcClass) {
+void AuxiliarFunctions::concludeEnrollment(const Student& student, const UC& UcClass) {
     enrollmentRequests.emplace(student, UcClass, "Enrollment");
 }
 
 // O(1)
-void AuxiliarFunctions::concludeRemoval(Student student, UC UcClass) {
+void AuxiliarFunctions::concludeRemoval(const Student& student, const UC& UcClass) {
     removalRequests.emplace(student, UcClass, "Removal");
 }
 
 // O(1)
-void AuxiliarFunctions::concludeSwitch(Student student, UC UcClass) {
+void AuxiliarFunctions::concludeSwitch(const Student& student, const UC& UcClass) {
     switchRequests.emplace(student, UcClass, "Switch");
 }
 
@@ -212,6 +211,7 @@ void AuxiliarFunctions::RequestsManager() {
 
 }
 
+// O(m), where m is the number of rejected requests
 void AuxiliarFunctions::seeRejectedRequests() {
     for (auto i: rejectedRequests) {
         i.printRequest();
@@ -219,10 +219,12 @@ void AuxiliarFunctions::seeRejectedRequests() {
     }
 }
 
+// O(m), where m is the number of accepted requests
 void AuxiliarFunctions::seeAcceptedRequests() {
     for (auto i: acceptedRequests) i.printRequest();
 }
 
+// O(m), where m is the number of all requests done
 void AuxiliarFunctions::seeAllRequests() {
     for (auto i: allRequests) {
         i.printRequest();
@@ -231,24 +233,28 @@ void AuxiliarFunctions::seeAllRequests() {
     }
 }
 
+// O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
 void AuxiliarFunctions::seeStudentSchedule(const string& StudentCode) const {
     Schedule schedule = Schedule(StudentCode);
     schedule.drawSchedule();
     cout << endl;
 }
 
+// O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
 void AuxiliarFunctions::seeClassSchedule(const string& ClassCode) {
     Schedule schedule = Schedule(UC("", ClassCode));
     schedule.drawSchedule();
     cout << endl;
 }
 
+// O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
 void AuxiliarFunctions::seeUcSchedule(const string& UcCode) {
     Schedule schedule = Schedule(UC(UcCode, ""));
     schedule.drawSchedule();
     cout << endl;
 }
 
+// O(n) + O(q log q) where n is the number of lessons and students associated with that Class of that UC, q is the number of students in that Class of that UC
 void AuxiliarFunctions::seeClassStudents(const UC& UcClass, const int& sort_) {
     Schedule schedule = Schedule(UcClass);
     cout << "Students enrolled: \n";
@@ -256,6 +262,7 @@ void AuxiliarFunctions::seeClassStudents(const UC& UcClass, const int& sort_) {
     cout << endl;
 }
 
+// O(n) + O(q log q) where n is the number of lessons and students associated with that UC code, q is the number of students in that UC
 void AuxiliarFunctions::seeUcStudents(const string& UcCode, const int& sort_) {
     Schedule schedule = Schedule(UC(UcCode, ""));
     cout << "Students enrolled: \n";
@@ -263,6 +270,7 @@ void AuxiliarFunctions::seeUcStudents(const string& UcCode, const int& sort_) {
     cout << endl;
 }
 
+// O(n) + O(mk) + O(m) + O(m log m) where n is the number of students in students_classes.csv, m is the students and k is the UCs of each student
 void AuxiliarFunctions::seeYearStudents(int year, int sort_) {
     CsvAndVectors CSVInfo;
     vector<Student> StudentsVector = CSVInfo.getStudentsVector();
@@ -299,16 +307,19 @@ void AuxiliarFunctions::seeYearStudents(int year, int sort_) {
     }
 }
 
+// O(m + l) + O(1) where m is the number of lessons and l is the number of student in a Class of an UC
 int AuxiliarFunctions::numberClassStudents(const UC &UcClass) {
     Schedule schedule = Schedule(UcClass);
     return schedule.getStudents().size();
 }
 
+// O(m + l) where m is the number of lessons and l is the number of student in an UC
 int AuxiliarFunctions::numberUcStudents(const string &UcCode) {
     Schedule schedule = Schedule(UC(UcCode, ""));
     return schedule.getStudents().size();
 }
 
+// O(n) where n is the total number of students
 int AuxiliarFunctions::numberYearStudents(const int &Year) {
     CsvAndVectors CSVInfo;
     vector<Student> StudentsVector = CSVInfo.getStudentsVector();
@@ -324,6 +335,7 @@ int AuxiliarFunctions::numberYearStudents(const int &Year) {
     return students.size();
 }
 
+// O(n) is the number of requests
 void AuxiliarFunctions::getRequests() {
     CsvAndVectors CSVInfo;
     allRequests = CSVInfo.getRequestVector();
@@ -332,7 +344,3 @@ void AuxiliarFunctions::getRequests() {
         else rejectedRequests.push_back(r);
     }
 }
-
-
-
-

@@ -45,7 +45,7 @@ class AuxiliarFunctions {
          * @param student : info of the student who wants to enroll;
          * @param UcClass : Uc class that the student given wants to enroll;
          */
-        void concludeEnrollment(Student student, UC UcClass);
+        void concludeEnrollment(const Student& student, const UC& UcClass);
 
         /**
          * Concludes the removal request by adding that request to the queue of removalRequests
@@ -53,7 +53,7 @@ class AuxiliarFunctions {
          * @param student : info of the student who wants to leave;
          * @param UcClass : Uc class that the student given wants to leave;
          */
-        void concludeRemoval(Student student, UC UcClass);
+        void concludeRemoval(const Student& student, const UC& UcClass);
 
         /**
          * Concludes the switch request by adding that request to the queue of switchRequests
@@ -61,7 +61,7 @@ class AuxiliarFunctions {
          * @param student : info of the student who wants to switch;
          * @param UcClass : Uc class that the student given wants to switch;
          */
-        void concludeSwitch(Student student, UC UcClass);
+        void concludeSwitch(const Student& student, const UC& UcClass);
 
         /**
          * Returns a vector with the students of an Uc

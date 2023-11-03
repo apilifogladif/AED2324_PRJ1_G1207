@@ -10,11 +10,11 @@ using namespace std;
 // 0->quit; 1->main menu
 /**
  * occupationSortMenu_case1 ????????????????????????????????????????????
+ * O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
  *
  * @param UcCode
  * @param auxVector
  */
-// O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
 void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
@@ -66,10 +66,11 @@ void occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector
 
 /**
  * occupationSortMenu_case2 ???????????????????
+ * O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
+ *
  * @param classCode
  * @param auxVector
  */
-// O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
 void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVector) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
@@ -121,10 +122,11 @@ void occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVec
 
 /**
  * occupationSortMenu_case3 ?????????????????????????????????????
+ * O(n log n) where n is the number of elements in ClassesPerVectorOfYear vector
+ *
  * @param year
  * @param ClassesPerUcVectorOfYear
  */
-// O(n log n) where n is the number of elements in ClassesPerVectorOfYear vector
 void occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVectorOfYear) {
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
@@ -190,13 +192,13 @@ void occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVector
 
 /**
  * sortMenu ???????????????????????????????????
+ * O(n log n) where n is the number of elements to be sorted
  *
  * @param UcCode
  * @param classCode
  * @param year
  * @return
  */
-// O(n log n) where n is the number of elements to be sorted
 int sortMenu(const string& UcCode, const string& classCode, int year) {
     AuxiliarFunctions func;
     int op = 0;
@@ -255,10 +257,11 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
 
 /**
  * verifyClass ?????????????????????????????
+ * O(1)
+ *
  * @param ClassCode
  * @return
  */
-// O(1)
 bool verifyClass(const string& ClassCode) {
     CsvAndVectors CSVInfo;
     set<string> ClassesSet = CSVInfo.getClassesSet();
@@ -268,11 +271,11 @@ bool verifyClass(const string& ClassCode) {
 
 /**
  * verifyUc ?????????????????????????
+ * O(1)
  *
  * @param UcCode
  * @return
  */
-// O(1)
 bool verifyUc(const string& UcCode) {
     CsvAndVectors CSVInfo;
     set<string> UcSet = CSVInfo.getUcSet();
@@ -282,11 +285,11 @@ bool verifyUc(const string& UcCode) {
 
 /**
  * verifyStudent?????????????????????????
+ * O(1)
  *
  * @param StudentCode
  * @return
  */
-// O(1)
 bool verifyStudent(const string& StudentCode) {
     CsvAndVectors CSVInfo;
     set<string> StudentsSet = CSVInfo.getStudentsSet();
@@ -296,10 +299,11 @@ bool verifyStudent(const string& StudentCode) {
 
 /**
  * enrollRequest??????????????????????????
+ * O(log n) where n is the size of the set
+ *
  * @param student
  * @return
  */
-// O(log n) where n is the size of the set
 int enrollRequest(Student student) {
     string UcCode;
     string classCode;
@@ -400,10 +404,11 @@ int enrollRequest(Student student) {
 
 /**
  * leaveRequest ?????????????????????????????????
+ * O(log n) where n is the size of the set
+ *
  * @param student
  * @return
  */
-// O(log n) where n is the size of the set
 int leaveRequest(Student student) {
     string UcCode;
     string classCode;
@@ -487,11 +492,11 @@ int leaveRequest(Student student) {
 
 /**
  * switchRequest ???????????????????????
+ * O(log n) where n is the size of the set
  *
  * @param student
  * @return
  */
-// O(log n) where n is the size of the set
 int switchRequest(Student student) {
     string UcCode;
     string newUcCode;
@@ -686,11 +691,11 @@ int switchRequest(Student student) {
 
 /**
  * submitRequest ?????????????????????????
+ * O(log n) where n is the size of the set
  *
  * @param op
  * @return
  */
-// O(log n) where n is the size of the set
 int submitRequest(int op) {
     string studentCode;
     while (true) {
@@ -734,10 +739,10 @@ int submitRequest(int op) {
 
 /**
  * listingMenu ??????????
+ * O(log n) where n is the size of the set
  *
  * @return
  */
-// O(log n) where n is the size of the set
 int listingMenu() {
     AuxiliarFunctions func;
     int op = 0;
@@ -857,10 +862,10 @@ int listingMenu() {
 
 /**
  * numbersMenu ????????????????????????????????
+ * O(n) where n is the number of students
  *
  * @return
  */
- // O(n) where n is the number of students
 int numbersMenu() {
     AuxiliarFunctions func;
     CsvAndVectors CSVInfo;
@@ -1035,10 +1040,10 @@ int numbersMenu() {
 
  /**
   * scheduleMenu ???????????????????????????????????????
+  * O(1)
   *
   * @return
   */
- // O(1)
 int scheduleMenu() {
     AuxiliarFunctions func = AuxiliarFunctions();
     int op = 0;
@@ -1172,10 +1177,10 @@ int scheduleMenu() {
 
 /**
  * occupationMenu ?????????????????????????
+ * O(n log n) where n is the number of elements to be sorted
  *
  * @return
  */
-// O(n log n) where n is the number of elements to be sorted
 int occupationMenu() {
     AuxiliarFunctions func;
     CsvAndVectors CSVInfo;
@@ -1341,10 +1346,10 @@ int occupationMenu() {
 
  /**
   * greatestMenu ????????????????????
+  * O(m) + O(n log n) where m is the total number of UCs or Classes and n is the number of elements to be sorted
   *
   * @return
   */
-// O(m) + O(n log n) where m is the total number of UCs or Classes and n is the number of elements to be sorted
 int greatestMenu() {
     AuxiliarFunctions func;
     CsvAndVectors CSVInfo;
@@ -1480,12 +1485,12 @@ int greatestMenu() {
 
  /**
   * Menu for the user choose which type of request he wants
+  * O(1)
   *
   * Options : enroll in an UC, leave an UC or change an UC;
   *
   * @return
   */
-  // O(1)
 int requestMenu() {
     AuxiliarFunctions func;
     func.getRequests();
@@ -1525,10 +1530,10 @@ int requestMenu() {
 
 /**
  * Prints the pending requests
+ * O(n) where n is the number of accepted requests
  *
  * @return
  */
- // O(n) where n is the number of accepted requests
 int acceptedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
@@ -1560,10 +1565,10 @@ int acceptedRequest() {
 
 /**
  * Prints the rejected requests
+ * O(n) where n is the number of rejected requests
  *
  * @return
  */
-// O(n) where n is the number of rejected requests
 int rejectedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
@@ -1595,10 +1600,10 @@ int rejectedRequest() {
 
 /**
  * Prints all requests
+ * O(n) where n is the number of all requests made
  *
  * @return
  */
-// O(n) where n is the number of all requests made
 int allRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
@@ -1629,10 +1634,11 @@ int allRequest() {
 }
 
 /**
- * Main menu
+ * Main
+ * O(1)
+ *
  * @return
  */
- // O(1)
 int main() {
     int op = 0;
     cout << endl << "----------------------------" << endl;

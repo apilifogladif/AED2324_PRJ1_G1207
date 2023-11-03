@@ -20,9 +20,16 @@ class Schedule {
         UC UcClass;
         Student student;
     public:
+
+        /**
+         * Class constructor
+         * O(1)
+         */
         Schedule();
         /**
          * Class constructor
+         * O(m) + O(n) + O(k) where m is the number of lessons and students in the vectors (LessonsVector and StudentVector),
+         * n is the number of lessons in the LessonsVector and k is the number of students in the StudentsVector
          *
          * Sets ucClass
          *
@@ -32,6 +39,9 @@ class Schedule {
 
         /**
          * Class constructor
+         * O(n) + O(m) + O(k) + O(k*l) where n is the number of students in StudentsVector, m is the number of lessons in the LessonsVector,
+         * k is the number of UCs and l is the lessons in the LessonsVector associated with the students
+
          *
          * Sets StudentCode
          *
@@ -41,6 +51,7 @@ class Schedule {
 
         /**
          * Adds a lesson to the schedule
+         * O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
          *
          * @param lesson : Lesson;
          */
@@ -48,6 +59,7 @@ class Schedule {
 
         /**
          * Removes a lesson from the schedule
+         * O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
          *
          * @param lesson : Lesson;
          */
@@ -55,6 +67,7 @@ class Schedule {
 
         /**
          * Returns a lesson from the schedule
+         * O(1)
          *
          * @return
          */
@@ -62,33 +75,38 @@ class Schedule {
 
         /**
          * Prints the schedule
+         * O(n) where n is the number of lessons in the lessons set
          */
         void drawSchedule() const;
 
         /**
          * Verifies if it has the same UcCode
+         * O(1)
          *
          * @param UcCode : Uc code;
-         * @return
+         * @return bool : true or false
          */
         bool hasSameUcCode(Schedule &UcCode);
 
         /**
          * Returns the Uc class
+         * O(1)
          *
-         * @return
+         * @return UcClass
          */
         UC getUcClass();
 
         /**
          * Get students of a class
+         * O(n)
          *
-         * @return
+         * @return students
          */
         set<Student> getStudents();
 
         /**
          * Adds student to a class
+         * O(log n) where n is the number of students already in the set
          *
          * @param student : student;
          */
@@ -96,6 +114,7 @@ class Schedule {
 
         /**
          * Removes student from a class
+         * O(log n) where n is the number of students already in the set
          *
          * @param student : student;
          */
@@ -103,19 +122,22 @@ class Schedule {
 
         /**
          * Operator to compare two schedules
+         * O(1)
          *
-         * @param schedule : shedule;
-         * @return
+         * @param schedule : schedule;
+         * @return bool : true or false
          */
         bool operator<(Schedule schedule);
 
         /**
          * Prints UcCode and ClassCode
+         * O(1)
          */
         void printUcAndClass();
 
         /**
          * Sorts the students and prints them in the order that we asked for
+         * O(n log n) where n is the number of students in the vector
          *
          * @param sort_ : Way to sort the students of the Uc;
          */

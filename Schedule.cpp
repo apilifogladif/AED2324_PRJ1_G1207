@@ -4,11 +4,8 @@
 #include <algorithm>
 #include <utility>
 
-// O(1)
 Schedule::Schedule() = default;
 
-// O(m) + O(n) + O(k) where m is the number of lessons and students in the vectors (LessonsVector and StudentVector),
-// n is the number of lessons in the LessonsVector and k is the number of students in the StudentsVector
 Schedule::Schedule(UC ucClass) {
     this->UcClass = std::move(ucClass);
     CsvAndVectors CSVInfo;
@@ -48,8 +45,6 @@ Schedule::Schedule(UC ucClass) {
     }
 }
 
-// O(n) + O(m) + O(k) + O(k*l) where n is the number of students in StudentsVector, m is the number of lessons in the LessonsVector,
-// k is the number of UCs and l is the lessons in the LessonsVector associated with the students
 // schedule of a student
 Schedule::Schedule(const string& StudentCode) {
     CsvAndVectors CSVInfo;
@@ -71,7 +66,6 @@ Schedule::Schedule(const string& StudentCode) {
     }
 }
 
-// O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
 void Schedule::addLesson(const Lesson& lesson) {
     this->lessons.insert(lesson);
     //change in CSV file
@@ -81,7 +75,6 @@ void Schedule::addLesson(const Lesson& lesson) {
     CSVInfo.setFromLessonsVector();
 }
 
-// O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
 void Schedule::removeLesson(Lesson& lesson) {
     this->lessons.erase(lesson);
     CsvAndVectors CSVInfo;
@@ -94,12 +87,10 @@ void Schedule::removeLesson(Lesson& lesson) {
     CSVInfo.setFromLessonsVector();
 }
 
-// O(1)
 set<Lesson> Schedule::getLesson() const {
     return this->lessons;
 }
 
-// O(n) where n is the number of lessons in the lessons set
 void Schedule::drawSchedule() const {
     vector<string> v = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
     bool exists = false;
@@ -117,24 +108,21 @@ void Schedule::drawSchedule() const {
     }
 }
 
-// O(1)
+
 bool Schedule::hasSameUcCode(Schedule &UcCode) {
    return UcClass.getUcCode() == UcCode.getUcClass().getUcCode();
 }
 
-// O(1)
 UC Schedule::getUcClass() {
     return this->UcClass;
 }
 
-// O(1)
 set<Student> Schedule::getStudents() {
     return this->students;
 }
 
 // TODO
 // acho que falta completar, mas n tenho a certeza
-// O(log n) where n is the number of students already in the set
 void Schedule::addStudent(const Student& student) {
     // CsvAndVectors CSVInfo;
     // vector<Student> StudentsVector = CSVInfo.getStudentsVector();
@@ -144,7 +132,6 @@ void Schedule::addStudent(const Student& student) {
 
 // TODO
 // acho que falta completar, mas n tenho a certeza
-// O(log n) where n is the number of students already in the set
 void Schedule::removeStudent(const Student& student) {
     // CsvAndVectors CSVInfo;
     // vector<Student> StudentsVector = CSVInfo.getStudentsVector();
@@ -152,17 +139,14 @@ void Schedule::removeStudent(const Student& student) {
     // CSVInfo.setFromStudentsVector();
 }
 
-// O(1)
 bool Schedule::operator<(Schedule schedule) {
     return this->UcClass < schedule.getUcClass();
 }
 
-// O(1)
 void Schedule::printUcAndClass() {
     cout << "UC: " << UcClass.getUcCode() << " " << UcClass.getClassCode() << endl;
 }
 
-// O(n log n) where n is the number of students in the vector
 void Schedule::sortStudents(const int &sort_) {
     vector<Student> sorted = vector<Student>(students.begin(), students.end());
     if (sort_ == 1) {

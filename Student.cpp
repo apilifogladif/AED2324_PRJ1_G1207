@@ -3,35 +3,30 @@
 #include <iostream>
 #include "CsvAndVectors.h"
 
-// O(1)
 Student::Student() {
     this->studentCode = "";
     this->studentName = "";
 }
 
-// O(1)
 Student::Student(string studentCode, string studentName) {
     this->studentCode = std::move(studentCode);
     this->studentName = std::move(studentName);
 }
 
-// O(1)
 Student::Student(string studentCode, string studentName, vector<UC> ucs) : ucs(std::move(ucs)) {
     this->studentCode = std::move(studentCode);
     this->studentName = std::move(studentName);
 }
 
-// O(1)
 string Student::getStudentCode() const {
     return this->studentCode;
 }
 
-// O(1)
 string Student::getStudentName() const {
     return this->studentName;
 }
 
-// O(1)
+
 vector<UC> Student::getUCs() const {
     return this->ucs;
 }
@@ -47,7 +42,6 @@ void Student::addUC(const UC &uc) {
     CSVInfo.setFromStudentsVector();
 }
 
-//  O(log n) + O(n) where n is the number of students int the CSVInfo.StudentsVector
 void Student::removeUC(const UC &uc) {
     CsvAndVectors CSVInfo;
     CSVInfo.createStudentsVector();
@@ -59,7 +53,6 @@ void Student::removeUC(const UC &uc) {
     CSVInfo.setFromStudentsVector();
 }
 
-// O(n log n) where n is the number of students in the CSVInfo.StudentsVector
 int Student::binarySearchCsvStudentVector(unsigned long left, unsigned long right) {
     if (left > right) return -1; //not found
 
@@ -80,7 +73,6 @@ int Student::binarySearchCsvStudentVector(unsigned long left, unsigned long righ
 
 // TODO
 // acho que falta completar com o CSVInfo e tal
-// O(n) where n is the number of UC objects in the ucs vector
 UC Student::changeUC(const UC &uc) {
     for (auto & i : this->ucs) {
         if (uc.getUcCode() == i.getUcCode()) {
@@ -92,7 +84,6 @@ UC Student::changeUC(const UC &uc) {
     return UC();
 }
 
-// O(n) where n is the number of UC objects in the ucs vector
 UC Student::findUc(const string& UcCode) const{
     for (UC uc: this->ucs) {
         if (uc.getUcCode() == UcCode) {
@@ -102,7 +93,6 @@ UC Student::findUc(const string& UcCode) const{
     return UC();
 }
 
-// O(n) where n is the number of UC objects in the ucs vector
 bool Student::Enrolled(const string& UcCode) {
     for (UC uc: this->ucs) {
         if (uc.getUcCode() == UcCode) {
@@ -112,17 +102,14 @@ bool Student::Enrolled(const string& UcCode) {
     return false;
 }
 
-// O(1)
 bool Student::operator<(const Student &s) const {
     return this->studentName < s.getStudentName();
 }
 
-// O(1)
 bool Student::operator==(const Student &s) const {
     return this->studentCode == s.getStudentCode();
 }
 
-// O(n) where n is the number of UC objects in the ucs vector
 void Student::printUcAndClass() const {
     for (auto uc: ucs) {
         cout << uc.getUcCode() << " " << uc.getClassCode() << endl;

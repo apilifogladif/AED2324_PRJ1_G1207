@@ -40,19 +40,17 @@ class UC {
           */
         string getClassCode() const;
 
-        // nono ficou aqui e ainda não fez de novo student, schedule, request, auxiliarFunctions and main: pf não apaguem o meu mega comentario :)
-
         /**
          * Sets a value to the Uc code
          *
-         * @param code
+         * @param code : value to set the Uc code
          */
         void setUcCode(string code);
 
         /**
          * Sets a value to the Class code
          *
-         * @param code
+         * @param code : value to set the Class code
          */
         void setClassCode(string code);
 
@@ -60,7 +58,7 @@ class UC {
          * Operator to compare the similarity between two Uc's
          *
          * @param uc_ : Uc;
-         * @return
+         * @return bool : true or false
          */
         bool operator==(const UC& uc_);
 
@@ -68,7 +66,7 @@ class UC {
          * Operator to compare two Uc's
          *
          * @paramt uc_ : Uc;
-         * @return
+         * @return bool : true or false
          */
         bool operator<(const UC &uc_);
 
@@ -76,7 +74,7 @@ class UC {
          * Operator to compare if two Uc's have the same Uc code
          *
          * @paramt uc_ : Uc;
-         * @return
+         * @return bool : true or false
          */
         bool hasSameUcCode(UC &uc_);
 };

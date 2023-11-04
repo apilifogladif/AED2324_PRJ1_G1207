@@ -29,9 +29,9 @@ class Request {
          *
          * Complexity: O(1)
          *
-         * @param student : Student code;
-         * @param uc : Uc code;
-         * @param type : Lesson type.
+         * @param student : The student code;
+         * @param uc : The uc code;
+         * @param type : The lesson type.
          */
         Request(Student student, UC uc, string type);
 

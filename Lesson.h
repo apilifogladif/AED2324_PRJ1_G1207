@@ -108,7 +108,7 @@ class Lesson {
 
         /**
          * @brief Lesson::drawLesson
-         * Prints ??
+         * Prints the lesson information
          *
          * Complexity: O(1)
          */

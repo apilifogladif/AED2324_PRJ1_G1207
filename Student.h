@@ -78,6 +78,8 @@ class Student {
          */
         vector<UC> getUCs() const;
 
+        void setUCs(vector<UC> ucs_);
+
         /**
          * Adds a UC to the student lessons
          *

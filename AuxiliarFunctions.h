@@ -20,7 +20,7 @@ using namespace std;
  */
 class AuxiliarFunctions {
     private:
-        vector<Schedule> schedules;
+        static vector<Schedule> schedules;
     public:
 
         /**
@@ -78,7 +78,7 @@ class AuxiliarFunctions {
          * @param student : info of the student who wants to enroll;
          * @param UcClass : Uc class that the student given wants to enroll;
          */
-        void concludeEnrollment(const Student& student, const UC& UcClass);
+        static void concludeEnrollment(const Student& student, const UC& UcClass);
 
         /**
          * Concludes the removal request by adding that request to the queue of removalRequests
@@ -88,7 +88,7 @@ class AuxiliarFunctions {
          * @param student : info of the student who wants to leave;
          * @param UcClass : Uc class that the student given wants to leave;
          */
-        void concludeRemoval(const Student& student, const UC& UcClass);
+        static void concludeRemoval(const Student& student, const UC& UcClass);
 
         /**
          * Concludes the switch request by adding that request to the queue of switchRequests
@@ -98,7 +98,7 @@ class AuxiliarFunctions {
          * @param student : info of the student who wants to switch;
          * @param UcClass : Uc class that the student given wants to switch;
          */
-        void concludeSwitch(const Student& student, const UC& oldUc, const UC& newUc);
+        static void concludeSwitch(const Student& student, const UC& oldUc, const UC& newUc);
 
         /**
          * Checks if there is no conflict between the student’s schedule and the new class’s schedule
@@ -109,7 +109,7 @@ class AuxiliarFunctions {
          * @param uc2 : another Uc;
          * @return bool : true or false
          */
-         bool lessonOverlap(UC uc1, UC uc2);
+         static bool lessonOverlap(UC uc1, UC uc2);
 
         /**
          * Get the total number of rejected requests
@@ -118,7 +118,7 @@ class AuxiliarFunctions {
          *
          * @return rejectedRequests.size
          */
-        int totalNumberOfRejectedRequests();
+        static int totalNumberOfRejectedRequests();
 
         /**
          * Get the total number of accepted requests
@@ -127,7 +127,7 @@ class AuxiliarFunctions {
          *
          * @return acceptedRequests.size
          */
-        int totalNumberOfAcceptedRequests();
+        static int totalNumberOfAcceptedRequests();
 
 
         /**
@@ -163,35 +163,17 @@ class AuxiliarFunctions {
          * @param request : request;
          * @return bool : true or false
          */
-        bool requestConflict(Request &request);
+        static bool requestConflict(Request &request);
 
         /**
-         * Returns a vector with the students of an Uc
-         *
-         * O(n), where n is the number of schedules / lines in 'classes_per_uc.csv'
-         *
-         * @param UcCode : Uc code;
-         * @return classes
-         */
-        vector<Schedule> UcClasses(const string& UcCode);
-
-        /**
-         * A student cannot be registered in more than 7 UCs at any given type
+         * Returns true if the capacity of the class has been excedeed
          *
          * O(n log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
          *
          * @param request : request;
          * @return bool : true or false
          */
-        bool requestMax(Request &request);
-
-        /*
-         * Returns a vector with the students of an Uc
-         *
-         * @param UcCode : Uc code;
-         * @return
-        vector<Student> UcStudents(const string& UcCode);*/
-
+        static bool requestMax(Request &request);
 
         /**
          * See if request has any problem (unbalanced, conflict, extends the max)
@@ -200,7 +182,7 @@ class AuxiliarFunctions {
          *
          * @param request : request;
          */
-        void verifySwapRequest(Request &request);
+        static void verifySwapRequest(Request &request);
 
         /**
          * See if request has any problem (conflict, extends the max)
@@ -209,7 +191,7 @@ class AuxiliarFunctions {
          *
          * @param request : request;
          */
-        void verifyEnrollmentRequest(Request &request);
+        static void verifyEnrollmentRequest(Request &request);
 
         /**
          * Does the removal requests as it does not need any problem verification
@@ -218,7 +200,7 @@ class AuxiliarFunctions {
          *
          * @param request : request;
          */
-        void verifyRemovalRequest(Request &request);
+        static void verifyRemovalRequest(Request &request);
 
         /**
          * Finalizes the requests
@@ -229,28 +211,28 @@ class AuxiliarFunctions {
          * t is the number of classes the student is in
          * p is the number of lessons of the first class and l is the number of lessons in the second class
          */
-        void RequestsManager();
+        static void RequestsManager();
 
         /**
          * Prints the requests that were rejected
          *
          * O(m), where m is the number of rejected requests
          */
-        void seeRejectedRequests();
+        static void seeRejectedRequests();
 
         /**
          * Prints the requests that were accepted
          *
          * O(m), where m is the number of accepted requests
          */
-        void seeAcceptedRequests();
+        static void seeAcceptedRequests();
 
         /**
          * Prints all the requests and respective status
          *
          * O(m), where m is the number of all requests done
          */
-        void seeAllRequests();
+        static void seeAllRequests();
 
         /**
          * Prints the schedule of a given student
@@ -260,7 +242,7 @@ class AuxiliarFunctions {
          *
          * @param StudentCode : Student code;
          */
-        void seeStudentSchedule(const string& StudentCode) const;
+        static void seeStudentSchedule(const string& StudentCode) ;
 
         /**
          * Prints the schedule of a given class
@@ -269,7 +251,7 @@ class AuxiliarFunctions {
          *
          * @param ClassCode : Class code;
          */
-        void seeClassSchedule(const string& ClassCode);
+        static void seeClassSchedule(const string& ClassCode);
 
         /**
          * Prints the schedule of a given Uc
@@ -278,7 +260,7 @@ class AuxiliarFunctions {
          *
          * @param UcCode : Uc code;
          */
-        void seeUcSchedule(const string& UcCode);
+        static void seeUcSchedule(const string& UcCode);
 
         /**
          * Prints the students of a given class
@@ -288,7 +270,7 @@ class AuxiliarFunctions {
          * @param UcClass : Uc class;
          * @param order_ : Way to sort the students of the class;
          */
-        void seeClassStudents(const UC& UcClass, const int &order_);
+        static void seeClassStudents(const UC& UcClass, const int &order_);
 
         /**
          * Prints the students of a given Uc
@@ -298,7 +280,7 @@ class AuxiliarFunctions {
          * @param UcCode : Uc code;
          * @param order_ : Way to sort the students of the Uc;
          */
-        void seeUcStudents(const string &UcCode, const int &sort_);
+        static void seeUcStudents(const string &UcCode, const int &sort_);
 
         /**
          * Prints the students of a given year
@@ -308,7 +290,7 @@ class AuxiliarFunctions {
          * @param year: Year;
          * @param sort : Way to sort the students of the Uc;
          */
-        void seeYearStudents(int year, int sort);
+        static void seeYearStudents(int year, int sort);
 
         /**
          * Returns the number of students of a given Class and Uc
@@ -328,7 +310,7 @@ class AuxiliarFunctions {
          * @param UcCode : Uc code;
          * @return schedule.getStudents().size
          */
-        int numberUcStudents(const string &UcCode);
+        static int numberUcStudents(const string &UcCode);
 
         /**
          * Returns the number of students of a given Year
@@ -338,13 +320,13 @@ class AuxiliarFunctions {
          * @paramt Year : year;
          * @return students.size
          */
-        int numberYearStudents(char &Year);
+        static int numberYearStudents(char &Year);
 
         /**
          * Get requests
          *
          * O(n) is the number of requests
          */
-        void getRequests();
+        static void getRequests();
 };
 #endif //AED2324_PRJ1_G1207_AUXILIARFUNCTIONS_H

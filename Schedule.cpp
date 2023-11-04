@@ -14,38 +14,14 @@ Schedule::Schedule(UC ucClass) {
 }
 
 Schedule::Schedule(const string& StudentCode) {
-    AuxiliarFunctions func;
-    this->student = func.retStudent(StudentCode);
+    this->student = AuxiliarFunctions::retStudent(StudentCode);
     this->loadLessonsStudent();
 }
 
-//void Schedule::addLesson(const Lesson& lesson) {
-//    this->lessons.insert(lesson);
-//    //change in CSV file
-//    CsvAndVectors CSVInfo;
-//    vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
-//    LessonsVector.push_back(lesson);
-//    CSVInfo.setFromLessonsVector();
-//}
-//
-//void Schedule::removeLesson(Lesson& lesson) {
-//    this->lessons.erase(lesson);
-//    CsvAndVectors CSVInfo;
-//    vector<Lesson> LessonsVector = CSVInfo.getLessonsVector();
-//    for (auto it = LessonsVector.begin(); it != LessonsVector.end(); it++) {
-//        if (*it == lesson) {
-//            LessonsVector.erase(it);
-//        }
-//    }
-//    CSVInfo.setFromLessonsVector();
-//}
-
 void Schedule::loadLessonsUcClass() {
-    CsvAndVectors CSVInfo;
-    vector<Lesson> LessonsVector = CSVInfo.LessonsVector;
 
     // get lessons from this ucClass(UcCode, ClassCode)
-    for (auto &lesson: LessonsVector) {
+    for (auto &lesson: CsvAndVectors::LessonsVector) {
         if (lesson.getUc() == this->UcClass) {
             this->lessons.insert(lesson);
         }
@@ -61,11 +37,9 @@ void Schedule::loadLessonsUcClass() {
 }
 
 void Schedule::loadLessonsStudent() {
-    CsvAndVectors CSVInfo;
-    vector<Lesson> LessonsVector = CSVInfo.LessonsVector;
 
     for (auto &uc: this->student.getUCs()) {
-        for (auto &lesson : LessonsVector) {
+        for (auto &lesson : CsvAndVectors::LessonsVector) {
             if (uc == lesson.getUc()) {
                 this->lessons.insert(lesson);
             }
@@ -74,11 +48,9 @@ void Schedule::loadLessonsStudent() {
 }
 
 void Schedule::loadStudents() {
-    CsvAndVectors CSVInfo;
-    vector<Student> StudentsVector = CSVInfo.StudentsVector;
 
     // get students from this ucClass(UcCode, ClassCode)
-    for (auto &student_: StudentsVector) {
+    for (auto &student_: CsvAndVectors::StudentsVector) {
         for (auto &uc : student_.getUCs()) {
             if (uc == this->UcClass) {
                 this->students.insert(student_);
@@ -116,11 +88,6 @@ void Schedule::drawSchedule() const {
     }
 }
 
-
-//bool Schedule::hasSameUcCode(Schedule &UcCode) {
-//   return UcClass.getUcCode() == UcCode.getUcClass().getUcCode();
-//}
-
 UC Schedule::getUcClass() {
     return this->UcClass;
 }
@@ -129,29 +96,9 @@ set<Student> Schedule::getStudents() {
     return this->students;
 }
 
-void Schedule::addStudent(Student student_) {
-    CsvAndVectors CSVInfo;
-    student_.addUC(this->UcClass);
-    students.insert(student_);
-    CSVInfo.setFromStudentsVector();
-    this->loadLessonsUcClass();
-}
-
-void Schedule::removeStudent(Student student_) {
-    CsvAndVectors CSVInfo;
-    student_.removeUC(this->UcClass);
-    students.erase(student_);
-    CSVInfo.setFromStudentsVector();
-    this->loadLessonsUcClass();
-}
-
 bool Schedule::operator<(Schedule schedule) {
     return this->UcClass < schedule.getUcClass();
 }
-
-//void Schedule::printUcAndClass() {
-//    cout << "UC: " << UcClass.getUcCode() << " " << UcClass.getClassCode() << endl;
-//}
 
 void Schedule::sortStudents(const int &sort_) {
     vector<Student> sorted = vector<Student>(students.begin(), students.end());

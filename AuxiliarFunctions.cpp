@@ -14,9 +14,7 @@ vector<Request> AuxiliarFunctions::allRequests;
 AuxiliarFunctions::AuxiliarFunctions() = default;
 
 Student AuxiliarFunctions::retStudent(const string &studentCode) {
-    CsvAndVectors CSVInfo;
-    vector<Student> students = CSVInfo.StudentsVector;
-    for (auto &student : students) {
+    for (auto &student : CsvAndVectors::StudentsVector) {
         if (student.getStudentCode() == studentCode) {
             return student;
         }
@@ -67,14 +65,12 @@ UC AuxiliarFunctions::getCurrentClass(Request &request) {
 }
 
 bool AuxiliarFunctions::requestBalance(Request &request) {
-    CsvAndVectors CSVInfo;
     AuxiliarFunctions func;
-    vector<pair<string, set<string>>> ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
     string UcCode = request.getUC().getUcCode();
     int new_oc = func.numberClassStudents(request.getUC());
     int aux;
 
-    for (pair<string, set<string>> p : ClassesPerUcVector) {
+    for (pair<string, set<string>> p : CsvAndVectors::ClassesPerUcVector) {
         if (p.first == UcCode) {
             for (string Class : p.second) {
                 aux = func.numberClassStudents(UC(UcCode, Class));
@@ -97,30 +93,11 @@ bool AuxiliarFunctions::requestConflict(Request &request) {
     return false;
 }
 
-vector<Schedule> AuxiliarFunctions::UcClasses(const string &UcCode) {
-    vector<Schedule> classes;
-    for (Schedule &class_: schedules) {
-        if (class_.getUcClass().getUcCode() == UcCode) {
-            classes.push_back(class_);
-        }
-    }
-    return classes;
-}
-
 bool AuxiliarFunctions::requestMax(Request &request) {
-    vector<Schedule> UcClasses_ = UcClasses(request.getUC().getUcCode());
-    sort(UcClasses_.begin(), UcClasses_.end(), [](Schedule &class1, Schedule &class2) {
-        return class1.getStudents().size() < class2.getStudents().size();
-    });
-    int max = UcClasses_.back().getStudents().size();
-    if (UcClasses_[0].getStudents().size() == max) {
-       max++;
-    }
-    if (max < numberClassStudents(request.getUC())) {
-        return true;
-    } else {
-        return false;
-    }
+    int Cap = 25;
+    Schedule schedule = Schedule(UC(request.getUC()));
+    if (schedule.getStudents().size() > Cap) return true;
+    return false;
 }
 
 void AuxiliarFunctions::verifySwapRequest(Request &request){
@@ -165,7 +142,6 @@ void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
         Student student = retStudent(request.getStudent().getStudentCode());
         UC uc = Schedule(request.getUC()).getUcClass();
         student.addUC(uc);
-        Schedule(uc).addStudent(student);
         acceptedRequests.push_back(request);
     }
     allRequests.push_back(request);
@@ -181,18 +157,20 @@ void AuxiliarFunctions::verifyRemovalRequest(Request &request) {
         Student student = retStudent(request.getStudent().getStudentCode());
         UC uc = Schedule(request.getUC()).getUcClass();
         student.removeUC(uc);
-        Schedule(uc).removeStudent(student);
         acceptedRequests.push_back(request);
     }
     allRequests.push_back(request);
 }
 
 void AuxiliarFunctions::RequestsManager() {
+    cout << " 1 " << endl;
     while (!(removalRequests.empty())) { // it has to be first
+        cout << " 2 " << endl;
         Request request = removalRequests.front();
         removalRequests.pop();
         verifyRemovalRequest(request);
     }
+    cout  << " 3 " << endl;
 
     while (!(enrollmentRequests.empty())) {
         Request request = enrollmentRequests.front();
@@ -205,9 +183,6 @@ void AuxiliarFunctions::RequestsManager() {
         switchRequests.pop();
         verifySwapRequest(request);
     }
-
-    CsvAndVectors CSVInfo;
-    CSVInfo.setFromRequestVector();
 }
 
 void AuxiliarFunctions::seeRejectedRequests() {
@@ -237,7 +212,7 @@ void AuxiliarFunctions::seeAllRequests() {
     }
 }
 
-void AuxiliarFunctions::seeStudentSchedule(const string& StudentCode) const {
+void AuxiliarFunctions::seeStudentSchedule(const string& StudentCode) {
     Schedule schedule = Schedule(StudentCode);
     schedule.drawSchedule();
     cout << endl;
@@ -270,10 +245,8 @@ void AuxiliarFunctions::seeUcStudents(const string& UcCode, const int& sort_) {
 }
 
 void AuxiliarFunctions::seeYearStudents(int year, int sort_) {
-    CsvAndVectors CSVInfo;
-    vector<Student> StudentsVector = CSVInfo.StudentsVector;
     set<Student> students;
-    for (auto &student : StudentsVector) {
+    for (auto &student : CsvAndVectors::StudentsVector) {
         char y = '0';
         char aux;
         for (auto &uc : student.getUCs()) {
@@ -316,10 +289,8 @@ int AuxiliarFunctions::numberUcStudents(const string &UcCode) {
 }
 
 int AuxiliarFunctions::numberYearStudents(char &Year) {
-    CsvAndVectors CSVInfo;
-    vector<Student> StudentsVector = CSVInfo.StudentsVector;
     int count = 0;
-    for (auto &student : StudentsVector) {
+    for (auto &student : CsvAndVectors::StudentsVector) {
         char y = 0;
         for (auto &uc : student.getUCs()) {
             char aux = uc.getClassCode()[0];
@@ -331,8 +302,7 @@ int AuxiliarFunctions::numberYearStudents(char &Year) {
 }
 
 void AuxiliarFunctions::getRequests() {
-    CsvAndVectors CSVInfo;
-    allRequests = CSVInfo.RequestsVector;
+    allRequests = CsvAndVectors::RequestsVector;
     for (Request r : allRequests) {
         if (r.getStatus() == "Accepted") acceptedRequests.push_back(r);
         else rejectedRequests.push_back(r);

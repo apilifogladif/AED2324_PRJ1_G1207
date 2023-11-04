@@ -80,28 +80,28 @@ class CsvAndVectors {
          *
          * O(n) where n is the number of lines in the 'classes.csv'
          */
-        void createLessonsVector();
+        static void createLessonsVector();
 
         /**
          * Creates a vector with the requests
          *
          * O(n) where n is the number of lines in the 'requests.csv'
          */
-        void createRequestsVector();
+        static void createRequestsVector();
 
         /**
          * Creates a vector with the classes and uc's
          *
          * O(n) where n is the number of lines in the 'classes_per_uc.csv'
          */
-        void createClassesPerUcVector();
+        static void createClassesPerUcVector();
 
         /**
          * Creates a vector with the students
          *
          * O(n) where n is the number of lines in the 'students_classes.csv'
          */
-        void createStudentsVector();
+        static void createStudentsVector();
 
         // funções opostas, ou seja, passar as alterações do vetor para os ficheiros csv
 
@@ -110,14 +110,14 @@ class CsvAndVectors {
          *
          * O(n*k) where n is the number of Student objects in StudentsVector and k is the average number of UC objects associated with each Student
          */
-        void setFromStudentsVector();
+        static void setFromStudentsVector();
 
         /**
          * Updates requests.csv with the new information
          *
          * O(n) where n is the number of Request objects in RequestVectors
          */
-        void setFromRequestVector();
+        static void setFromRequestVector();
 };
 
 #endif //AED2324_PRJ1_G1207_CSVANDVECTORS_H

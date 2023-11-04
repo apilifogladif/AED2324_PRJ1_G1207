@@ -53,21 +53,6 @@ class Schedule {
          */
         Schedule(const string& StudentCode);
 
-//        /**
-//         * Adds a lesson to the schedule
-//         * O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
-//         *
-//         * @param lesson : Lesson;
-//         */
-//        void addLesson(const Lesson& lesson);
-//
-//        /**
-//         * Removes a lesson from the schedule
-//         * O(log n) + O(m) where n is the number of lessons in the lessons set and m is the number of lessons in LessonsVector
-//         *
-//         * @param lesson : Lesson;
-//         */
-//        void removeLesson(Lesson& lesson);
 
         /**
          * Set the private set lessons to the lessons of the UcClass, Uc or Class
@@ -106,15 +91,6 @@ class Schedule {
          */
         void drawSchedule() const;
 
-//        /**
-//         * Verifies if it has the same UcCode
-//         * O(1)
-//         *
-//         * @param UcCode : Uc code;
-//         * @return bool : true or false
-//         */
-//        bool hasSameUcCode(Schedule &UcCode);
-
         /**
          * Returns the Uc class
          *
@@ -134,24 +110,6 @@ class Schedule {
         set<Student> getStudents();
 
         /**
-         * Adds student to a Schedule (UC UcClass)
-         *
-         * O(log n) where n is the number of students already in the set
-         *
-         * @param student : student;
-         */
-        void addStudent(Student student);
-
-        /**
-         * Removes student from a Schedule (UC UcClass)
-         *
-         * O(log n) where n is the number of students already in the set
-         *
-         * @param student : student;
-         */
-        void removeStudent(Student student);
-
-        /**
          * Operator to compare two schedules
          *
          * O(1)
@@ -160,12 +118,6 @@ class Schedule {
          * @return bool : true or false
          */
         bool operator<(Schedule schedule);
-
-//        /**
-//         * Prints UcCode and ClassCode
-//         * O(1)
-//         */
-//        void printUcAndClass();
 
         /**
          * Sorts the students and prints them in the order that we asked for

@@ -31,46 +31,45 @@ vector<UC> Student::getUCs() const {
     return this->ucs;
 }
 
-//  O(log n) + O(n) where n is the number of students int the CSVInfo.StudentsVector
+void Student::setUCs(vector<UC> ucs_) {
+    this->ucs = ucs_;
+}
+
 void Student::addUC(const UC &uc) {
     this->ucs.push_back(uc);
-    CsvAndVectors CSVInfo;
 
-    int idx = this->binarySearchCsvStudentVector(0, CSVInfo.StudentsVector.size());
-    CSVInfo.StudentsVector[idx].getUCs().push_back(uc);
-    CSVInfo.setFromStudentsVector();
+    int idx = this->binarySearchCsvStudentVector(0, CsvAndVectors::StudentsVector.size());
+    CsvAndVectors::StudentsVector[idx].getUCs().push_back(uc);
 }
 
 void Student::removeUC(const UC &uc) {
-    CsvAndVectors CSVInfo;
+    int idx = this->binarySearchCsvStudentVector(0, CsvAndVectors::StudentsVector.size());
+    Student student = CsvAndVectors::StudentsVector[idx];
 
-    auto it = find(this->ucs.begin(), this->ucs.end(), uc);
-    this->ucs.erase(it);
-    int idx = this->binarySearchCsvStudentVector(0, CSVInfo.StudentsVector.size());
-    cout << idx << CSVInfo.StudentsVector[idx].getStudentName() << endl;
-
-    for (int i = 0; i < CSVInfo.StudentsVector[idx].getUCs().size(); i++) {
-        if (CSVInfo.StudentsVector[idx].getUCs()[i] == uc) {
-            CSVInfo.StudentsVector[idx].getUCs().erase(CSVInfo.StudentsVector[idx].getUCs().begin() + i);
-            CSVInfo.setFromStudentsVector();
-            return;
+    vector<UC> ucs_ = CsvAndVectors::StudentsVector[idx].getUCs();
+    int index;
+    for (int i = 0; i < ucs_.size(); i++) {
+        if (ucs_[i] == uc) {
+            index = i;
+            break;
         }
     }
+    ucs_.erase(ucs_.begin() + index);
+    CsvAndVectors::StudentsVector[idx].setUCs(ucs_);
 }
 
 int Student::binarySearchCsvStudentVector(unsigned long left, unsigned long right) {
     if (left > right) return -1; //not found
 
-    CsvAndVectors CSVInfo;
 
-    sort(CSVInfo.StudentsVector.begin(), CSVInfo.StudentsVector.end(), [](Student &A, Student &B) {
+    sort(CsvAndVectors::StudentsVector.begin(), CsvAndVectors::StudentsVector.end(), [](Student &A, Student &B) {
         return A.getStudentCode() < B.getStudentCode();
     });
     unsigned long mid = left + (right - left) / 2;
-    if (CSVInfo.StudentsVector[mid].getStudentCode() == this->studentCode) {
+    if (CsvAndVectors::StudentsVector[mid].getStudentCode() == this->studentCode) {
         return mid; // Found the UC object at index mid
     }
-    else if (CSVInfo.StudentsVector[mid].getStudentCode() > this->studentCode) {
+    else if (CsvAndVectors::StudentsVector[mid].getStudentCode() > this->studentCode) {
         return binarySearchCsvStudentVector(left, mid - 1);
     }
     return binarySearchCsvStudentVector(mid + 1, right);

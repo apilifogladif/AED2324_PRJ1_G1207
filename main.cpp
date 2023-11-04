@@ -287,7 +287,6 @@ int occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVectorO
  * @return
  */
 int sortMenu(const string& UcCode, const string& classCode, int year) {
-    AuxiliarFunctions func;
     int op = 0;
     cout << "How do you want the list to be sorted?" << endl;
     cout << "1 - A-Z order" << endl;
@@ -311,13 +310,13 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
         }
     }
     if (year == '0' && !UcCode.empty() && !classCode.empty())
-        func.seeClassStudents(UC(UcCode, classCode), op);
+        AuxiliarFunctions::seeClassStudents(UC(UcCode, classCode), op);
 
     else if (year != '0' && UcCode.empty() && classCode.empty())
-        func.seeYearStudents(year, op);
+        AuxiliarFunctions::seeYearStudents(year, op);
 
     else if (year == '0' && !UcCode.empty() && classCode.empty())
-        func.seeUcStudents(UcCode, op);
+        AuxiliarFunctions::seeUcStudents(UcCode, op);
 
     cout << "1 - Return to last Menu" << endl;
     cout << "2 - Return to Main Menu" << endl;
@@ -351,9 +350,7 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
  * @return
  */
 bool verifyClass(const string& ClassCode) {
-    CsvAndVectors CSVInfo;
-    set<string> ClassesSet = CSVInfo.ClassesSet;
-    if (ClassesSet.find(ClassCode) == ClassesSet.end()) return false;
+    if (CsvAndVectors::ClassesSet.find(ClassCode) == CsvAndVectors::ClassesSet.end()) return false;
     return true;
 }
 
@@ -366,9 +363,7 @@ bool verifyClass(const string& ClassCode) {
  * @return
  */
 bool verifyUc(const string& UcCode) {
-    CsvAndVectors CSVInfo;
-    set<string> UcSet = CSVInfo.UcSet;
-    if (UcSet.find(UcCode) == UcSet.end()) return false;
+    if (CsvAndVectors::UcSet.find(UcCode) == CsvAndVectors::UcSet.end()) return false;
     return true;
 }
 
@@ -381,9 +376,7 @@ bool verifyUc(const string& UcCode) {
  * @return
  */
 bool verifyStudent(const string& StudentCode) {
-    CsvAndVectors CSVInfo;
-    set<string> StudentsSet = CSVInfo.StudentsSet;
-    if (StudentsSet.find(StudentCode) == StudentsSet.end()) return false;
+    if (CsvAndVectors::StudentsSet.find(StudentCode) == CsvAndVectors::StudentsSet.end()) return false;
     return true;
 }
 
@@ -439,8 +432,7 @@ int enrollRequest(Student student) {
         }
     }
 
-    AuxiliarFunctions func;
-    func.concludeEnrollment(student, UC(UcCode, classCode));
+    AuxiliarFunctions::concludeEnrollment(student, UC(UcCode, classCode));
     cout << "Enrollment request submitted." << endl;
 
     int op = 0;
@@ -463,7 +455,7 @@ int enrollRequest(Student student) {
         }
     }
     if (op == 1) {
-        func.RequestsManager();
+        AuxiliarFunctions::RequestsManager();
         return 1;
     }
     if (op == 2) {
@@ -479,7 +471,7 @@ int enrollRequest(Student student) {
             if (cin >> option) {
                 if (option == "Y") return 0;
                 else if (option == "N") {
-                    func.RequestsManager();
+                    AuxiliarFunctions::RequestsManager();
                     return 1;
                 }
                 else {
@@ -530,8 +522,7 @@ int leaveRequest(Student student) {
         return 1;  //Main Menu
     }
 
-    AuxiliarFunctions func;
-    func.concludeRemoval(student, uc);
+    AuxiliarFunctions::concludeRemoval(student, uc);
     cout << "Removal request submitted." << endl;
 
     int op = 0;
@@ -554,7 +545,7 @@ int leaveRequest(Student student) {
         }
     }
     if (op == 1) {
-        func.RequestsManager();
+        AuxiliarFunctions::RequestsManager();
         return 1;
     }
     if (op == 2) {
@@ -570,7 +561,7 @@ int leaveRequest(Student student) {
             if (cin >> option) {
                 if (option == "Y") return 0;
                 else if (option == "N") {
-                    func.RequestsManager();
+                    AuxiliarFunctions::RequestsManager();
                     return 1;
                 }
                 else {
@@ -621,9 +612,6 @@ int switchRequest(Student student) {
         }
     }
 
-    AuxiliarFunctions func;
-    CsvAndVectors CSVInfo;
-    vector<pair<string, set<string>>> ClassesPerUcVector;
     vector<pair<string, int>> auxVector;
     pair<string, int> auxPair;
     string newClass;
@@ -749,7 +737,7 @@ int switchRequest(Student student) {
             student.removeUC(uc);
             student.addUC(newuc);
     }
-    func.concludeSwitch(student, uc, newuc);
+    AuxiliarFunctions::concludeSwitch(student, uc, newuc);
     cout << "Switch request submitted." << endl;
 
     op = 0;
@@ -770,7 +758,7 @@ int switchRequest(Student student) {
         }
     }
     if (op == 1) {
-        func.RequestsManager();
+        AuxiliarFunctions::RequestsManager();
         return 1;
     }
     if (op == 2) {
@@ -786,7 +774,7 @@ int switchRequest(Student student) {
             if (cin >> option) {
                 if (option == "Y") return 0;
                 else if (option == "N") {
-                    func.RequestsManager();
+                    AuxiliarFunctions::RequestsManager();
                     return 1;
                 }
                 else {
@@ -830,8 +818,7 @@ int submitRequest(int op) {
         }
     }
 
-    AuxiliarFunctions func;
-    Student student = func.retStudent(studentCode);
+    Student student = AuxiliarFunctions::retStudent(studentCode);
 
     int aux = 0;
     switch(op) {
@@ -859,7 +846,6 @@ int submitRequest(int op) {
  * @return
  */
 int listingMenu() {
-    AuxiliarFunctions func;
     int op = 0;
     cout << endl << "----------------------------------" << endl;
     cout << endl << "     Search for listings of...    " << endl;
@@ -880,7 +866,6 @@ int listingMenu() {
     string UcCode;
     string sort_;
     string  classCode;
-    CsvAndVectors CSVInfo;
     char year = '0';
     cout << endl;
     switch (op) {
@@ -983,8 +968,6 @@ int listingMenu() {
  * @return
  */
 int numbersMenu() {
-    AuxiliarFunctions func;
-    CsvAndVectors CSVInfo;
     int op = 0;
     cout << endl << "------------------------------------------------" << endl;
     cout << endl << "     Search for the number of students... " << endl;
@@ -1017,7 +1000,6 @@ int numbersMenu() {
     char year = '0';
     int count = 0;
     int num = 0;
-    vector<Student> StudentsVector;
     switch(op) {
         case 1:
             while (true) {
@@ -1037,7 +1019,7 @@ int numbersMenu() {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            cout << func.numberUcStudents(UcCode) << " students." << endl;
+            cout << AuxiliarFunctions::numberUcStudents(UcCode) << " students." << endl;
             break;
 
         case 2:
@@ -1077,7 +1059,7 @@ int numbersMenu() {
                 }
             }
 
-            cout << func.numberClassStudents(UC(UcCode, classCode)) << " students." << endl;
+            cout << AuxiliarFunctions::numberClassStudents(UC(UcCode, classCode)) << " students." << endl;
             break;
 
         case 3:
@@ -1097,11 +1079,10 @@ int numbersMenu() {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            cout << func.numberYearStudents(year) << " students." << endl;
+            cout << AuxiliarFunctions::numberYearStudents(year) << " students." << endl;
             break;
 
         case 4:
-            StudentsVector = CSVInfo.StudentsVector;
             while (true) {
                 cout << "How many Ucs? (Write a number between 1 and 7) ";
                 if (cin >> num) {
@@ -1118,7 +1099,7 @@ int numbersMenu() {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            for (const Student& student : StudentsVector) {
+            for (const Student& student : CsvAndVectors::StudentsVector) {
                 if (student.getUCs().size() == num) count++;
             }
             cout << count << " students." << endl;
@@ -1192,7 +1173,6 @@ int scheduleMenu() {
     string UcCode;
     string classCode;
     string studentCode;
-    CsvAndVectors CSVInfo;
     cout << endl;
 
     switch (op) {
@@ -1215,7 +1195,7 @@ int scheduleMenu() {
                 }
             }
             cout << endl;
-            func.seeUcSchedule(UcCode);
+            AuxiliarFunctions::seeUcSchedule(UcCode);
             break;
 
         case 2:
@@ -1237,7 +1217,7 @@ int scheduleMenu() {
                 }
             }
             cout << endl;
-            func.seeClassSchedule(classCode);
+            AuxiliarFunctions::seeClassSchedule(classCode);
             break;
 
         case 3:
@@ -1259,7 +1239,7 @@ int scheduleMenu() {
                 }
             }
             cout << endl;
-            func.seeStudentSchedule(studentCode);
+            AuxiliarFunctions::seeStudentSchedule(studentCode);
             break;
 
         case 4:
@@ -1301,8 +1281,6 @@ int scheduleMenu() {
  * @return
  */
 int occupationMenu() {
-    AuxiliarFunctions func;
-    CsvAndVectors CSVInfo;
     int op = 0;
     cout << endl << "------------------------------------------------" << endl;
     cout << endl << "     Search for the occupation of...  " << endl;
@@ -1332,7 +1310,6 @@ int occupationMenu() {
     string UcCode;
     string classCode;
     vector<pair<UC, int>> ClassesPerUcVectorOfYear;
-    vector<pair<string, set<string>>> ClassesPerUcVector;
     vector<pair<string, int>> auxVector;
     pair<string, int> auxPair;
     pair<UC, int> auxPair2;
@@ -1357,13 +1334,12 @@ int occupationMenu() {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
 
-            for (pair<string, set<string>> p : ClassesPerUcVector) {
+            for (pair<string, set<string>> p : CsvAndVectors::ClassesPerUcVector) {
                 if (p.first == UcCode) {
                     for (string Class : p.second) {
                         auxPair.first = Class;
-                        auxPair.second = func.numberClassStudents(UC(UcCode, Class));
+                        auxPair.second = AuxiliarFunctions::numberClassStudents(UC(UcCode, Class));
                         auxVector.push_back(auxPair);
                     }
                 }
@@ -1389,12 +1365,11 @@ int occupationMenu() {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
 
-            for (pair<string, set<string>> p : ClassesPerUcVector) {
+            for (pair<string, set<string>> p : CsvAndVectors::ClassesPerUcVector) {
                 if (p.second.find(classCode) != p.second.end()) {
                     auxPair.first = p.first;
-                    auxPair.second = func.numberClassStudents(UC(UcCode, classCode));
+                    auxPair.second = AuxiliarFunctions::numberClassStudents(UC(UcCode, classCode));
                     auxVector.push_back(auxPair);
                 }
             }
@@ -1418,12 +1393,11 @@ int occupationMenu() {
                     cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-            ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
-            for (pair<string, set<string>> &p : ClassesPerUcVector) {
+            for (pair<string, set<string>> &p : CsvAndVectors::ClassesPerUcVector) {
                 for (auto Class : p.second) {
                     if(static_cast<int>(Class[0]) - 48 == year) {
                         auxPair2.first = UC(p.first, Class);
-                        auxPair2.second = func.numberClassStudents(auxPair2.first);
+                        auxPair2.second = AuxiliarFunctions::numberClassStudents(auxPair2.first);
                         ClassesPerUcVectorOfYear.push_back(auxPair2);
                     }
                 }
@@ -1449,8 +1423,6 @@ int occupationMenu() {
   * @return
   */
 int greatestMenu() {
-    AuxiliarFunctions func;
-    CsvAndVectors CSVInfo;
     int op = 0;
     cout << endl << "------------------------------------------------" << endl;
     cout << endl << "     ...with the greatest number of students.   " << endl;
@@ -1479,7 +1451,6 @@ int greatestMenu() {
     cout << endl;
 
     set<string> UcSet;
-    vector<pair<string, set<string>>> ClassesPerUcVector;
     int num = 0;
     vector<string> MAX;
     vector<int> max;
@@ -1488,9 +1459,9 @@ int greatestMenu() {
     max.push_back(0);
     switch(op) {
         case 1:
-            UcSet = CSVInfo.UcSet;
+            UcSet = CsvAndVectors::UcSet;
             for (const string& UcCode : UcSet) {
-                num = func.numberUcStudents(UcCode);
+                num = AuxiliarFunctions::numberUcStudents(UcCode);
                 if (num > max[0]) {
                     max.clear();
                     max.push_back(num);
@@ -1509,11 +1480,10 @@ int greatestMenu() {
             break;
 
         case 2:
-            ClassesPerUcVector = CSVInfo.ClassesPerUcVector;
-            for (pair<string, set<string>> p : ClassesPerUcVector) {
+            for (pair<string, set<string>> p : CsvAndVectors::ClassesPerUcVector) {
                 for (string ClassCode : p.second) {
                     UC uc = UC(p.first, ClassCode);
-                    num = func.numberClassStudents(uc);
+                    num = AuxiliarFunctions::numberClassStudents(uc);
                     if (num > max[0]) {
                         max.clear();
                         max.push_back(num);
@@ -1536,7 +1506,7 @@ int greatestMenu() {
 
         case 3:
             for (char year = '1'; year < '4'; year++) {
-                num = func.numberYearStudents(year);
+                num = AuxiliarFunctions::numberYearStudents(year);
                 if (num > max[0]) {
                     max.clear();
                     max.push_back(num);
@@ -1595,8 +1565,7 @@ int greatestMenu() {
   * @return
   */
 int requestMenu() {
-    AuxiliarFunctions func;
-    func.getRequests();
+    AuxiliarFunctions::getRequests();
     int op = 0;
     cout << endl << "--------------------------------" << endl;
     cout << endl << "     Submit a request for...    " << endl;
@@ -1640,7 +1609,7 @@ int requestMenu() {
 int acceptedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
-    func.seeAcceptedRequests();
+    AuxiliarFunctions::seeAcceptedRequests();
     cout << endl;
     cout << endl;
     cout << "1 - Return to Main Menu" << endl;
@@ -1675,7 +1644,7 @@ int acceptedRequest() {
 int rejectedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
-    func.seeRejectedRequests();
+    AuxiliarFunctions::seeRejectedRequests();
     cout << endl;
     cout << endl;
     cout << "1 - Return to Main Menu" << endl;
@@ -1710,7 +1679,7 @@ int rejectedRequest() {
 int allRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
-    func.seeAllRequests();
+    AuxiliarFunctions::seeAllRequests();
     cout << endl;
     cout << endl;
     cout << "1 - Return to Main Menu" << endl;
@@ -1743,6 +1712,13 @@ int allRequest() {
  * @return
  */
 int main() {
+    cout << "IM ALMOST HERE" << endl;
+    if (CsvAndVectors::StudentsVector.size() != 0) {
+        cout << "IM HERE" << endl;
+        CsvAndVectors::setFromRequestVector();
+        CsvAndVectors::setFromStudentsVector();
+    }
+
     int op = 0;
     cout << endl << "----------------------------" << endl;
     cout << endl << "      Main Menu   " << endl;
@@ -1762,12 +1738,20 @@ int main() {
     cout << "or year, you will return to the main menu." << endl;
     cout << endl;
 
-    CsvAndVectors CSVInfo;
-    CSVInfo.createStudentsVector();
-    CSVInfo.createClassesPerUcVector();
-    CSVInfo.createLessonsVector();
-    CSVInfo.createStudentsSet();
-    CSVInfo.createClassesAndUcSet();
+    CsvAndVectors::createStudentsVector();
+    CsvAndVectors::createRequestsVector();
+    CsvAndVectors::createClassesPerUcVector();
+    CsvAndVectors::createLessonsVector();
+    CsvAndVectors::createStudentsSet();
+    CsvAndVectors::createClassesAndUcSet();
+
+    cout << CsvAndVectors::StudentsVector.size() << endl;
+    for (auto student : CsvAndVectors::StudentsVector) {
+        for (auto uc: student.getUCs()) {
+            cout << student.getStudentCode() << " " << uc.getUcCode() << " " << uc.getClassCode()
+                 << endl;
+        }
+    }
 
     while (true) {
         cout << "Write the number of what you want to do: ";

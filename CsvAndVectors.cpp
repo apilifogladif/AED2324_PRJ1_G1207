@@ -173,25 +173,22 @@ void CsvAndVectors::createStudentsVector() {
     string StudentName;
     string UcCode;
     string ClassCode;
-    string lastStudentName;
-    string lastStudentCode;
     getline(file, line);
     while (getline(file, line)) {
+        if (line.empty()) continue;
         stringstream s(line);
         getline(s, StudentCode, ',');
         getline(s, StudentName, ',');
         getline(s, UcCode, ',');
         getline(s, ClassCode);
-        cout << StudentCode << " " << StudentName << " " << UcCode << endl;
-        if (StudentCode == lastStudentCode) {
-            ucs.emplace_back(UcCode, ClassCode);
-        } else {
-            StudentsVector.emplace_back(lastStudentCode, lastStudentName, ucs);
-            ucs.clear();
-            ucs.emplace_back(UcCode, ClassCode);
+        if (!StudentsVector.empty() && StudentCode == StudentsVector[StudentsVector.size() - 1].getStudentCode()) {
+            StudentsVector[StudentsVector.size() - 1].addUC(UC(UcCode, ClassCode));
         }
-        lastStudentCode = StudentCode;
-        lastStudentName = StudentName;
+        else {
+            vector<UC> ucs;
+            ucs.emplace_back(UcCode, ClassCode);
+            StudentsVector.emplace_back(StudentCode, StudentName, ucs);
+        }
     }
 }
 

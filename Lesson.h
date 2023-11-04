@@ -24,116 +24,126 @@ class Lesson {
         string type;
     public:
         /**
+         * @brief Lesson::Lesson
          * Class constructor
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * Sets ClassCode, UcCode, weekday, startHour, endHour (startHour + duration) and type
-         *
-         * @param ClassCode : private , Class code;
-         * @param UcCode : private , Curricular unit code;
-         * @param weekday : private , Day of the week when the lesson happens;
-         * @param startHour : private , Lesson start time;
-         * @param duration : private , Lesson duration;
-         * @param type : private , Lesson type;
+         * @param ClassCode : Class code;
+         * @param UcCode : Uc code;
+         * @param weekday : Day of the week when the lesson happens;
+         * @param startHour : Lesson start time;
+         * @param duration : Lesson duration;
+         * @param type : Lesson type.
          */
         Lesson(string UcCode, string ClassCode, string weekday, float startHour, float duration, string type);
 
         /**
-         * Returns the uc
+         * @brief Lesson::getUc
+         * Gets the uc
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return uc
+         * @return The Uc of the lesson.
          */
         UC getUc() const;
 
         /**
-         * Returns the weekday of the lesson
+         * @brief Lesson::getWeekday
+         * Gets the weekday of the lesson
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return weekday
+         * @return The weekday the lesson is in.
          */
         string getWeekday() const;
 
         /**
-         * Returns the startHour of the lesson
+         * @brief Lesson::getStartHour
+         * Gets the startHour of the lesson
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return startHour
+         * @return The lesson's start time.
          */
         float getStartHour() const;
 
         /**
-         * Returns the endHour of the lesson
+         * @brief Lesson::getEndHour
+         * Gets the endHour of the lesson
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return endHour
+         * @return The lesson's end time.
          */
         float getEndHour() const;
 
         /**
-         * Return the duration of the lesson
+         * @brief Lesson::getDuration
+         * Gets the duration of the lesson
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return duration
+         * @return The lesson's duration.
          */
         float getDuration() const;
 
         /**
-         * Returns the type of the lesson
+         * @brief Lesson::getType
+         * Gets the type of the lesson
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return string with type : T,P,PL or TP
+         * @return The type of the lesson (T,P,PL or TP).
          */
         string getType() const;
 
         /**
+         * @brief Lesson::timeInHoursAndMinutes
          * Convert the decimal time to a string
          *
-         * O(1)
+         * Complexity: O(1)
          */
         void timeInHoursAndMinutes() const;
 
         /**
-         * Prints the startHour, the endHour and the type of the lesson
+         * @brief Lesson::drawLesson
+         * Prints ??
          *
-         * O(1)
+         * Complexity: O(1)
          */
         void drawLesson() const;
 
         /**
+         * @brief Lesson::lessonOverlap
          * Checks if two classes are compatible
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param lesson : lesson;
-         * @return bool : true or false
+         * @param lesson : The lesson that we are checking if overlaps;
+         * @return true or false.
          */
         bool lessonOverlap(const Lesson& lesson);
 
         /**
+         * @brief Lesson::operator<
          * Operator to compare the times of two Lessons
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param l : lesson;
-         * @return bool : true or false
+         * @param l : The Lesson we are comparing;
+         * @return true or false.
          */
         bool operator<(const Lesson& l) const;
 
         /**
+         * @brief Lesson::operator==
          * Operator to compare equality between two lessons
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param l : lesson;
-         * @return bool : true or false
+         * @param l : The Lesson we are comparing;
+         * @return true or false.
          */
         bool operator==(const Lesson& l) const;
 };

@@ -39,7 +39,9 @@ void Student::addUC(const UC &uc) {
     this->ucs.push_back(uc);
 
     int idx = this->binarySearchCsvStudentVector(0, CsvAndVectors::StudentsVector.size());
-    CsvAndVectors::StudentsVector[idx].getUCs().push_back(uc);
+    vector<UC> ucs_ = CsvAndVectors::StudentsVector[idx].getUCs();
+    ucs_.push_back(uc);
+    CsvAndVectors::StudentsVector[idx].setUCs(ucs_);
 }
 
 void Student::removeUC(const UC &uc) {

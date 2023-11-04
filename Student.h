@@ -21,148 +21,166 @@ class Student {
     public:
 
         /**
+         * @brief Student::Student
          * Class constructor
          *
-         * O(1)
+         * Complexity: O(1)
          */
         Student();
 
         /**
+         * @brief Student::Student
          * Class constructor
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * Sets studentCode and studentName
-         *
-         * @param studentCode : private , Student code;
-         * @param studentName : private , Student name;
+         * @param studentCode : The student code;
+         * @param studentName : The student name.
          */
         Student(string studentCode, string studentName);
 
         /**
+         * @brief Student::Student
          * Class constructor
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * Sets studentCode, studentName and ucs
-         *
-         * @param studentCode : private , Student code;
-         * @param studentName : private , Student name;
-         * @param ucs : vector of ucs;
+         * @param studentCode : The student code;
+         * @param studentName : The student name;
+         * @param ucs : Vector of ucs;
          */
         Student(string studentCode, string studentName, vector<UC> ucs);
 
         /**
-         * Returns the student code
-         * O(1)
+         * @brief Student::getStudentCode
+         * Gets the student code
          *
-         * @return studentCode
+         * Complexity: O(1)
+         *
+         * @return The student code.
          */
         string getStudentCode() const;
 
         /**
-         * Returns the student name
+         * @brief Student::getStudentName
+         * Gets the student name
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return studentName
+         * @return The student name.
          */
         string getStudentName() const;
 
         /**
-         * Returns the UCs of the student lessons
+         * @brief Student::getUCs
+         * Gets the uc's
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return ucs
+         * @return The uc's.
          */
         vector<UC> getUCs() const;
 
+        /**
+         * @brief Student::setUCs
+         * Sets a value for ucs
+         *
+         * @param ucs_ : The value to set to ucs.
+         */
         void setUCs(vector<UC> ucs_);
 
         /**
-         * Adds a UC to the student lessons
+         * @brief Student::addUC
+         * Adds a uc to the student lessons
          *
-         * O(1)
+         * Complexity: O(log n) + O(n) where n is the number of students int the CsvAndVectors::StudentsVector
          *
-         * @param uc : Uc
+         * @param uc : The uc.
          */
         void addUC(const UC &uc);
 
         /**
-         * Adds a UC to the student lessons
+         * @brief Student::removeUC
+         * Adds a uc to the student lessons
          *
-         * O(log n) + O(n) where n is the number of students int the CSVInfo.StudentsVector
+         * Complexity: O(log n) + O(n) where n is the number of students int the CSVInfo.StudentsVector
          *
-         * @param uc : Uc
+         * @param uc : The uc.
          */
         void removeUC(const UC &uc);
 
         /**
+         * @brief Student::binarySearchCsvStudentVector
          * Binary search to search the position of a student in the StudentsVector from Csv file
          *
-         * O(n log n) where n is the number of students in the CSVInfo.StudentsVector
+         * Complexity: O(n log n) where n is the number of students in the CSVInfo.StudentsVector
          *
          * @param left : ??????????????????????????
          * @param right : ?????????????????????????
-         * @return
+         * @return ?????????????????????????
          */
         int binarySearchCsvStudentVector(unsigned long left, unsigned long right);
 
         /**
-         * Changes the UC of the student
+         * @brief Student::changeUC
+         * Changes the uc of the student
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param uc : Uc
-         * @return UC
+         * @param uc : The uc;
+         * @return New uc.
          */
         UC changeUC(const UC &uc);
 
         /**
-         * Returns the Uc with the given Uc code
+         * @brief Student::findUc
+         * Returns the uc with the given uc code
          *
-         * O(n) where n is the number of UC objects in the ucs vector
+         * Complexity: O(n) where n is the number of UC objects in the ucs vector
          *
-         * @param UcCode : Uc code
-         * @return UC
+         * @param UcCode : The uc code;
+         * @return The uc.
          */
         UC findUc(const string& UcCode) const;
 
         /**
-         * Checks if a student is enrolled in a UC with UcCode
+         * @brief Student::Enrolled
+         * Checks if a student is enrolled in a uc with UcCode
          *
-         * O(n) where n is the number of UC objects in the ucs vector
+         * Complexity: O(n) where n is the number of UC objects in the ucs vector
          *
-         * @paramt UcCode : Uc code
-         * @return bool : true or false
+         * @paramt UcCode : The uc code;
+         * @return true or false.
          */
         bool Enrolled(const string& UcCode);
 
         /**
+         * @brief Student::operator<
          * Operator to compare two students
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param s : Student
-         * @return bool : true or false
+         * @param s : The student;
+         * @return true or false.
          */
         bool operator<(const Student& s) const;
 
         /**
+         * @brief Student::operator==
          * Operator to compare the similarity between two students
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param s : Student
-         * @return bool : true or false
+         * @param s : The student;
+         * @return true or false.
          */
         bool operator==(const Student &s) const;
 
         /**
-         * Prints the Uc code and the Uc class
+         * @brief Student::printUcAndClass
+         * Prints the uc code and the uc class
          *
-         * O(n) where n is the number of UC objects in the ucs vector
+         * Complexity: O(n) where n is the number of UC objects in the ucs vector
          */
         void printUcAndClass() const;
 };

@@ -13,6 +13,7 @@ using namespace std;
  * @mainpage AED project main.cpp
  * @section intro_sec Introduction
  * This project has the intention of creating a functional schedules manager for a university.
+ *
  * This project was made by: Ana Filipa Geraldes, Filipa Fidalgo and Leonor Couto.
  */
 
@@ -21,10 +22,10 @@ using namespace std;
 /**
  * occupationSortMenu_case1 ????????????????????????????????????????????
  *
- * O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
+ * Complexity: O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
  *
- * @param UcCode
- * @param auxVector
+ * @param UcCode : The uc code;
+ * @param auxVector : ?????????????
  */
 int occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector) {
     int op = 0;
@@ -103,10 +104,10 @@ int occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector)
 /**
  * occupationSortMenu_case2 ???????????????????
  *
- * O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
+ * Complexity: O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
  *
- * @param classCode
- * @param auxVector
+ * @param classCode : The class code;
+ * @param auxVector : ??????????????????
  */
 int occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVector) {
     int op = 0;
@@ -184,10 +185,10 @@ int occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVect
 /**
  * occupationSortMenu_case3 ?????????????????????????????????????
  *
- * O(n log n) where n is the number of elements in ClassesPerVectorOfYear vector
+ * Complexity: O(n log n) where n is the number of elements in ClassesPerVectorOfYear vector
  *
- * @param year
- * @param ClassesPerUcVectorOfYear
+ * @param year : The year;
+ * @param ClassesPerUcVectorOfYear : ?????????????????????????????????
  */
 int occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVectorOfYear) {
     int op = 0;
@@ -279,12 +280,12 @@ int occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVectorO
 /**
  * sortMenu ???????????????????????????????????
  *
- * O(n log n) where n is the number of elements to be sorted
+ * Complexity: O(n log n) where n is the number of elements to be sorted
  *
- * @param UcCode
- * @param classCode
- * @param year
- * @return
+ * @param UcCode : The uc code;
+ * @param classCode : The class code;
+ * @param year : The year;
+ * @return ?????????????????????????????
  */
 int sortMenu(const string& UcCode, const string& classCode, int year) {
     int op = 0;
@@ -344,10 +345,10 @@ int sortMenu(const string& UcCode, const string& classCode, int year) {
 /**
  * verifyClass ?????????????????????????????
  *
- * O(1)
+ * Complexity: O(1)
  *
- * @param ClassCode
- * @return
+ * @param ClassCode : The class code;
+ * @return ???????????????????????????
  */
 bool verifyClass(const string& ClassCode) {
     if (CsvAndVectors::ClassesSet.find(ClassCode) == CsvAndVectors::ClassesSet.end()) return false;
@@ -357,10 +358,10 @@ bool verifyClass(const string& ClassCode) {
 /**
  * verifyUc ?????????????????????????
  *
- * O(1)
+ * Complexity: O(1)
  *
- * @param UcCode
- * @return
+ * @param UcCode : The uc code;
+ * @return ????????????????????
  */
 bool verifyUc(const string& UcCode) {
     if (CsvAndVectors::UcSet.find(UcCode) == CsvAndVectors::UcSet.end()) return false;
@@ -370,10 +371,10 @@ bool verifyUc(const string& UcCode) {
 /**
  * verifyStudent?????????????????????????
  *
- * O(1)
+ * Complexity: O(1)
  *
- * @param StudentCode
- * @return
+ * @param StudentCode : The student code;
+ * @return ???????????????????????????????
  */
 bool verifyStudent(const string& StudentCode) {
     if (CsvAndVectors::StudentsSet.find(StudentCode) == CsvAndVectors::StudentsSet.end()) return false;
@@ -383,10 +384,10 @@ bool verifyStudent(const string& StudentCode) {
 /**
  * enrollRequest??????????????????????????
  *
- * O(log n) where n is the size of the set
+ * Complexity: O(log n) where n is the size of the set
  *
- * @param student
- * @return
+ * @param student : The student that made the request;
+ * @return ????????????????????????????
  */
 int enrollRequest(Student student) {
     string UcCode;
@@ -434,7 +435,6 @@ int enrollRequest(Student student) {
 
     AuxiliarFunctions::concludeEnrollment(student, UC(UcCode, classCode));
     cout << "Enrollment request submitted." << endl;
-
     int op = 0;
     cout << "1 - Return to Main Menu." << endl;
     cout << "2 - Quit" << endl;
@@ -490,10 +490,10 @@ int enrollRequest(Student student) {
 /**
  * leaveRequest ?????????????????????????????????
  *
- * O(log n) where n is the size of the set
+ * Complexity: O(log n) where n is the size of the set
  *
- * @param student
- * @return
+ * @param student : The student that made the request;
+ * @return ????????????????????????????????????
  */
 int leaveRequest(Student student) {
     string UcCode;
@@ -524,7 +524,6 @@ int leaveRequest(Student student) {
 
     AuxiliarFunctions::concludeRemoval(student, uc);
     cout << "Removal request submitted." << endl;
-
     int op = 0;
     cout << "1 - Return to Main Menu." << endl;
     cout << "2 - Quit" << endl;
@@ -580,9 +579,9 @@ int leaveRequest(Student student) {
 /**
  * switchRequest ???????????????????????
  *
- * O(log n) where n is the size of the set
+ * Complexity: O(log n) where n is the size of the set
  *
- * @param student
+ * @param student : The student that made the request;
  * @return
  */
 int switchRequest(Student student) {
@@ -643,8 +642,6 @@ int switchRequest(Student student) {
                    cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                 }
             }
-
-
 
             while (true) {
                 cout << "Write the Uc Code you want to add(L.EICxxx or UPxxx): ";
@@ -739,7 +736,6 @@ int switchRequest(Student student) {
     }
     AuxiliarFunctions::concludeSwitch(student, uc, newuc);
     cout << "Switch request submitted." << endl;
-
     op = 0;
     cout << "1 - Return to Main Menu." << endl;
     cout << "2 - Quit" << endl;
@@ -793,10 +789,10 @@ int switchRequest(Student student) {
 /**
  * submitRequest ?????????????????????????
  *
- * O(log n) where n is the size of the set
+ * Complexity: O(log n) where n is the size of the set
  *
- * @param op : option chosen by the user
- * @return
+ * @param op : option chosen by the user;
+ * @return ?????????????????????????????????
  */
 int submitRequest(int op) {
     string studentCode;
@@ -841,9 +837,9 @@ int submitRequest(int op) {
 /**
  * listingMenu ??????????
  *
- * O(log n) where n is the size of the set
+ * Complexity: O(log n) where n is the size of the set
  *
- * @return
+ * @return ?????????????????????????
  */
 int listingMenu() {
     int op = 0;
@@ -963,9 +959,9 @@ int listingMenu() {
 /**
  * numbersMenu ????????????????????????????????
  *
- * O(n) where n is the number of students
+ * Complexity: O(n) where n is the number of students
  *
- * @return
+ * @return ??????????????????????????????????????
  */
 int numbersMenu() {
     int op = 0;
@@ -1139,9 +1135,9 @@ int numbersMenu() {
  /**
   * scheduleMenu ???????????????????????????????????????
   *
-  * O(1)
+  * Complexity: O(1)
   *
-  * @return
+  * @return ??????????????????????????????????????
   */
 int scheduleMenu() {
     AuxiliarFunctions func = AuxiliarFunctions();
@@ -1276,9 +1272,9 @@ int scheduleMenu() {
 /**
  * occupationMenu ?????????????????????????
  *
- * O(n log n) where n is the number of elements to be sorted
+ * Complexity: O(n log n) where n is the number of elements to be sorted
  *
- * @return
+ * @return ????????????????????????????????????
  */
 int occupationMenu() {
     int op = 0;
@@ -1418,9 +1414,9 @@ int occupationMenu() {
  /**
   * greatestMenu ????????????????????
   *
-  * O(m) + O(n log n) where m is the total number of UCs or Classes and n is the number of elements to be sorted
+  * Complexity: O(m) + O(n log n) where m is the total number of UCs or Classes and n is the number of elements to be sorted
   *
-  * @return
+  * @return ????????????????????????????????????????????
   */
 int greatestMenu() {
     int op = 0;
@@ -1558,14 +1554,13 @@ int greatestMenu() {
  /**
   * Menu for the user choose which type of request he wants
   *
-  * O(1)
+  * Complexity: O(1)
   *
-  * Options : enroll in an UC, leave an UC or change an UC;
+  * Options : enroll in an UC, leave an UC or switch an UC.
   *
-  * @return
+  * @return ??????????????????????????????????????????????
   */
 int requestMenu() {
-    AuxiliarFunctions::getRequests();
     int op = 0;
     cout << endl << "--------------------------------" << endl;
     cout << endl << "     Submit a request for...    " << endl;
@@ -1602,16 +1597,15 @@ int requestMenu() {
 /**
  * Prints the pending requests
  *
- * O(n) where n is the number of accepted requests
+ * Complexity: O(n) where n is the number of accepted requests
  *
- * @return
+ * @return ????????????????????????????????
  */
 int acceptedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
     AuxiliarFunctions::seeAcceptedRequests();
-    cout << endl;
-    cout << endl;
+    cout << endl << endl;
     cout << "1 - Return to Main Menu" << endl;
     cout << "2 - Quit." << endl;
     while (true) {
@@ -1637,16 +1631,15 @@ int acceptedRequest() {
 /**
  * Prints the rejected requests
  *
- * O(n) where n is the number of rejected requests
+ * Complexity: O(n) where n is the number of rejected requests
  *
- * @return
+ * @return ???????????????????????????????
  */
 int rejectedRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
     AuxiliarFunctions::seeRejectedRequests();
-    cout << endl;
-    cout << endl;
+    cout << endl << endl;
     cout << "1 - Return to Main Menu" << endl;
     cout << "2 - Quit." << endl;
     while (true) {
@@ -1672,16 +1665,15 @@ int rejectedRequest() {
 /**
  * Prints all requests
  *
- * O(n) where n is the number of all requests made
+ * Complexity: O(n) where n is the number of all requests made
  *
- * @return
+ * @return ???????????????????????????????
  */
 int allRequest() {
     int op;
     AuxiliarFunctions func = AuxiliarFunctions();
     AuxiliarFunctions::seeAllRequests();
-    cout << endl;
-    cout << endl;
+    cout << endl << endl;
     cout << "1 - Return to Main Menu" << endl;
     cout << "2 - Quit." << endl;
     while (true) {
@@ -1705,18 +1697,137 @@ int allRequest() {
 }
 
 /**
+ * Undoes a request
+ *
+ * O(???????????????????????????)
+ * @return ???????????????????????????????
+ */
+int undoRequest() {
+    cout << endl << "-------------------------------------" << endl;
+    cout << endl << "     Requests that can be undone:    " << endl;
+    cout << endl << "-------------------------------------" << endl;
+    if (AuxiliarFunctions::acceptedRequests.size() == 0) {
+        cout << "There are no requests that can be undone." << endl;
+        cout << endl;
+        return 1;
+    }
+    else if (AuxiliarFunctions::acceptedRequests.size() == 1){
+        cout << "1 - ";
+        AuxiliarFunctions::acceptedRequests[AuxiliarFunctions::acceptedRequests.size() - 1].printRequest();
+        cout << endl;
+        cout << "2 - ..." << endl;
+        cout << "3 - " << "Return to Main Menu" << endl;
+    }
+    else {
+        cout << "1 - ";
+        AuxiliarFunctions::acceptedRequests[AuxiliarFunctions::acceptedRequests.size() - 1].printRequest();
+        cout << endl;
+        cout << "2 - ";
+        AuxiliarFunctions::acceptedRequests[AuxiliarFunctions::acceptedRequests.size() - 2].printRequest();
+        cout << endl;
+    }
+    int op = 0;
+    while (true) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            if (op >= 1 && op <= 3) {
+                break;  // Input is valid, exit the loop
+            } else {
+                cout << "Invalid number! The number should be between 1 and 3." << endl;
+            }
+        } else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+    cout << endl;
+    if (op == 3) return 1;
+    if (op == 2 && AuxiliarFunctions::acceptedRequests.size() == 1) {
+        cout << "No request was selected" << endl;
+        cout << endl;
+        return 1;
+    }
+    UC uc;
+    UC oldUc;
+    Request orig = AuxiliarFunctions::acceptedRequests[AuxiliarFunctions::acceptedRequests.size() - op];
+    string type;
+    if (orig.getType() == "Removal") {  // new type = Enrollment
+        AuxiliarFunctions::concludeEnrollment(orig.getStudent(), orig.getUC());
+    }
+    else if (orig.getType() == "Enrollment") {  // new type = Removal
+        AuxiliarFunctions::concludeRemoval(orig.getStudent(), orig.getUC());
+    }
+    else {  // new type = old type = Switch
+        AuxiliarFunctions::concludeSwitch(orig.getStudent(), orig.getoldUC(), orig.getUC());
+    }
+
+    cout << "1 - Return to Main Menu" << endl;
+    cout << "2 - Quit." << endl;
+    while (true) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            if (op >= 1 && op <= 2) {
+                break;  // Input is valid, exit the loop
+            }
+            else {
+                cout << "Invalid number! The number should be between 1 and 2." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+    if (op == 1) {
+        AuxiliarFunctions::RequestsManager();
+        return 1;
+    }
+    if (op == 2) {
+        cout << endl;
+        cout << "NOTE: if you quit now the requests you have made will be canceled. You must" << endl;
+        cout << "You must return to the main menu so that the requests can have effect." << endl;
+        cout << "If you want to see which requests were accepted and which were rejected, you must" << endl;
+        cout << "consult that in the designated options in the main menu." << endl;
+        cout << endl;
+        string option;
+        while (true) {
+            cout << "Are you sure you want to quit? Y/N  ";
+            if (cin >> option) {
+                if (option == "Y") return 0;
+                else if (option == "N") {
+                    AuxiliarFunctions::RequestsManager();
+                    return 1;
+                }
+                else {
+                    cout << "Invalid answer! The answer should be Y (for Yes) or N (for No)." << endl;
+                }
+            } else {
+                cout << "Invalid input! Please enter a valid answer." << endl;
+                cin.clear();          // Clear the error state
+                cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+            }
+        }
+    }
+    return 0;
+}
+
+/**
  * Main
  *
- * O(1)
+ * Complexity: O(1)
  *
- * @return
+ * @return ???????????????????????????????
  */
 int main() {
-    cout << "IM ALMOST HERE" << endl;
-    if (CsvAndVectors::StudentsVector.size() != 0) {
-        cout << "IM HERE" << endl;
-        CsvAndVectors::setFromRequestVector();
+    if (!CsvAndVectors::StudentsVector.empty()) {
+        cout << " A " << endl;
         CsvAndVectors::setFromStudentsVector();
+    }
+    if (!CsvAndVectors::RequestsVector.empty()) {
+        cout << " A " << endl;
+        CsvAndVectors::setFromRequestVector();
     }
 
     int op = 0;
@@ -1732,7 +1843,8 @@ int main() {
     cout << "7 - See rejected requests." << endl;
     cout << "8 - See accepted requests." << endl;
     cout << "9 - See all requests made." << endl;
-    cout << "10 - Quit." << endl;
+    cout << "10 - Undo request." << endl;
+    cout << "11 - Quit." << endl;
     cout << endl;
     cout << "Note: If you enter a 'q' when asked for a classCode, UcCode studentCode" << endl;
     cout << "or year, you will return to the main menu." << endl;
@@ -1747,6 +1859,7 @@ int main() {
 
     cout << CsvAndVectors::StudentsVector.size() << endl;
     for (auto student : CsvAndVectors::StudentsVector) {
+        cout << student.getUCs().size() << endl;
         for (auto uc: student.getUCs()) {
             cout << student.getStudentCode() << " " << uc.getUcCode() << " " << uc.getClassCode()
                  << endl;
@@ -1773,55 +1886,61 @@ int main() {
         case 1:
             aux = listingMenu();
             if (aux == 1) main();
-            else system("exit");
+            system("exit");
             break;
 
         case 2:
             aux = numbersMenu();
             if (aux == 1) main();
-            else system("exit");
+            system("exit");
             break;
 
         case 3:
             aux = scheduleMenu();
             if (aux == 1) main();
-            else system("exit");
+            system("exit");
             break;
 
         case 4:
             aux = occupationMenu();
             if (aux == 1) main();
-            else system("exit");
+            system("exit");
             break;
 
         case 5:
             aux = greatestMenu();
             if (aux == 1) main();
-            else system("exit");
+            system("exit");
             break;
 
         case 6:
             aux = requestMenu();
             if (aux == 1) main();
-            else system("exit");
+            system("exit");
             break;
 
         case 7:
             aux = rejectedRequest();
             if (aux == 1) main();
-            else system("exit");
+            system("exit");
             break;
 
         case 8:
             aux = acceptedRequest();
             if (aux == 1) main();
-            else system("exit");
+            system("exit");
             break;
 
         case 9:
             aux = allRequest();
             if (aux == 1) main();
-            else system("exit");
+            system("exit");
+            break;
+
+        case 10:
+            aux = undoRequest();
+            if (aux == 1) main();
+            system("exit");
             break;
 
         default:

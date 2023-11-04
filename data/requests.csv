@@ -1,1 +1,2 @@
-StudentCode, StudentName: RequestType -> Status, Reason (if rejected)
+StudentCode,StudentName:RequestType,Status,Reason(if rejected)
+

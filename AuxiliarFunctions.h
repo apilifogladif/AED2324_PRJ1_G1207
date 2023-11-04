@@ -54,158 +54,153 @@ class AuxiliarFunctions {
         static vector<Request> allRequests;
 
         /**
+        * @brief AuxiliarFunctions::AuxiliarFunctions
         * Class constructor
-         *
-        * O(1)
+        *
+        * Complexity: O(1)
         */
         AuxiliarFunctions();
 
         /**
+         * @brief AuxiliarFunctions::retStudent
          * Returns the student with the studentCode given
          *
-         * O(n), where n is the number of students in the vector of students
+         * Complexity: O(n), where n is the number of students in the vector of students
          *
          * @param studentCode : Student code;
-         * @return student
+         * @return The student.
          */
         static Student retStudent(const string &studentCode) ;
 
         /**
+         * @brief AuxiliarFunctions::concludeEnrollment
          * Concludes the enrollment request by adding that request to the queue of enrollmentRequests
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param student : info of the student who wants to enroll;
-         * @param UcClass : Uc class that the student given wants to enroll;
+         * @param student : The student who wants to enroll;
+         * @param UcClass : Uc class that the student given wants to enroll.
          */
-        static void concludeEnrollment(const Student& student, const UC& UcClass);
+        static void concludeEnrollment(const Student &student, const UC &UcClass);
 
         /**
+         * @brief AuxiliarFunctions::concludeRemoval
          * Concludes the removal request by adding that request to the queue of removalRequests
          *
-         * O(1)
+         * Complexity: O(1)
          *
          * @param student : info of the student who wants to leave;
-         * @param UcClass : Uc class that the student given wants to leave;
+         * @param UcClass : Uc class that the student given wants to leave.
          */
-        static void concludeRemoval(const Student& student, const UC& UcClass);
+        static void concludeRemoval(const Student &student, const UC &UcClass);
 
         /**
+         * @brief AuxiliarFunctions::concludeSwitch
          * Concludes the switch request by adding that request to the queue of switchRequests
          *
-         * O(1)
+         * Complexity: O(1)
          *
          * @param student : info of the student who wants to switch;
-         * @param UcClass : Uc class that the student given wants to switch;
+         * @param UcClass : Uc class that the student given wants to switch.
          */
-        static void concludeSwitch(const Student& student, const UC& oldUc, const UC& newUc);
+        static void concludeSwitch(const Student &student, const UC &oldUc, const UC &newUc);
 
         /**
+         * @brief AuxiliarFunctions::lessonOverlap
          * Checks if there is no conflict between the student’s schedule and the new class’s schedule
          *
-         * O(log n) + O(mk) where n is the number of lines in classes_per_uc.csv, m is the number of lessons of the first class and k is the number of lessons of the second class
+         * Complexity: O(log n) + O(mk) where n is the number of lines in classes_per_uc.csv, m is the number of lessons of the first class and k is the number of lessons of the second class
          *
          * @param uc1 : one Uc;
          * @param uc2 : another Uc;
-         * @return bool : true or false
+         * @return true or false.
          */
          static bool lessonOverlap(UC uc1, UC uc2);
 
         /**
-         * Get the total number of rejected requests
-         *
-         * O(1)
-         *
-         * @return rejectedRequests.size
-         */
-        static int totalNumberOfRejectedRequests();
-
-        /**
-         * Get the total number of accepted requests
-         *
-         * O(1)
-         *
-         * @return acceptedRequests.size
-         */
-        static int totalNumberOfAcceptedRequests();
-
-
-        /**
-         * Get request current UC Class
-         *
-         * O(m), where m is the number of classes associated in
-         *
-         * @param request : request;
-         * @return current class
-         */
-        static UC getCurrentClass(Request &request);
-
-        /**
+         * @brief AuxiliarFunctions::requestBalance
          * Checks some conditions to secure the balance of the size os each class
          *
-         * O(log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
+         * Complexity: O(log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
          *
          * Requests:
          * A student cannot be in more than one class at once for a given UC;
          * A class can only accept a new student if its capacity has not been exceeded (consider that there is a maximum capacity Cap for classes);
          * A class can only accept a new student if the balance between class occupation is not disturbed (the balance of class occupation is maintained when the difference between the number of students in any class is less than or equal to 4).
          *
-         * @param request : request;
-         * @return bool : true or false
+         * @param request : The request made;
+         * @return true or false.
          */
         static bool requestBalance(Request &request);
 
         /**
+         * @brief AuxiliarFunctions::requestConflict
          * Checks if the resulting schedule will not conflict with the student's original schedule
          *
-         * O(m log n + m*kl) : where m is the number of classes the student is in, n is the number of lines in classes_per_uc.csv, k is the number of lessons of the first class and l is the number of lessons of the second class
+         * Complexity: O(m log n + m*kl) : where m is the number of classes the student is in, n is the number of lines in classes_per_uc.csv, k is the number of lessons of the first class and l is the number of lessons of the second class
          *
-         * @param request : request;
-         * @return bool : true or false
+         * @param request : The request made;
+         * @return true or false.
          */
         static bool requestConflict(Request &request);
 
         /**
-         * Returns true if the capacity of the class has been excedeed
+         * @brief AuxiliarFunctions::requestMax
+         * Returns true if the capacity of the class has been exceeded
          *
-         * O(n log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
+         * Complexity: O(n log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
          *
-         * @param request : request;
-         * @return bool : true or false
+         * @param request : The request made;
+         * @return true or false.
          */
         static bool requestMax(Request &request);
 
         /**
-         * See if request has any problem (unbalanced, conflict, extends the max)
+         * @brief AuxiliarFunctions::verifySwapRequest
+         * Checks if the request has any problem (unbalanced, conflict, extends the max)
          *
-         * O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
+         * Complexity: O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
          *
-         * @param request : request;
+         * @param request : The request made.
          */
         static void verifySwapRequest(Request &request);
 
         /**
-         * See if request has any problem (conflict, extends the max)
+         * @brief AuxiliarFunctions::verifyEnrollmentRequest
+         * Checks if request has any problem (conflict, extends the max)
          *
-         * O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
+         * Complexity: O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
          *
-         * @param request : request;
+         * @param request : The request made.
          */
         static void verifyEnrollmentRequest(Request &request);
 
         /**
+         * @brief AuxiliarFunctions::verifyRemovalRequest
          * Does the removal requests as it does not need any problem verification
          *
-         * O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
+         * Complexity: O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
          *
-         * @param request : request;
+         * @param request : The request made.
          */
         static void verifyRemovalRequest(Request &request);
 
         /**
+         * @brief AuxiliarFunctions::changeAllRequests
+         * ??????????????????????????????????????????????
+         *
+         * Complexity: ?????????????????????????????
+         *
+         * @param status : The status of the request;
+         * @param request : The request made.
+         */
+        static void changeAllRequests(bool status, Request request);
+
+        /**
+         * @brief AuxiliarFunctions::RequestsManager
          * Finalizes the requests
          *
-         * O(m) + O(log n * log n) + O(log k) + O(t log n + t*pl) + O(nlog n) where m is the number of classes of the student who is submitting the request,
+         * Complexity: O(m) + O(log n * log n) + O(log k) + O(t log n + t*pl) + O(nlog n) where m is the number of classes of the student who is submitting the request,
          * n is the number of schedules / lines in 'classes_per_uc.csv',
          * k is the number of lines in 'students.csv'
          * t is the number of classes the student is in
@@ -214,119 +209,123 @@ class AuxiliarFunctions {
         static void RequestsManager();
 
         /**
+         * @brief AuxiliarFunctions::seeRejectedRequests
          * Prints the requests that were rejected
          *
-         * O(m), where m is the number of rejected requests
+         * Complexity: O(m), where m is the number of rejected requests
          */
         static void seeRejectedRequests();
 
         /**
+         * @brief AuxiliarFunctions::seeAcceptedRequests
          * Prints the requests that were accepted
          *
-         * O(m), where m is the number of accepted requests
+         * Complexity: O(m), where m is the number of accepted requests
          */
         static void seeAcceptedRequests();
 
         /**
+         * @brief AuxiliarFunctions::seeAllRequests
          * Prints all the requests and respective status
          *
-         * O(m), where m is the number of all requests done
+         * Complexity: O(m), where m is the number of all requests done
          */
         static void seeAllRequests();
 
         /**
+         * @brief AuxiliarFunctions::seeStudentSchedule
          * Prints the schedule of a given student
          *
-         * O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
+         * Complexity: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
          *
-         *
-         * @param StudentCode : Student code;
+         * @param StudentCode : The student code.
          */
         static void seeStudentSchedule(const string& StudentCode) ;
 
         /**
+         * @brief AuxiliarFunctions::seeClassSchedule
          * Prints the schedule of a given class
          *
-         * O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
+         * Complexity: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
          *
-         * @param ClassCode : Class code;
+         * @param ClassCode : The class code.
          */
         static void seeClassSchedule(const string& ClassCode);
 
         /**
+         * @brief AuxiliarFunctions::seeUcSchedule
          * Prints the schedule of a given Uc
          *
-         * O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
+         * Complexity: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
          *
-         * @param UcCode : Uc code;
+         * @param UcCode : The uc code;
          */
         static void seeUcSchedule(const string& UcCode);
 
         /**
+         * @brief AuxiliarFunctions::seeClassStudents
          * Prints the students of a given class
          *
-         * O(n) + O(q log q) where n is the number of lessons and students associated with that Class of that UC, q is the number of students in that Class of that UC
+         * Complexity: O(n) + O(q log q) where n is the number of lessons and students associated with that Class of that UC, q is the number of students in that Class of that UC
          *
-         * @param UcClass : Uc class;
-         * @param order_ : Way to sort the students of the class;
+         * @param UcClass : The uc class;
+         * @param order_ : Way to sort the students of the class.
          */
         static void seeClassStudents(const UC& UcClass, const int &order_);
 
         /**
+         * @brief AuxiliarFunctions::seeUcStudents
          * Prints the students of a given Uc
          *
-         * O(n) + O(q log q) where n is the number of lessons and students associated with that UC code, q is the number of students in that UC
+         * Complexity: O(n) + O(q log q) where n is the number of lessons and students associated with that UC code, q is the number of students in that UC
          *
-         * @param UcCode : Uc code;
-         * @param order_ : Way to sort the students of the Uc;
+         * @param UcCode : The uc code;
+         * @param order_ : Way to sort the students of the Uc.
          */
         static void seeUcStudents(const string &UcCode, const int &sort_);
 
         /**
+         * @brief AuxiliarFunctions::seeYearStudents
          * Prints the students of a given year
          *
-         * O(n) + O(mk) + O(m) + O(m log m) where n is the number of students in students_classes.csv, m is the students and k is the UCs of each student
+         * Complexity: O(n) + O(mk) + O(m) + O(m log m) where n is the number of students in students_classes.csv, m is the students and k is the UCs of each student
          *
-         * @param year: Year;
+         * @param year: The year of the students;
          * @param sort : Way to sort the students of the Uc;
          */
         static void seeYearStudents(int year, int sort);
 
         /**
+         * @brief AuxiliarFunctions::numberClassStudents
          * Returns the number of students of a given Class and Uc
          *
-         * O(m + l) + O(1) where m is the number of lessons and l is the number of student in a Class of an UC
+         * Complexity: O(m + l) + O(1) where m is the number of lessons and l is the number of student in a Class of an UC
          *
-         * @param UcClass : Uc code, Class code;
-         * @return schedule.getStudents().size
+         * @param UcClass : The uc class;
+         * @return The number of students of a given class and uc.
          */
         static int numberClassStudents(const UC& UcClass);
 
         /**
+         * @brief AuxiliarFunctions::numberUcStudents
          * Returns the number of students of a given Class
          *
-         * O(m + l) where m is the number of lessons and l is the number of student in an UC
+         * Complexity: O(m + l) where m is the number of lessons and l is the number of student in an UC
          *
-         * @param UcCode : Uc code;
-         * @return schedule.getStudents().size
+         * @param UcCode : The uc code;
+         * @return The number of students of a given class.
          */
         static int numberUcStudents(const string &UcCode);
 
         /**
+         * @brief AuxiliarFunctions::numberYearStudents
          * Returns the number of students of a given Year
          *
-         * O(n) where n is the total number of students
+         * Complexity: O(n) where n is the total number of students
          *
-         * @paramt Year : year;
-         * @return students.size
+         * @param Year : The year of the students;
+         * @return The number of students of a given year.
          */
         static int numberYearStudents(char &Year);
-
-        /**
-         * Get requests
-         *
-         * O(n) is the number of requests
-         */
-        static void getRequests();
 };
 #endif //AED2324_PRJ1_G1207_AUXILIARFUNCTIONS_H

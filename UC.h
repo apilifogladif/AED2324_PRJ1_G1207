@@ -16,69 +16,92 @@ class UC {
         string ClassCode;
     public:
         /**
-         * Class constructor simple
+         * @brief UC::UC
+         * Class constructor
          */
         UC();
 
         /**
+         * @brief UC::UC
          * Class constructor
          *
-         * Sets UcCode and ClassCode
+         * Complexity: O(1)
          *
-         * @param UcCode : private , Uc code;
-         * @param ClassCode : private , Class code;
+         * @param UcCode : The uc code;
+         * @param ClassCode : The class code.
          */
         UC(string UcCode, string ClassCode);
 
         /**
-         * Returns code of the Uc
+         * @brief UC::getUcCode
+         * Returns code of the uc
          *
-         * @return UcCode
+         * Complexity: O(1)
+         *
+         * @return The uc code.
          */
         string getUcCode() const;
 
          /**
-          * Returns the code of the Uc
+          * @brief UC::getClassCode
+          * Returns the code of the class
           *
-          * @return ClassCode
+          * Complexity: O(1)
+          *
+          * @return The class code.
           */
         string getClassCode() const;
 
         /**
-         * Sets a value to the Uc code
+         * @brief UC::setUcCode
+         * Sets a value to the uc code
          *
-         * @param code : value to set the Uc code
+         * Complexity: O(1)
+         *
+         * @param code : Value to set the uc code.
          */
         void setUcCode(string code);
 
         /**
-         * Sets a value to the Class code
+         * @brief UC::setClassCode
+         * Sets a value to the class code
          *
-         * @param code : value to set the Class code
+         * Complexity: O(1)
+         *
+         * @param code : Value to set the class code.
          */
         void setClassCode(string code);
 
         /**
-         * Operator to compare the similarity between two Uc's
+         * @brief UC::operator==
+         * Operator to compare the similarity between two uc's
          *
-         * @param uc_ : Uc;
-         * @return bool : true or false
+         * Complexity: O(1)
+         *
+         * @param uc_ : The uc we are comparing with;
+         * @return true or false.
          */
         bool operator==(const UC& uc_);
 
         /**
-         * Operator to compare two Uc's
+         * @brief UC::operator<
+         * Operator to compare two uc's
          *
-         * @paramt uc_ : Uc;
-         * @return bool : true or false
+         * Complexity: O(1)
+         *
+         * @paramt uc_ : The uc we are comparing with;
+         * @return true or false.
          */
         bool operator<(const UC &uc_);
 
         /**
-         * Operator to compare if two Uc's have the same Uc code
+         * @brief UC::hasSameUcCode
+         * Operator to compare if two uc's have the same Uc code
          *
-         * @paramt uc_ : Uc;
-         * @return bool : true or false
+         * Complexity: O(1)
+         *
+         * @paramt uc_ : The uc we are comparing with;
+         * @return true or false.
          */
         bool hasSameUcCode(UC &uc_);
 };

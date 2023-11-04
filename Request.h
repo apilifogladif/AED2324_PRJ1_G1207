@@ -24,101 +24,113 @@ class Request {
     public:
 
         /**
+         * @brief Request::Request
          * Class constructor
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * Sets student, uc, and type
-         *
-         * @param student : private , Class code;
-         * @param uc : private , Curricular unit code;
-         * @param type : private , Lesson type;
+         * @param student : Student code;
+         * @param uc : Uc code;
+         * @param type : Lesson type.
          */
         Request(Student student, UC uc, string type);
 
         /**
-         * Returns the student that made the request
+         * @brief Request::getStudent
+         * Gets the student that made the request
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return student
+         * @return The student that made the request.
          */
         Student getStudent();
 
         /**
-         * Return the old uc of the switch request
+         * @brief Request::getoldUc
+         * Gets the old uc of the switch request
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return uc
+         * @return The Uc before the switch.
          */
         UC getoldUC();
 
         /**
-         * Return the uc of the request
+         * @brief Request::getUc
+         * Gets the uc of the request
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return uc
+         * @return The Uc.
          */
         UC getUC();
 
         /**
-         * Returns the type of the request
+         * @brief Request::getType
+         * Gets the type of the request
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return type
+         * @return The type of request.
          */
         string getType();
 
         /**
-        * Return the status of the request
-         *
-         * O(1)
+        * @brief Request::getStatus
+        * Gets the status of the request
         *
-        * @return status
+        * Complexity: O(1)
+        *
+        * @return The status of the request.
         */
         string getStatus();
 
         /**
-         * Return the reason of the request if it was rejected
+         * @brief Request::getReason
+         * Gets the reason of the request if it was rejected
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return reason
+         * @return The reason why the request was rejected.
          */
         string getReason();
 
         /**
+         * @brief Request::setStatus
          * Sets status to new value
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param status : new value for status
+         * @param status : New value for status
          */
         void setStatus(string status_);
+
         /**
+         * @brief Request::setReason
          * Sets reason to new value
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param reason : new value for reason
+         * @param reason : New value for reason
          */
         void setReason(string reason_);
 
 
         /**
-         * Sets old uc of the switch request
+         * @brief Request::setoldUC
+         * Sets old uc of the switch request to new value
          *
-         * O(1)
+         * Complexity: O(1)
+         *
+         * @param oldUc_ : New value for old Uc
          */
         void setoldUC(UC oldUc_);
 
         /**
-         * Prints request
+         * @brief Request::printRequest
+         * Prints the request
          *
-         * O(1)
+         * Complexity: O(1)
          */
         void printRequest();
 };

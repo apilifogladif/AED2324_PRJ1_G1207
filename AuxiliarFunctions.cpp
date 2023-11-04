@@ -22,18 +22,21 @@ Student AuxiliarFunctions::retStudent(const string &studentCode) {
     return {};
 }
 
-void AuxiliarFunctions::concludeEnrollment(const Student& student, const UC& UcClass) {
+void AuxiliarFunctions::concludeEnrollment(const Student &student, const UC &UcClass) {
     enrollmentRequests.emplace(student, UcClass, "Enrollment");
+    allRequests.push_back(Request(student, UcClass, "Enrollment"));
 }
 
-void AuxiliarFunctions::concludeRemoval(const Student& student, const UC& UcClass) {
+void AuxiliarFunctions::concludeRemoval(const Student &student, const UC &UcClass) {
     removalRequests.emplace(student, UcClass, "Removal");
+    allRequests.push_back(Request(student, UcClass, "Removal"));
 }
 
-void AuxiliarFunctions::concludeSwitch(const Student& student, const UC& oldUc, const UC& newUc) {
+void AuxiliarFunctions::concludeSwitch(const Student &student, const UC &oldUc, const UC &newUc) {
     Request request = Request(student, newUc, "Switch");
     request.setoldUC(oldUc);
     switchRequests.emplace(request);
+    allRequests.push_back(request);
 }
 
 bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
@@ -50,18 +53,6 @@ bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
         }
     }
     return false;
-}
-
-int AuxiliarFunctions::totalNumberOfRejectedRequests() {
-    return rejectedRequests.size();
-}
-
-int AuxiliarFunctions::totalNumberOfAcceptedRequests() {
-    return acceptedRequests.size();
-}
-
-UC AuxiliarFunctions::getCurrentClass(Request &request) {
-    return request.getStudent().findUc(request.getUC().getUcCode());
 }
 
 bool AuxiliarFunctions::requestBalance(Request &request) {
@@ -100,9 +91,23 @@ bool AuxiliarFunctions::requestMax(Request &request) {
     return false;
 }
 
+void AuxiliarFunctions::changeAllRequests(bool status, Request request) {
+    for (int i = 0; i < allRequests.size(); i++) {
+        if (request.getStudent() == allRequests[i].getStudent() && request.getUC() == allRequests[i].getUC() && request.getType() == allRequests[i].getType()) {
+            if (status) allRequests[i].setStatus("Accepted");
+            else {
+                allRequests[i].setStatus("Rejected");
+                allRequests[i].setReason(request.getReason());
+            }
+            break;
+        }
+    }
+}
+
 void AuxiliarFunctions::verifySwapRequest(Request &request){
+    bool status = false;
     if (!(requestBalance(request))) {
-        request.setReason("The balance of class occupation is not maintained./n The difference between the number of students in the class can't be less than or equal to 4.");
+        request.setReason("The balance of class occupation is not maintained. The difference between the number of students in the class can't be less than or equal to 4.");
         request.setStatus("Rejected");
         rejectedRequests.push_back(request);
     } else if (requestConflict(request)) {
@@ -122,11 +127,13 @@ void AuxiliarFunctions::verifySwapRequest(Request &request){
         student.removeUC(uc_old);
         student.addUC(uc);
         acceptedRequests.push_back(request);
+        status = true;
     }
-    allRequests.push_back(request);
+    changeAllRequests(status, request);
 }
 
 void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
+    bool status = false;
     if (requestConflict(request)) {
         request.setReason("There is conflict between the student’s schedule and the new class’s schedule.");
         request.setStatus("Rejected");
@@ -143,34 +150,35 @@ void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
         UC uc = Schedule(request.getUC()).getUcClass();
         student.addUC(uc);
         acceptedRequests.push_back(request);
+        status = true;
     }
-    allRequests.push_back(request);
+    changeAllRequests(status, request);
 }
 
 void AuxiliarFunctions::verifyRemovalRequest(Request &request) {
+    bool status = false;
     if (!(requestBalance(request))) {
         request.setReason("The balance of class occupation is not maintained./n The difference between the number of students in the class can't be less than or equal to 4.");
         request.setStatus("Rejected");
         rejectedRequests.push_back(request);
-    } else {
+    }
+    else {
         request.setStatus("Accepted");
         Student student = retStudent(request.getStudent().getStudentCode());
         UC uc = Schedule(request.getUC()).getUcClass();
         student.removeUC(uc);
         acceptedRequests.push_back(request);
+        status = true;
     }
-    allRequests.push_back(request);
+    changeAllRequests(status, request);
 }
 
 void AuxiliarFunctions::RequestsManager() {
-    cout << " 1 " << endl;
     while (!(removalRequests.empty())) { // it has to be first
-        cout << " 2 " << endl;
         Request request = removalRequests.front();
         removalRequests.pop();
         verifyRemovalRequest(request);
     }
-    cout  << " 3 " << endl;
 
     while (!(enrollmentRequests.empty())) {
         Request request = enrollmentRequests.front();
@@ -183,27 +191,47 @@ void AuxiliarFunctions::RequestsManager() {
         switchRequests.pop();
         verifySwapRequest(request);
     }
+
+    for (auto request : allRequests) {
+        CsvAndVectors::RequestsVector.push_back(request);
+    }
 }
 
 void AuxiliarFunctions::seeRejectedRequests() {
-    if (rejectedRequests.size() == 0) cout << "There are no rejected requests." << endl;
+    bool exists = false;
+    for (auto i: CsvAndVectors::RequestsVector) {
+        if (i.getStatus() == "Rejected") {
+            i.printRequest();
+            cout << " , reason:" << i.getReason() << endl;
+            exists = true;
+        }
+    }
     for (auto i: rejectedRequests) {
         i.printRequest();
         cout << " , reason:" << i.getReason() << endl;
+        exists = true;
     }
+    if (!exists) cout << "There are no rejected requests." << endl;
 }
 
 void AuxiliarFunctions::seeAcceptedRequests() {
-    if (acceptedRequests.size() == 0) cout << "There are no accepted requests." << endl;
+    bool exists = false;
+    for (auto i: CsvAndVectors::RequestsVector) {
+        if (i.getStatus() == "Accepted") {
+            i.printRequest();
+            exists = true;
+        }
+    }
     for (auto i: acceptedRequests) {
         i.printRequest();
         cout << endl;
+        exists = true;
     }
-
+    if (!exists) cout << "There are no accepted requests." << endl;
 }
 
 void AuxiliarFunctions::seeAllRequests() {
-    if (allRequests.size() == 0) cout << "There are no requests." << endl;
+    if (CsvAndVectors::RequestsVector.empty()) cout << "There are no requests." << endl;
     for (auto i: allRequests) {
         i.printRequest();
         cout << " - " << i.getStatus();
@@ -299,12 +327,4 @@ int AuxiliarFunctions::numberYearStudents(char &Year) {
         if (y == Year) count++;
     }
     return count;
-}
-
-void AuxiliarFunctions::getRequests() {
-    allRequests = CsvAndVectors::RequestsVector;
-    for (Request r : allRequests) {
-        if (r.getStatus() == "Accepted") acceptedRequests.push_back(r);
-        else rejectedRequests.push_back(r);
-    }
 }

@@ -26,105 +26,112 @@ class Schedule {
     public:
 
         /**
+         * @brief Schedule::Schedule
          * Class constructor
          *
-         * O(1)
+         * Complexity: O(1)
          */
         Schedule();
         /**
+         * @brief Schedule::Schedule
          * Class constructor
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * Sets ucClass
-         *
-         * @param ucCLass: Class and Uc of the schedule;
+         * @param ucCLass: Class and Uc of the schedule.
          */
         Schedule(UC ucClass);
 
         /**
+         * @brief Schedule::Schedule
          * Class constructor
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * Sets StudentCode
-         *
-         * @param StudentCode: Student Code;
+         * @param StudentCode: The student code.
          */
         Schedule(const string& StudentCode);
 
-
         /**
+         * @brief Schedule::loadLessonsUcClass
          * Set the private set lessons to the lessons of the UcClass, Uc or Class
          *
-         * O(n)  where n is the number of lessons in LessonsVector
+         * Complexity: O(n)  where n is the number of lessons in LessonsVector
          */
         void loadLessonsUcClass();
 
         /**
-        * Set the private set lessons to the lessons of the Student
-        *
-        * O(n*m)  where n is the number of Ucs of the Student and m is the number of lessons in LessonsVector
-        */
+         * @brief Schedule::loadLessonsStudent
+         * Set the private set lessons to the lessons of the Student
+         *
+         * Complexity: O(n*m)  where n is the number of Ucs of the Student and m is the number of lessons in LessonsVector
+         */
         void loadLessonsStudent();
 
         /**
-        * Set the private set students to the students of the UcClass, Uc or Class
+         * @brief Schedule::loadStudents
+         * Set the private set students to the students of the UcClass, Uc or Class
          *
-        * O(n*m)  where n is the number of students in StudentsVector and m is the number of Ucs of each student
-        */
+         * Complexity: O(n*m)  where n is the number of students in StudentsVector and m is the number of Ucs of each student
+         */
         void loadStudents();
 
         /**
+         * @brief Schedule::getLesson
          * Returns a lesson from the schedule
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return lessons
+         * @return The lesson from the schedule.
          */
         set<Lesson> getLesson() const;
 
         /**
+         * @brief Schedule::drawSchedule
          * Prints the schedule
          *
-         * O(n) where n is the number of lessons in the lessons set
+         * Complexity: O(n) where n is the number of lessons in the lessons set
          */
         void drawSchedule() const;
 
         /**
+         * @brief Schedule::getUcClass
          * Returns the Uc class
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @return UcClass
+         * @return The uc class.
          */
         UC getUcClass();
 
         /**
+         * @brief Schedule::getStudents
          * Get students of a class
          *
-         * O(n)
+         * Complexity: O(n)
          *
-         * @return students
+         * @return The students.
          */
         set<Student> getStudents();
 
         /**
+         * @brief Schedule::operator<
          * Operator to compare two schedules
          *
-         * O(1)
+         * Complexity: O(1)
          *
-         * @param schedule : schedule;
-         * @return bool : true or false
+         * @param schedule : The schedule to compare to;
+         * @return true or false.
          */
         bool operator<(Schedule schedule);
 
         /**
+         * @brief Schedule::sortStudents
          * Sorts the students and prints them in the order that we asked for
          *
-         * O(n log n) where n is the number of students in the vector
+         * Complexity: O(n log n) where n is the number of students in the vector
          *
-         * @param sort_ : Way to sort the students of the Uc;
+         * @param sort_ : Way to sort the students of the Uc.
          */
         void sortStudents(const int &sort_);
 };

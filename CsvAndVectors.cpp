@@ -1,7 +1,7 @@
 #include "CsvAndVectors.h"
+
 using namespace std;
 
-// O(1)
 CsvAndVectors::CsvAndVectors() = default;
 
 vector<Lesson> CsvAndVectors::LessonsVector;
@@ -97,6 +97,7 @@ void CsvAndVectors::createLessonsVector() {
 void CsvAndVectors::createRequestsVector() {
     RequestsVector.clear();
     fstream file;
+
     file.open("../data/requests.csv");
     if (!file.is_open()) {
         cerr << "Error: Unable to open the file." << endl;
@@ -175,17 +176,22 @@ void CsvAndVectors::createStudentsVector() {
     string ClassCode;
     getline(file, line);
     while (getline(file, line)) {
-        if (line.empty()) continue;
         stringstream s(line);
         getline(s, StudentCode, ',');
         getline(s, StudentName, ',');
         getline(s, UcCode, ',');
         getline(s, ClassCode);
-        if (!StudentsVector.empty() && StudentCode == StudentsVector[StudentsVector.size() - 1].getStudentCode()) {
-            StudentsVector[StudentsVector.size() - 1].addUC(UC(UcCode, ClassCode));
+        if (StudentsVector.empty()) {
+            ucs.emplace_back(UcCode, ClassCode);
+            StudentsVector.emplace_back(StudentCode, StudentName, ucs);
+        }
+        else if (StudentCode == StudentsVector[StudentsVector.size() - 1].getStudentCode()) {
+            ucs.emplace_back(UcCode, ClassCode);
+            StudentsVector[StudentsVector.size() - 1].setUCs(ucs);
         }
         else {
-            vector<UC> ucs;
+            StudentsVector[StudentsVector.size() - 1].setUCs(ucs);
+            ucs.clear();
             ucs.emplace_back(UcCode, ClassCode);
             StudentsVector.emplace_back(StudentCode, StudentName, ucs);
         }
@@ -205,16 +211,20 @@ void CsvAndVectors::setFromStudentsVector() {
 }
 
 void CsvAndVectors::setFromRequestVector() {
-    ofstream fileName;
-    fileName.open("../data/requests.csv");
-    fileName << "StudentCode, StudentName: RequestType -> Status, Reason (if rejected)" << endl;
+    ofstream file;
+    file.open("../data/requests.csv");
+
+    file << "StudentCode,StudentName:RequestType,Status,Reason(if rejected)" << endl;
     for (auto &request : RequestsVector) {
-        fileName << request.getStudent().getStudentCode() << "," << request.getStudent().getStudentName() << ":" <<
+        cout << request.getStudent().getStudentCode() << "," << request.getStudent().getStudentName() << ":" <<
+             request.getType() << "," << request.getStatus();
+        file << request.getStudent().getStudentCode() << "," << request.getStudent().getStudentName() << ":" <<
             request.getType() << "," << request.getStatus();
-        if (request.getStatus() == "Rejected") {
-            fileName << "," << request.getReason();
+        if (!request.getReason().empty()) {
+            cout << "REJECTED" << endl;
+            file << "," << request.getReason();
         }
-        fileName << endl;
+        file << endl;
     }
-    fileName.close();
+    file.close();
 }

@@ -10,7 +10,7 @@ using namespace std;
 /**
  * @file main.cpp
  *
- * @mainpage AED project main.cpp
+ * @mainpage AED project
  * @section intro_sec Introduction
  * This project was made in the context of the Algorithms and Data Structures class.
  *

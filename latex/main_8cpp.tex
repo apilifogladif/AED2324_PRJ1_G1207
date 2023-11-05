@@ -63,7 +63,7 @@ int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
 
 Prints the accepting requests
 
-Complexity\+: O(n) where n is the number of times the user enters an input
+Complexity\+: O(n)
 
 \begin{DoxyReturn}{Returns}
 0 quit / 1 main menu. 
@@ -76,7 +76,7 @@ Complexity\+: O(n) where n is the number of times the user enters an input
 
 Prints all requests
 
-Complexity\+: O(n) where n is the number of times the user enters an input
+Complexity\+: O(n)
 
 \begin{DoxyReturn}{Returns}
 0 quit / 1 main menu. 
@@ -89,7 +89,7 @@ Complexity\+: O(n) where n is the number of times the user enters an input
 
 Initiates a enroll request for a student
 
-Complexity\+: O(log n) where n is the size of the set
+Complexity\+: O(n) where O(n) is the time complexity of student.\+find\+Uc
 
 
 \begin{DoxyParams}{Parameters}
@@ -105,9 +105,9 @@ Complexity\+: O(log n) where n is the size of the set
 \doxysubsubsection{\texorpdfstring{greatestMenu()}{greatestMenu()}}
 {\footnotesize\ttfamily int greatest\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Menu with the options of serching of the greatest number of students
+Menu with the options of searching of the greatest number of students
 
-Complexity\+: O(m) + O(n log n) where m is the total number of UCs or Classes and n is the number of elements to be sorted
+Complexity\+: O(n log n)
 
 \begin{DoxyReturn}{Returns}
 0 quit / 1 main menu. 
@@ -120,7 +120,7 @@ Complexity\+: O(m) + O(n log n) where m is the total number of UCs or Classes an
 
 Initiates a leave request for a student
 
-Complexity\+: O(log n) where n is the size of the set
+Complexity\+: O(n) where O(n) is the time complexity of student.\+find\+Uc
 
 
 \begin{DoxyParams}{Parameters}
@@ -138,7 +138,7 @@ Complexity\+: O(log n) where n is the size of the set
 
 Menu with the options of listings
 
-Complexity\+: O(log n) where n is the size of the set
+Complexity\+: O(log n)
 
 \begin{DoxyReturn}{Returns}
 0 quit / 1 main menu. 
@@ -164,7 +164,7 @@ Complexity\+: O(1)
 
 Menu with the options of searching for the number of students
 
-Complexity\+: O(n) where n is the number of students
+Complexity\+: O(n)
 
 \begin{DoxyReturn}{Returns}
 0 quit / 1 main menu. 
@@ -175,9 +175,9 @@ Complexity\+: O(n) where n is the number of students
 \doxysubsubsection{\texorpdfstring{occupationMenu()}{occupationMenu()}}
 {\footnotesize\ttfamily int occupation\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Menu with the options of ocupations
+Menu with the options of occupations
 
-Complexity\+: O(n log n) where n is the number of elements to be sorted
+Complexity\+: O(n log n)
 
 \begin{DoxyReturn}{Returns}
 0 quit / 1 main menu. 
@@ -190,7 +190,7 @@ Complexity\+: O(n log n) where n is the number of elements to be sorted
 
 Sort occupation of classes from a Uc (Type 1)
 
-Complexity\+: O(n log n) where n is the number of elements in aux\+Vector (number of pairs in aux\+Vector)
+Complexity\+: O(n log n)
 
 
 \begin{DoxyParams}{Parameters}
@@ -207,7 +207,7 @@ Complexity\+: O(n log n) where n is the number of elements in aux\+Vector (numbe
 
 Sort occupation of Ucs from a Class (Type 2)
 
-Complexity\+: O(n log n) where n is the number of elements in aux\+Vector (number of pairs in aux\+Vector)
+Complexity\+: O(n log n)
 
 
 \begin{DoxyParams}{Parameters}
@@ -224,7 +224,7 @@ Complexity\+: O(n log n) where n is the number of elements in aux\+Vector (numbe
 
 Sort occupation of Classes and Ucs from a year (Type 3)
 
-Complexity\+: O(n log n) where n is the number of elements in Classes\+Per\+Vector\+Of\+Year vector
+Complexity\+: O(n log n)
 
 
 \begin{DoxyParams}{Parameters}
@@ -241,7 +241,7 @@ Complexity\+: O(n log n) where n is the number of elements in Classes\+Per\+Vect
 
 Prints the rejected requests
 
-Complexity\+: O(n) where n is the number of times the user enters an input
+Complexity\+: O(n)
 
 \begin{DoxyReturn}{Returns}
 0 quit / 1 main menu. 
@@ -254,7 +254,7 @@ Complexity\+: O(n) where n is the number of times the user enters an input
 
 Menu with the options of submitting the request he wants
 
-Complexity\+: O(1)
+Complexity\+: O(n)
 
 Options \+: enroll in an \doxylink{class_u_c}{UC}, leave an \doxylink{class_u_c}{UC} or switch an \doxylink{class_u_c}{UC}.
 
@@ -282,7 +282,7 @@ Complexity\+: O(1)
 
 Options of sorting the list
 
-Complexity\+: O(1)
+Complexity\+: O(max(n\texorpdfstring{$\ast$}{*}m, max(k,q), r\texorpdfstring{$\ast$}{*}v)) where O(n\texorpdfstring{$\ast$}{*}m) is the time complexity of see\+Class\+Students, O(max(k,q)) is the time complexity of see\+Year\+Students, O(r\texorpdfstring{$\ast$}{*}v) is the time complexity of see\+Uc\+Students
 
 
 \begin{DoxyParams}{Parameters}
@@ -304,7 +304,7 @@ Complexity\+: O(1)
 
 Call a function in function of the type of request chosen
 
-Complexity\+: O(log n) where n is the size of the set
+Complexity\+: O(n) where O(n) is the time complexity of enroll\+Request, leave\+Request and switch\+Request
 
 
 \begin{DoxyParams}{Parameters}
@@ -322,7 +322,7 @@ Complexity\+: O(log n) where n is the size of the set
 
 Initiates a switch request for a student
 
-Complexity\+: O(log n) where n is the size of the set
+Complexity\+: O(n) where O(n) is the time complexity of student.\+find\+Uc
 
 
 \begin{DoxyParams}{Parameters}
@@ -340,7 +340,9 @@ Complexity\+: O(log n) where n is the size of the set
 
 Undoes a request
 
-O(1) \begin{DoxyReturn}{Returns}
+O(n)
+
+\begin{DoxyReturn}{Returns}
 0 quit / 1 main menu. 
 \end{DoxyReturn}
 \Hypertarget{main_8cpp_ac5a4e34036c5dee724dac0955a99a261}\label{main_8cpp_ac5a4e34036c5dee724dac0955a99a261} 

@@ -95,7 +95,7 @@ Complexity\+: O(1)
 
 \doxylink{class_student_acac8e363cd7953a904f94ed713fd1baa}{Student\+::add\+UC} Adds a uc to the student lessons. 
 
-Complexity\+: O(log n) + O(n) where n is the number of students int the \doxylink{class_csv_and_vectors_a8d310f429bf71c844411168ab197bd0a}{Csv\+And\+Vectors\+::\+Students\+Vector}
+Complexity\+: O(log n)
 
 
 \begin{DoxyParams}{Parameters}
@@ -112,11 +112,11 @@ Complexity\+: O(log n) + O(n) where n is the number of students int the \doxylin
 
 \doxylink{class_student_a2e09f9226c089ca09cf328eb105cfeaa}{Student\+::binary\+Search\+Csv\+Student\+Vector} Binary search to search the position of a student in the Students\+Vector from Csv file. 
 
-Complexity\+: O(n log n) where n is the number of students in the CSVInfo.\+Students\+Vector
+Complexity\+: O(log n)
 
 
 \begin{DoxyParams}{Parameters}
-{\em left} & \+: Inicial index of the analyzed vector; \\
+{\em left} & \+: Initial index of the analyzed vector; \\
 \hline
 {\em right} & \+: Final index of the analyzed vector; \\
 \hline
@@ -134,7 +134,7 @@ Index of the the student we are searching for.
 
 \doxylink{class_student_a1fc1343156bea4f21cb1c180fd25bc12}{Student\+::find\+Uc} Returns the uc with the given uc code. 
 
-Complexity\+: O(n) where n is the number of \doxylink{class_u_c}{UC} objects in the ucs vector
+Complexity\+: O(n)
 
 
 \begin{DoxyParams}{Parameters}
@@ -239,7 +239,7 @@ true or false.
 
 \doxylink{class_student_a58fb2d25c7c0468f7b3c2d5097fd9c1b}{Student\+::remove\+UC} Adds a uc to the student lessons. 
 
-Complexity\+: O(log n) + O(n) where n is the number of students int the CSVInfo.\+Students\+Vector
+Complexity\+: O(n)
 
 
 \begin{DoxyParams}{Parameters}
@@ -255,6 +255,8 @@ Complexity\+: O(log n) + O(n) where n is the number of students int the CSVInfo.
 
 
 \doxylink{class_student_a0efda211fa4c8f4c5c9a7e0dc1a7cdb5}{Student\+::set\+UCs} Sets a value for ucs. 
+
+Complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}

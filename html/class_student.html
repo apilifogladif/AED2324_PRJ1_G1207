@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Student Class Reference</title>
+<title>Schedule manager: Student Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Schedule manager
    </div>
   </td>
  </tr>
@@ -240,7 +240,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_student.html#acac8e363cd7953a904f94ed713fd1baa" title="Student::addUC Adds a uc to the student lessons.">Student::addUC</a> Adds a uc to the student lessons. </p>
-<p>Complexity: O(log n) + O(n) where n is the number of students int the <a class="el" href="class_csv_and_vectors.html#a8d310f429bf71c844411168ab197bd0a">CsvAndVectors::StudentsVector</a></p>
+<p>Complexity: O(log n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">uc</td><td>: The uc. </td></tr>
@@ -277,10 +277,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_student.html#a2e09f9226c089ca09cf328eb105cfeaa" title="Student::binarySearchCsvStudentVector Binary search to search the position of a student in the Studen...">Student::binarySearchCsvStudentVector</a> Binary search to search the position of a student in the StudentsVector from Csv file. </p>
-<p>Complexity: O(n log n) where n is the number of students in the CSVInfo.StudentsVector</p>
+<p>Complexity: O(log n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">left</td><td>: Inicial index of the analyzed vector; </td></tr>
+    <tr><td class="paramname">left</td><td>: Initial index of the analyzed vector; </td></tr>
     <tr><td class="paramname">right</td><td>: Final index of the analyzed vector; </td></tr>
   </table>
   </dd>
@@ -306,7 +306,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_student.html#a1fc1343156bea4f21cb1c180fd25bc12" title="Student::findUc Returns the uc with the given uc code.">Student::findUc</a> Returns the uc with the given uc code. </p>
-<p>Complexity: O(n) where n is the number of <a class="el" href="class_u_c.html">UC</a> objects in the ucs vector</p>
+<p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">UcCode</td><td>: The uc code; </td></tr>
@@ -453,7 +453,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_student.html#a58fb2d25c7c0468f7b3c2d5097fd9c1b" title="Student::removeUC Adds a uc to the student lessons.">Student::removeUC</a> Adds a uc to the student lessons. </p>
-<p>Complexity: O(log n) + O(n) where n is the number of students int the CSVInfo.StudentsVector</p>
+<p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">uc</td><td>: The uc. </td></tr>
@@ -480,6 +480,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_student.html#a0efda211fa4c8f4c5c9a7e0dc1a7cdb5" title="Student::setUCs Sets a value for ucs.">Student::setUCs</a> Sets a value for ucs. </p>
+<p>Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ucs_</td><td>: The value to set to ucs. </td></tr>

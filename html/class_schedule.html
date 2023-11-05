@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Schedule Class Reference</title>
+<title>Schedule manager: Schedule Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Schedule manager
    </div>
   </td>
  </tr>
@@ -161,7 +161,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_schedule.html#a878716f4043a016224a14f78974edf1d" title="Schedule::Schedule Class constructor.">Schedule::Schedule</a> Class constructor. </p>
-<p>Complexity: O(1)</p>
+<p>Complexity: O(n*m) where n*m is the complexity time of <a class="el" href="class_schedule.html#acd6db096a5e95945c3c3689a6d9d0585" title="Schedule::loadStudents Set the private set students to the students of the UcClass,...">loadStudents()</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ucCLass</td><td>Class and Uc of the schedule. </td></tr>
@@ -188,7 +188,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_schedule.html#a878716f4043a016224a14f78974edf1d" title="Schedule::Schedule Class constructor.">Schedule::Schedule</a> Class constructor. </p>
-<p>Complexity: O(1)</p>
+<p>Complexity: O(n*m) where n*m is the complexity time of <a class="el" href="class_schedule.html#aba8a7b67d5c8e0b591c8e92d25bf126f" title="Schedule::loadLessonsStudent Set the private set lessons to the lessons of the Student.">loadLessonsStudent()</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">StudentCode</td><td>The student code. </td></tr>
@@ -215,7 +215,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_schedule.html#a0cbedded9ba7febc5851c4d6536963ef" title="Schedule::drawSchedule Prints the schedule.">Schedule::drawSchedule</a> Prints the schedule. </p>
-<p>Complexity: O(n) where n is the number of lessons in the lessons set </p>
+<p>Complexity: O(n*m) </p>
 
 </div>
 </div>
@@ -256,7 +256,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_schedule.html#abf67c6bcecf0405a28d2b06f8cbeb874" title="Schedule::getStudents Get students of a class.">Schedule::getStudents</a> Get students of a class. </p>
-<p>Complexity: O(n)</p>
+<p>Complexity: O(1)</p>
 <dl class="section return"><dt>Returns</dt><dd>The students. </dd></dl>
 
 </div>
@@ -298,7 +298,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_schedule.html#aba8a7b67d5c8e0b591c8e92d25bf126f" title="Schedule::loadLessonsStudent Set the private set lessons to the lessons of the Student.">Schedule::loadLessonsStudent</a> Set the private set lessons to the lessons of the <a class="el" href="class_student.html">Student</a>. </p>
-<p>Complexity: O(n*m) where n is the number of Ucs of the <a class="el" href="class_student.html">Student</a> and m is the number of lessons in LessonsVector </p>
+<p>Complexity: O(n*m) </p>
 
 </div>
 </div>
@@ -318,7 +318,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_schedule.html#a459e2b42f0d1dcdf9f42605a0b04c7d8" title="Schedule::loadLessonsUcClass Set the private set lessons to the lessons of the UcClass,...">Schedule::loadLessonsUcClass</a> Set the private set lessons to the lessons of the UcClass, Uc or Class. </p>
-<p>Complexity: O(n) where n is the number of lessons in LessonsVector </p>
+<p>Complexity: O(n) </p>
 
 </div>
 </div>
@@ -338,7 +338,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_schedule.html#acd6db096a5e95945c3c3689a6d9d0585" title="Schedule::loadStudents Set the private set students to the students of the UcClass,...">Schedule::loadStudents</a> Set the private set students to the students of the UcClass, Uc or Class. </p>
-<p>Complexity: O(n*m) where n is the number of students in StudentsVector and m is the number of Ucs of each student </p>
+<p>Complexity: O(n*m) </p>
 
 </div>
 </div>
@@ -387,7 +387,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_schedule.html#aaec8b68f25afe7dc7ce8952f67cf5598" title="Schedule::sortStudents Sorts the students and prints them in the order that we asked for.">Schedule::sortStudents</a> Sorts the students and prints them in the order that we asked for. </p>
-<p>Complexity: O(n log n) where n is the number of students in the vector</p>
+<p>Complexity: O(n log n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sort_</td><td>: Way to sort the students of the Uc. </td></tr>

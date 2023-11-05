@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: main.cpp File Reference</title>
+<title>Schedule manager: main.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Schedule manager
    </div>
   </td>
  </tr>
@@ -143,7 +143,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Prints the accepting requests</p>
-<p>Complexity: O(n) where n is the number of times the user enters an input</p>
+<p>Complexity: O(n)</p>
 <dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
 
 </div>
@@ -163,7 +163,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Prints all requests</p>
-<p>Complexity: O(n) where n is the number of times the user enters an input</p>
+<p>Complexity: O(n)</p>
 <dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
 
 </div>
@@ -184,7 +184,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Initiates a enroll request for a student</p>
-<p>Complexity: O(log n) where n is the size of the set</p>
+<p>Complexity: O(n) where O(n) is the time complexity of student.findUc</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student</td><td>: The student that made the request; </td></tr>
@@ -209,8 +209,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Menu with the options of serching of the greatest number of students</p>
-<p>Complexity: O(m) + O(n log n) where m is the total number of UCs or Classes and n is the number of elements to be sorted</p>
+<p>Menu with the options of searching of the greatest number of students</p>
+<p>Complexity: O(n log n)</p>
 <dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
 
 </div>
@@ -231,7 +231,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Initiates a leave request for a student</p>
-<p>Complexity: O(log n) where n is the size of the set</p>
+<p>Complexity: O(n) where O(n) is the time complexity of student.findUc</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student</td><td>: The student that made the request; </td></tr>
@@ -257,7 +257,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Menu with the options of listings</p>
-<p>Complexity: O(log n) where n is the size of the set</p>
+<p>Complexity: O(log n)</p>
 <dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
 
 </div>
@@ -297,7 +297,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Menu with the options of searching for the number of students</p>
-<p>Complexity: O(n) where n is the number of students</p>
+<p>Complexity: O(n)</p>
 <dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
 
 </div>
@@ -316,8 +316,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Menu with the options of ocupations</p>
-<p>Complexity: O(n log n) where n is the number of elements to be sorted</p>
+<p>Menu with the options of occupations</p>
+<p>Complexity: O(n log n)</p>
 <dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
 
 </div>
@@ -348,7 +348,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Sort occupation of classes from a Uc (Type 1)</p>
-<p>Complexity: O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)</p>
+<p>Complexity: O(n log n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">UcCode</td><td>: The uc code; </td></tr>
@@ -385,7 +385,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Sort occupation of Ucs from a Class (Type 2)</p>
-<p>Complexity: O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)</p>
+<p>Complexity: O(n log n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">classCode</td><td>: The class code; </td></tr>
@@ -422,7 +422,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Sort occupation of Classes and Ucs from a year (Type 3)</p>
-<p>Complexity: O(n log n) where n is the number of elements in ClassesPerVectorOfYear vector</p>
+<p>Complexity: O(n log n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">year</td><td>: The year; </td></tr>
@@ -448,7 +448,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Prints the rejected requests</p>
-<p>Complexity: O(n) where n is the number of times the user enters an input</p>
+<p>Complexity: O(n)</p>
 <dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
 
 </div>
@@ -468,7 +468,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Menu with the options of submitting the request he wants</p>
-<p>Complexity: O(1)</p>
+<p>Complexity: O(n)</p>
 <p>Options : enroll in an <a class="el" href="class_u_c.html">UC</a>, leave an <a class="el" href="class_u_c.html">UC</a> or switch an <a class="el" href="class_u_c.html">UC</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
 
@@ -526,7 +526,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Options of sorting the list</p>
-<p>Complexity: O(1)</p>
+<p>Complexity: O(max(n*m, max(k,q), r*v)) where O(n*m) is the time complexity of seeClassStudents, O(max(k,q)) is the time complexity of seeYearStudents, O(r*v) is the time complexity of seeUcStudents</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">UcCode</td><td>: The uc code; </td></tr>
@@ -555,7 +555,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Call a function in function of the type of request chosen</p>
-<p>Complexity: O(log n) where n is the size of the set</p>
+<p>Complexity: O(n) where O(n) is the time complexity of enrollRequest, leaveRequest and switchRequest</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">op</td><td>: type of request chosen by the user; </td></tr>
@@ -582,7 +582,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Initiates a switch request for a student</p>
-<p>Complexity: O(log n) where n is the size of the set</p>
+<p>Complexity: O(n) where O(n) is the time complexity of student.findUc</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student</td><td>: The student that made the request; </td></tr>
@@ -608,7 +608,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Undoes a request</p>
-<p>O(1) </p><dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
+<p>O(n)</p>
+<dl class="section return"><dt>Returns</dt><dd>0 quit / 1 main menu. </dd></dl>
 
 </div>
 </div>

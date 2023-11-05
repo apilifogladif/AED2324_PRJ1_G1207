@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: AuxiliarFunctions Class Reference</title>
+<title>Schedule manager: AuxiliarFunctions Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Schedule manager
    </div>
   </td>
  </tr>
@@ -242,7 +242,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#ac109436248d7c49fc7caad33d8ff6030" title="AuxiliarFunctions::changeAllRequests Makes all status (and the reason) on the vector all requests.">AuxiliarFunctions::changeAllRequests</a> Makes all status (and the reason) on the vector all requests. </p>
-<p>Complexity: O(n)</p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">status</td><td>: The status of the request; </td></tr>
@@ -432,11 +432,11 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a48eac445f22f59d80edee5a3e13dde52" title="AuxiliarFunctions::lessonOverlap Checks if there is no conflict between the student’s schedule and th...">AuxiliarFunctions::lessonOverlap</a> Checks if there is no conflict between the student’s schedule and the new class’s schedule. </p>
-<p>Complexity: O(log n) + O(mk) where n is the number of lines in classes_per_uc.csv, m is the number of lessons of the first class and k is the number of lessons of the second class</p>
+<p>Complexity: O(max(q * r, n * m)), where q is the lessons in class 1, r is the lessons in class 2 and O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">uc1</td><td>: one Uc; </td></tr>
-    <tr><td class="paramname">uc2</td><td>: another Uc; </td></tr>
+    <tr><td class="paramname">uc1</td><td>: one class; </td></tr>
+    <tr><td class="paramname">uc2</td><td>: another class; </td></tr>
   </table>
   </dd>
 </dl>
@@ -469,7 +469,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a0d024b7d1eac9c388f9fcccecdb2f8bc" title="AuxiliarFunctions::numberClassStudents Returns the number of students of a given Class and Uc.">AuxiliarFunctions::numberClassStudents</a> Returns the number of students of a given Class and Uc. </p>
-<p>Complexity: O(m + l) + O(1) where m is the number of lessons and l is the number of student in a Class of an <a class="el" href="class_u_c.html">UC</a></p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">UcClass</td><td>: The uc class; </td></tr>
@@ -505,7 +505,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#ad27cd4879ac619440c6b559b1b75e1fe" title="AuxiliarFunctions::numberUcStudents Returns the number of students of a given Class.">AuxiliarFunctions::numberUcStudents</a> Returns the number of students of a given Class. </p>
-<p>Complexity: O(m + l) where m is the number of lessons and l is the number of student in an <a class="el" href="class_u_c.html">UC</a></p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">UcCode</td><td>: The uc code; </td></tr>
@@ -541,7 +541,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#aa127c5714056d2c3ed526190cec23ac2" title="AuxiliarFunctions::numberYearStudents Returns the number of students of a given Year.">AuxiliarFunctions::numberYearStudents</a> Returns the number of students of a given Year. </p>
-<p>Complexity: O(n) where n is the total number of students</p>
+<p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Year</td><td>: The year of the students; </td></tr>
@@ -577,7 +577,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#ab962e25ab50654e847d2464f4a73f4e9" title="AuxiliarFunctions::requestBalance Checks some conditions to secure the balance of the size os each cl...">AuxiliarFunctions::requestBalance</a> Checks some conditions to secure the balance of the size os each class. </p>
-<p>Complexity: O(log n), where n is the number of schedules / lines in 'classes_per_uc.csv'</p>
+<p>Complexity: O(n * m), where n is the number of Ucs and m is the number of Classes from each uc</p>
 <p>Requests: A student cannot be in more than one class at once for a given <a class="el" href="class_u_c.html">UC</a>; A class can only accept a new student if its capacity has not been exceeded (consider that there is a maximum capacity Cap for classes); A class can only accept a new student if the balance between class occupation is not disturbed (the balance of class occupation is maintained when the difference between the number of students in any class is less than or equal to 4).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -614,7 +614,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a255ded7c9fc0cfd4c1ed3a2830e5732d" title="AuxiliarFunctions::requestConflict Checks if the resulting schedule will not conflict with the studen...">AuxiliarFunctions::requestConflict</a> Checks if the resulting schedule will not conflict with the student's original schedule. </p>
-<p>Complexity: O(m log n + m*kl) : where m is the number of classes the student is in, n is the number of lines in classes_per_uc.csv, k is the number of lessons of the first class and l is the number of lessons of the second class</p>
+<p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">request</td><td>: The request made; </td></tr>
@@ -650,7 +650,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#adbe1f87216348550efc4f0bc91b459be" title="AuxiliarFunctions::requestMax Returns true if the capacity of the class has been exceeded.">AuxiliarFunctions::requestMax</a> Returns true if the capacity of the class has been exceeded. </p>
-<p>Complexity: O(n log n), where n is the number of schedules / lines in 'classes_per_uc.csv'</p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">request</td><td>: The request made; </td></tr>
@@ -685,7 +685,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a5cc725cee840ed6add85c11460a8e230" title="AuxiliarFunctions::RequestsManager Finalizes the requests.">AuxiliarFunctions::RequestsManager</a> Finalizes the requests. </p>
-<p>Complexity: O(m) + O(log n * log n) + O(log k) + O(t log n + t*pl) + O(nlog n) where m is the number of classes of the student who is submitting the request, n is the number of schedules / lines in 'classes_per_uc.csv', k is the number of lines in 'students.csv' t is the number of classes the student is in p is the number of lessons of the first class and l is the number of lessons in the second class </p>
+<p>Complexity: O(max(n, m, k, q)), where n is the number of removal requests, m is the number of enrollment requests, k is the number of switch request, q is the number of requests (n + m + k) </p>
 
 </div>
 </div>
@@ -714,7 +714,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a941a85a909d043f2835c61f3bad296ad" title="AuxiliarFunctions::retStudent Returns the student with the studentCode given.">AuxiliarFunctions::retStudent</a> Returns the student with the studentCode given. </p>
-<p>Complexity: O(n), where n is the number of students in the vector of students</p>
+<p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">studentCode</td><td>: <a class="el" href="class_student.html">Student</a> code; </td></tr>
@@ -749,7 +749,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a14cba61f97ef13f8b8f137586fbab5e3" title="AuxiliarFunctions::seeAcceptedRequests Prints the requests that were accepted.">AuxiliarFunctions::seeAcceptedRequests</a> Prints the requests that were accepted. </p>
-<p>Complexity: O(m), where m is the number of accepted requests </p>
+<p>Complexity: O(n) </p>
 
 </div>
 </div>
@@ -777,7 +777,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a228bb82e67e43876ff297df5d2683fe7" title="AuxiliarFunctions::seeAllRequests Prints all the requests and respective status.">AuxiliarFunctions::seeAllRequests</a> Prints all the requests and respective status. </p>
-<p>Complexity: O(m), where m is the number of all requests done </p>
+<p>Complexity: O(n) </p>
 
 </div>
 </div>
@@ -806,7 +806,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#abfdb58bb73c771c4ff2e3a09c890250a" title="AuxiliarFunctions::seeClassSchedule Prints the schedule of a given class.">AuxiliarFunctions::seeClassSchedule</a> Prints the schedule of a given class. </p>
-<p>Complexity: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week</p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ClassCode</td><td>: The class code. </td></tr>
@@ -851,7 +851,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#ad03fdffce9568cf003fddf63aae2b7b3" title="AuxiliarFunctions::seeClassStudents Prints the students of a given class.">AuxiliarFunctions::seeClassStudents</a> Prints the students of a given class. </p>
-<p>Complexity: O(n) + O(q log q) where n is the number of lessons and students associated with that Class of that <a class="el" href="class_u_c.html">UC</a>, q is the number of students in that Class of that <a class="el" href="class_u_c.html">UC</a></p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">UcClass</td><td>: The uc class; </td></tr>
@@ -886,7 +886,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#aaefad329e9f3c2723e100bd7cdbb47b7" title="AuxiliarFunctions::seeRejectedRequests Prints the requests that were rejected.">AuxiliarFunctions::seeRejectedRequests</a> Prints the requests that were rejected. </p>
-<p>Complexity: O(m), where m is the number of rejected requests </p>
+<p>Complexity: O(n) </p>
 
 </div>
 </div>
@@ -915,7 +915,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a53220fdf04542cb0d85fbe89927ae073" title="AuxiliarFunctions::seeStudentSchedule Prints the schedule of a given student.">AuxiliarFunctions::seeStudentSchedule</a> Prints the schedule of a given student. </p>
-<p>Complexity: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week</p>
+<p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">StudentCode</td><td>: The student code. </td></tr>
@@ -950,7 +950,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#ac20cbf2d0ada924b4a8b01002f909caf" title="AuxiliarFunctions::seeUcSchedule Prints the schedule of a given Uc.">AuxiliarFunctions::seeUcSchedule</a> Prints the schedule of a given Uc. </p>
-<p>Complexity: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week</p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">UcCode</td><td>: The uc code; </td></tr>
@@ -995,7 +995,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#ac1172cb35eb6d6489506dfc8342a1778" title="AuxiliarFunctions::seeUcStudents Prints the students of a given Uc.">AuxiliarFunctions::seeUcStudents</a> Prints the students of a given Uc. </p>
-<p>Complexity: O(n) + O(q log q) where n is the number of lessons and students associated with that <a class="el" href="class_u_c.html">UC</a> code, q is the number of students in that <a class="el" href="class_u_c.html">UC</a></p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">UcCode</td><td>: The uc code; </td></tr>
@@ -1041,7 +1041,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a81c9fe20cee99b5ee6c1799389e35df8" title="AuxiliarFunctions::seeYearStudents Prints the students of a given year.">AuxiliarFunctions::seeYearStudents</a> Prints the students of a given year. </p>
-<p>Complexity: O(n) + O(mk) + O(m) + O(m log m) where n is the number of students in students_classes.csv, m is the students and k is the UCs of each student</p>
+<p>Complexity: O(max(n, m)), where n is the number of students, m i the number of students in the given year</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">year</td><td>The year of the students; </td></tr>
@@ -1077,7 +1077,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#a169b90d8cdd6c07c668b5a4b0766cce4" title="AuxiliarFunctions::verifyEnrollmentRequest Checks if request has any problem (conflict,...">AuxiliarFunctions::verifyEnrollmentRequest</a> Checks if request has any problem (conflict, extends the max) </p>
-<p>Complexity: O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class</p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">request</td><td>: The request made. </td></tr>
@@ -1112,7 +1112,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#aab3c0a2930902eedd2f837c92e8c37ed" title="AuxiliarFunctions::verifyRemovalRequest Does the removal requests as it does not need any problem ver...">AuxiliarFunctions::verifyRemovalRequest</a> Does the removal requests as it does not need any problem verification. </p>
-<p>Complexity: O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class</p>
+<p>Complexity: O(n*m), where O(n*m) is the time complexity of the <a class="el" href="class_schedule.html">Schedule</a> constructor</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">request</td><td>: The request made. </td></tr>
@@ -1147,7 +1147,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="class_auxiliar_functions.html#abd323a2871ec673a82465ce08c98a941" title="AuxiliarFunctions::verifySwapRequest Checks if the request has any problem (unbalanced,...">AuxiliarFunctions::verifySwapRequest</a> Checks if the request has any problem (unbalanced, conflict, extends the max) </p>
-<p>Complexity: O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class</p>
+<p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">request</td><td>: The request made. </td></tr>

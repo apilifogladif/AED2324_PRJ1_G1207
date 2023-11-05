@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cpp_0',['AED project main.cpp',['../index.html',1,'']]]
+  ['project_0',['AED project',['../index.html',1,'']]]
 ];

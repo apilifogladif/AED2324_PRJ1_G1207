@@ -50,7 +50,7 @@ Complexity\+: O(1) \Hypertarget{class_schedule_add7c3227f39baeae3f9332076e5414f3
 
 \doxylink{class_schedule_a878716f4043a016224a14f78974edf1d}{Schedule\+::\+Schedule} Class constructor. 
 
-Complexity\+: O(1)
+Complexity\+: O(n\texorpdfstring{$\ast$}{*}m) where n\texorpdfstring{$\ast$}{*}m is the complexity time of \doxylink{class_schedule_acd6db096a5e95945c3c3689a6d9d0585}{load\+Students()}
 
 
 \begin{DoxyParams}{Parameters}
@@ -67,7 +67,7 @@ Complexity\+: O(1)
 
 \doxylink{class_schedule_a878716f4043a016224a14f78974edf1d}{Schedule\+::\+Schedule} Class constructor. 
 
-Complexity\+: O(1)
+Complexity\+: O(n\texorpdfstring{$\ast$}{*}m) where n\texorpdfstring{$\ast$}{*}m is the complexity time of \doxylink{class_schedule_aba8a7b67d5c8e0b591c8e92d25bf126f}{load\+Lessons\+Student()}
 
 
 \begin{DoxyParams}{Parameters}
@@ -87,7 +87,7 @@ Complexity\+: O(1)
 
 \doxylink{class_schedule_a0cbedded9ba7febc5851c4d6536963ef}{Schedule\+::draw\+Schedule} Prints the schedule. 
 
-Complexity\+: O(n) where n is the number of lessons in the lessons set \Hypertarget{class_schedule_ad8170df7d922e4537d421bdb0110a9db}\label{class_schedule_ad8170df7d922e4537d421bdb0110a9db} 
+Complexity\+: O(n\texorpdfstring{$\ast$}{*}m) \Hypertarget{class_schedule_ad8170df7d922e4537d421bdb0110a9db}\label{class_schedule_ad8170df7d922e4537d421bdb0110a9db} 
 \index{Schedule@{Schedule}!getLesson@{getLesson}}
 \index{getLesson@{getLesson}!Schedule@{Schedule}}
 \doxysubsubsection{\texorpdfstring{getLesson()}{getLesson()}}
@@ -112,7 +112,7 @@ The lesson from the schedule.
 
 \doxylink{class_schedule_abf67c6bcecf0405a28d2b06f8cbeb874}{Schedule\+::get\+Students} Get students of a class. 
 
-Complexity\+: O(n)
+Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
 The students. 
@@ -142,7 +142,7 @@ The uc class.
 
 \doxylink{class_schedule_aba8a7b67d5c8e0b591c8e92d25bf126f}{Schedule\+::load\+Lessons\+Student} Set the private set lessons to the lessons of the \doxylink{class_student}{Student}. 
 
-Complexity\+: O(n\texorpdfstring{$\ast$}{*}m) where n is the number of Ucs of the \doxylink{class_student}{Student} and m is the number of lessons in Lessons\+Vector \Hypertarget{class_schedule_a459e2b42f0d1dcdf9f42605a0b04c7d8}\label{class_schedule_a459e2b42f0d1dcdf9f42605a0b04c7d8} 
+Complexity\+: O(n\texorpdfstring{$\ast$}{*}m) \Hypertarget{class_schedule_a459e2b42f0d1dcdf9f42605a0b04c7d8}\label{class_schedule_a459e2b42f0d1dcdf9f42605a0b04c7d8} 
 \index{Schedule@{Schedule}!loadLessonsUcClass@{loadLessonsUcClass}}
 \index{loadLessonsUcClass@{loadLessonsUcClass}!Schedule@{Schedule}}
 \doxysubsubsection{\texorpdfstring{loadLessonsUcClass()}{loadLessonsUcClass()}}
@@ -152,7 +152,7 @@ Complexity\+: O(n\texorpdfstring{$\ast$}{*}m) where n is the number of Ucs of th
 
 \doxylink{class_schedule_a459e2b42f0d1dcdf9f42605a0b04c7d8}{Schedule\+::load\+Lessons\+Uc\+Class} Set the private set lessons to the lessons of the Uc\+Class, Uc or Class. 
 
-Complexity\+: O(n) where n is the number of lessons in Lessons\+Vector \Hypertarget{class_schedule_acd6db096a5e95945c3c3689a6d9d0585}\label{class_schedule_acd6db096a5e95945c3c3689a6d9d0585} 
+Complexity\+: O(n) \Hypertarget{class_schedule_acd6db096a5e95945c3c3689a6d9d0585}\label{class_schedule_acd6db096a5e95945c3c3689a6d9d0585} 
 \index{Schedule@{Schedule}!loadStudents@{loadStudents}}
 \index{loadStudents@{loadStudents}!Schedule@{Schedule}}
 \doxysubsubsection{\texorpdfstring{loadStudents()}{loadStudents()}}
@@ -162,7 +162,7 @@ Complexity\+: O(n) where n is the number of lessons in Lessons\+Vector \Hypertar
 
 \doxylink{class_schedule_acd6db096a5e95945c3c3689a6d9d0585}{Schedule\+::load\+Students} Set the private set students to the students of the Uc\+Class, Uc or Class. 
 
-Complexity\+: O(n\texorpdfstring{$\ast$}{*}m) where n is the number of students in Students\+Vector and m is the number of Ucs of each student \Hypertarget{class_schedule_a96887f13ab46bee52176f6f8a7f9a031}\label{class_schedule_a96887f13ab46bee52176f6f8a7f9a031} 
+Complexity\+: O(n\texorpdfstring{$\ast$}{*}m) \Hypertarget{class_schedule_a96887f13ab46bee52176f6f8a7f9a031}\label{class_schedule_a96887f13ab46bee52176f6f8a7f9a031} 
 \index{Schedule@{Schedule}!operator$<$@{operator$<$}}
 \index{operator$<$@{operator$<$}!Schedule@{Schedule}}
 \doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
@@ -192,7 +192,7 @@ true or false.
 
 \doxylink{class_schedule_aaec8b68f25afe7dc7ce8952f67cf5598}{Schedule\+::sort\+Students} Sorts the students and prints them in the order that we asked for. 
 
-Complexity\+: O(n log n) where n is the number of students in the vector
+Complexity\+: O(n log n)
 
 
 \begin{DoxyParams}{Parameters}

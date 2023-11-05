@@ -916,7 +916,7 @@ int listingMenu() {
             while (true) {
                 cout << "Write the year (1, 2 or 3): ";
                 if (cin >> year) {
-                    if (year == '0' || year == '2' || year == '3') {
+                    if (year == '1' || year == '2' || year == '3') {
                         break;  // Input is valid, exit the loop
                     }
                     else if (year == 'q') return 1;
@@ -1866,18 +1866,18 @@ int main() {
     CsvAndVectors::createClassesAndUcSet();
 
     cout << CsvAndVectors::StudentsVector.size() << endl;
-    for (auto student : CsvAndVectors::StudentsVector) {
+    /*for (auto student : CsvAndVectors::StudentsVector) {
         cout << student.getUCs().size() << endl;
         for (auto uc: student.getUCs()) {
             cout << student.getStudentCode() << " " << uc.getUcCode() << " " << uc.getClassCode()
                  << endl;
         }
-    }
+    }*/
 
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
-            if (op >= 1 && op <= 10) {
+            if (op >= 1 && op <= 11) {
                 break;  // Input is valid, exit the loop
             } else {
                 cout << "Invalid number! The number should be between 1 and 10." << endl;
@@ -1950,7 +1950,9 @@ int main() {
             if (aux == 1) main();
             system("exit");
             break;
-
+        case 11:
+            system("exit");
+            break;
         default:
             system("exit");
     }

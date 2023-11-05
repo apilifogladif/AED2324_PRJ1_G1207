@@ -110,11 +110,13 @@ void AuxiliarFunctions::verifySwapRequest(Request &request){
         request.setReason("The balance of class occupation is not maintained. The difference between the number of students in the class can't be less than or equal to 4.");
         request.setStatus("Rejected");
         rejectedRequests.push_back(request);
-    } else if (requestConflict(request)) {
+    }
+    else if (requestConflict(request)) {
         request.setReason("There is conflict between the student’s schedule and the new class’s schedule.");
         request.setStatus("Rejected");
         rejectedRequests.push_back(request);
-    } else if (requestMax(request)) {
+    }
+    else if (requestMax(request)) {
         request.setReason("The capacity of the class has been exceeded.");
         request.setStatus("Rejected");
         rejectedRequests.push_back(request);
@@ -134,7 +136,12 @@ void AuxiliarFunctions::verifySwapRequest(Request &request){
 
 void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
     bool status = false;
-    if (requestConflict(request)) {
+    if (!(requestBalance(request))) {
+        request.setReason("The balance of class occupation is not maintained. The difference between the number of students in the class can't be less than or equal to 4.");
+        request.setStatus("Rejected");
+        rejectedRequests.push_back(request);
+    }
+    else if (requestConflict(request)) {
         request.setReason("There is conflict between the student’s schedule and the new class’s schedule.");
         request.setStatus("Rejected");
         rejectedRequests.push_back(request);

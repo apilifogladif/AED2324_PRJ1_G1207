@@ -39,16 +39,16 @@ void Lesson::timeInHoursAndMinutes() const {
     if (h > this->getStartHour()) h -= 1;
     float m = (this->getStartHour() - h) * 60;
     if (h < 10 && m < 10) cout << "0" << h << ":" << "0" << m;
-    else if (h < 10 && m > 10) cout << "0" << h << ":" << m;
-    else if (h > 10 && m < 10) cout << h << ":" << "0" << m;
+    else if (h < 10 && m >= 10) cout << "0" << h << ":" << m;
+    else if (h >= 10 && m < 10) cout << h << ":" << "0" << m;
     else cout << h << ":" << m;
     cout << " - ";
     h = round(this->getEndHour());
     if (h > this->getEndHour()) h -= 1;
     m = (this->getEndHour() - h) * 60;
     if (h < 10 && m < 10) cout << "0" << h << ":" << "0" << m;
-    else if (h < 10 && m > 10) cout << "0" << h << ":" << m;
-    else if (h > 10 && m < 10) cout << h << ":" << "0" << m;
+    else if (h < 10 && m >= 10) cout << "0" << h << ":" << m;
+    else if (h >= 10 && m < 10) cout << h << ":" << "0" << m;
     else cout << h << ":" << m;
 }
 

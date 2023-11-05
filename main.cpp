@@ -799,7 +799,7 @@ int switchRequest(Student student) {
  * Complexity: O(log n) where n is the size of the set
  *
  * @param op : type of request chosen by the user;
- * @return 0 quit / 1 main menu.
+ * @return 0 quit / 1 main menu / 2 request menu.
  */
 int submitRequest(int op) {
     string studentCode;
@@ -828,14 +828,17 @@ int submitRequest(int op) {
         case 1:
             aux = enrollRequest(student);
             if (aux == 1) return 1;
+            if (aux == 2) return 2;
             return 0;
         case 2:
             aux = leaveRequest(student);
             if (aux == 1) return 1;
+            if (aux == 2) return 2;
             return 0;
         case 3:
             aux = switchRequest(student);
             if (aux == 1) return 1;
+            if (aux == 2) return 2;
             return 0;
     }
     return 0;
@@ -1069,7 +1072,7 @@ int numbersMenu() {
             while (true) {
                 cout << "Write the year (1, 2 or 3): ";
                 if (cin >> year) {
-                    if (year == '0' || year == '1' || year == '2') {
+                    if (year == '1' || year == '2' || year == '3') {
                         break;  // Input is valid, exit the loop
                     }
                     else if (year == 'q') return 1;
@@ -1594,8 +1597,36 @@ int requestMenu() {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
-    if (op == 4) return 1;
-    if (op == 5) return 0;
+    if (op == 4) {
+        AuxiliarFunctions::RequestsManager();
+        return 1;
+    }
+     if (op == 5) {
+         cout << endl;
+         cout << "NOTE: if you quit now the requests you have made will be canceled. You must" << endl;
+         cout << "You must return to the main menu so that the requests can have effect." << endl;
+         cout << "If you want to see which requests were accepted and which were rejected, you must" << endl;
+         cout << "consult that in the designated options in the main menu." << endl;
+         cout << endl;
+         string option;
+         while (true) {
+             cout << "Are you sure you want to quit? Y/N  ";
+             if (cin >> option) {
+                 if (option == "Y") return 0;
+                 else if (option == "N") {
+                     AuxiliarFunctions::RequestsManager();
+                     return 1;
+                 }
+                 else {
+                     cout << "Invalid answer! The answer should be Y (for Yes) or N (for No)." << endl;
+                 }
+             } else {
+                 cout << "Invalid input! Please enter a valid answer." << endl;
+                 cin.clear();          // Clear the error state
+                 cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+             }
+         }
+     }
     int aux = submitRequest(op);
     if (aux == 0) return 0;
     if (aux == 2) requestMenu();
@@ -1830,11 +1861,9 @@ int undoRequest() {
  */
 int main() {
     if (!CsvAndVectors::StudentsVector.empty()) {
-        cout << " A " << endl;
         CsvAndVectors::setFromStudentsVector();
     }
     if (!CsvAndVectors::RequestsVector.empty()) {
-        cout << " A " << endl;
         CsvAndVectors::setFromRequestVector();
     }
 
@@ -1865,7 +1894,7 @@ int main() {
     CsvAndVectors::createStudentsSet();
     CsvAndVectors::createClassesAndUcSet();
 
-    cout << CsvAndVectors::StudentsVector.size() << endl;
+    //cout << CsvAndVectors::StudentsVector.size() << endl;
     /*for (auto student : CsvAndVectors::StudentsVector) {
         cout << student.getUCs().size() << endl;
         for (auto uc: student.getUCs()) {

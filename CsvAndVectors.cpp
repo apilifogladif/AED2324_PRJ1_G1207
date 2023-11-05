@@ -112,6 +112,7 @@ void CsvAndVectors::createRequestsVector() {
     string status;
     string reason;
     while(getline(file, line)) {
+        if (line.empty()) continue;
         stringstream s(line);
         getline(s, studentCode, ',');
         getline(s, studentName, ':');
@@ -216,12 +217,9 @@ void CsvAndVectors::setFromRequestVector() {
 
     file << "StudentCode,StudentName:RequestType,Status,Reason(if rejected)" << endl;
     for (auto &request : RequestsVector) {
-        cout << request.getStudent().getStudentCode() << "," << request.getStudent().getStudentName() << ":" <<
-             request.getType() << "," << request.getStatus();
         file << request.getStudent().getStudentCode() << "," << request.getStudent().getStudentName() << ":" <<
             request.getType() << "," << request.getStatus();
         if (!request.getReason().empty()) {
-            cout << "REJECTED" << endl;
             file << "," << request.getReason();
         }
         file << endl;

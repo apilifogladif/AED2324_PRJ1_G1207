@@ -111,9 +111,13 @@ void Schedule::sortStudents(const int &sort_) {
             return A.getStudentName() > B.getStudentName();
         });
     } else if (sort_ == 3) {
-        sort(sorted.begin(), sorted.end());
+        sort(sorted.begin(), sorted.end(), [](Student &A, Student &B) {
+            return A.getStudentCode() > B.getStudentCode();
+        });
     } else if (sort_ == 4) {
-        sort(sorted.rbegin(), sorted.rend());
+        sort(sorted.begin(), sorted.end(), [](Student &A, Student &B) {
+            return A.getStudentCode() < B.getStudentCode();
+        });
     }
 
     for (const Student& student: sorted) {

@@ -12,8 +12,13 @@ using namespace std;
  *
  * @mainpage AED project main.cpp
  * @section intro_sec Introduction
- * This project has the intention of creating a functional schedules manager for a university.
- * The system includes various functionalities such as modifying, searching and many others.
+ * This project was made in the context of the Algorithms and Data Structures class.
+ *
+ * The aim of this project is to create a system to manage schedules after they have been elaborated.
+ *
+ * The system must include various functionalities related to schedules, such as
+ * modifying, searching, viewing, sorting, listing, among others.
+ *
  *
  * This project was made by: Filipa Geraldes, Filipa Fidalgo and Leonor Couto.
  */
@@ -22,7 +27,7 @@ using namespace std;
 /**
  * Sort occupation of classes from a Uc (Type 1)
  *
- * Complexity: O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
+ * Complexity: O(n log n)
  *
  * @param UcCode : The uc code;
  * @param auxVector : Auxiliar vector with the class code and the number of students.
@@ -104,7 +109,7 @@ int occupationSortMenu_case1(string UcCode, vector<pair<string, int>> auxVector)
 /**
  * Sort occupation of Ucs from a Class (Type 2)
  *
- * Complexity: O(n log n) where n is the number of elements in auxVector (number of pairs in auxVector)
+ * Complexity: O(n log n)
  *
  * @param classCode : The class code;
  * @param auxVector : Auxiliar vector with the uc code and the number of student.
@@ -185,7 +190,7 @@ int occupationSortMenu_case2(string classCode, vector<pair<string, int>> auxVect
 /**
  * Sort occupation of Classes and Ucs from a year (Type 3)
  *
- * Complexity: O(n log n) where n is the number of elements in ClassesPerVectorOfYear vector
+ * Complexity: O(n log n)
  *
  * @param year : The year;
  * @param ClassesPerUcVectorOfYear : Object of the uc class and the number of students.
@@ -280,7 +285,9 @@ int occupationSortMenu_case3(int year, vector<pair<UC, int>> ClassesPerUcVectorO
 /**
  * Options of sorting the list
  *
- * Complexity: O(1)
+ * Complexity: O(max(n*m, max(k,q), r*v)) where O(n*m) is the time complexity of seeClassStudents,
+ * O(max(k,q)) is the time complexity of seeYearStudents,
+ * O(r*v) is the time complexity of seeUcStudents
  *
  * @param UcCode : The uc code;
  * @param classCode : The class code;
@@ -384,7 +391,7 @@ bool verifyStudent(const string& StudentCode) {
 /**
  * Initiates a enroll request for a student
  *
- * Complexity: O(log n) where n is the size of the set
+ * Complexity: O(n) where O(n) is the time complexity of student.findUc
  *
  * @param student : The student that made the request;
  * @return 0 quit / 1 main menu / 2 request menu.
@@ -492,7 +499,7 @@ int enrollRequest(Student student) {
 /**
  * Initiates a leave request for a student
  *
- * Complexity: O(log n) where n is the size of the set
+ * Complexity: O(n) where O(n) is the time complexity of student.findUc
  *
  * @param student : The student that made the request;
  * @return 0 quit / 1 main menu / 2 request menu.
@@ -583,7 +590,7 @@ int leaveRequest(Student student) {
 /**
  * Initiates a switch request for a student
  *
- * Complexity: O(log n) where n is the size of the set
+ * Complexity: O(n) where O(n) is the time complexity of student.findUc
  *
  * @param student : The student that made the request;
  * @return 0 quit / 1 main menu / 2 request menu.
@@ -794,7 +801,7 @@ int switchRequest(Student student) {
 /**
  * Call a function in function of the type of request chosen
  *
- * Complexity: O(log n) where n is the size of the set
+ * Complexity: O(n) where O(n) is the time complexity of enrollRequest, leaveRequest and switchRequest
  *
  * @param op : type of request chosen by the user;
  * @return 0 quit / 1 main menu / 2 request menu.
@@ -845,7 +852,7 @@ int submitRequest(int op) {
 /**
  * Menu with the options of listings
  *
- * Complexity: O(log n) where n is the size of the set
+ * Complexity: O(log n)
  *
  * @return 0 quit / 1 main menu.
  */
@@ -967,7 +974,7 @@ int listingMenu() {
 /**
  * Menu with the options of searching for the number of students
  *
- * Complexity: O(n) where n is the number of students
+ * Complexity: O(n)
  *
  * @return 0 quit / 1 main menu.
  */
@@ -1140,13 +1147,13 @@ int numbersMenu() {
     return 1;
 }
 
- /**
-  * Menu with the options of schedules
-  *
-  * Complexity: O(1)
-  *
-  * @return 0 quit / 1 main menu.
-  */
+/**
+ * Menu with the options of schedules
+ *
+ * Complexity: O(1)
+ *
+ * @return 0 quit / 1 main menu.
+ */
 int scheduleMenu() {
     int op = 0;
     cout << endl << "-----------------------------------" << endl;
@@ -1277,9 +1284,9 @@ int scheduleMenu() {
 }
 
 /**
- * Menu with the options of ocupations
+ * Menu with the options of occupations
  *
- * Complexity: O(n log n) where n is the number of elements to be sorted
+ * Complexity: O(n log n)
  *
  * @return 0 quit / 1 main menu.
  */
@@ -1419,9 +1426,9 @@ int occupationMenu() {
 }
 
  /**
-  * Menu with the options of serching of the greatest number of students
+  * Menu with the options of searching of the greatest number of students
   *
-  * Complexity: O(m) + O(n log n) where m is the total number of UCs or Classes and n is the number of elements to be sorted
+  * Complexity: O(n log n)
   *
   * @return 0 quit / 1 main menu.
   */
@@ -1561,7 +1568,7 @@ int greatestMenu() {
  /**
   * Menu with the options of submitting the request he wants
   *
-  * Complexity: O(1)
+  * Complexity: O(n)
   *
   * Options : enroll in an UC, leave an UC or switch an UC.
   *
@@ -1633,7 +1640,7 @@ int requestMenu() {
 /**
  * Prints the accepting requests
  *
- * Complexity: O(n) where n is the number of times the user enters an input
+ * Complexity: O(n)
  *
  * @return 0 quit / 1 main menu.
  */
@@ -1666,7 +1673,7 @@ int acceptedRequest() {
 /**
  * Prints the rejected requests
  *
- * Complexity: O(n) where n is the number of times the user enters an input
+ * Complexity: O(n)
  *
  * @return 0 quit / 1 main menu.
  */
@@ -1699,7 +1706,7 @@ int rejectedRequest() {
 /**
  * Prints all requests
  *
- * Complexity: O(n) where n is the number of times the user enters an input
+ * Complexity: O(n)
  *
  * @return 0 quit / 1 main menu.
  */
@@ -1732,7 +1739,8 @@ int allRequest() {
 /**
  * Undoes a request
  *
- * O(1)
+ * O(n)
+ *
  * @return 0 quit / 1 main menu.
  */
 int undoRequest() {

@@ -65,7 +65,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::retStudent
          * Returns the student with the studentCode given
          *
-         * Complexity: O(n), where n is the number of students in the vector of students
+         * Complexity: O(n)
          *
          * @param studentCode : Student code;
          * @return The student.
@@ -109,10 +109,10 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::lessonOverlap
          * Checks if there is no conflict between the student’s schedule and the new class’s schedule
          *
-         * Complexity: O(log n) + O(mk) where n is the number of lines in classes_per_uc.csv, m is the number of lessons of the first class and k is the number of lessons of the second class
+         * Complexity: O(max(q * r, n * m)), where q is the lessons in class 1, r is the lessons in class 2 and O(n*m) is the time complexity of the Schedule constructor
          *
-         * @param uc1 : one Uc;
-         * @param uc2 : another Uc;
+         * @param uc1 : one class;
+         * @param uc2 : another class;
          * @return true or false.
          */
          static bool lessonOverlap(UC uc1, UC uc2);
@@ -121,7 +121,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::requestBalance
          * Checks some conditions to secure the balance of the size os each class
          *
-         * Complexity: O(log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
+         * Complexity: O(n * m), where n is the number of Ucs and m is the number of Classes from each uc
          *
          * Requests:
          * A student cannot be in more than one class at once for a given UC;
@@ -137,7 +137,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::requestConflict
          * Checks if the resulting schedule will not conflict with the student's original schedule
          *
-         * Complexity: O(m log n + m*kl) : where m is the number of classes the student is in, n is the number of lines in classes_per_uc.csv, k is the number of lessons of the first class and l is the number of lessons of the second class
+         * Complexity: O(n)
          *
          * @param request : The request made;
          * @return true or false.
@@ -148,7 +148,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::requestMax
          * Returns true if the capacity of the class has been exceeded
          *
-         * Complexity: O(n log n), where n is the number of schedules / lines in 'classes_per_uc.csv'
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param request : The request made;
          * @return true or false.
@@ -159,7 +159,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::verifySwapRequest
          * Checks if the request has any problem (unbalanced, conflict, extends the max)
          *
-         * Complexity: O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
+         * Complexity: O(n)
          *
          * @param request : The request made.
          */
@@ -169,7 +169,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::verifyEnrollmentRequest
          * Checks if request has any problem (conflict, extends the max)
          *
-         * Complexity: O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param request : The request made.
          */
@@ -179,7 +179,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::verifyRemovalRequest
          * Does the removal requests as it does not need any problem verification
          *
-         * Complexity: O(m log n + m*kl) + O(nlog n): where m is the number of classes the student is in, n is the number of schedules / lines in 'classes_per_uc,csv', k is the number of lessons of the first class and l is the number of lessons of the second class
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param request : The request made.
          */
@@ -189,7 +189,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::changeAllRequests
          * Makes all status (and the reason) on the vector all requests
          *
-         * Complexity: O(n)
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param status : The status of the request;
          * @param request : The request made.
@@ -200,11 +200,10 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::RequestsManager
          * Finalizes the requests
          *
-         * Complexity: O(m) + O(log n * log n) + O(log k) + O(t log n + t*pl) + O(nlog n) where m is the number of classes of the student who is submitting the request,
-         * n is the number of schedules / lines in 'classes_per_uc.csv',
-         * k is the number of lines in 'students.csv'
-         * t is the number of classes the student is in
-         * p is the number of lessons of the first class and l is the number of lessons in the second class
+         * Complexity: O(max(n, m, k, q)), where n is the number of removal requests,
+         * m is the number of enrollment requests,
+         * k is the number of switch request,
+         * q is the number of requests (n + m + k)
          */
         static void RequestsManager();
 
@@ -212,7 +211,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::seeRejectedRequests
          * Prints the requests that were rejected
          *
-         * Complexity: O(m), where m is the number of rejected requests
+         * Complexity: O(n)
          */
         static void seeRejectedRequests();
 
@@ -220,7 +219,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::seeAcceptedRequests
          * Prints the requests that were accepted
          *
-         * Complexity: O(m), where m is the number of accepted requests
+         * Complexity: O(n)
          */
         static void seeAcceptedRequests();
 
@@ -228,7 +227,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::seeAllRequests
          * Prints all the requests and respective status
          *
-         * Complexity: O(m), where m is the number of all requests done
+         * Complexity: O(n)
          */
         static void seeAllRequests();
 
@@ -236,7 +235,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::seeStudentSchedule
          * Prints the schedule of a given student
          *
-         * Complexity: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
+         * Complexity: O(n)
          *
          * @param StudentCode : The student code.
          */
@@ -246,7 +245,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::seeClassSchedule
          * Prints the schedule of a given class
          *
-         * Complexity: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param ClassCode : The class code.
          */
@@ -256,7 +255,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::seeUcSchedule
          * Prints the schedule of a given Uc
          *
-         * Complexity: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student's schedule and k is the days of the week
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param UcCode : The uc code;
          */
@@ -266,7 +265,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::seeClassStudents
          * Prints the students of a given class
          *
-         * Complexity: O(n) + O(q log q) where n is the number of lessons and students associated with that Class of that UC, q is the number of students in that Class of that UC
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param UcClass : The uc class;
          * @param order_ : Way to sort the students of the class.
@@ -277,7 +276,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::seeUcStudents
          * Prints the students of a given Uc
          *
-         * Complexity: O(n) + O(q log q) where n is the number of lessons and students associated with that UC code, q is the number of students in that UC
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param UcCode : The uc code;
          * @param order_ : Way to sort the students of the Uc.
@@ -288,7 +287,8 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::seeYearStudents
          * Prints the students of a given year
          *
-         * Complexity: O(n) + O(mk) + O(m) + O(m log m) where n is the number of students in students_classes.csv, m is the students and k is the UCs of each student
+         * Complexity: O(max(n, m)), where n is the number of students,
+         * m i the number of students in the given year
          *
          * @param year: The year of the students;
          * @param sort : Way to sort the students of the Uc;
@@ -299,7 +299,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::numberClassStudents
          * Returns the number of students of a given Class and Uc
          *
-         * Complexity: O(m + l) + O(1) where m is the number of lessons and l is the number of student in a Class of an UC
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param UcClass : The uc class;
          * @return The number of students of a given class and uc.
@@ -310,7 +310,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::numberUcStudents
          * Returns the number of students of a given Class
          *
-         * Complexity: O(m + l) where m is the number of lessons and l is the number of student in an UC
+         * Complexity: O(n*m), where O(n*m) is the time complexity of the Schedule constructor
          *
          * @param UcCode : The uc code;
          * @return The number of students of a given class.
@@ -321,7 +321,7 @@ class AuxiliarFunctions {
          * @brief AuxiliarFunctions::numberYearStudents
          * Returns the number of students of a given Year
          *
-         * Complexity: O(n) where n is the total number of students
+         * Complexity: O(n)
          *
          * @param Year : The year of the students;
          * @return The number of students of a given year.

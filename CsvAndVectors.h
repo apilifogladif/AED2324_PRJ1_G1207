@@ -27,7 +27,7 @@ class CsvAndVectors {
          * @brief CsvAndVectors::CsvAndVectors
          * Class constructor
          *
-         * Complexity: O(n)
+         * Complexity: O(1)
          */
         CsvAndVectors();
 
@@ -70,7 +70,7 @@ class CsvAndVectors {
          * @brief CsvAndVectors::createClassesAndUcSet
          * Creates a set with the classes and uc's codes
          *
-         * Complexity: O(n) where n is the number of lines in the 'classes_per_uc.csv'
+         * Complexity: O(n)
          */
         static void createClassesAndUcSet();
 
@@ -78,7 +78,7 @@ class CsvAndVectors {
          * @brief CsvAndVectors::createStudentsSet
          * Creates a set with the students codes
          *
-         * Complexity: O(n) where n is the number of lines in the 'students_classes.csv'
+         * Complexity: O(n)
          */
         static void createStudentsSet();
 
@@ -86,7 +86,7 @@ class CsvAndVectors {
          * @brief CsvAndVectors::createLessonsVector
          * Creates a vector with the lessons
          *
-         * Complexity: O(n) where n is the number of lines in the 'classes.csv'
+         * Complexity: O(n)
          */
         static void createLessonsVector();
 
@@ -94,7 +94,7 @@ class CsvAndVectors {
          * @brief CsvAndVectors::createRequestsVector
          * Creates a vector with the requests
          *
-         * Complexity: O(n) where n is the number of lines in the 'requests.csv'
+         * Complexity: O(n)
          */
         static void createRequestsVector();
 
@@ -102,7 +102,7 @@ class CsvAndVectors {
          * @brief CsvAndVectors::createClassesPerUcVector
          * Creates a vector with the classes and uc's
          *
-         * Complexity: O(n) where n is the number of lines in the 'classes_per_uc.csv'
+         * Complexity: O(n)
          */
         static void createClassesPerUcVector();
 
@@ -110,7 +110,7 @@ class CsvAndVectors {
          * @brief CsvAndVectors::createStudentsVector
          * Creates a vector with the students
          *
-         * Complexity: O(n) where n is the number of lines in the 'students_classes.csv'
+         * Complexity: O(n)
          */
         static void createStudentsVector();
 
@@ -118,7 +118,7 @@ class CsvAndVectors {
          * @brief CsvAndVectors::setFromStudentsVector
          * Updates students_classes.csv with the new information
          *
-         * Complexity: O(n*k) where n is the number of Student objects in StudentsVector and k is the average number of UC objects associated with each Student
+         * Complexity: O(n*m)
          */
         static void setFromStudentsVector();
 
@@ -126,7 +126,7 @@ class CsvAndVectors {
          * @brief CsvAndVectors::setFromRequestVector
          * Updates requests.csv with the new information
          *
-         * Complexity: O(n) where n is the number of Request objects in RequestVectors
+         * Complexity: O(n)
          */
         static void setFromRequestVector();
 };

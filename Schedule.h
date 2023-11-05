@@ -36,7 +36,7 @@ class Schedule {
          * @brief Schedule::Schedule
          * Class constructor
          *
-         * Complexity: O(1)
+         * Complexity: O(n*m) where n*m is the complexity time of loadStudents()
          *
          * @param ucCLass: Class and Uc of the schedule.
          */
@@ -46,7 +46,7 @@ class Schedule {
          * @brief Schedule::Schedule
          * Class constructor
          *
-         * Complexity: O(1)
+         * Complexity: O(n*m) where n*m is the complexity time of loadLessonsStudent()
          *
          * @param StudentCode: The student code.
          */
@@ -56,7 +56,7 @@ class Schedule {
          * @brief Schedule::loadLessonsUcClass
          * Set the private set lessons to the lessons of the UcClass, Uc or Class
          *
-         * Complexity: O(n)  where n is the number of lessons in LessonsVector
+         * Complexity: O(n)
          */
         void loadLessonsUcClass();
 
@@ -64,7 +64,7 @@ class Schedule {
          * @brief Schedule::loadLessonsStudent
          * Set the private set lessons to the lessons of the Student
          *
-         * Complexity: O(n*m)  where n is the number of Ucs of the Student and m is the number of lessons in LessonsVector
+         * Complexity: O(n*m)
          */
         void loadLessonsStudent();
 
@@ -72,7 +72,7 @@ class Schedule {
          * @brief Schedule::loadStudents
          * Set the private set students to the students of the UcClass, Uc or Class
          *
-         * Complexity: O(n*m)  where n is the number of students in StudentsVector and m is the number of Ucs of each student
+         * Complexity: O(n*m)
          */
         void loadStudents();
 
@@ -90,7 +90,7 @@ class Schedule {
          * @brief Schedule::drawSchedule
          * Prints the schedule
          *
-         * Complexity: O(n) where n is the number of lessons in the lessons set
+         * Complexity: O(n*m)
          */
         void drawSchedule() const;
 
@@ -108,7 +108,7 @@ class Schedule {
          * @brief Schedule::getStudents
          * Get students of a class
          *
-         * Complexity: O(n)
+         * Complexity: O(1)
          *
          * @return The students.
          */
@@ -129,7 +129,7 @@ class Schedule {
          * @brief Schedule::sortStudents
          * Sorts the students and prints them in the order that we asked for
          *
-         * Complexity: O(n log n) where n is the number of students in the vector
+         * Complexity: O(n log n)
          *
          * @param sort_ : Way to sort the students of the Uc.
          */

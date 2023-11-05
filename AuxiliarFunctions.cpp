@@ -19,7 +19,7 @@ Student AuxiliarFunctions::retStudent(const string &studentCode) {
             return student;
         }
     }
-    return {};
+    return Student();
 }
 
 void AuxiliarFunctions::concludeEnrollment(const Student &student, const UC &UcClass) {
@@ -56,15 +56,14 @@ bool AuxiliarFunctions::lessonOverlap(UC uc1, UC uc2){
 }
 
 bool AuxiliarFunctions::requestBalance(Request &request) {
-    AuxiliarFunctions func;
     string UcCode = request.getUC().getUcCode();
-    int new_oc = func.numberClassStudents(request.getUC());
+    int new_oc = AuxiliarFunctions::numberClassStudents(request.getUC());
     int aux;
 
-    for (pair<string, set<string>> p : CsvAndVectors::ClassesPerUcVector) {
+    for (const pair<string, set<string>>& p : CsvAndVectors::ClassesPerUcVector) {
         if (p.first == UcCode) {
-            for (string Class : p.second) {
-                aux = func.numberClassStudents(UC(UcCode, Class));
+            for (const string& Class : p.second) {
+                aux = AuxiliarFunctions::numberClassStudents(UC(UcCode, Class));
                 if (new_oc - aux > 4) return false;
             }
         }
@@ -77,9 +76,7 @@ bool AuxiliarFunctions::requestConflict(Request &request) {
     Student student = request.getStudent();
     vector<UC> studentUCs = student.getUCs();
     for (UC& uc_ : studentUCs) {
-        cout << request.getoldUC().getUcCode() << endl;
         if (!(uc_ == request.getoldUC()) && lessonOverlap(uc_, uc)) {
-            cout << uc_.getUcCode() << " && " << uc.getUcCode() << endl;
             return true;
         }
     }
@@ -91,20 +88,6 @@ bool AuxiliarFunctions::requestMax(Request &request) {
     Schedule schedule = Schedule(UC(request.getUC()));
     if (schedule.getStudents().size() > Cap) return true;
     return false;
-}
-
-void AuxiliarFunctions::changeAllRequests(bool status, Request request) {
-    for (int i = 0; i < allRequests.size(); i++) {
-        if (request.getStudent() == allRequests[i].getStudent() && request.getUC() == allRequests[i].getUC() && request.getType() == allRequests[i].getType() &&
-                allRequests[i].getStatus() == "") {
-            if (status) allRequests[i].setStatus("Accepted");
-            else {
-                allRequests[i].setStatus("Rejected");
-                allRequests[i].setReason(request.getReason());
-            }
-            break;
-        }
-    }
 }
 
 void AuxiliarFunctions::verifySwapRequest(Request &request){
@@ -197,6 +180,20 @@ void AuxiliarFunctions::verifyRemovalRequest(Request &request) {
         status = true;
     }
     changeAllRequests(status, request);
+}
+
+void AuxiliarFunctions::changeAllRequests(bool status, Request request) {
+    for (int i = 0; i < allRequests.size(); i++) {
+        if (request.getStudent() == allRequests[i].getStudent() && request.getUC() == allRequests[i].getUC() && request.getType() == allRequests[i].getType() &&
+            allRequests[i].getStatus() == "") {
+            if (status) allRequests[i].setStatus("Accepted");
+            else {
+                allRequests[i].setStatus("Rejected");
+                allRequests[i].setReason(request.getReason());
+            }
+            break;
+        }
+    }
 }
 
 void AuxiliarFunctions::RequestsManager() {

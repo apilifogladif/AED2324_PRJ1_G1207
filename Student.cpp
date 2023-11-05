@@ -1,6 +1,5 @@
 #include "Student.h"
 #include <algorithm>
-#include <iostream>
 #include "CsvAndVectors.h"
 
 Student::Student() {

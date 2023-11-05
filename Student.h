@@ -85,6 +85,8 @@ class Student {
          * @brief Student::setUCs
          * Sets a value for ucs
          *
+         * Complexity: O(1)
+         *
          * @param ucs_ : The value to set to ucs.
          */
         void setUCs(vector<UC> ucs_);
@@ -93,7 +95,7 @@ class Student {
          * @brief Student::addUC
          * Adds a uc to the student lessons
          *
-         * Complexity: O(log n) + O(n) where n is the number of students int the CsvAndVectors::StudentsVector
+         * Complexity: O(log n)
          *
          * @param uc : The uc.
          */
@@ -103,7 +105,7 @@ class Student {
          * @brief Student::removeUC
          * Adds a uc to the student lessons
          *
-         * Complexity: O(log n) + O(n) where n is the number of students int the CSVInfo.StudentsVector
+         * Complexity: O(n)
          *
          * @param uc : The uc.
          */
@@ -113,9 +115,9 @@ class Student {
          * @brief Student::binarySearchCsvStudentVector
          * Binary search to search the position of a student in the StudentsVector from Csv file
          *
-         * Complexity: O(n log n) where n is the number of students in the CSVInfo.StudentsVector
+         * Complexity: O(log n)
          *
-         * @param left : Inicial index of the analyzed vector;
+         * @param left : Initial index of the analyzed vector;
          * @param right : Final index of the analyzed vector;
          * @return Index of the the student we are searching for.
          */
@@ -125,7 +127,7 @@ class Student {
          * @brief Student::findUc
          * Returns the uc with the given uc code
          *
-         * Complexity: O(n) where n is the number of UC objects in the ucs vector
+         * Complexity: O(n)
          *
          * @param UcCode : The uc code;
          * @return The uc.

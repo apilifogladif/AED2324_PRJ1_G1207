@@ -122,17 +122,6 @@ class Student {
         int binarySearchCsvStudentVector(unsigned long left, unsigned long right);
 
         /**
-         * @brief Student::changeUC
-         * Changes the uc of the student
-         *
-         * Complexity: O(1)
-         *
-         * @param uc : The uc;
-         * @return New uc.
-         */
-        UC changeUC(const UC &uc);
-
-        /**
          * @brief Student::findUc
          * Returns the uc with the given uc code
          *
@@ -142,17 +131,6 @@ class Student {
          * @return The uc.
          */
         UC findUc(const string& UcCode) const;
-
-        /**
-         * @brief Student::Enrolled
-         * Checks if a student is enrolled in a uc with UcCode
-         *
-         * Complexity: O(n) where n is the number of UC objects in the ucs vector
-         *
-         * @paramt UcCode : The uc code;
-         * @return true or false.
-         */
-        bool Enrolled(const string& UcCode);
 
         /**
          * @brief Student::operator<
@@ -175,14 +153,6 @@ class Student {
          * @return true or false.
          */
         bool operator==(const Student &s) const;
-
-        /**
-         * @brief Student::printUcAndClass
-         * Prints the uc code and the uc class
-         *
-         * Complexity: O(n) where n is the number of UC objects in the ucs vector
-         */
-        void printUcAndClass() const;
 };
 
 #endif // AED2324_PRJ1_G1207_STUDENT_H

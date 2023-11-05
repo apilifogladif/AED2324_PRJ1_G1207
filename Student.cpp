@@ -26,7 +26,6 @@ string Student::getStudentName() const {
     return this->studentName;
 }
 
-
 vector<UC> Student::getUCs() const {
     return this->ucs;
 }
@@ -77,33 +76,13 @@ int Student::binarySearchCsvStudentVector(unsigned long left, unsigned long righ
     return binarySearchCsvStudentVector(mid + 1, right);
 }
 
-UC Student::changeUC(const UC &uc) {
-    UC old_uc = this->findUc(uc.getUcCode());
-    if (!(old_uc == UC())) {
-        this->removeUC(old_uc);
-        this->addUC(uc);
-        return old_uc;
-    }
-    return UC();
-}
-
 UC Student::findUc(const string& UcCode) const{
     for (UC uc: this->ucs) {
-        cout << uc.getUcCode() << endl;
         if (uc.getUcCode() == UcCode) {
             return uc;
         }
     }
     return UC();
-}
-
-bool Student::Enrolled(const string& UcCode) {
-    for (UC uc: this->ucs) {
-        if (uc.getUcCode() == UcCode) {
-            return true;
-        }
-    }
-    return false;
 }
 
 bool Student::operator<(const Student &s) const {
@@ -112,10 +91,4 @@ bool Student::operator<(const Student &s) const {
 
 bool Student::operator==(const Student &s) const {
     return this->studentCode == s.getStudentCode();
-}
-
-void Student::printUcAndClass() const {
-    for (auto uc: ucs) {
-        cout << uc.getUcCode() << " " << uc.getClassCode() << endl;
-    }
 }

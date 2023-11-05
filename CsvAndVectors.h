@@ -114,8 +114,6 @@ class CsvAndVectors {
          */
         static void createStudentsVector();
 
-        // funções opostas, ou seja, passar as alterações do vetor para os ficheiros csv
-
         /**
          * @brief CsvAndVectors::setFromStudentsVector
          * Updates students_classes.csv with the new information

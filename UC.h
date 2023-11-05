@@ -53,26 +53,6 @@ class UC {
         string getClassCode() const;
 
         /**
-         * @brief UC::setUcCode
-         * Sets a value to the uc code
-         *
-         * Complexity: O(1)
-         *
-         * @param code : Value to set the uc code.
-         */
-        void setUcCode(string code);
-
-        /**
-         * @brief UC::setClassCode
-         * Sets a value to the class code
-         *
-         * Complexity: O(1)
-         *
-         * @param code : Value to set the class code.
-         */
-        void setClassCode(string code);
-
-        /**
          * @brief UC::operator==
          * Operator to compare the similarity between two uc's
          *

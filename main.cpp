@@ -1503,7 +1503,7 @@ int greatestMenu() {
                 }
             }
             cout << "The Classes with the greatest number of students: " << endl;
-            cout << "UcCode; ClassCode";
+            cout << "UcCode; ClassCode" << endl;
             for (int i = 0; i < max.size(); i++) {
                 cout << MAXUC[i].getClassCode() << "; " << MAXUC[i].getUcCode() <<
                      " (" << max[i] << " students)" << endl;
@@ -1893,15 +1893,6 @@ int main() {
     CsvAndVectors::createLessonsVector();
     CsvAndVectors::createStudentsSet();
     CsvAndVectors::createClassesAndUcSet();
-
-    //cout << CsvAndVectors::StudentsVector.size() << endl;
-    /*for (auto student : CsvAndVectors::StudentsVector) {
-        cout << student.getUCs().size() << endl;
-        for (auto uc: student.getUCs()) {
-            cout << student.getStudentCode() << " " << uc.getUcCode() << " " << uc.getClassCode()
-                 << endl;
-        }
-    }*/
 
     while (true) {
         cout << "Write the number of what you want to do: ";

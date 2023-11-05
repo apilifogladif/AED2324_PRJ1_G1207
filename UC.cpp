@@ -20,14 +20,6 @@ string UC::getClassCode() const{
     return this->ClassCode;
 }
 
-void UC::setUcCode(string code){
-    this->UcCode = std::move(code);
-}
-
-void UC::setClassCode(string code){
-    this->ClassCode = std::move(code);
-}
-
 bool UC::hasSameUcCode(UC &uc_) {
     return this->UcCode == uc_.UcCode;
 }

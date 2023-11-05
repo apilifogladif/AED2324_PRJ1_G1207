@@ -1,0 +1,575 @@
+\doxysection{Auxiliar\+Functions Class Reference}
+\hypertarget{class_auxiliar_functions}{}\label{class_auxiliar_functions}\index{AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_auxiliar_functions_a1988db96ad6f30031e482fcc34a05100}{Auxiliar\+Functions}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a1988db96ad6f30031e482fcc34a05100}{Auxiliar\+Functions\+::\+Auxiliar\+Functions} Class constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_student}{Student}} \mbox{\hyperlink{class_auxiliar_functions_a941a85a909d043f2835c61f3bad296ad}{ret\+Student}} (const string \&student\+Code)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a941a85a909d043f2835c61f3bad296ad}{Auxiliar\+Functions\+::ret\+Student} Returns the student with the student\+Code given. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_ad01f3ceb1a3e43efe890eddc00279d20}{conclude\+Enrollment}} (const \mbox{\hyperlink{class_student}{Student}} \&student, const \mbox{\hyperlink{class_u_c}{UC}} \&Uc\+Class)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_ad01f3ceb1a3e43efe890eddc00279d20}{Auxiliar\+Functions\+::conclude\+Enrollment} Concludes the enrollment request by adding that request to the queue of enrollment\+Requests. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_ae04d1ea36cc9e4f3c6e2c01f8bfebd5a}{conclude\+Removal}} (const \mbox{\hyperlink{class_student}{Student}} \&student, const \mbox{\hyperlink{class_u_c}{UC}} \&Uc\+Class)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_ae04d1ea36cc9e4f3c6e2c01f8bfebd5a}{Auxiliar\+Functions\+::conclude\+Removal} Concludes the removal request by adding that request to the queue of removal\+Requests. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_a6773d739493b9a5a1729e0a8d3b01311}{conclude\+Switch}} (const \mbox{\hyperlink{class_student}{Student}} \&student, const \mbox{\hyperlink{class_u_c}{UC}} \&old\+Uc, const \mbox{\hyperlink{class_u_c}{UC}} \&new\+Uc)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a6773d739493b9a5a1729e0a8d3b01311}{Auxiliar\+Functions\+::conclude\+Switch} Concludes the switch request by adding that request to the queue of switch\+Requests. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_auxiliar_functions_a48eac445f22f59d80edee5a3e13dde52}{lesson\+Overlap}} (\mbox{\hyperlink{class_u_c}{UC}} uc1, \mbox{\hyperlink{class_u_c}{UC}} uc2)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a48eac445f22f59d80edee5a3e13dde52}{Auxiliar\+Functions\+::lesson\+Overlap} Checks if there is no conflict between the student’s schedule and the new class’s schedule. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_auxiliar_functions_ab962e25ab50654e847d2464f4a73f4e9}{request\+Balance}} (\mbox{\hyperlink{class_request}{Request}} \&request)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_ab962e25ab50654e847d2464f4a73f4e9}{Auxiliar\+Functions\+::request\+Balance} Checks some conditions to secure the balance of the size os each class. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_auxiliar_functions_a255ded7c9fc0cfd4c1ed3a2830e5732d}{request\+Conflict}} (\mbox{\hyperlink{class_request}{Request}} \&request)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a255ded7c9fc0cfd4c1ed3a2830e5732d}{Auxiliar\+Functions\+::request\+Conflict} Checks if the resulting schedule will not conflict with the student\textquotesingle{}s original schedule. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_auxiliar_functions_adbe1f87216348550efc4f0bc91b459be}{request\+Max}} (\mbox{\hyperlink{class_request}{Request}} \&request)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_adbe1f87216348550efc4f0bc91b459be}{Auxiliar\+Functions\+::request\+Max} Returns true if the capacity of the class has been exceeded. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_abd323a2871ec673a82465ce08c98a941}{verify\+Swap\+Request}} (\mbox{\hyperlink{class_request}{Request}} \&request)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_abd323a2871ec673a82465ce08c98a941}{Auxiliar\+Functions\+::verify\+Swap\+Request} Checks if the request has any problem (unbalanced, conflict, extends the max) \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_a169b90d8cdd6c07c668b5a4b0766cce4}{verify\+Enrollment\+Request}} (\mbox{\hyperlink{class_request}{Request}} \&request)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a169b90d8cdd6c07c668b5a4b0766cce4}{Auxiliar\+Functions\+::verify\+Enrollment\+Request} Checks if request has any problem (conflict, extends the max) \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_aab3c0a2930902eedd2f837c92e8c37ed}{verify\+Removal\+Request}} (\mbox{\hyperlink{class_request}{Request}} \&request)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_aab3c0a2930902eedd2f837c92e8c37ed}{Auxiliar\+Functions\+::verify\+Removal\+Request} Does the removal requests as it does not need any problem verification. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_ac109436248d7c49fc7caad33d8ff6030}{change\+All\+Requests}} (bool status, \mbox{\hyperlink{class_request}{Request}} request)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_ac109436248d7c49fc7caad33d8ff6030}{Auxiliar\+Functions\+::change\+All\+Requests} Makes all status (and the reason) on the vector all requests. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_a5cc725cee840ed6add85c11460a8e230}{Requests\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a5cc725cee840ed6add85c11460a8e230}{Auxiliar\+Functions\+::\+Requests\+Manager} Finalizes the requests. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_aaefad329e9f3c2723e100bd7cdbb47b7}{see\+Rejected\+Requests}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_aaefad329e9f3c2723e100bd7cdbb47b7}{Auxiliar\+Functions\+::see\+Rejected\+Requests} Prints the requests that were rejected. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_a14cba61f97ef13f8b8f137586fbab5e3}{see\+Accepted\+Requests}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a14cba61f97ef13f8b8f137586fbab5e3}{Auxiliar\+Functions\+::see\+Accepted\+Requests} Prints the requests that were accepted. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_a228bb82e67e43876ff297df5d2683fe7}{see\+All\+Requests}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a228bb82e67e43876ff297df5d2683fe7}{Auxiliar\+Functions\+::see\+All\+Requests} Prints all the requests and respective status. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_a53220fdf04542cb0d85fbe89927ae073}{see\+Student\+Schedule}} (const string \&Student\+Code)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a53220fdf04542cb0d85fbe89927ae073}{Auxiliar\+Functions\+::see\+Student\+Schedule} Prints the schedule of a given student. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_abfdb58bb73c771c4ff2e3a09c890250a}{see\+Class\+Schedule}} (const string \&Class\+Code)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_abfdb58bb73c771c4ff2e3a09c890250a}{Auxiliar\+Functions\+::see\+Class\+Schedule} Prints the schedule of a given class. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_ac20cbf2d0ada924b4a8b01002f909caf}{see\+Uc\+Schedule}} (const string \&Uc\+Code)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_ac20cbf2d0ada924b4a8b01002f909caf}{Auxiliar\+Functions\+::see\+Uc\+Schedule} Prints the schedule of a given Uc. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_ad03fdffce9568cf003fddf63aae2b7b3}{see\+Class\+Students}} (const \mbox{\hyperlink{class_u_c}{UC}} \&Uc\+Class, const int \&order\+\_\+)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_ad03fdffce9568cf003fddf63aae2b7b3}{Auxiliar\+Functions\+::see\+Class\+Students} Prints the students of a given class. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_ac1172cb35eb6d6489506dfc8342a1778}{see\+Uc\+Students}} (const string \&Uc\+Code, const int \&sort\+\_\+)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_ac1172cb35eb6d6489506dfc8342a1778}{Auxiliar\+Functions\+::see\+Uc\+Students} Prints the students of a given Uc. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_auxiliar_functions_a81c9fe20cee99b5ee6c1799389e35df8}{see\+Year\+Students}} (int year, int sort)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a81c9fe20cee99b5ee6c1799389e35df8}{Auxiliar\+Functions\+::see\+Year\+Students} Prints the students of a given year. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_auxiliar_functions_a0d024b7d1eac9c388f9fcccecdb2f8bc}{number\+Class\+Students}} (const \mbox{\hyperlink{class_u_c}{UC}} \&Uc\+Class)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_a0d024b7d1eac9c388f9fcccecdb2f8bc}{Auxiliar\+Functions\+::number\+Class\+Students} Returns the number of students of a given Class and Uc. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_auxiliar_functions_ad27cd4879ac619440c6b559b1b75e1fe}{number\+Uc\+Students}} (const string \&Uc\+Code)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_ad27cd4879ac619440c6b559b1b75e1fe}{Auxiliar\+Functions\+::number\+Uc\+Students} Returns the number of students of a given Class. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_auxiliar_functions_aa127c5714056d2c3ed526190cec23ac2}{number\+Year\+Students}} (char \&Year)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_auxiliar_functions_aa127c5714056d2c3ed526190cec23ac2}{Auxiliar\+Functions\+::number\+Year\+Students} Returns the number of students of a given Year. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ \mbox{\hyperlink{class_auxiliar_functions_a45862768876783eb2d82c5d56ce39d5d}{enrollment\+Requests}}
+\item 
+static queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ \mbox{\hyperlink{class_auxiliar_functions_ad4c2a8fa6297c1f461fd437aa6d4ecf9}{removal\+Requests}}
+\item 
+static queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ \mbox{\hyperlink{class_auxiliar_functions_a25b39b66d7e7ec432ea70410de1e6004}{switch\+Requests}}
+\item 
+static vector$<$ \mbox{\hyperlink{class_request}{Request}} $>$ \mbox{\hyperlink{class_auxiliar_functions_aea3a989071de55faaebbae584978e8e8}{rejected\+Requests}}
+\item 
+static vector$<$ \mbox{\hyperlink{class_request}{Request}} $>$ \mbox{\hyperlink{class_auxiliar_functions_a37548cc08646a755a25fb0580769876a}{accepted\+Requests}}
+\item 
+static vector$<$ \mbox{\hyperlink{class_request}{Request}} $>$ \mbox{\hyperlink{class_auxiliar_functions_ad40e02df2803ff8ee0660b0da78d8a7c}{all\+Requests}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_auxiliar_functions_a1988db96ad6f30031e482fcc34a05100}\label{class_auxiliar_functions_a1988db96ad6f30031e482fcc34a05100} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!AuxiliarFunctions@{AuxiliarFunctions}}
+\index{AuxiliarFunctions@{AuxiliarFunctions}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{AuxiliarFunctions()}{AuxiliarFunctions()}}
+{\footnotesize\ttfamily Auxiliar\+Functions\+::\+Auxiliar\+Functions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxylink{class_auxiliar_functions_a1988db96ad6f30031e482fcc34a05100}{Auxiliar\+Functions\+::\+Auxiliar\+Functions} Class constructor. 
+
+Complexity\+: O(1) 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_auxiliar_functions_ac109436248d7c49fc7caad33d8ff6030}\label{class_auxiliar_functions_ac109436248d7c49fc7caad33d8ff6030} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!changeAllRequests@{changeAllRequests}}
+\index{changeAllRequests@{changeAllRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{changeAllRequests()}{changeAllRequests()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::change\+All\+Requests (\begin{DoxyParamCaption}\item[{bool}]{status,  }\item[{\mbox{\hyperlink{class_request}{Request}}}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_ac109436248d7c49fc7caad33d8ff6030}{Auxiliar\+Functions\+::change\+All\+Requests} Makes all status (and the reason) on the vector all requests. 
+
+Complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & \+: The status of the request; \\
+\hline
+{\em request} & \+: The request made. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_ad01f3ceb1a3e43efe890eddc00279d20}\label{class_auxiliar_functions_ad01f3ceb1a3e43efe890eddc00279d20} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!concludeEnrollment@{concludeEnrollment}}
+\index{concludeEnrollment@{concludeEnrollment}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{concludeEnrollment()}{concludeEnrollment()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::conclude\+Enrollment (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{student,  }\item[{const \mbox{\hyperlink{class_u_c}{UC}} \&}]{Uc\+Class }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_ad01f3ceb1a3e43efe890eddc00279d20}{Auxiliar\+Functions\+::conclude\+Enrollment} Concludes the enrollment request by adding that request to the queue of enrollment\+Requests. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em student} & \+: The student who wants to enroll; \\
+\hline
+{\em Uc\+Class} & \+: Uc class that the student given wants to enroll. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_ae04d1ea36cc9e4f3c6e2c01f8bfebd5a}\label{class_auxiliar_functions_ae04d1ea36cc9e4f3c6e2c01f8bfebd5a} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!concludeRemoval@{concludeRemoval}}
+\index{concludeRemoval@{concludeRemoval}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{concludeRemoval()}{concludeRemoval()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::conclude\+Removal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{student,  }\item[{const \mbox{\hyperlink{class_u_c}{UC}} \&}]{Uc\+Class }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_ae04d1ea36cc9e4f3c6e2c01f8bfebd5a}{Auxiliar\+Functions\+::conclude\+Removal} Concludes the removal request by adding that request to the queue of removal\+Requests. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em student} & \+: info of the student who wants to leave; \\
+\hline
+{\em Uc\+Class} & \+: Uc class that the student given wants to leave. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_a6773d739493b9a5a1729e0a8d3b01311}\label{class_auxiliar_functions_a6773d739493b9a5a1729e0a8d3b01311} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!concludeSwitch@{concludeSwitch}}
+\index{concludeSwitch@{concludeSwitch}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{concludeSwitch()}{concludeSwitch()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::conclude\+Switch (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{student,  }\item[{const \mbox{\hyperlink{class_u_c}{UC}} \&}]{old\+Uc,  }\item[{const \mbox{\hyperlink{class_u_c}{UC}} \&}]{new\+Uc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a6773d739493b9a5a1729e0a8d3b01311}{Auxiliar\+Functions\+::conclude\+Switch} Concludes the switch request by adding that request to the queue of switch\+Requests. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em student} & \+: info of the student who wants to switch; \\
+\hline
+{\em Uc\+Class} & \+: Uc class that the student given wants to switch. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_a48eac445f22f59d80edee5a3e13dde52}\label{class_auxiliar_functions_a48eac445f22f59d80edee5a3e13dde52} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!lessonOverlap@{lessonOverlap}}
+\index{lessonOverlap@{lessonOverlap}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{lessonOverlap()}{lessonOverlap()}}
+{\footnotesize\ttfamily bool Auxiliar\+Functions\+::lesson\+Overlap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_u_c}{UC}}}]{uc1,  }\item[{\mbox{\hyperlink{class_u_c}{UC}}}]{uc2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a48eac445f22f59d80edee5a3e13dde52}{Auxiliar\+Functions\+::lesson\+Overlap} Checks if there is no conflict between the student’s schedule and the new class’s schedule. 
+
+Complexity\+: O(log n) + O(mk) where n is the number of lines in classes\+\_\+per\+\_\+uc.\+csv, m is the number of lessons of the first class and k is the number of lessons of the second class
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc1} & \+: one Uc; \\
+\hline
+{\em uc2} & \+: another Uc; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_a0d024b7d1eac9c388f9fcccecdb2f8bc}\label{class_auxiliar_functions_a0d024b7d1eac9c388f9fcccecdb2f8bc} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!numberClassStudents@{numberClassStudents}}
+\index{numberClassStudents@{numberClassStudents}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{numberClassStudents()}{numberClassStudents()}}
+{\footnotesize\ttfamily int Auxiliar\+Functions\+::number\+Class\+Students (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_u_c}{UC}} \&}]{Uc\+Class }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a0d024b7d1eac9c388f9fcccecdb2f8bc}{Auxiliar\+Functions\+::number\+Class\+Students} Returns the number of students of a given Class and Uc. 
+
+Complexity\+: O(m + l) + O(1) where m is the number of lessons and l is the number of student in a Class of an \doxylink{class_u_c}{UC}
+
+
+\begin{DoxyParams}{Parameters}
+{\em Uc\+Class} & \+: The uc class; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of students of a given class and uc. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_ad27cd4879ac619440c6b559b1b75e1fe}\label{class_auxiliar_functions_ad27cd4879ac619440c6b559b1b75e1fe} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!numberUcStudents@{numberUcStudents}}
+\index{numberUcStudents@{numberUcStudents}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{numberUcStudents()}{numberUcStudents()}}
+{\footnotesize\ttfamily int Auxiliar\+Functions\+::number\+Uc\+Students (\begin{DoxyParamCaption}\item[{const string \&}]{Uc\+Code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_ad27cd4879ac619440c6b559b1b75e1fe}{Auxiliar\+Functions\+::number\+Uc\+Students} Returns the number of students of a given Class. 
+
+Complexity\+: O(m + l) where m is the number of lessons and l is the number of student in an \doxylink{class_u_c}{UC}
+
+
+\begin{DoxyParams}{Parameters}
+{\em Uc\+Code} & \+: The uc code; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of students of a given class. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_aa127c5714056d2c3ed526190cec23ac2}\label{class_auxiliar_functions_aa127c5714056d2c3ed526190cec23ac2} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!numberYearStudents@{numberYearStudents}}
+\index{numberYearStudents@{numberYearStudents}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{numberYearStudents()}{numberYearStudents()}}
+{\footnotesize\ttfamily int Auxiliar\+Functions\+::number\+Year\+Students (\begin{DoxyParamCaption}\item[{char \&}]{Year }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_aa127c5714056d2c3ed526190cec23ac2}{Auxiliar\+Functions\+::number\+Year\+Students} Returns the number of students of a given Year. 
+
+Complexity\+: O(n) where n is the total number of students
+
+
+\begin{DoxyParams}{Parameters}
+{\em Year} & \+: The year of the students; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of students of a given year. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_ab962e25ab50654e847d2464f4a73f4e9}\label{class_auxiliar_functions_ab962e25ab50654e847d2464f4a73f4e9} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!requestBalance@{requestBalance}}
+\index{requestBalance@{requestBalance}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{requestBalance()}{requestBalance()}}
+{\footnotesize\ttfamily bool Auxiliar\+Functions\+::request\+Balance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_request}{Request}} \&}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_ab962e25ab50654e847d2464f4a73f4e9}{Auxiliar\+Functions\+::request\+Balance} Checks some conditions to secure the balance of the size os each class. 
+
+Complexity\+: O(log n), where n is the number of schedules / lines in \textquotesingle{}classes\+\_\+per\+\_\+uc.\+csv\textquotesingle{}
+
+Requests\+: A student cannot be in more than one class at once for a given \doxylink{class_u_c}{UC}; A class can only accept a new student if its capacity has not been exceeded (consider that there is a maximum capacity Cap for classes); A class can only accept a new student if the balance between class occupation is not disturbed (the balance of class occupation is maintained when the difference between the number of students in any class is less than or equal to 4).
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & \+: The request made; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_a255ded7c9fc0cfd4c1ed3a2830e5732d}\label{class_auxiliar_functions_a255ded7c9fc0cfd4c1ed3a2830e5732d} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!requestConflict@{requestConflict}}
+\index{requestConflict@{requestConflict}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{requestConflict()}{requestConflict()}}
+{\footnotesize\ttfamily bool Auxiliar\+Functions\+::request\+Conflict (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_request}{Request}} \&}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a255ded7c9fc0cfd4c1ed3a2830e5732d}{Auxiliar\+Functions\+::request\+Conflict} Checks if the resulting schedule will not conflict with the student\textquotesingle{}s original schedule. 
+
+Complexity\+: O(m log n + m\texorpdfstring{$\ast$}{*}kl) \+: where m is the number of classes the student is in, n is the number of lines in classes\+\_\+per\+\_\+uc.\+csv, k is the number of lessons of the first class and l is the number of lessons of the second class
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & \+: The request made; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_adbe1f87216348550efc4f0bc91b459be}\label{class_auxiliar_functions_adbe1f87216348550efc4f0bc91b459be} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!requestMax@{requestMax}}
+\index{requestMax@{requestMax}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{requestMax()}{requestMax()}}
+{\footnotesize\ttfamily bool Auxiliar\+Functions\+::request\+Max (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_request}{Request}} \&}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_adbe1f87216348550efc4f0bc91b459be}{Auxiliar\+Functions\+::request\+Max} Returns true if the capacity of the class has been exceeded. 
+
+Complexity\+: O(n log n), where n is the number of schedules / lines in \textquotesingle{}classes\+\_\+per\+\_\+uc.\+csv\textquotesingle{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & \+: The request made; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_a5cc725cee840ed6add85c11460a8e230}\label{class_auxiliar_functions_a5cc725cee840ed6add85c11460a8e230} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!RequestsManager@{RequestsManager}}
+\index{RequestsManager@{RequestsManager}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{RequestsManager()}{RequestsManager()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::\+Requests\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a5cc725cee840ed6add85c11460a8e230}{Auxiliar\+Functions\+::\+Requests\+Manager} Finalizes the requests. 
+
+Complexity\+: O(m) + O(log n \texorpdfstring{$\ast$}{*} log n) + O(log k) + O(t log n + t\texorpdfstring{$\ast$}{*}pl) + O(nlog n) where m is the number of classes of the student who is submitting the request, n is the number of schedules / lines in \textquotesingle{}classes\+\_\+per\+\_\+uc.\+csv\textquotesingle{}, k is the number of lines in \textquotesingle{}students.\+csv\textquotesingle{} t is the number of classes the student is in p is the number of lessons of the first class and l is the number of lessons in the second class \Hypertarget{class_auxiliar_functions_a941a85a909d043f2835c61f3bad296ad}\label{class_auxiliar_functions_a941a85a909d043f2835c61f3bad296ad} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!retStudent@{retStudent}}
+\index{retStudent@{retStudent}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{retStudent()}{retStudent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_student}{Student}} Auxiliar\+Functions\+::ret\+Student (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a941a85a909d043f2835c61f3bad296ad}{Auxiliar\+Functions\+::ret\+Student} Returns the student with the student\+Code given. 
+
+Complexity\+: O(n), where n is the number of students in the vector of students
+
+
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \+: \doxylink{class_student}{Student} code; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The student. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_a14cba61f97ef13f8b8f137586fbab5e3}\label{class_auxiliar_functions_a14cba61f97ef13f8b8f137586fbab5e3} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!seeAcceptedRequests@{seeAcceptedRequests}}
+\index{seeAcceptedRequests@{seeAcceptedRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{seeAcceptedRequests()}{seeAcceptedRequests()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::see\+Accepted\+Requests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a14cba61f97ef13f8b8f137586fbab5e3}{Auxiliar\+Functions\+::see\+Accepted\+Requests} Prints the requests that were accepted. 
+
+Complexity\+: O(m), where m is the number of accepted requests \Hypertarget{class_auxiliar_functions_a228bb82e67e43876ff297df5d2683fe7}\label{class_auxiliar_functions_a228bb82e67e43876ff297df5d2683fe7} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!seeAllRequests@{seeAllRequests}}
+\index{seeAllRequests@{seeAllRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{seeAllRequests()}{seeAllRequests()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::see\+All\+Requests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a228bb82e67e43876ff297df5d2683fe7}{Auxiliar\+Functions\+::see\+All\+Requests} Prints all the requests and respective status. 
+
+Complexity\+: O(m), where m is the number of all requests done \Hypertarget{class_auxiliar_functions_abfdb58bb73c771c4ff2e3a09c890250a}\label{class_auxiliar_functions_abfdb58bb73c771c4ff2e3a09c890250a} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!seeClassSchedule@{seeClassSchedule}}
+\index{seeClassSchedule@{seeClassSchedule}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{seeClassSchedule()}{seeClassSchedule()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::see\+Class\+Schedule (\begin{DoxyParamCaption}\item[{const string \&}]{Class\+Code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_abfdb58bb73c771c4ff2e3a09c890250a}{Auxiliar\+Functions\+::see\+Class\+Schedule} Prints the schedule of a given class. 
+
+Complexity\+: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student\textquotesingle{}s schedule and k is the days of the week
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+Code} & \+: The class code. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_ad03fdffce9568cf003fddf63aae2b7b3}\label{class_auxiliar_functions_ad03fdffce9568cf003fddf63aae2b7b3} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!seeClassStudents@{seeClassStudents}}
+\index{seeClassStudents@{seeClassStudents}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{seeClassStudents()}{seeClassStudents()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::see\+Class\+Students (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_u_c}{UC}} \&}]{Uc\+Class,  }\item[{const int \&}]{order\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_ad03fdffce9568cf003fddf63aae2b7b3}{Auxiliar\+Functions\+::see\+Class\+Students} Prints the students of a given class. 
+
+Complexity\+: O(n) + O(q log q) where n is the number of lessons and students associated with that Class of that \doxylink{class_u_c}{UC}, q is the number of students in that Class of that \doxylink{class_u_c}{UC}
+
+
+\begin{DoxyParams}{Parameters}
+{\em Uc\+Class} & \+: The uc class; \\
+\hline
+{\em order\+\_\+} & \+: Way to sort the students of the class. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_aaefad329e9f3c2723e100bd7cdbb47b7}\label{class_auxiliar_functions_aaefad329e9f3c2723e100bd7cdbb47b7} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!seeRejectedRequests@{seeRejectedRequests}}
+\index{seeRejectedRequests@{seeRejectedRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{seeRejectedRequests()}{seeRejectedRequests()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::see\+Rejected\+Requests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_aaefad329e9f3c2723e100bd7cdbb47b7}{Auxiliar\+Functions\+::see\+Rejected\+Requests} Prints the requests that were rejected. 
+
+Complexity\+: O(m), where m is the number of rejected requests \Hypertarget{class_auxiliar_functions_a53220fdf04542cb0d85fbe89927ae073}\label{class_auxiliar_functions_a53220fdf04542cb0d85fbe89927ae073} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!seeStudentSchedule@{seeStudentSchedule}}
+\index{seeStudentSchedule@{seeStudentSchedule}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{seeStudentSchedule()}{seeStudentSchedule()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::see\+Student\+Schedule (\begin{DoxyParamCaption}\item[{const string \&}]{Student\+Code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a53220fdf04542cb0d85fbe89927ae073}{Auxiliar\+Functions\+::see\+Student\+Schedule} Prints the schedule of a given student. 
+
+Complexity\+: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student\textquotesingle{}s schedule and k is the days of the week
+
+
+\begin{DoxyParams}{Parameters}
+{\em Student\+Code} & \+: The student code. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_ac20cbf2d0ada924b4a8b01002f909caf}\label{class_auxiliar_functions_ac20cbf2d0ada924b4a8b01002f909caf} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!seeUcSchedule@{seeUcSchedule}}
+\index{seeUcSchedule@{seeUcSchedule}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{seeUcSchedule()}{seeUcSchedule()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::see\+Uc\+Schedule (\begin{DoxyParamCaption}\item[{const string \&}]{Uc\+Code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_ac20cbf2d0ada924b4a8b01002f909caf}{Auxiliar\+Functions\+::see\+Uc\+Schedule} Prints the schedule of a given Uc. 
+
+Complexity\+: O(n) + O(lk), where n is the total number of students and lessons, l is the lesson in the student\textquotesingle{}s schedule and k is the days of the week
+
+
+\begin{DoxyParams}{Parameters}
+{\em Uc\+Code} & \+: The uc code; \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_ac1172cb35eb6d6489506dfc8342a1778}\label{class_auxiliar_functions_ac1172cb35eb6d6489506dfc8342a1778} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!seeUcStudents@{seeUcStudents}}
+\index{seeUcStudents@{seeUcStudents}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{seeUcStudents()}{seeUcStudents()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::see\+Uc\+Students (\begin{DoxyParamCaption}\item[{const string \&}]{Uc\+Code,  }\item[{const int \&}]{sort\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_ac1172cb35eb6d6489506dfc8342a1778}{Auxiliar\+Functions\+::see\+Uc\+Students} Prints the students of a given Uc. 
+
+Complexity\+: O(n) + O(q log q) where n is the number of lessons and students associated with that \doxylink{class_u_c}{UC} code, q is the number of students in that \doxylink{class_u_c}{UC}
+
+
+\begin{DoxyParams}{Parameters}
+{\em Uc\+Code} & \+: The uc code; \\
+\hline
+{\em order\+\_\+} & \+: Way to sort the students of the Uc. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_a81c9fe20cee99b5ee6c1799389e35df8}\label{class_auxiliar_functions_a81c9fe20cee99b5ee6c1799389e35df8} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!seeYearStudents@{seeYearStudents}}
+\index{seeYearStudents@{seeYearStudents}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{seeYearStudents()}{seeYearStudents()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::see\+Year\+Students (\begin{DoxyParamCaption}\item[{int}]{year,  }\item[{int}]{sort }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a81c9fe20cee99b5ee6c1799389e35df8}{Auxiliar\+Functions\+::see\+Year\+Students} Prints the students of a given year. 
+
+Complexity\+: O(n) + O(mk) + O(m) + O(m log m) where n is the number of students in students\+\_\+classes.\+csv, m is the students and k is the UCs of each student
+
+
+\begin{DoxyParams}{Parameters}
+{\em year} & The year of the students; \\
+\hline
+{\em sort} & \+: Way to sort the students of the Uc; \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_a169b90d8cdd6c07c668b5a4b0766cce4}\label{class_auxiliar_functions_a169b90d8cdd6c07c668b5a4b0766cce4} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!verifyEnrollmentRequest@{verifyEnrollmentRequest}}
+\index{verifyEnrollmentRequest@{verifyEnrollmentRequest}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{verifyEnrollmentRequest()}{verifyEnrollmentRequest()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::verify\+Enrollment\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_request}{Request}} \&}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_a169b90d8cdd6c07c668b5a4b0766cce4}{Auxiliar\+Functions\+::verify\+Enrollment\+Request} Checks if request has any problem (conflict, extends the max) 
+
+Complexity\+: O(m log n + m\texorpdfstring{$\ast$}{*}kl) + O(nlog n)\+: where m is the number of classes the student is in, n is the number of schedules / lines in \textquotesingle{}classes\+\_\+per\+\_\+uc,csv\textquotesingle{}, k is the number of lessons of the first class and l is the number of lessons of the second class
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & \+: The request made. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_aab3c0a2930902eedd2f837c92e8c37ed}\label{class_auxiliar_functions_aab3c0a2930902eedd2f837c92e8c37ed} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!verifyRemovalRequest@{verifyRemovalRequest}}
+\index{verifyRemovalRequest@{verifyRemovalRequest}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{verifyRemovalRequest()}{verifyRemovalRequest()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::verify\+Removal\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_request}{Request}} \&}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_aab3c0a2930902eedd2f837c92e8c37ed}{Auxiliar\+Functions\+::verify\+Removal\+Request} Does the removal requests as it does not need any problem verification. 
+
+Complexity\+: O(m log n + m\texorpdfstring{$\ast$}{*}kl) + O(nlog n)\+: where m is the number of classes the student is in, n is the number of schedules / lines in \textquotesingle{}classes\+\_\+per\+\_\+uc,csv\textquotesingle{}, k is the number of lessons of the first class and l is the number of lessons of the second class
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & \+: The request made. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_auxiliar_functions_abd323a2871ec673a82465ce08c98a941}\label{class_auxiliar_functions_abd323a2871ec673a82465ce08c98a941} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!verifySwapRequest@{verifySwapRequest}}
+\index{verifySwapRequest@{verifySwapRequest}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{verifySwapRequest()}{verifySwapRequest()}}
+{\footnotesize\ttfamily void Auxiliar\+Functions\+::verify\+Swap\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_request}{Request}} \&}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxylink{class_auxiliar_functions_abd323a2871ec673a82465ce08c98a941}{Auxiliar\+Functions\+::verify\+Swap\+Request} Checks if the request has any problem (unbalanced, conflict, extends the max) 
+
+Complexity\+: O(m log n + m\texorpdfstring{$\ast$}{*}kl) + O(nlog n)\+: where m is the number of classes the student is in, n is the number of schedules / lines in \textquotesingle{}classes\+\_\+per\+\_\+uc,csv\textquotesingle{}, k is the number of lessons of the first class and l is the number of lessons of the second class
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & \+: The request made. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_auxiliar_functions_a37548cc08646a755a25fb0580769876a}\label{class_auxiliar_functions_a37548cc08646a755a25fb0580769876a} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!acceptedRequests@{acceptedRequests}}
+\index{acceptedRequests@{acceptedRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{acceptedRequests}{acceptedRequests}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_request}{Request}} $>$ Auxiliar\+Functions\+::accepted\+Requests\hspace{0.3cm}{\ttfamily [static]}}
+
+Vector of accepted requests \Hypertarget{class_auxiliar_functions_ad40e02df2803ff8ee0660b0da78d8a7c}\label{class_auxiliar_functions_ad40e02df2803ff8ee0660b0da78d8a7c} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!allRequests@{allRequests}}
+\index{allRequests@{allRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{allRequests}{allRequests}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_request}{Request}} $>$ Auxiliar\+Functions\+::all\+Requests\hspace{0.3cm}{\ttfamily [static]}}
+
+Vector of all requests \Hypertarget{class_auxiliar_functions_a45862768876783eb2d82c5d56ce39d5d}\label{class_auxiliar_functions_a45862768876783eb2d82c5d56ce39d5d} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!enrollmentRequests@{enrollmentRequests}}
+\index{enrollmentRequests@{enrollmentRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{enrollmentRequests}{enrollmentRequests}}
+{\footnotesize\ttfamily queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ Auxiliar\+Functions\+::enrollment\+Requests\hspace{0.3cm}{\ttfamily [static]}}
+
+Queue of the enrollment requests \Hypertarget{class_auxiliar_functions_aea3a989071de55faaebbae584978e8e8}\label{class_auxiliar_functions_aea3a989071de55faaebbae584978e8e8} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!rejectedRequests@{rejectedRequests}}
+\index{rejectedRequests@{rejectedRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{rejectedRequests}{rejectedRequests}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_request}{Request}} $>$ Auxiliar\+Functions\+::rejected\+Requests\hspace{0.3cm}{\ttfamily [static]}}
+
+Vector of rejected requests \Hypertarget{class_auxiliar_functions_ad4c2a8fa6297c1f461fd437aa6d4ecf9}\label{class_auxiliar_functions_ad4c2a8fa6297c1f461fd437aa6d4ecf9} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!removalRequests@{removalRequests}}
+\index{removalRequests@{removalRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{removalRequests}{removalRequests}}
+{\footnotesize\ttfamily queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ Auxiliar\+Functions\+::removal\+Requests\hspace{0.3cm}{\ttfamily [static]}}
+
+Queue of the removal requests \Hypertarget{class_auxiliar_functions_a25b39b66d7e7ec432ea70410de1e6004}\label{class_auxiliar_functions_a25b39b66d7e7ec432ea70410de1e6004} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!switchRequests@{switchRequests}}
+\index{switchRequests@{switchRequests}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{switchRequests}{switchRequests}}
+{\footnotesize\ttfamily queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ Auxiliar\+Functions\+::switch\+Requests\hspace{0.3cm}{\ttfamily [static]}}
+
+Queue of the switch requests 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_auxiliar_functions_8h}{Auxiliar\+Functions.\+h}}\item 
+Auxiliar\+Functions.\+cpp\end{DoxyCompactItemize}

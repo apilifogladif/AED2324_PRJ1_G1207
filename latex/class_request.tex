@@ -1,0 +1,211 @@
+\doxysection{Request Class Reference}
+\hypertarget{class_request}{}\label{class_request}\index{Request@{Request}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_request_ad7de3b6c6ece59510070191caf2d98ce}{Request}} (\mbox{\hyperlink{class_student}{Student}} student, \mbox{\hyperlink{class_u_c}{UC}} uc, string type)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_request_ad7de3b6c6ece59510070191caf2d98ce}{Request\+::\+Request} Class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_student}{Student}} \mbox{\hyperlink{class_request_a01d5b4f56a2c7cc6379b341217207bca}{get\+Student}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_request_a01d5b4f56a2c7cc6379b341217207bca}{Request\+::get\+Student} Gets the student that made the request. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_u_c}{UC}} \mbox{\hyperlink{class_request_ac12f4d3e2b288eb0b7331ee6569437ad}{getold\+UC}} ()
+\begin{DoxyCompactList}\small\item\em Request\+::getold\+Uc Gets the old uc of the switch request. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_u_c}{UC}} \mbox{\hyperlink{class_request_ab93c34039d7061ba6db6147b11965a39}{get\+UC}} ()
+\begin{DoxyCompactList}\small\item\em Request\+::get\+Uc Gets the uc of the request. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_request_a7c5d661f8a200a8fd5e03945d82678ec}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_request_a7c5d661f8a200a8fd5e03945d82678ec}{Request\+::get\+Type} Gets the type of the request. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_request_a48c0f1f60d112f266d05d7858650ba79}{get\+Status}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_request_a48c0f1f60d112f266d05d7858650ba79}{Request\+::get\+Status} Gets the status of the request. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_request_ad49a32822403029f8e4141a8a577d961}{get\+Reason}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_request_ad49a32822403029f8e4141a8a577d961}{Request\+::get\+Reason} Gets the reason of the request if it was rejected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_request_ab76a6f1b571c72e6f1c512ba662b2942}{set\+Status}} (string status\+\_\+)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_request_ab76a6f1b571c72e6f1c512ba662b2942}{Request\+::set\+Status} Sets status to new value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_request_affc7872b385347090729b6a3e76bde72}{set\+Reason}} (string reason\+\_\+)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_request_affc7872b385347090729b6a3e76bde72}{Request\+::set\+Reason} Sets reason to new value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_request_a05e7a8ea4e20f0d3ca8522762058274b}{setold\+UC}} (\mbox{\hyperlink{class_u_c}{UC}} old\+Uc\+\_\+)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_request_a05e7a8ea4e20f0d3ca8522762058274b}{Request\+::setold\+UC} Sets old uc of the switch request to new value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_request_a5132eaa8a057eacb70c85f361f7f8bc9}{print\+Request}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_request_a5132eaa8a057eacb70c85f361f7f8bc9}{Request\+::print\+Request} Prints the request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_request_ad7de3b6c6ece59510070191caf2d98ce}\label{class_request_ad7de3b6c6ece59510070191caf2d98ce} 
+\index{Request@{Request}!Request@{Request}}
+\index{Request@{Request}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{Request()}{Request()}}
+{\footnotesize\ttfamily Request\+::\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}}}]{student,  }\item[{\mbox{\hyperlink{class_u_c}{UC}}}]{uc,  }\item[{string}]{type }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_request_ad7de3b6c6ece59510070191caf2d98ce}{Request\+::\+Request} Class constructor. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em student} & \+: The student code; \\
+\hline
+{\em uc} & \+: The uc code; \\
+\hline
+{\em type} & \+: The lesson type. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_request_ac12f4d3e2b288eb0b7331ee6569437ad}\label{class_request_ac12f4d3e2b288eb0b7331ee6569437ad} 
+\index{Request@{Request}!getoldUC@{getoldUC}}
+\index{getoldUC@{getoldUC}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getoldUC()}{getoldUC()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_u_c}{UC}} Request\+::getold\+UC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Request\+::getold\+Uc Gets the old uc of the switch request. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The Uc before the switch. 
+\end{DoxyReturn}
+\Hypertarget{class_request_ad49a32822403029f8e4141a8a577d961}\label{class_request_ad49a32822403029f8e4141a8a577d961} 
+\index{Request@{Request}!getReason@{getReason}}
+\index{getReason@{getReason}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getReason()}{getReason()}}
+{\footnotesize\ttfamily string Request\+::get\+Reason (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_request_ad49a32822403029f8e4141a8a577d961}{Request\+::get\+Reason} Gets the reason of the request if it was rejected. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The reason why the request was rejected. 
+\end{DoxyReturn}
+\Hypertarget{class_request_a48c0f1f60d112f266d05d7858650ba79}\label{class_request_a48c0f1f60d112f266d05d7858650ba79} 
+\index{Request@{Request}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getStatus()}{getStatus()}}
+{\footnotesize\ttfamily string Request\+::get\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_request_a48c0f1f60d112f266d05d7858650ba79}{Request\+::get\+Status} Gets the status of the request. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The status of the request. 
+\end{DoxyReturn}
+\Hypertarget{class_request_a01d5b4f56a2c7cc6379b341217207bca}\label{class_request_a01d5b4f56a2c7cc6379b341217207bca} 
+\index{Request@{Request}!getStudent@{getStudent}}
+\index{getStudent@{getStudent}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getStudent()}{getStudent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_student}{Student}} Request\+::get\+Student (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_request_a01d5b4f56a2c7cc6379b341217207bca}{Request\+::get\+Student} Gets the student that made the request. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The student that made the request. 
+\end{DoxyReturn}
+\Hypertarget{class_request_a7c5d661f8a200a8fd5e03945d82678ec}\label{class_request_a7c5d661f8a200a8fd5e03945d82678ec} 
+\index{Request@{Request}!getType@{getType}}
+\index{getType@{getType}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily string Request\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_request_a7c5d661f8a200a8fd5e03945d82678ec}{Request\+::get\+Type} Gets the type of the request. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The type of request. 
+\end{DoxyReturn}
+\Hypertarget{class_request_ab93c34039d7061ba6db6147b11965a39}\label{class_request_ab93c34039d7061ba6db6147b11965a39} 
+\index{Request@{Request}!getUC@{getUC}}
+\index{getUC@{getUC}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getUC()}{getUC()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_u_c}{UC}} Request\+::get\+UC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Request\+::get\+Uc Gets the uc of the request. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The Uc. 
+\end{DoxyReturn}
+\Hypertarget{class_request_a5132eaa8a057eacb70c85f361f7f8bc9}\label{class_request_a5132eaa8a057eacb70c85f361f7f8bc9} 
+\index{Request@{Request}!printRequest@{printRequest}}
+\index{printRequest@{printRequest}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{printRequest()}{printRequest()}}
+{\footnotesize\ttfamily void Request\+::print\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_request_a5132eaa8a057eacb70c85f361f7f8bc9}{Request\+::print\+Request} Prints the request. 
+
+Complexity\+: O(1) \Hypertarget{class_request_a05e7a8ea4e20f0d3ca8522762058274b}\label{class_request_a05e7a8ea4e20f0d3ca8522762058274b} 
+\index{Request@{Request}!setoldUC@{setoldUC}}
+\index{setoldUC@{setoldUC}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{setoldUC()}{setoldUC()}}
+{\footnotesize\ttfamily void Request\+::setold\+UC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_u_c}{UC}}}]{old\+Uc\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_request_a05e7a8ea4e20f0d3ca8522762058274b}{Request\+::setold\+UC} Sets old uc of the switch request to new value. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\+Uc\+\_\+} & \+: New value for old Uc \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_request_affc7872b385347090729b6a3e76bde72}\label{class_request_affc7872b385347090729b6a3e76bde72} 
+\index{Request@{Request}!setReason@{setReason}}
+\index{setReason@{setReason}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{setReason()}{setReason()}}
+{\footnotesize\ttfamily void Request\+::set\+Reason (\begin{DoxyParamCaption}\item[{string}]{reason\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_request_affc7872b385347090729b6a3e76bde72}{Request\+::set\+Reason} Sets reason to new value. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em reason} & \+: New value for reason \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_request_ab76a6f1b571c72e6f1c512ba662b2942}\label{class_request_ab76a6f1b571c72e6f1c512ba662b2942} 
+\index{Request@{Request}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{setStatus()}{setStatus()}}
+{\footnotesize\ttfamily void Request\+::set\+Status (\begin{DoxyParamCaption}\item[{string}]{status\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_request_ab76a6f1b571c72e6f1c512ba662b2942}{Request\+::set\+Status} Sets status to new value. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & \+: New value for status \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_request_8h}{Request.\+h}}\item 
+Request.\+cpp\end{DoxyCompactItemize}

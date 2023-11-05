@@ -1,0 +1,60 @@
+\doxysection{Csv\+And\+Vectors.\+h}
+\hypertarget{_csv_and_vectors_8h_source}{}\label{_csv_and_vectors_8h_source}\mbox{\hyperlink{_csv_and_vectors_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AED2324\_PRJ1\_G1207\_CSVANDVECTORS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AED2324\_PRJ1\_G1207\_CSVANDVECTORS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_lesson_8h}{Lesson.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_student_8h}{Student.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_u_c_8h}{UC.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_request_8h}{Request.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_schedule_8h}{Schedule.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_csv_and_vectors}{CsvAndVectors}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_csv_and_vectors_afcbf7967bd12304e144c49516bd8cba9}{CsvAndVectors}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ vector<Lesson>\ \mbox{\hyperlink{class_csv_and_vectors_a41661897d9c5927b7ef4caf40d99c2ac}{LessonsVector}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ vector<pair<string,\ set<string>>>\ \mbox{\hyperlink{class_csv_and_vectors_ad12906326a0113d0cdb6c9e9d7a3d863}{ClassesPerUcVector}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ vector<Student>\ \mbox{\hyperlink{class_csv_and_vectors_a8d310f429bf71c844411168ab197bd0a}{StudentsVector}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ vector<Request>\ \mbox{\hyperlink{class_csv_and_vectors_af328fb8d694ecc5a7e76e7fadba93611}{RequestsVector}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ set<string>\ \mbox{\hyperlink{class_csv_and_vectors_afb8a906781dedf015d5dea892aeaf753}{StudentsSet}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ set<string>\ \mbox{\hyperlink{class_csv_and_vectors_a28f5ed51ccbdf0042e5ec0f46008f70f}{ClassesSet}};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ set<string>\ \mbox{\hyperlink{class_csv_and_vectors_a9c2d8c2521f4a5f5075e79b6e615caa4}{UcSet}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_csv_and_vectors_a8c648274b02958031c27c59f9e1ea81c}{createClassesAndUcSet}}();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_csv_and_vectors_a08d08ed9564c8be19d2a34955cdf009b}{createStudentsSet}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_csv_and_vectors_a6d0d0e22c60c4e9a92739e64cdb36170}{createLessonsVector}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_csv_and_vectors_a5cb9771ecc77a17198d5fc6037b2a538}{createRequestsVector}}();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_csv_and_vectors_aca9fac49d8437d3d1d43268c188425ce}{createClassesPerUcVector}}();}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_csv_and_vectors_af37129b0eebf1caf2999ab5e78a3c12a}{createStudentsVector}}();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_csv_and_vectors_a96d70e841d5638576fffc1d95b8c94cb}{setFromStudentsVector}}();}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_csv_and_vectors_a09de7eab59f71cbfa8275185d7170a26}{setFromRequestVector}}();}
+\DoxyCodeLine{00132\ \};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//AED2324\_PRJ1\_G1207\_CSVANDVECTORS\_H}}
+
+\end{DoxyCode}

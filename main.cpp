@@ -13,8 +13,9 @@ using namespace std;
  * @mainpage AED project main.cpp
  * @section intro_sec Introduction
  * This project has the intention of creating a functional schedules manager for a university.
+ * The system includes various functionalities such as modifying, searching and many others.
  *
- * This project was made by: Ana Filipa Geraldes, Filipa Fidalgo and Leonor Couto.
+ * This project was made by: Filipa Geraldes, Filipa Fidalgo and Leonor Couto.
  */
 
 
@@ -647,11 +648,11 @@ int switchRequest(Student student) {
             }
 
             while (true) {
-                cout << "Write the Uc Code you want to add(L.EICxxx or UPxxx): ";
+                cout << "Write the Uc Code you want to add (L.EICxxx or UPxxx): ";
                 if (cin >> newUcCode) {
                     if (verifyUc(newUcCode)) {
-                        uc = student.findUc(newUcCode);
-                        if (uc.getUcCode() != "") {
+                        newuc = student.findUc(newUcCode);
+                        if (newuc.getUcCode() != "") {
                             cout << "This student is already enrolled in this Uc.";
                             return 1;  //Main Menu
                         }
@@ -669,7 +670,7 @@ int switchRequest(Student student) {
             }
 
             while (true) {
-                cout << "Write the Class Code you want to go to(yLEICxx; y->year, xx->class): ";
+                cout << "Write the Class Code you want to go to (yLEICxx; y->year, xx->class): ";
                 if (cin >> newClass) {
                     if (verifyClass(newClass)) {
                         break;
@@ -686,9 +687,7 @@ int switchRequest(Student student) {
             }
             newuc = UC(newUcCode, newClass);
 
-            student.removeUC(uc);
-            student.addUC(newuc);
-
+            break;
         case 2:
             while (true) {
                 cout << "Write the Uc Code (L.EICxxx or UPxxx): ";
@@ -734,8 +733,7 @@ int switchRequest(Student student) {
             }
 
             newuc = UC(UcCode, newClass);
-            student.removeUC(uc);
-            student.addUC(newuc);
+            break;
     }
     AuxiliarFunctions::concludeSwitch(student, uc, newuc);
     cout << "Switch request submitted." << endl;
@@ -1090,7 +1088,7 @@ int numbersMenu() {
 
         case 4:
             while (true) {
-                cout << "How many Ucs? (Write a number between 1 and 7) ";
+                cout << "How many Ucs? Write a number between 1 and 7:";
                 if (cin >> num) {
                     if (num >= 1 && num <= 7) {
                         break;  // Input is valid, exit the loop
@@ -1150,7 +1148,6 @@ int numbersMenu() {
   * @return 0 quit / 1 main menu.
   */
 int scheduleMenu() {
-    AuxiliarFunctions func = AuxiliarFunctions();
     int op = 0;
     cout << endl << "-----------------------------------" << endl;
     cout << endl << "     Search for schedules of...    " << endl;
@@ -1642,7 +1639,6 @@ int requestMenu() {
  */
 int acceptedRequest() {
     int op;
-    AuxiliarFunctions func = AuxiliarFunctions();
     AuxiliarFunctions::seeAcceptedRequests();
     cout << endl << endl;
     cout << "1 - Return to Main Menu" << endl;
@@ -1676,7 +1672,6 @@ int acceptedRequest() {
  */
 int rejectedRequest() {
     int op;
-    AuxiliarFunctions func = AuxiliarFunctions();
     AuxiliarFunctions::seeRejectedRequests();
     cout << endl << endl;
     cout << "1 - Return to Main Menu" << endl;
@@ -1710,7 +1705,6 @@ int rejectedRequest() {
  */
 int allRequest() {
     int op;
-    AuxiliarFunctions func = AuxiliarFunctions();
     AuxiliarFunctions::seeAllRequests();
     cout << endl << endl;
     cout << "1 - Return to Main Menu" << endl;
@@ -1745,7 +1739,7 @@ int undoRequest() {
     cout << endl << "-------------------------------------" << endl;
     cout << endl << "     Requests that can be undone:    " << endl;
     cout << endl << "-------------------------------------" << endl;
-    if (AuxiliarFunctions::acceptedRequests.size() == 0) {
+    if (AuxiliarFunctions::acceptedRequests.empty()) {
         cout << "There are no requests that can be undone." << endl;
         cout << endl;
         return 1;
@@ -1764,6 +1758,7 @@ int undoRequest() {
         cout << "2 - ";
         AuxiliarFunctions::acceptedRequests[AuxiliarFunctions::acceptedRequests.size() - 2].printRequest();
         cout << endl;
+        cout << "3 - Return to Main Menu." << endl;
     }
     int op = 0;
     while (true) {
@@ -1790,6 +1785,7 @@ int undoRequest() {
     UC uc;
     UC oldUc;
     Request orig = AuxiliarFunctions::acceptedRequests[AuxiliarFunctions::acceptedRequests.size() - op];
+
     string type;
     if (orig.getType() == "Removal") {  // new type = Enrollment
         AuxiliarFunctions::concludeEnrollment(orig.getStudent(), orig.getUC());
@@ -1798,19 +1794,22 @@ int undoRequest() {
         AuxiliarFunctions::concludeRemoval(orig.getStudent(), orig.getUC());
     }
     else {  // new type = old type = Switch
-        AuxiliarFunctions::concludeSwitch(orig.getStudent(), orig.getoldUC(), orig.getUC());
+        cout << orig.getoldUC().getUcCode() << endl;
+        AuxiliarFunctions::concludeSwitch(orig.getStudent(), orig.getUC(), orig.getoldUC());
     }
+    cout << "Undo request submitted." << endl << endl;
 
-    cout << "1 - Return to Main Menu" << endl;
-    cout << "2 - Quit." << endl;
+    op = 0;
+    cout << "1 - Return to Main Menu." << endl;
+    cout << "2 - Quit" << endl;
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
-            if (op >= 1 && op <= 2) {
+            if (op >= 1 && op <= 3) {
                 break;  // Input is valid, exit the loop
             }
             else {
-                cout << "Invalid number! The number should be between 1 and 2." << endl;
+                cout << "Invalid number! The number should be between 1 and 3." << endl;
             }
         }
         else {

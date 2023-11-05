@@ -35,9 +35,8 @@ void Student::setUCs(vector<UC> ucs_) {
 }
 
 void Student::addUC(const UC &uc) {
-    this->ucs.push_back(uc);
-
     int idx = this->binarySearchCsvStudentVector(0, CsvAndVectors::StudentsVector.size());
+
     vector<UC> ucs_ = CsvAndVectors::StudentsVector[idx].getUCs();
     ucs_.push_back(uc);
     CsvAndVectors::StudentsVector[idx].setUCs(ucs_);
@@ -45,7 +44,6 @@ void Student::addUC(const UC &uc) {
 
 void Student::removeUC(const UC &uc) {
     int idx = this->binarySearchCsvStudentVector(0, CsvAndVectors::StudentsVector.size());
-    Student student = CsvAndVectors::StudentsVector[idx];
 
     vector<UC> ucs_ = CsvAndVectors::StudentsVector[idx].getUCs();
     int index;

@@ -77,7 +77,9 @@ bool AuxiliarFunctions::requestConflict(Request &request) {
     Student student = request.getStudent();
     vector<UC> studentUCs = student.getUCs();
     for (UC& uc_ : studentUCs) {
+        cout << request.getoldUC().getUcCode() << endl;
         if (!(uc_ == request.getoldUC()) && lessonOverlap(uc_, uc)) {
+            cout << uc_.getUcCode() << " && " << uc.getUcCode() << endl;
             return true;
         }
     }
@@ -93,7 +95,8 @@ bool AuxiliarFunctions::requestMax(Request &request) {
 
 void AuxiliarFunctions::changeAllRequests(bool status, Request request) {
     for (int i = 0; i < allRequests.size(); i++) {
-        if (request.getStudent() == allRequests[i].getStudent() && request.getUC() == allRequests[i].getUC() && request.getType() == allRequests[i].getType()) {
+        if (request.getStudent() == allRequests[i].getStudent() && request.getUC() == allRequests[i].getUC() && request.getType() == allRequests[i].getType() &&
+                allRequests[i].getStatus() == "") {
             if (status) allRequests[i].setStatus("Accepted");
             else {
                 allRequests[i].setStatus("Rejected");
@@ -105,6 +108,7 @@ void AuxiliarFunctions::changeAllRequests(bool status, Request request) {
 }
 
 void AuxiliarFunctions::verifySwapRequest(Request &request){
+    Student student = retStudent(request.getStudent().getStudentCode());
     bool status = false;
     if (!(requestBalance(request))) {
         request.setReason("The balance of class occupation is not maintained. The difference between the number of students in the class can't be less than or equal to 4.");
@@ -121,9 +125,18 @@ void AuxiliarFunctions::verifySwapRequest(Request &request){
         request.setStatus("Rejected");
         rejectedRequests.push_back(request);
     }
+    else if (student.findUc(request.getUC().getUcCode()).getUcCode() != "") {
+        request.setReason("This student is already enrolled in this Uc.");
+        request.setStatus("Rejected");
+        rejectedRequests.push_back(request);
+    }
+    else if (student.findUc(request.getoldUC().getUcCode()).getUcCode() == "") {
+        request.setReason("This student is not enrolled in this Uc.");
+        request.setStatus("Rejected");
+        rejectedRequests.push_back(request);
+    }
     else {
         request.setStatus("Accepted");
-        Student student = request.getStudent();
         UC uc = request.getUC();
         UC uc_old = request.getoldUC();
         student.removeUC(uc_old);
@@ -135,6 +148,8 @@ void AuxiliarFunctions::verifySwapRequest(Request &request){
 }
 
 void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
+    Student student = retStudent(request.getStudent().getStudentCode());
+
     bool status = false;
     if (!(requestBalance(request))) {
         request.setReason("The balance of class occupation is not maintained. The difference between the number of students in the class can't be less than or equal to 4.");
@@ -151,9 +166,13 @@ void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
         request.setStatus("Rejected");
         rejectedRequests.push_back(request);
     }
+    else if (student.findUc(request.getUC().getUcCode()).getUcCode() != "") {
+        request.setReason("This student is already enrolled in this Uc.");
+        request.setStatus("Rejected");
+        rejectedRequests.push_back(request);
+    }
     else {
         request.setStatus("Accepted");
-        Student student = retStudent(request.getStudent().getStudentCode());
         UC uc = Schedule(request.getUC()).getUcClass();
         student.addUC(uc);
         acceptedRequests.push_back(request);
@@ -163,15 +182,15 @@ void AuxiliarFunctions::verifyEnrollmentRequest(Request &request) {
 }
 
 void AuxiliarFunctions::verifyRemovalRequest(Request &request) {
+    Student student = retStudent(request.getStudent().getStudentCode());
     bool status = false;
-    if (!(requestBalance(request))) {
-        request.setReason("The balance of class occupation is not maintained./n The difference between the number of students in the class can't be less than or equal to 4.");
+    if (student.findUc(request.getUC().getUcCode()).getUcCode() == "") {
+        request.setReason("This student is not enrolled in this Uc.");
         request.setStatus("Rejected");
         rejectedRequests.push_back(request);
     }
     else {
         request.setStatus("Accepted");
-        Student student = retStudent(request.getStudent().getStudentCode());
         UC uc = Schedule(request.getUC()).getUcClass();
         student.removeUC(uc);
         acceptedRequests.push_back(request);
@@ -202,6 +221,7 @@ void AuxiliarFunctions::RequestsManager() {
     for (auto request : allRequests) {
         CsvAndVectors::RequestsVector.push_back(request);
     }
+    allRequests.clear();
 }
 
 void AuxiliarFunctions::seeRejectedRequests() {
@@ -212,11 +232,6 @@ void AuxiliarFunctions::seeRejectedRequests() {
             cout << " , reason:" << i.getReason() << endl;
             exists = true;
         }
-    }
-    for (auto i: rejectedRequests) {
-        i.printRequest();
-        cout << " , reason:" << i.getReason() << endl;
-        exists = true;
     }
     if (!exists) cout << "There are no rejected requests." << endl;
 }
@@ -229,17 +244,12 @@ void AuxiliarFunctions::seeAcceptedRequests() {
             exists = true;
         }
     }
-    for (auto i: acceptedRequests) {
-        i.printRequest();
-        cout << endl;
-        exists = true;
-    }
     if (!exists) cout << "There are no accepted requests." << endl;
 }
 
 void AuxiliarFunctions::seeAllRequests() {
     if (CsvAndVectors::RequestsVector.empty()) cout << "There are no requests." << endl;
-    for (auto i: allRequests) {
+    for (auto i: CsvAndVectors::RequestsVector) {
         i.printRequest();
         cout << " - " << i.getStatus();
         if (i.getStatus() == "Rejected") cout << ", reason: " << i.getReason();

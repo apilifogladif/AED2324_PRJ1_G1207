@@ -109,6 +109,8 @@ void CsvAndVectors::createRequestsVector() {
     string studentName;
     string description;
     string type;
+    string UcCode;
+    string ClassCode;
     string status;
     string reason;
     while(getline(file, line)) {
@@ -117,9 +119,11 @@ void CsvAndVectors::createRequestsVector() {
         getline(s, studentCode, ',');
         getline(s, studentName, ':');
         getline(s, type, ',');
+        getline(s, UcCode, ',');
+        getline(s, ClassCode, ',');
         getline(s, status, ',');
         getline(s, reason);
-        Request request(Student(studentCode, studentName), UC(), type);
+        Request request(Student(studentCode, studentName), UC(UcCode, ClassCode), type);
         request.setStatus(status);
         request.setReason(reason);
         RequestsVector.push_back(request);
@@ -215,10 +219,11 @@ void CsvAndVectors::setFromRequestVector() {
     ofstream file;
     file.open("../data/requests.csv");
 
-    file << "StudentCode,StudentName:RequestType,Status,Reason(if rejected)" << endl;
+    file << "StudentCode,StudentName:RequestType,UcCode,ClassCode,Status,Reason(if rejected)" << endl;
     for (auto &request : RequestsVector) {
         file << request.getStudent().getStudentCode() << "," << request.getStudent().getStudentName() << ":" <<
-            request.getType() << "," << request.getStatus();
+            request.getType() << "," << request.getUC().getUcCode() << "," << request.getUC().getClassCode() <<
+            "," << request.getStatus();
         if (!request.getReason().empty()) {
             file << "," << request.getReason();
         }

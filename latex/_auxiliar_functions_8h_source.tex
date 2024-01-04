@@ -1,0 +1,91 @@
+\doxysection{Auxiliar\+Functions.\+h}
+\hypertarget{_auxiliar_functions_8h_source}{}\label{_auxiliar_functions_8h_source}\mbox{\hyperlink{_auxiliar_functions_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AED2324\_PRJ1\_G1207\_AUXILIARFUNCTIONS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AED2324\_PRJ1\_G1207\_AUXILIARFUNCTIONS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_schedule_8h}{Schedule.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_student_8h}{Student.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_request_8h}{Request.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_lesson_8h}{Lesson.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_u_c_8h}{UC.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_auxiliar_functions}{AuxiliarFunctions}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ vector<Schedule>\ schedules;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ queue<Request>\ \mbox{\hyperlink{class_auxiliar_functions_a45862768876783eb2d82c5d56ce39d5d}{enrollmentRequests}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ queue<Request>\ \mbox{\hyperlink{class_auxiliar_functions_ad4c2a8fa6297c1f461fd437aa6d4ecf9}{removalRequests}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ queue<Request>\ \mbox{\hyperlink{class_auxiliar_functions_a25b39b66d7e7ec432ea70410de1e6004}{switchRequests}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ vector<Request>\ \mbox{\hyperlink{class_auxiliar_functions_aea3a989071de55faaebbae584978e8e8}{rejectedRequests}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ vector<Request>\ \mbox{\hyperlink{class_auxiliar_functions_a37548cc08646a755a25fb0580769876a}{acceptedRequests}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ vector<Request>\ \mbox{\hyperlink{class_auxiliar_functions_ad40e02df2803ff8ee0660b0da78d8a7c}{allRequests}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_auxiliar_functions_a1988db96ad6f30031e482fcc34a05100}{AuxiliarFunctions}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_student}{Student}}\ \mbox{\hyperlink{class_auxiliar_functions_a941a85a909d043f2835c61f3bad296ad}{retStudent}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&studentCode)\ ;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_ad01f3ceb1a3e43efe890eddc00279d20}{concludeEnrollment}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\ \&student,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_u_c}{UC}}\ \&UcClass);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_ae04d1ea36cc9e4f3c6e2c01f8bfebd5a}{concludeRemoval}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\ \&student,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_u_c}{UC}}\ \&UcClass);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_a6773d739493b9a5a1729e0a8d3b01311}{concludeSwitch}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\ \&student,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_u_c}{UC}}\ \&oldUc,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_u_c}{UC}}\ \&newUc);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_auxiliar_functions_a48eac445f22f59d80edee5a3e13dde52}{lessonOverlap}}(\mbox{\hyperlink{class_u_c}{UC}}\ uc1,\ \mbox{\hyperlink{class_u_c}{UC}}\ uc2);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_auxiliar_functions_ab962e25ab50654e847d2464f4a73f4e9}{requestBalance}}(\mbox{\hyperlink{class_request}{Request}}\ \&request);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_auxiliar_functions_a255ded7c9fc0cfd4c1ed3a2830e5732d}{requestConflict}}(\mbox{\hyperlink{class_request}{Request}}\ \&request);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_auxiliar_functions_adbe1f87216348550efc4f0bc91b459be}{requestMax}}(\mbox{\hyperlink{class_request}{Request}}\ \&request);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_abd323a2871ec673a82465ce08c98a941}{verifySwapRequest}}(\mbox{\hyperlink{class_request}{Request}}\ \&request);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_a169b90d8cdd6c07c668b5a4b0766cce4}{verifyEnrollmentRequest}}(\mbox{\hyperlink{class_request}{Request}}\ \&request);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_aab3c0a2930902eedd2f837c92e8c37ed}{verifyRemovalRequest}}(\mbox{\hyperlink{class_request}{Request}}\ \&request);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_ac109436248d7c49fc7caad33d8ff6030}{changeAllRequests}}(\textcolor{keywordtype}{bool}\ status,\ \mbox{\hyperlink{class_request}{Request}}\ request);}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_a5cc725cee840ed6add85c11460a8e230}{RequestsManager}}();}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_aaefad329e9f3c2723e100bd7cdbb47b7}{seeRejectedRequests}}();}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_a14cba61f97ef13f8b8f137586fbab5e3}{seeAcceptedRequests}}();}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_a228bb82e67e43876ff297df5d2683fe7}{seeAllRequests}}();}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_a53220fdf04542cb0d85fbe89927ae073}{seeStudentSchedule}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ StudentCode)\ ;}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_abfdb58bb73c771c4ff2e3a09c890250a}{seeClassSchedule}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ClassCode);}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_ac20cbf2d0ada924b4a8b01002f909caf}{seeUcSchedule}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ UcCode);}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_ad03fdffce9568cf003fddf63aae2b7b3}{seeClassStudents}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_u_c}{UC}}\&\ UcClass,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&order\_);}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_ac1172cb35eb6d6489506dfc8342a1778}{seeUcStudents}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&UcCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&sort\_);}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_auxiliar_functions_a81c9fe20cee99b5ee6c1799389e35df8}{seeYearStudents}}(\textcolor{keywordtype}{int}\ year,\ \textcolor{keywordtype}{int}\ sort);}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_auxiliar_functions_a0d024b7d1eac9c388f9fcccecdb2f8bc}{numberClassStudents}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_u_c}{UC}}\&\ UcClass);}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_auxiliar_functions_ad27cd4879ac619440c6b559b1b75e1fe}{numberUcStudents}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&UcCode);}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_auxiliar_functions_aa127c5714056d2c3ed526190cec23ac2}{numberYearStudents}}(\textcolor{keywordtype}{char}\ \&Year);}
+\DoxyCodeLine{00330\ \};}
+\DoxyCodeLine{00331\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//AED2324\_PRJ1\_G1207\_AUXILIARFUNCTIONS\_H}}
+
+\end{DoxyCode}

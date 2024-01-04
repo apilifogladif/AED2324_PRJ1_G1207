@@ -1,0 +1,271 @@
+\doxysection{Student Class Reference}
+\hypertarget{class_student}{}\label{class_student}\index{Student@{Student}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student\+::\+Student} Class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_student_a5a4f6d1ac79376d948596d41c73b24fd}{Student}} (string student\+Code, string student\+Name)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student\+::\+Student} Class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_student_a0e2439f301a4e0184bf4f2f72eb5ae93}{Student}} (string student\+Code, string student\+Name, vector$<$ \mbox{\hyperlink{class_u_c}{UC}} $>$ ucs)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student\+::\+Student} Class constructor. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_student_a47a1e16e404e1435501294afe1817244}{get\+Student\+Code}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_a47a1e16e404e1435501294afe1817244}{Student\+::get\+Student\+Code} Gets the student code. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_student_af2fdac1ce7d10b271cf7103f675d9c17}{get\+Student\+Name}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_af2fdac1ce7d10b271cf7103f675d9c17}{Student\+::get\+Student\+Name} Gets the student name. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_u_c}{UC}} $>$ \mbox{\hyperlink{class_student_ab70ca3282b3a10ba3ba9f154e7749272}{get\+UCs}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_ab70ca3282b3a10ba3ba9f154e7749272}{Student\+::get\+UCs} Gets the uc\textquotesingle{}s. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_student_a0efda211fa4c8f4c5c9a7e0dc1a7cdb5}{set\+UCs}} (vector$<$ \mbox{\hyperlink{class_u_c}{UC}} $>$ ucs\+\_\+)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_a0efda211fa4c8f4c5c9a7e0dc1a7cdb5}{Student\+::set\+UCs} Sets a value for ucs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_student_acac8e363cd7953a904f94ed713fd1baa}{add\+UC}} (const \mbox{\hyperlink{class_u_c}{UC}} \&uc)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_acac8e363cd7953a904f94ed713fd1baa}{Student\+::add\+UC} Adds a uc to the student lessons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_student_a58fb2d25c7c0468f7b3c2d5097fd9c1b}{remove\+UC}} (const \mbox{\hyperlink{class_u_c}{UC}} \&uc)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_a58fb2d25c7c0468f7b3c2d5097fd9c1b}{Student\+::remove\+UC} Adds a uc to the student lessons. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_student_a2e09f9226c089ca09cf328eb105cfeaa}{binary\+Search\+Csv\+Student\+Vector}} (unsigned long left, unsigned long right)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_a2e09f9226c089ca09cf328eb105cfeaa}{Student\+::binary\+Search\+Csv\+Student\+Vector} Binary search to search the position of a student in the Students\+Vector from Csv file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_u_c}{UC}} \mbox{\hyperlink{class_student_a1fc1343156bea4f21cb1c180fd25bc12}{find\+Uc}} (const string \&Uc\+Code) const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_a1fc1343156bea4f21cb1c180fd25bc12}{Student\+::find\+Uc} Returns the uc with the given uc code. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_student_aabc24d469d7206a621fa154b3578d9e0}{operator$<$}} (const \mbox{\hyperlink{class_student}{Student}} \&s) const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_aabc24d469d7206a621fa154b3578d9e0}{Student\+::operator$<$} Operator to compare two students. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_student_ab63766ec1be00976185a08c063e3e303}{operator==}} (const \mbox{\hyperlink{class_student}{Student}} \&s) const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_student_ab63766ec1be00976185a08c063e3e303}{Student\+::operator==} Operator to compare the similarity between two students. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}\label{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d} 
+\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Student\+::\+Student (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student\+::\+Student} Class constructor. 
+
+Complexity\+: O(1) \Hypertarget{class_student_a5a4f6d1ac79376d948596d41c73b24fd}\label{class_student_a5a4f6d1ac79376d948596d41c73b24fd} 
+\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Student\+::\+Student (\begin{DoxyParamCaption}\item[{string}]{student\+Code,  }\item[{string}]{student\+Name }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student\+::\+Student} Class constructor. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \+: The student code; \\
+\hline
+{\em student\+Name} & \+: The student name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_student_a0e2439f301a4e0184bf4f2f72eb5ae93}\label{class_student_a0e2439f301a4e0184bf4f2f72eb5ae93} 
+\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Student\+::\+Student (\begin{DoxyParamCaption}\item[{string}]{student\+Code,  }\item[{string}]{student\+Name,  }\item[{vector$<$ \mbox{\hyperlink{class_u_c}{UC}} $>$}]{ucs }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student\+::\+Student} Class constructor. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \+: The student code; \\
+\hline
+{\em student\+Name} & \+: The student name; \\
+\hline
+{\em ucs} & \+: Vector of ucs; \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_student_acac8e363cd7953a904f94ed713fd1baa}\label{class_student_acac8e363cd7953a904f94ed713fd1baa} 
+\index{Student@{Student}!addUC@{addUC}}
+\index{addUC@{addUC}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{addUC()}{addUC()}}
+{\footnotesize\ttfamily void Student\+::add\+UC (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_u_c}{UC}} \&}]{uc }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_student_acac8e363cd7953a904f94ed713fd1baa}{Student\+::add\+UC} Adds a uc to the student lessons. 
+
+Complexity\+: O(log n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc} & \+: The uc. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_student_a2e09f9226c089ca09cf328eb105cfeaa}\label{class_student_a2e09f9226c089ca09cf328eb105cfeaa} 
+\index{Student@{Student}!binarySearchCsvStudentVector@{binarySearchCsvStudentVector}}
+\index{binarySearchCsvStudentVector@{binarySearchCsvStudentVector}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{binarySearchCsvStudentVector()}{binarySearchCsvStudentVector()}}
+{\footnotesize\ttfamily int Student\+::binary\+Search\+Csv\+Student\+Vector (\begin{DoxyParamCaption}\item[{unsigned long}]{left,  }\item[{unsigned long}]{right }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_student_a2e09f9226c089ca09cf328eb105cfeaa}{Student\+::binary\+Search\+Csv\+Student\+Vector} Binary search to search the position of a student in the Students\+Vector from Csv file. 
+
+Complexity\+: O(log n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & \+: Initial index of the analyzed vector; \\
+\hline
+{\em right} & \+: Final index of the analyzed vector; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the the student we are searching for. 
+\end{DoxyReturn}
+\Hypertarget{class_student_a1fc1343156bea4f21cb1c180fd25bc12}\label{class_student_a1fc1343156bea4f21cb1c180fd25bc12} 
+\index{Student@{Student}!findUc@{findUc}}
+\index{findUc@{findUc}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{findUc()}{findUc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_u_c}{UC}} Student\+::find\+Uc (\begin{DoxyParamCaption}\item[{const string \&}]{Uc\+Code }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_student_a1fc1343156bea4f21cb1c180fd25bc12}{Student\+::find\+Uc} Returns the uc with the given uc code. 
+
+Complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em Uc\+Code} & \+: The uc code; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The uc. 
+\end{DoxyReturn}
+\Hypertarget{class_student_a47a1e16e404e1435501294afe1817244}\label{class_student_a47a1e16e404e1435501294afe1817244} 
+\index{Student@{Student}!getStudentCode@{getStudentCode}}
+\index{getStudentCode@{getStudentCode}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getStudentCode()}{getStudentCode()}}
+{\footnotesize\ttfamily string Student\+::get\+Student\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_student_a47a1e16e404e1435501294afe1817244}{Student\+::get\+Student\+Code} Gets the student code. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The student code. 
+\end{DoxyReturn}
+\Hypertarget{class_student_af2fdac1ce7d10b271cf7103f675d9c17}\label{class_student_af2fdac1ce7d10b271cf7103f675d9c17} 
+\index{Student@{Student}!getStudentName@{getStudentName}}
+\index{getStudentName@{getStudentName}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getStudentName()}{getStudentName()}}
+{\footnotesize\ttfamily string Student\+::get\+Student\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_student_af2fdac1ce7d10b271cf7103f675d9c17}{Student\+::get\+Student\+Name} Gets the student name. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The student name. 
+\end{DoxyReturn}
+\Hypertarget{class_student_ab70ca3282b3a10ba3ba9f154e7749272}\label{class_student_ab70ca3282b3a10ba3ba9f154e7749272} 
+\index{Student@{Student}!getUCs@{getUCs}}
+\index{getUCs@{getUCs}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getUCs()}{getUCs()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_u_c}{UC}} $>$ Student\+::get\+UCs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_student_ab70ca3282b3a10ba3ba9f154e7749272}{Student\+::get\+UCs} Gets the uc\textquotesingle{}s. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The uc\textquotesingle{}s. 
+\end{DoxyReturn}
+\Hypertarget{class_student_aabc24d469d7206a621fa154b3578d9e0}\label{class_student_aabc24d469d7206a621fa154b3578d9e0} 
+\index{Student@{Student}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Student\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_student_aabc24d469d7206a621fa154b3578d9e0}{Student\+::operator$<$} Operator to compare two students. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \+: The student; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{class_student_ab63766ec1be00976185a08c063e3e303}\label{class_student_ab63766ec1be00976185a08c063e3e303} 
+\index{Student@{Student}!operator==@{operator==}}
+\index{operator==@{operator==}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Student\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_student_ab63766ec1be00976185a08c063e3e303}{Student\+::operator==} Operator to compare the similarity between two students. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \+: The student; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{class_student_a58fb2d25c7c0468f7b3c2d5097fd9c1b}\label{class_student_a58fb2d25c7c0468f7b3c2d5097fd9c1b} 
+\index{Student@{Student}!removeUC@{removeUC}}
+\index{removeUC@{removeUC}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{removeUC()}{removeUC()}}
+{\footnotesize\ttfamily void Student\+::remove\+UC (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_u_c}{UC}} \&}]{uc }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_student_a58fb2d25c7c0468f7b3c2d5097fd9c1b}{Student\+::remove\+UC} Adds a uc to the student lessons. 
+
+Complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc} & \+: The uc. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_student_a0efda211fa4c8f4c5c9a7e0dc1a7cdb5}\label{class_student_a0efda211fa4c8f4c5c9a7e0dc1a7cdb5} 
+\index{Student@{Student}!setUCs@{setUCs}}
+\index{setUCs@{setUCs}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{setUCs()}{setUCs()}}
+{\footnotesize\ttfamily void Student\+::set\+UCs (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_u_c}{UC}} $>$}]{ucs\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_student_a0efda211fa4c8f4c5c9a7e0dc1a7cdb5}{Student\+::set\+UCs} Sets a value for ucs. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em ucs\+\_\+} & \+: The value to set to ucs. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_student_8h}{Student.\+h}}\item 
+Student.\+cpp\end{DoxyCompactItemize}

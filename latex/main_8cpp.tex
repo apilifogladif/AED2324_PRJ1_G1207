@@ -1,0 +1,401 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}Csv\+And\+Vectors.\+h"{}}\newline
+{\ttfamily \#include "{}Auxiliar\+Functions.\+h"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$climits$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_ae94d2da37fda2d83d8679ed6b08347ec}{occupation\+Sort\+Menu\+\_\+case1}} (string Uc\+Code, vector$<$ pair$<$ string, int $>$ $>$ aux\+Vector)
+\item 
+int \mbox{\hyperlink{main_8cpp_afba8061750a5e6afc5da8588b41c994e}{occupation\+Sort\+Menu\+\_\+case2}} (string class\+Code, vector$<$ pair$<$ string, int $>$ $>$ aux\+Vector)
+\item 
+int \mbox{\hyperlink{main_8cpp_a3d5c88fd1d7466fcadbb5c0db68271b2}{occupation\+Sort\+Menu\+\_\+case3}} (int year, vector$<$ pair$<$ \mbox{\hyperlink{class_u_c}{UC}}, int $>$ $>$ Classes\+Per\+Uc\+Vector\+Of\+Year)
+\item 
+int \mbox{\hyperlink{main_8cpp_a7bf738a5714335be2ecd239a3c546a53}{sort\+Menu}} (const string \&Uc\+Code, const string \&class\+Code, int year)
+\item 
+bool \mbox{\hyperlink{main_8cpp_ac5a4e34036c5dee724dac0955a99a261}{verify\+Class}} (const string \&Class\+Code)
+\item 
+bool \mbox{\hyperlink{main_8cpp_a78fdbdf626b7702931fdbaecd1289ba3}{verify\+Uc}} (const string \&Uc\+Code)
+\item 
+bool \mbox{\hyperlink{main_8cpp_a64c697b7d22cc7b6a43ebeda9d44de0c}{verify\+Student}} (const string \&Student\+Code)
+\item 
+int \mbox{\hyperlink{main_8cpp_af75cc0324da51eb54280e66ec922e1a7}{enroll\+Request}} (\mbox{\hyperlink{class_student}{Student}} student)
+\item 
+int \mbox{\hyperlink{main_8cpp_a15bd8596f399ec70db15758b9c74380e}{leave\+Request}} (\mbox{\hyperlink{class_student}{Student}} student)
+\item 
+int \mbox{\hyperlink{main_8cpp_a60bb658f45bed17ef0535b87cd735418}{switch\+Request}} (\mbox{\hyperlink{class_student}{Student}} student)
+\item 
+int \mbox{\hyperlink{main_8cpp_ac918f95a60cecbd78f17fceeb940ca74}{submit\+Request}} (int op)
+\item 
+int \mbox{\hyperlink{main_8cpp_adb7b80f589a76c3c3b257c0a3e681a6d}{listing\+Menu}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_a9e33586438e82f8ede9d9a7021d181ab}{numbers\+Menu}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_a06d7212d193d31071857c375bcea0b5c}{schedule\+Menu}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_a6e870f699879d01a066ead28ad553d80}{occupation\+Menu}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_a6f143d48853ff32d69f9883b7c628a07}{greatest\+Menu}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_a690e31b8bc21211e65ad1e71f3b02f83}{request\+Menu}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_a98effa976e15c1b371a90fe3671bf1ef}{accepted\+Request}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_abdb05aa625e7a6b3059b9d95a59cfaef}{rejected\+Request}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_aa5071feb106f2bdd554df7a6b796bb55}{all\+Request}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_a020c0ff00789f741abe8adeecb55a20c}{undo\+Request}} ()
+\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a98effa976e15c1b371a90fe3671bf1ef}\label{main_8cpp_a98effa976e15c1b371a90fe3671bf1ef} 
+\index{main.cpp@{main.cpp}!acceptedRequest@{acceptedRequest}}
+\index{acceptedRequest@{acceptedRequest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{acceptedRequest()}{acceptedRequest()}}
+{\footnotesize\ttfamily int accepted\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints the accepting requests
+
+Complexity\+: O(n)
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_aa5071feb106f2bdd554df7a6b796bb55}\label{main_8cpp_aa5071feb106f2bdd554df7a6b796bb55} 
+\index{main.cpp@{main.cpp}!allRequest@{allRequest}}
+\index{allRequest@{allRequest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{allRequest()}{allRequest()}}
+{\footnotesize\ttfamily int all\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints all requests
+
+Complexity\+: O(n)
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_af75cc0324da51eb54280e66ec922e1a7}\label{main_8cpp_af75cc0324da51eb54280e66ec922e1a7} 
+\index{main.cpp@{main.cpp}!enrollRequest@{enrollRequest}}
+\index{enrollRequest@{enrollRequest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{enrollRequest()}{enrollRequest()}}
+{\footnotesize\ttfamily int enroll\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}}}]{student }\end{DoxyParamCaption})}
+
+Initiates a enroll request for a student
+
+Complexity\+: O(n) where O(n) is the time complexity of student.\+find\+Uc
+
+
+\begin{DoxyParams}{Parameters}
+{\em student} & \+: The student that made the request; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu / 2 request menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a6f143d48853ff32d69f9883b7c628a07}\label{main_8cpp_a6f143d48853ff32d69f9883b7c628a07} 
+\index{main.cpp@{main.cpp}!greatestMenu@{greatestMenu}}
+\index{greatestMenu@{greatestMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{greatestMenu()}{greatestMenu()}}
+{\footnotesize\ttfamily int greatest\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Menu with the options of searching of the greatest number of students
+
+Complexity\+: O(n log n)
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a15bd8596f399ec70db15758b9c74380e}\label{main_8cpp_a15bd8596f399ec70db15758b9c74380e} 
+\index{main.cpp@{main.cpp}!leaveRequest@{leaveRequest}}
+\index{leaveRequest@{leaveRequest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{leaveRequest()}{leaveRequest()}}
+{\footnotesize\ttfamily int leave\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}}}]{student }\end{DoxyParamCaption})}
+
+Initiates a leave request for a student
+
+Complexity\+: O(n) where O(n) is the time complexity of student.\+find\+Uc
+
+
+\begin{DoxyParams}{Parameters}
+{\em student} & \+: The student that made the request; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu / 2 request menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_adb7b80f589a76c3c3b257c0a3e681a6d}\label{main_8cpp_adb7b80f589a76c3c3b257c0a3e681a6d} 
+\index{main.cpp@{main.cpp}!listingMenu@{listingMenu}}
+\index{listingMenu@{listingMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{listingMenu()}{listingMenu()}}
+{\footnotesize\ttfamily int listing\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Menu with the options of listings
+
+Complexity\+: O(log n)
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Main
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+0 quit. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a9e33586438e82f8ede9d9a7021d181ab}\label{main_8cpp_a9e33586438e82f8ede9d9a7021d181ab} 
+\index{main.cpp@{main.cpp}!numbersMenu@{numbersMenu}}
+\index{numbersMenu@{numbersMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{numbersMenu()}{numbersMenu()}}
+{\footnotesize\ttfamily int numbers\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Menu with the options of searching for the number of students
+
+Complexity\+: O(n)
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a6e870f699879d01a066ead28ad553d80}\label{main_8cpp_a6e870f699879d01a066ead28ad553d80} 
+\index{main.cpp@{main.cpp}!occupationMenu@{occupationMenu}}
+\index{occupationMenu@{occupationMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{occupationMenu()}{occupationMenu()}}
+{\footnotesize\ttfamily int occupation\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Menu with the options of occupations
+
+Complexity\+: O(n log n)
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_ae94d2da37fda2d83d8679ed6b08347ec}\label{main_8cpp_ae94d2da37fda2d83d8679ed6b08347ec} 
+\index{main.cpp@{main.cpp}!occupationSortMenu\_case1@{occupationSortMenu\_case1}}
+\index{occupationSortMenu\_case1@{occupationSortMenu\_case1}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{occupationSortMenu\_case1()}{occupationSortMenu\_case1()}}
+{\footnotesize\ttfamily int occupation\+Sort\+Menu\+\_\+case1 (\begin{DoxyParamCaption}\item[{string}]{Uc\+Code,  }\item[{vector$<$ pair$<$ string, int $>$ $>$}]{aux\+Vector }\end{DoxyParamCaption})}
+
+Sort occupation of classes from a Uc (Type 1)
+
+Complexity\+: O(n log n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em Uc\+Code} & \+: The uc code; \\
+\hline
+{\em aux\+Vector} & \+: Auxiliar vector with the class code and the number of students. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{main_8cpp_afba8061750a5e6afc5da8588b41c994e}\label{main_8cpp_afba8061750a5e6afc5da8588b41c994e} 
+\index{main.cpp@{main.cpp}!occupationSortMenu\_case2@{occupationSortMenu\_case2}}
+\index{occupationSortMenu\_case2@{occupationSortMenu\_case2}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{occupationSortMenu\_case2()}{occupationSortMenu\_case2()}}
+{\footnotesize\ttfamily int occupation\+Sort\+Menu\+\_\+case2 (\begin{DoxyParamCaption}\item[{string}]{class\+Code,  }\item[{vector$<$ pair$<$ string, int $>$ $>$}]{aux\+Vector }\end{DoxyParamCaption})}
+
+Sort occupation of Ucs from a Class (Type 2)
+
+Complexity\+: O(n log n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em class\+Code} & \+: The class code; \\
+\hline
+{\em aux\+Vector} & \+: Auxiliar vector with the uc code and the number of student. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{main_8cpp_a3d5c88fd1d7466fcadbb5c0db68271b2}\label{main_8cpp_a3d5c88fd1d7466fcadbb5c0db68271b2} 
+\index{main.cpp@{main.cpp}!occupationSortMenu\_case3@{occupationSortMenu\_case3}}
+\index{occupationSortMenu\_case3@{occupationSortMenu\_case3}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{occupationSortMenu\_case3()}{occupationSortMenu\_case3()}}
+{\footnotesize\ttfamily int occupation\+Sort\+Menu\+\_\+case3 (\begin{DoxyParamCaption}\item[{int}]{year,  }\item[{vector$<$ pair$<$ \mbox{\hyperlink{class_u_c}{UC}}, int $>$ $>$}]{Classes\+Per\+Uc\+Vector\+Of\+Year }\end{DoxyParamCaption})}
+
+Sort occupation of Classes and Ucs from a year (Type 3)
+
+Complexity\+: O(n log n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em year} & \+: The year; \\
+\hline
+{\em Classes\+Per\+Uc\+Vector\+Of\+Year} & \+: Object of the uc class and the number of students. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{main_8cpp_abdb05aa625e7a6b3059b9d95a59cfaef}\label{main_8cpp_abdb05aa625e7a6b3059b9d95a59cfaef} 
+\index{main.cpp@{main.cpp}!rejectedRequest@{rejectedRequest}}
+\index{rejectedRequest@{rejectedRequest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{rejectedRequest()}{rejectedRequest()}}
+{\footnotesize\ttfamily int rejected\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints the rejected requests
+
+Complexity\+: O(n)
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a690e31b8bc21211e65ad1e71f3b02f83}\label{main_8cpp_a690e31b8bc21211e65ad1e71f3b02f83} 
+\index{main.cpp@{main.cpp}!requestMenu@{requestMenu}}
+\index{requestMenu@{requestMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{requestMenu()}{requestMenu()}}
+{\footnotesize\ttfamily int request\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Menu with the options of submitting the request he wants
+
+Complexity\+: O(n)
+
+Options \+: enroll in an \doxylink{class_u_c}{UC}, leave an \doxylink{class_u_c}{UC} or switch an \doxylink{class_u_c}{UC}.
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a06d7212d193d31071857c375bcea0b5c}\label{main_8cpp_a06d7212d193d31071857c375bcea0b5c} 
+\index{main.cpp@{main.cpp}!scheduleMenu@{scheduleMenu}}
+\index{scheduleMenu@{scheduleMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{scheduleMenu()}{scheduleMenu()}}
+{\footnotesize\ttfamily int schedule\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Menu with the options of schedules
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a7bf738a5714335be2ecd239a3c546a53}\label{main_8cpp_a7bf738a5714335be2ecd239a3c546a53} 
+\index{main.cpp@{main.cpp}!sortMenu@{sortMenu}}
+\index{sortMenu@{sortMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{sortMenu()}{sortMenu()}}
+{\footnotesize\ttfamily int sort\+Menu (\begin{DoxyParamCaption}\item[{const string \&}]{Uc\+Code,  }\item[{const string \&}]{class\+Code,  }\item[{int}]{year }\end{DoxyParamCaption})}
+
+Options of sorting the list
+
+Complexity\+: O(max(n\texorpdfstring{$\ast$}{*}m, max(k,q), r\texorpdfstring{$\ast$}{*}v)) where O(n\texorpdfstring{$\ast$}{*}m) is the time complexity of see\+Class\+Students, O(max(k,q)) is the time complexity of see\+Year\+Students, O(r\texorpdfstring{$\ast$}{*}v) is the time complexity of see\+Uc\+Students
+
+
+\begin{DoxyParams}{Parameters}
+{\em Uc\+Code} & \+: The uc code; \\
+\hline
+{\em class\+Code} & \+: The class code; \\
+\hline
+{\em year} & \+: The year; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 return to last menu / 2 return to main / 3 quit. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_ac918f95a60cecbd78f17fceeb940ca74}\label{main_8cpp_ac918f95a60cecbd78f17fceeb940ca74} 
+\index{main.cpp@{main.cpp}!submitRequest@{submitRequest}}
+\index{submitRequest@{submitRequest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{submitRequest()}{submitRequest()}}
+{\footnotesize\ttfamily int submit\+Request (\begin{DoxyParamCaption}\item[{int}]{op }\end{DoxyParamCaption})}
+
+Call a function in function of the type of request chosen
+
+Complexity\+: O(n) where O(n) is the time complexity of enroll\+Request, leave\+Request and switch\+Request
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & \+: type of request chosen by the user; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu / 2 request menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a60bb658f45bed17ef0535b87cd735418}\label{main_8cpp_a60bb658f45bed17ef0535b87cd735418} 
+\index{main.cpp@{main.cpp}!switchRequest@{switchRequest}}
+\index{switchRequest@{switchRequest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{switchRequest()}{switchRequest()}}
+{\footnotesize\ttfamily int switch\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}}}]{student }\end{DoxyParamCaption})}
+
+Initiates a switch request for a student
+
+Complexity\+: O(n) where O(n) is the time complexity of student.\+find\+Uc
+
+
+\begin{DoxyParams}{Parameters}
+{\em student} & \+: The student that made the request; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu / 2 request menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a020c0ff00789f741abe8adeecb55a20c}\label{main_8cpp_a020c0ff00789f741abe8adeecb55a20c} 
+\index{main.cpp@{main.cpp}!undoRequest@{undoRequest}}
+\index{undoRequest@{undoRequest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{undoRequest()}{undoRequest()}}
+{\footnotesize\ttfamily int undo\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Undoes a request
+
+O(n)
+
+\begin{DoxyReturn}{Returns}
+0 quit / 1 main menu. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_ac5a4e34036c5dee724dac0955a99a261}\label{main_8cpp_ac5a4e34036c5dee724dac0955a99a261} 
+\index{main.cpp@{main.cpp}!verifyClass@{verifyClass}}
+\index{verifyClass@{verifyClass}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{verifyClass()}{verifyClass()}}
+{\footnotesize\ttfamily bool verify\+Class (\begin{DoxyParamCaption}\item[{const string \&}]{Class\+Code }\end{DoxyParamCaption})}
+
+Verifies that the class exists
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+Code} & \+: The class code; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a64c697b7d22cc7b6a43ebeda9d44de0c}\label{main_8cpp_a64c697b7d22cc7b6a43ebeda9d44de0c} 
+\index{main.cpp@{main.cpp}!verifyStudent@{verifyStudent}}
+\index{verifyStudent@{verifyStudent}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{verifyStudent()}{verifyStudent()}}
+{\footnotesize\ttfamily bool verify\+Student (\begin{DoxyParamCaption}\item[{const string \&}]{Student\+Code }\end{DoxyParamCaption})}
+
+Verifies that the student exists
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em Student\+Code} & \+: The student code; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a78fdbdf626b7702931fdbaecd1289ba3}\label{main_8cpp_a78fdbdf626b7702931fdbaecd1289ba3} 
+\index{main.cpp@{main.cpp}!verifyUc@{verifyUc}}
+\index{verifyUc@{verifyUc}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{verifyUc()}{verifyUc()}}
+{\footnotesize\ttfamily bool verify\+Uc (\begin{DoxyParamCaption}\item[{const string \&}]{Uc\+Code }\end{DoxyParamCaption})}
+
+Verifies that the uc exists
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em Uc\+Code} & \+: The uc code; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}

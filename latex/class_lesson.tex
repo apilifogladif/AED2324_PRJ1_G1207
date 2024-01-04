@@ -1,0 +1,238 @@
+\doxysection{Lesson Class Reference}
+\hypertarget{class_lesson}{}\label{class_lesson}\index{Lesson@{Lesson}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lesson_a8a49a39e96e895ce2ac7d39c172cbb34}{Lesson}} (string Uc\+Code, string Class\+Code, string weekday, float start\+Hour, float duration, string type)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_a8a49a39e96e895ce2ac7d39c172cbb34}{Lesson\+::\+Lesson} Class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_u_c}{UC}} \mbox{\hyperlink{class_lesson_ac8a7771e1b58ad7feaae9428cf974dc0}{get\+Uc}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_ac8a7771e1b58ad7feaae9428cf974dc0}{Lesson\+::get\+Uc} Gets the uc. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_lesson_af05df771ead9feacbcf880ad18bbcc60}{get\+Weekday}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_af05df771ead9feacbcf880ad18bbcc60}{Lesson\+::get\+Weekday} Gets the weekday of the lesson. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_lesson_a9245a34526cee6c8b6cdca2c45a3617f}{get\+Start\+Hour}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_a9245a34526cee6c8b6cdca2c45a3617f}{Lesson\+::get\+Start\+Hour} Gets the start\+Hour of the lesson. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_lesson_a01314117f537158e4cfd208b92be1b4d}{get\+End\+Hour}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_a01314117f537158e4cfd208b92be1b4d}{Lesson\+::get\+End\+Hour} Gets the end\+Hour of the lesson. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_lesson_ac56042aa1f5e2bea1e5d6d6c744271d8}{get\+Duration}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_ac56042aa1f5e2bea1e5d6d6c744271d8}{Lesson\+::get\+Duration} Gets the duration of the lesson. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_lesson_a2bd1a2212d2cc8d8f926f471e74e4463}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_a2bd1a2212d2cc8d8f926f471e74e4463}{Lesson\+::get\+Type} Gets the type of the lesson. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lesson_a66c53b705e8b210fcadf950bc39709b6}{time\+In\+Hours\+And\+Minutes}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_a66c53b705e8b210fcadf950bc39709b6}{Lesson\+::time\+In\+Hours\+And\+Minutes} Convert the decimal time to a string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lesson_a2727f06c48ed4480679e76a5ccf8e600}{draw\+Lesson}} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_a2727f06c48ed4480679e76a5ccf8e600}{Lesson\+::draw\+Lesson} Prints the lesson information. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lesson_a15cb20d1a16846a5689f1ec437047c7d}{lesson\+Overlap}} (const \mbox{\hyperlink{class_lesson}{Lesson}} \&lesson)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_a15cb20d1a16846a5689f1ec437047c7d}{Lesson\+::lesson\+Overlap} Checks if two classes are compatible. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lesson_ad1c385b46636a8c86d394b70f017bb39}{operator$<$}} (const \mbox{\hyperlink{class_lesson}{Lesson}} \&l) const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_ad1c385b46636a8c86d394b70f017bb39}{Lesson\+::operator$<$} Operator to compare the times of two Lessons. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lesson_abde301883d683e9f44bb893beed5b81f}{operator==}} (const \mbox{\hyperlink{class_lesson}{Lesson}} \&l) const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_lesson_abde301883d683e9f44bb893beed5b81f}{Lesson\+::operator==} Operator to compare equality between two lessons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_lesson_a8a49a39e96e895ce2ac7d39c172cbb34}\label{class_lesson_a8a49a39e96e895ce2ac7d39c172cbb34} 
+\index{Lesson@{Lesson}!Lesson@{Lesson}}
+\index{Lesson@{Lesson}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{Lesson()}{Lesson()}}
+{\footnotesize\ttfamily Lesson\+::\+Lesson (\begin{DoxyParamCaption}\item[{string}]{Uc\+Code,  }\item[{string}]{Class\+Code,  }\item[{string}]{weekday,  }\item[{float}]{start\+Hour,  }\item[{float}]{duration,  }\item[{string}]{type }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_lesson_a8a49a39e96e895ce2ac7d39c172cbb34}{Lesson\+::\+Lesson} Class constructor. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+Code} & \+: Class code; \\
+\hline
+{\em Uc\+Code} & \+: Uc code; \\
+\hline
+{\em weekday} & \+: Day of the week when the lesson happens; \\
+\hline
+{\em start\+Hour} & \+: \doxylink{class_lesson}{Lesson} start time; \\
+\hline
+{\em duration} & \+: \doxylink{class_lesson}{Lesson} duration; \\
+\hline
+{\em type} & \+: \doxylink{class_lesson}{Lesson} type. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_lesson_a2727f06c48ed4480679e76a5ccf8e600}\label{class_lesson_a2727f06c48ed4480679e76a5ccf8e600} 
+\index{Lesson@{Lesson}!drawLesson@{drawLesson}}
+\index{drawLesson@{drawLesson}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{drawLesson()}{drawLesson()}}
+{\footnotesize\ttfamily void Lesson\+::draw\+Lesson (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_a2727f06c48ed4480679e76a5ccf8e600}{Lesson\+::draw\+Lesson} Prints the lesson information. 
+
+Complexity\+: O(1) \Hypertarget{class_lesson_ac56042aa1f5e2bea1e5d6d6c744271d8}\label{class_lesson_ac56042aa1f5e2bea1e5d6d6c744271d8} 
+\index{Lesson@{Lesson}!getDuration@{getDuration}}
+\index{getDuration@{getDuration}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{getDuration()}{getDuration()}}
+{\footnotesize\ttfamily float Lesson\+::get\+Duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_ac56042aa1f5e2bea1e5d6d6c744271d8}{Lesson\+::get\+Duration} Gets the duration of the lesson. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The lesson\textquotesingle{}s duration. 
+\end{DoxyReturn}
+\Hypertarget{class_lesson_a01314117f537158e4cfd208b92be1b4d}\label{class_lesson_a01314117f537158e4cfd208b92be1b4d} 
+\index{Lesson@{Lesson}!getEndHour@{getEndHour}}
+\index{getEndHour@{getEndHour}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{getEndHour()}{getEndHour()}}
+{\footnotesize\ttfamily float Lesson\+::get\+End\+Hour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_a01314117f537158e4cfd208b92be1b4d}{Lesson\+::get\+End\+Hour} Gets the end\+Hour of the lesson. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The lesson\textquotesingle{}s end time. 
+\end{DoxyReturn}
+\Hypertarget{class_lesson_a9245a34526cee6c8b6cdca2c45a3617f}\label{class_lesson_a9245a34526cee6c8b6cdca2c45a3617f} 
+\index{Lesson@{Lesson}!getStartHour@{getStartHour}}
+\index{getStartHour@{getStartHour}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{getStartHour()}{getStartHour()}}
+{\footnotesize\ttfamily float Lesson\+::get\+Start\+Hour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_a9245a34526cee6c8b6cdca2c45a3617f}{Lesson\+::get\+Start\+Hour} Gets the start\+Hour of the lesson. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The lesson\textquotesingle{}s start time. 
+\end{DoxyReturn}
+\Hypertarget{class_lesson_a2bd1a2212d2cc8d8f926f471e74e4463}\label{class_lesson_a2bd1a2212d2cc8d8f926f471e74e4463} 
+\index{Lesson@{Lesson}!getType@{getType}}
+\index{getType@{getType}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily string Lesson\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_a2bd1a2212d2cc8d8f926f471e74e4463}{Lesson\+::get\+Type} Gets the type of the lesson. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The type of the lesson (T,P,PL or TP). 
+\end{DoxyReturn}
+\Hypertarget{class_lesson_ac8a7771e1b58ad7feaae9428cf974dc0}\label{class_lesson_ac8a7771e1b58ad7feaae9428cf974dc0} 
+\index{Lesson@{Lesson}!getUc@{getUc}}
+\index{getUc@{getUc}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{getUc()}{getUc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_u_c}{UC}} Lesson\+::get\+Uc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_ac8a7771e1b58ad7feaae9428cf974dc0}{Lesson\+::get\+Uc} Gets the uc. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The Uc of the lesson. 
+\end{DoxyReturn}
+\Hypertarget{class_lesson_af05df771ead9feacbcf880ad18bbcc60}\label{class_lesson_af05df771ead9feacbcf880ad18bbcc60} 
+\index{Lesson@{Lesson}!getWeekday@{getWeekday}}
+\index{getWeekday@{getWeekday}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{getWeekday()}{getWeekday()}}
+{\footnotesize\ttfamily string Lesson\+::get\+Weekday (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_af05df771ead9feacbcf880ad18bbcc60}{Lesson\+::get\+Weekday} Gets the weekday of the lesson. 
+
+Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The weekday the lesson is in. 
+\end{DoxyReturn}
+\Hypertarget{class_lesson_a15cb20d1a16846a5689f1ec437047c7d}\label{class_lesson_a15cb20d1a16846a5689f1ec437047c7d} 
+\index{Lesson@{Lesson}!lessonOverlap@{lessonOverlap}}
+\index{lessonOverlap@{lessonOverlap}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{lessonOverlap()}{lessonOverlap()}}
+{\footnotesize\ttfamily bool Lesson\+::lesson\+Overlap (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_lesson}{Lesson}} \&}]{lesson }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_lesson_a15cb20d1a16846a5689f1ec437047c7d}{Lesson\+::lesson\+Overlap} Checks if two classes are compatible. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em lesson} & \+: The lesson that we are checking if overlaps; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{class_lesson_ad1c385b46636a8c86d394b70f017bb39}\label{class_lesson_ad1c385b46636a8c86d394b70f017bb39} 
+\index{Lesson@{Lesson}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Lesson\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_lesson}{Lesson}} \&}]{l }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_ad1c385b46636a8c86d394b70f017bb39}{Lesson\+::operator$<$} Operator to compare the times of two Lessons. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \+: The \doxylink{class_lesson}{Lesson} we are comparing; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{class_lesson_abde301883d683e9f44bb893beed5b81f}\label{class_lesson_abde301883d683e9f44bb893beed5b81f} 
+\index{Lesson@{Lesson}!operator==@{operator==}}
+\index{operator==@{operator==}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Lesson\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_lesson}{Lesson}} \&}]{l }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_abde301883d683e9f44bb893beed5b81f}{Lesson\+::operator==} Operator to compare equality between two lessons. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \+: The \doxylink{class_lesson}{Lesson} we are comparing; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false. 
+\end{DoxyReturn}
+\Hypertarget{class_lesson_a66c53b705e8b210fcadf950bc39709b6}\label{class_lesson_a66c53b705e8b210fcadf950bc39709b6} 
+\index{Lesson@{Lesson}!timeInHoursAndMinutes@{timeInHoursAndMinutes}}
+\index{timeInHoursAndMinutes@{timeInHoursAndMinutes}!Lesson@{Lesson}}
+\doxysubsubsection{\texorpdfstring{timeInHoursAndMinutes()}{timeInHoursAndMinutes()}}
+{\footnotesize\ttfamily void Lesson\+::time\+In\+Hours\+And\+Minutes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxylink{class_lesson_a66c53b705e8b210fcadf950bc39709b6}{Lesson\+::time\+In\+Hours\+And\+Minutes} Convert the decimal time to a string. 
+
+Complexity\+: O(1) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_lesson_8h}{Lesson.\+h}}\item 
+Lesson.\+cpp\end{DoxyCompactItemize}
